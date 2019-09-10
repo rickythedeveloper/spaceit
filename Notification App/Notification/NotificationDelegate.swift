@@ -19,7 +19,8 @@ class NotificationDelegate: NSObject, UNUserNotificationCenterDelegate {
 //         do something if they tap the notification??
         let title = response.notification.request.content.title
         let body = response.notification.request.content.body
-        center.sendNotification(title: title, body: body)
+        let id = response.notification.request.identifier
+        center.sendNotification(requestID: id, title: title, body: body, remindTimeSetting: nil)
         completionHandler()
     }
 }

@@ -15,6 +15,7 @@ struct AddNewReminder: View {
     @State var title = ""
     @State var details = ""
     @State var checkingSettings = false
+    @State var selectedIndex = 0
     
     var body: some View {
         VStack {
@@ -25,6 +26,25 @@ struct AddNewReminder: View {
             TextField("Details (optional)", text: $details)
                 .font(.largeTitle)
                 .multilineTextAlignment(.center)
+            
+            List(0...userSettings.remindTimeSettings.count, id: \.self) { index in
+                Button(action: {
+                    self.selectedIndex = index
+                }) {
+                    HStack {
+                        if index == 0 {
+                            Text("Now")
+                        } else {
+                            Text(self.userSettings.remindTimeSettings[index-1].title)
+                        }
+                        Spacer()
+                        if index == self.selectedIndex {
+                            Image(systemName: "checkmark")
+                                .foregroundColor(.blue)
+                        }
+                    }
+                }
+            }
             
             HStack {
                 Button(action: buttonTapped) {
@@ -42,8 +62,10 @@ struct AddNewReminder: View {
                 }
                 .padding()
             }
+            
+            Spacer()
         }
-        .offset(x: 0.0, y: -100.0)
+//        .offset(x: 0.0, y: -100.0)
         .padding()
         .sheet(isPresented: $checkingSettings, onDismiss: nil) {
             TimeSettings(timeSettings: self.userSettings.remindTimeSettings)
@@ -70,11 +92,20 @@ struct AddNewReminder: View {
     }
     
     private func sendNotification(with nc: UNUserNotificationCenter) {
+        
+        var detailStr: String?
         if details == "" {
-            nc.sendNotification(title: title, body: nil)
+            detailStr = nil
         } else {
-            nc.sendNotification(title: title, body: details)
+            detailStr = details
         }
+        
+        if selectedIndex == 0 {
+            nc.sendNotification(requestID: nil, title: title, body: detailStr, remindTimeSetting: nil)
+        } else {
+            nc.sendNotification(requestID: nil, title: title, body: detailStr, remindTimeSetting: userSettings.remindTimeSettings[selectedIndex-1])
+        }
+        
         title = ""
         details = ""
     }
