@@ -46,22 +46,20 @@ struct AddNewReminder: View {
                 }
             }
             
-            HStack {
-                Button(action: buttonTapped) {
-                    Text("Send")
-                        .font(.title)
-                }
-                .disabled(title == "")
-                .padding()
-                
-                Button(action: {
-                    self.checkingSettings = true
-                }) {
-                    Text("i")
-                        .font(.title)
-                }
-                .padding()
+            Button(action: {
+                self.checkingSettings = true
+            }) {
+                Image(systemName: "info.circle")
+                    .imageScale(.large)
             }
+            .padding()
+            
+            Button(action: buttonTapped) {
+                Text("Send")
+                    .font(.title)
+            }
+            .disabled(title == "")
+            .padding()
             
             Spacer()
         }
