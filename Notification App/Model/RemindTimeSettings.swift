@@ -76,7 +76,6 @@ class RemindTime: Identifiable, ObservableObject {
     }
     
     func updateNumFromString() throws {
-//        guard isValidInteger() else {throw RemindTimeError.numberStringInvalid}
         if !isValidInteger() {
             if isEmpty() {
                 number = -1

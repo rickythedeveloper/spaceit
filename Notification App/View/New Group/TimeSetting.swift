@@ -11,11 +11,8 @@ import SwiftUI
 struct TimeSetting: View {
     @Environment(\.presentationMode) private var presentationMode
     
-//    @ObservedObject var timeSetting: RemindTimeSetting
     @EnvironmentObject var userSettings: UserSettings
     var index: Int
-    
-//    @Binding var makingNewSetting: Bool
     
     @State var isDeleted =  false
     
@@ -37,19 +34,19 @@ struct TimeSetting: View {
                     
                     Divider()
                     
-    //                List(timeSetting.remindTimes) { setTime in
-    //                    SetTime(remindTime: setTime)
-    //                        .clipped()
-    //                }
-    //
-    //                ForEach(userSettings.remindTimeSettings[index].remindTimes) { setTime in
-    //                    SetTime(remindTime: setTime)
-    //                        .clipped()
-    //                }.padding()
+//                    List(timeSetting.remindTimes) { setTime in
+//                        SetTime(remindTime: setTime)
+//                            .clipped()
+//                    }
+//
+//                    ForEach(userSettings.remindTimeSettings[index].remindTimes) { setTime in
+//                        SetTime(remindTime: setTime)
+//                            .clipped()
+//                    }.padding()
                     
                     Form {
                         ForEach(self.userSettings.remindTimeSettings[self.index].remindTimes) { setTime in
-                            SetTime(remindTime: setTime)//.padding()
+                            SetTime(remindTime: setTime)
                         }
                     }
                     
@@ -73,7 +70,6 @@ struct TimeSetting: View {
     }
     
     func buttonPressed() {
-//        MARK: Button Pressed
         presentationMode.wrappedValue.dismiss()
         isDeleted = true
         userSettings.remindTimeSettings.remove(at: index)
@@ -93,8 +89,6 @@ struct TimeSetting: View {
 
 struct TimeSetting_Previews: PreviewProvider {
     static var previews: some View {
-//        TimeSetting(timeSetting: .constant(RemindTimeSetting(title: "aaa", months: [1,3,4])))
-//        TimeSetting(timeSetting: RemindTimeSetting(title: "aaa", months: [1,3,4]), makingNewSetting: false)
         TimeSetting(index: 0).environmentObject(UserSettings())
     }
 }

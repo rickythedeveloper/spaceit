@@ -35,21 +35,12 @@ struct TimeSettings: View {
                 
             }
             .navigationBarTitle(Text("Settings"), displayMode: .inline)
-            .navigationBarItems(trailing: Button(action: {
-                self.userSettings.remindTimeSettings.append(self.newSetting)
-//                self.makingNewSetting = true
-            }) {
-                Text("+")
-                    .foregroundColor(.blue)
-                    .font(.largeTitle)
-            })
         }
     }
 }
 
 struct TimeSettings_Previews: PreviewProvider {
     static var previews: some View {
-//        TimeSettings(timeSettings: .constant([RemindTimeSetting(title: "broo", seconds: [1,10], hours: [1,2])]))
         TimeSettings().environmentObject(UserSettings())
     }
 }
