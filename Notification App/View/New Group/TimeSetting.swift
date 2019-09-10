@@ -14,6 +14,8 @@ struct TimeSetting: View {
     @EnvironmentObject var userSettings: UserSettings
     var index: Int
     
+    @ObservedObject var thisSetting: RemindTimeSetting
+    
     @State var isDeleted =  false
     
     var body: some View {
@@ -48,17 +50,22 @@ struct TimeSetting: View {
                         ForEach(self.userSettings.remindTimeSettings[self.index].remindTimes) { setTime in
                             SetTime(remindTime: setTime)
                         }
-                    }
-                    
-                    if self.userSettings.remindTimeSettings[self.index].remindTimes.count < 8 {
-                        Button(action: {
-                            self.addTime()
-                        }) {
-                            Text("+")
-                                .font(.largeTitle)
+                        
+                        if self.userSettings.remindTimeSettings[self.index].remindTimes.count < 8 {
+                            HStack {
+                                Spacer()
+                                Button(action: {
+                                    self.addTime()
+                                }) {
+                                    Image(systemName: "plus")
+                                        .imageScale(.large)
+                                }
+                                Spacer()
+                            }
                         }
                     }
-                    Spacer()
+                    
+//                    Spacer()
                 }
             }
             .padding()
@@ -89,6 +96,6 @@ struct TimeSetting: View {
 
 struct TimeSetting_Previews: PreviewProvider {
     static var previews: some View {
-        TimeSetting(index: 0).environmentObject(UserSettings())
+        TimeSetting(index: 0, thisSetting: RemindTimeSetting(title: "aaa", seconds: [1111])).environmentObject(UserSettings())
     }
 }

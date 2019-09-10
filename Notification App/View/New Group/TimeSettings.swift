@@ -20,7 +20,7 @@ struct TimeSettings: View {
         NavigationView {
             List(0...userSettings.remindTimeSettings.count, id: \.self) { index in
                 if index < self.userSettings.remindTimeSettings.count {
-                    NavigationLink(destination: TimeSetting(index: index).environmentObject(self.userSettings)) {
+                    NavigationLink(destination: TimeSetting(index: index, thisSetting: self.userSettings.remindTimeSettings[index]).environmentObject(self.userSettings)) {
                         Text(self.userSettings.remindTimeSettings[index].title)
                     }
                 } else {
