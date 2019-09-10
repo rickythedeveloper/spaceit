@@ -53,6 +53,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		B84EA8532327AE9C00FAF4A1 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				B8D950602326C8E7001236AE /* TimeSettings.swift */,
+				B8D950622326CA98001236AE /* TimeSetting.swift */,
+				B8B8023B2326EDB60041098F /* SetTime.swift */,
+			);
+			name = Settings;
+			path = "New Group";
+			sourceTree = "<group>";
+		};
 		B8D950302326C48F001236AE = {
 			isa = PBXGroup;
 			children = (
@@ -107,9 +118,7 @@
 			isa = PBXGroup;
 			children = (
 				B8D950552326C4E5001236AE /* AddNewReminder.swift */,
-				B8D950602326C8E7001236AE /* TimeSettings.swift */,
-				B8D950622326CA98001236AE /* TimeSetting.swift */,
-				B8B8023B2326EDB60041098F /* SetTime.swift */,
+				B84EA8532327AE9C00FAF4A1 /* Settings */,
 			);
 			path = View;
 			sourceTree = "<group>";
