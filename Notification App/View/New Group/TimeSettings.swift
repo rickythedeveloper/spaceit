@@ -10,29 +10,39 @@ import SwiftUI
 
 struct TimeSettings: View {
     
-    var timeSettings: [RemindTimeSetting]
+//    var timeSettings: [RemindTimeSetting]
+    @EnvironmentObject var userSettings: UserSettings
     
-    @State var makingNewSetting = false
+    let newSetting = RemindTimeSetting(title: "New Setting", days: [1])
     
     var body: some View {
         
         NavigationView {
-            List(timeSettings) { timeSetting in
-                NavigationLink(destination: TimeSetting(timeSetting: timeSetting, makingNewSetting: false)) {
-                    Text(timeSetting.title)
+            List(0...userSettings.remindTimeSettings.count, id: \.self) { index in
+                if index < self.userSettings.remindTimeSettings.count {
+                    NavigationLink(destination: TimeSetting(index: index).environmentObject(self.userSettings)) {
+                        Text(self.userSettings.remindTimeSettings[index].title)
+                    }
+                } else {
+                    Button(action: {
+                        self.userSettings.remindTimeSettings.append(self.newSetting)
+                    }) {
+                        Image(systemName: "plus")
+                            .foregroundColor(.blue)
+                            .imageScale(.large)
+                    }
                 }
+                
             }
             .navigationBarTitle(Text("Settings"), displayMode: .inline)
             .navigationBarItems(trailing: Button(action: {
-                self.makingNewSetting = true
+                self.userSettings.remindTimeSettings.append(self.newSetting)
+//                self.makingNewSetting = true
             }) {
                 Text("+")
                     .foregroundColor(.blue)
                     .font(.largeTitle)
             })
-        }
-        .sheet(isPresented: $makingNewSetting, onDismiss: nil) {
-            TimeSetting(timeSetting: RemindTimeSetting(title: "New Setting", days: [1]), makingNewSetting: true)
         }
     }
 }
@@ -40,6 +50,6 @@ struct TimeSettings: View {
 struct TimeSettings_Previews: PreviewProvider {
     static var previews: some View {
 //        TimeSettings(timeSettings: .constant([RemindTimeSetting(title: "broo", seconds: [1,10], hours: [1,2])]))
-        TimeSettings(timeSettings: [RemindTimeSetting(title: "broo", seconds: [1,10], hours: [1,2])])
+        TimeSettings().environmentObject(UserSettings())
     }
 }

@@ -20,12 +20,13 @@ struct SetTime: View {
                     .font(.title)
                     .multilineTextAlignment(.center)
                     .keyboardType(.numberPad)
-                Picker(selection: self.$remindTime.typeInt, label: Text("oioi")) {
+                Divider()
+                Picker(selection: self.$remindTime.typeInt, label: Text("")) {
                     ForEach(0..<TimeTypeStr.allCases.count, id:\.self) {n in
                         Text(TimeTypeStr.allCases[n].rawValue)
                             .font(.body)
                     }
-                }.frame(maxWidth: viewGeom.size.width / 2)
+                }//.frame(maxWidth: viewGeom.size.width / 2)
                 .clipped()
             }
         }

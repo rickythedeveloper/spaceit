@@ -66,7 +66,7 @@ struct AddNewReminder: View {
 //        .offset(x: 0.0, y: -100.0)
         .padding()
         .sheet(isPresented: $checkingSettings, onDismiss: nil) {
-            TimeSettings(timeSettings: self.userSettings.remindTimeSettings)
+            TimeSettings().environmentObject(self.userSettings)
         }
     }
     
