@@ -22,7 +22,6 @@ struct AddNewReminder: View {
             VStack {
                 GADBannerViewController()
                     .frame(width: kGADAdSizeBanner.size.width, height: kGADAdSizeBanner.size.height)
-                    .padding()
                 
                 Divider()
                 

@@ -16,7 +16,7 @@ struct GADBannerViewController: UIViewControllerRepresentable {
         let bannerViewController = UIViewController()
         bannerView.adUnitID = "ca-app-pub-3940256099942544/2934735716"
         bannerView.rootViewController = bannerViewController
-        bannerView.delegate = BannerViewDelegate()
+        bannerView.delegate = BannerViewDelegate.shared
         bannerViewController.view.addSubview(bannerView)
         bannerViewController.view.frame = CGRect(origin: .zero, size: kGADAdSizeBanner.size)
         bannerView.load(GADRequest())
@@ -27,6 +27,8 @@ struct GADBannerViewController: UIViewControllerRepresentable {
 }
 
 class BannerViewDelegate: NSObject, GADBannerViewDelegate {
+    static let shared = BannerViewDelegate()
+    
     /// Tells the delegate an ad request loaded an ad.
     func adViewDidReceiveAd(_ bannerView: GADBannerView) {
       print("adViewDidReceiveAd")
