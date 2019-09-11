@@ -17,25 +17,23 @@ struct TimeSettings: View {
     
     var body: some View {
         
-        NavigationView {
-            List(0...userSettings.remindTimeSettings.count, id: \.self) { index in
-                if index < self.userSettings.remindTimeSettings.count {
-                    NavigationLink(destination: TimeSetting(index: index, thisSetting: self.userSettings.remindTimeSettings[index]).environmentObject(self.userSettings)) {
-                        Text(self.userSettings.remindTimeSettings[index].title)
-                    }
-                } else {
-                    Button(action: {
-                        self.userSettings.remindTimeSettings.append(self.newSetting)
-                    }) {
-                        Image(systemName: "plus")
-                            .foregroundColor(.blue)
-                            .imageScale(.large)
-                    }
+        List(0...userSettings.remindTimeSettings.count, id: \.self) { index in
+            if index < self.userSettings.remindTimeSettings.count {
+                NavigationLink(destination: TimeSetting(index: index, thisSetting: self.userSettings.remindTimeSettings[index]).environmentObject(self.userSettings)) {
+                    Text(self.userSettings.remindTimeSettings[index].title)
                 }
-                
+            } else {
+                Button(action: {
+                    self.userSettings.remindTimeSettings.append(self.newSetting)
+                }) {
+                    Image(systemName: "plus")
+                        .foregroundColor(.blue)
+                        .imageScale(.large)
+                }
             }
-            .navigationBarTitle(Text("Settings"), displayMode: .inline)
+            
         }
+        .navigationBarTitle(Text("Settings"), displayMode: .inline)
     }
 }
 

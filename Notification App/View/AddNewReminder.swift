@@ -14,58 +14,52 @@ struct AddNewReminder: View {
     
     @State var title = ""
     @State var details = ""
-    @State var checkingSettings = false
     @State var selectedIndex = 0
     
     var body: some View {
-        VStack {
-            TextField("Title", text: $title)
-                .font(.largeTitle)
-                .multilineTextAlignment(.center)
-            
-            TextField("Details (optional)", text: $details)
-                .font(.largeTitle)
-                .multilineTextAlignment(.center)
-            
-            List(0...userSettings.remindTimeSettings.count, id: \.self) { index in
-                Button(action: {
-                    self.selectedIndex = index
-                }) {
-                    HStack {
-                        if index == 0 {
-                            Text("Now")
-                        } else {
-                            Text(self.userSettings.remindTimeSettings[index-1].title)
-                        }
-                        Spacer()
-                        if index == self.selectedIndex {
-                            Image(systemName: "checkmark")
-                                .foregroundColor(.blue)
+        NavigationView {
+            VStack {
+                TextField("Title", text: $title)
+                    .font(.largeTitle)
+                    .multilineTextAlignment(.center)
+                
+                TextField("Details (optional)", text: $details)
+                    .font(.largeTitle)
+                    .multilineTextAlignment(.center)
+                
+                List(0...userSettings.remindTimeSettings.count, id: \.self) { index in
+                    Button(action: {
+                        self.selectedIndex = index
+                    }) {
+                        HStack {
+                            if index == 0 {
+                                Text("Now")
+                            } else {
+                                Text(self.userSettings.remindTimeSettings[index-1].title)
+                            }
+                            Spacer()
+                            if index == self.selectedIndex {
+                                Image(systemName: "checkmark")
+                                    .foregroundColor(.blue)
+                            }
                         }
                     }
                 }
+                
+                Button(action: buttonTapped) {
+                    Text("Send")
+                        .font(.title)
+                }
+                .disabled(title == "")
+                .padding()
+                
+                Spacer()
             }
-            
-            Button(action: {
-                self.checkingSettings = true
-            }) {
-                Image(systemName: "info.circle")
-                    .imageScale(.large)
-            }
+            .navigationBarTitle("Home", displayMode: .inline)
+            .navigationBarItems(trailing: NavigationLink(destination: TimeSettings().environmentObject(self.userSettings)) {
+                Image(systemName: "ellipsis")
+            })
             .padding()
-            
-            Button(action: buttonTapped) {
-                Text("Send")
-                    .font(.title)
-            }
-            .disabled(title == "")
-            .padding()
-            
-            Spacer()
-        }
-        .padding()
-        .sheet(isPresented: $checkingSettings, onDismiss: nil) {
-            TimeSettings().environmentObject(self.userSettings)
         }
     }
     

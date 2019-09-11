@@ -24,7 +24,7 @@ struct TimeSetting: View {
                 if !self.isDeleted {
                     HStack {
                         TextField("Setting name", text: self.$userSettings.remindTimeSettings[self.index].title)
-                            .font(.largeTitle)
+                            .font(.title)
                         
                         Button(action: self.buttonPressed) {
                             Text("Delete")
@@ -65,9 +65,9 @@ struct TimeSetting: View {
                         }
                     }
                     
-//                    Spacer()
+                    Spacer()
                 }
-            }
+            }.navigationBarTitle("Details")
             .padding()
         }
     }
