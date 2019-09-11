@@ -7,6 +7,7 @@
 //
 
 import SwiftUI
+import GoogleMobileAds
 
 struct AddNewReminder: View {
     
@@ -19,6 +20,12 @@ struct AddNewReminder: View {
     var body: some View {
         NavigationView {
             VStack {
+                GADBannerViewController()
+                    .frame(width: kGADAdSizeBanner.size.width, height: kGADAdSizeBanner.size.height)
+                    .padding()
+                
+                Divider()
+                
                 TextField("Title", text: $title)
                     .font(.largeTitle)
                     .multilineTextAlignment(.center)

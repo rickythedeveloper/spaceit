@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -22,6 +22,7 @@
 		B8D9505F2326C85C001236AE /* NotificationDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8D9505D2326C85C001236AE /* NotificationDelegate.swift */; };
 		B8D950612326C8E7001236AE /* TimeSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8D950602326C8E7001236AE /* TimeSettings.swift */; };
 		B8D950632326CA98001236AE /* TimeSetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8D950622326CA98001236AE /* TimeSetting.swift */; };
+		B8D9B2D42329A97100348987 /* GADBannerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8D9B2D32329A97100348987 /* GADBannerViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -43,6 +44,7 @@
 		B8D9505D2326C85C001236AE /* NotificationDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationDelegate.swift; sourceTree = "<group>"; };
 		B8D950602326C8E7001236AE /* TimeSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeSettings.swift; sourceTree = "<group>"; };
 		B8D950622326CA98001236AE /* TimeSetting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeSetting.swift; sourceTree = "<group>"; };
+		B8D9B2D32329A97100348987 /* GADBannerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GADBannerViewController.swift; sourceTree = "<group>"; };
 		D1E79BE1585F8564AA316F2F /* Pods_Notification_App.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Notification_App.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -64,7 +66,6 @@
 				6E28032A00F8E10F84C3ACE9 /* Pods-Notification App.debug.xcconfig */,
 				5B521FD02162129FF8121734 /* Pods-Notification App.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -100,6 +101,7 @@
 		B8D9503B2326C48F001236AE /* Notification App */ = {
 			isa = PBXGroup;
 			children = (
+				B8D9B2D22329A94B00348987 /* Controller */,
 				B8D9505B2326C82D001236AE /* Notification */,
 				B8D950542326C4AB001236AE /* View */,
 				B8D950532326C4A4001236AE /* Model */,
@@ -147,6 +149,14 @@
 				B8D9505C2326C85C001236AE /* UNUserNotificationCenter+.swift */,
 			);
 			path = Notification;
+			sourceTree = "<group>";
+		};
+		B8D9B2D22329A94B00348987 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				B8D9B2D32329A97100348987 /* GADBannerViewController.swift */,
+			);
+			path = Controller;
 			sourceTree = "<group>";
 		};
 		E13778E240410AA0E96101A8 /* Frameworks */ = {
@@ -281,6 +291,7 @@
 				B8D950582326C56D001236AE /* RemindTimeSettings.swift in Sources */,
 				B8D950612326C8E7001236AE /* TimeSettings.swift in Sources */,
 				B8D950422326C48F001236AE /* Notification_App.xcdatamodeld in Sources */,
+				B8D9B2D42329A97100348987 /* GADBannerViewController.swift in Sources */,
 				B8B8023C2326EDB60041098F /* SetTime.swift in Sources */,
 				B8D9505F2326C85C001236AE /* NotificationDelegate.swift in Sources */,
 			);
