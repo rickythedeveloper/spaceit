@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		9936B7853FDD4BE9984BD39E /* Pods_Notification_App.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D1E79BE1585F8564AA316F2F /* Pods_Notification_App.framework */; };
+		B88457F5232A4E3200B5CC3C /* KeyboardGuardian.swift in Sources */ = {isa = PBXBuildFile; fileRef = B88457F4232A4E3200B5CC3C /* KeyboardGuardian.swift */; };
+		B88457F7232A589C00B5CC3C /* UIApplication+.swift in Sources */ = {isa = PBXBuildFile; fileRef = B88457F6232A589C00B5CC3C /* UIApplication+.swift */; };
 		B8B8023C2326EDB60041098F /* SetTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8B8023B2326EDB60041098F /* SetTime.swift */; };
 		B8D9503D2326C48F001236AE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8D9503C2326C48F001236AE /* AppDelegate.swift */; };
 		B8D9503F2326C48F001236AE /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8D9503E2326C48F001236AE /* SceneDelegate.swift */; };
@@ -28,6 +30,8 @@
 /* Begin PBXFileReference section */
 		5B521FD02162129FF8121734 /* Pods-Notification App.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Notification App.release.xcconfig"; path = "Target Support Files/Pods-Notification App/Pods-Notification App.release.xcconfig"; sourceTree = "<group>"; };
 		6E28032A00F8E10F84C3ACE9 /* Pods-Notification App.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Notification App.debug.xcconfig"; path = "Target Support Files/Pods-Notification App/Pods-Notification App.debug.xcconfig"; sourceTree = "<group>"; };
+		B88457F4232A4E3200B5CC3C /* KeyboardGuardian.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardGuardian.swift; sourceTree = "<group>"; };
+		B88457F6232A589C00B5CC3C /* UIApplication+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIApplication+.swift"; sourceTree = "<group>"; };
 		B8B8023B2326EDB60041098F /* SetTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetTime.swift; sourceTree = "<group>"; };
 		B8D950392326C48F001236AE /* Notification App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Notification App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B8D9503C2326C48F001236AE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -80,6 +84,15 @@
 			path = "New Group";
 			sourceTree = "<group>";
 		};
+		B88457F3232A4E0E00B5CC3C /* Keyboard Guardian */ = {
+			isa = PBXGroup;
+			children = (
+				B88457F4232A4E3200B5CC3C /* KeyboardGuardian.swift */,
+				B88457F6232A589C00B5CC3C /* UIApplication+.swift */,
+			);
+			path = "Keyboard Guardian";
+			sourceTree = "<group>";
+		};
 		B8D950302326C48F001236AE = {
 			isa = PBXGroup;
 			children = (
@@ -101,6 +114,7 @@
 		B8D9503B2326C48F001236AE /* Notification App */ = {
 			isa = PBXGroup;
 			children = (
+				B88457F3232A4E0E00B5CC3C /* Keyboard Guardian */,
 				B8D9B2D22329A94B00348987 /* Controller */,
 				B8D9505B2326C82D001236AE /* Notification */,
 				B8D950542326C4AB001236AE /* View */,
@@ -284,11 +298,13 @@
 			files = (
 				B8D950562326C4E5001236AE /* AddNewReminder.swift in Sources */,
 				B8D9505A2326C58C001236AE /* UserSettings.swift in Sources */,
+				B88457F7232A589C00B5CC3C /* UIApplication+.swift in Sources */,
 				B8D9503D2326C48F001236AE /* AppDelegate.swift in Sources */,
 				B8D950632326CA98001236AE /* TimeSetting.swift in Sources */,
 				B8D9503F2326C48F001236AE /* SceneDelegate.swift in Sources */,
 				B8D9505E2326C85C001236AE /* UNUserNotificationCenter+.swift in Sources */,
 				B8D950582326C56D001236AE /* RemindTimeSettings.swift in Sources */,
+				B88457F5232A4E3200B5CC3C /* KeyboardGuardian.swift in Sources */,
 				B8D950612326C8E7001236AE /* TimeSettings.swift in Sources */,
 				B8D950422326C48F001236AE /* Notification_App.xcdatamodeld in Sources */,
 				B8D9B2D42329A97100348987 /* GADBannerViewController.swift in Sources */,

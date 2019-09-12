@@ -36,6 +36,7 @@ struct AddNewReminder: View {
                 List(0...userSettings.remindTimeSettings.count, id: \.self) { index in
                     Button(action: {
                         self.selectedIndex = index
+                        UIApplication.shared.endEditing()
                     }) {
                         HStack {
                             if index == 0 {
@@ -50,7 +51,13 @@ struct AddNewReminder: View {
                             }
                         }
                     }
-                }
+                }.gesture(
+                    DragGesture()
+                        .onChanged {value in
+                            UIApplication.shared.endEditing()
+                        }
+                )
+                
                 
                 Button(action: buttonTapped) {
                     Text("Send")

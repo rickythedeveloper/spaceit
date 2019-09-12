@@ -15,6 +15,7 @@ struct TimeSetting: View {
     var index: Int
     
     @ObservedObject var thisSetting: RemindTimeSetting
+    @ObservedObject private var kGuardian = KeyboardGuardian(textFieldCount: 8)
     
     @State var isDeleted =  false
     
@@ -47,8 +48,9 @@ struct TimeSetting: View {
 //                    }.padding()
                     
                     Form {
-                        ForEach(self.userSettings.remindTimeSettings[self.index].remindTimes) { setTime in
-                            SetTime(remindTime: setTime)
+                        ForEach(0..<self.userSettings.remindTimeSettings[self.index].remindTimes.count, id: \.self) { n in
+                            SetTime(remindTime: self.userSettings.remindTimeSettings[self.index].remindTimes[n], kGuardian: self.kGuardian, index: n)
+                                .background(GeometryGetter(rect: self.$kGuardian.rects[n]))
                         }
                         
                         if self.userSettings.remindTimeSettings[self.index].remindTimes.count < 8 {
@@ -63,7 +65,13 @@ struct TimeSetting: View {
                                 Spacer()
                             }
                         }
-                    }
+                    }.offset(y: self.kGuardian.slide).animation(.easeInOut(duration: 0.2))
+                    .gesture(
+                        DragGesture()
+                            .onChanged { value in
+                                UIApplication.shared.endEditing()
+                            }
+                    )
                     
                     Spacer()
                 }
