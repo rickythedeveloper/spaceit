@@ -38,8 +38,8 @@ class RemindTimeSetting: Identifiable, ObservableObject {
     }
 }
 
-class RemindTime: Identifiable, ObservableObject {
-    var id = UUID()
+class RemindTime: ObservableObject {
+//    var id = UUID()
     
     @Published var number: Int
     @Published var numberStr: String {
