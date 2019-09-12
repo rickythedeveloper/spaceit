@@ -9,7 +9,7 @@
 import Foundation
 
 class UserSettings: ObservableObject {
-    @Published var remindTimeSettings = [RemindTimeSetting(title: "1.1", seconds: [1,10], minutes: [1,30], hours: [1,5]),
-                                         RemindTimeSetting(title: "2.1", hours: [1,2], days: [1,7], months: [1]),
-                                         RemindTimeSetting(title: "3.1", months: [1,2], years: [1])]
+    @Published var remindTimeSettings = [RemindTimeSetting(title: "Right Now", seconds: [1]),
+                                         RemindTimeSetting(title: "Tomorrow same time", days: [1]),
+                                         RemindTimeSetting(title: "Spaced Repetition", days: [1, 2, 4, 8, 16, 32, 64])]
 }

@@ -16,6 +16,7 @@ struct AddNewReminder: View {
     @State private var title = ""
     @State private var details = ""
     @State private var selectedIndex = 0
+    @State private var showingPrivacyPolicy = false
     
     var body: some View {
         NavigationView {
@@ -33,17 +34,13 @@ struct AddNewReminder: View {
                     .font(.largeTitle)
                     .multilineTextAlignment(.center)
                 
-                List(0...userSettings.remindTimeSettings.count, id: \.self) { index in
+                List(0..<userSettings.remindTimeSettings.count, id: \.self) { index in
                     Button(action: {
                         self.selectedIndex = index
                         UIApplication.shared.endEditing()
                     }) {
                         HStack {
-                            if index == 0 {
-                                Text("Now")
-                            } else {
-                                Text(self.userSettings.remindTimeSettings[index-1].title)
-                            }
+                            Text(self.userSettings.remindTimeSettings[index].title)
                             Spacer()
                             if index == self.selectedIndex {
                                 Image(systemName: "checkmark")
@@ -69,8 +66,17 @@ struct AddNewReminder: View {
                 Spacer()
             }
             .navigationBarTitle("Home", displayMode: .inline)
-            .navigationBarItems(trailing: NavigationLink(destination: TimeSettings().environmentObject(self.userSettings)) {
+            .navigationBarItems(leading: Button(action: {
+                self.showingPrivacyPolicy = true
+            }) {
+                Image(systemName: "info.circle.fill")
+                    .imageScale(.large)
+            }, trailing: NavigationLink(destination: TimeSettings().environmentObject(self.userSettings)) {
                 Image(systemName: "ellipsis")
+                    .imageScale(.large)
+            })
+            .sheet(isPresented: self.$showingPrivacyPolicy, content: {
+                PrivacyPolicy()
             })
             .padding()
         }

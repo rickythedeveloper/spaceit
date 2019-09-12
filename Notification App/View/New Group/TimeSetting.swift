@@ -73,7 +73,7 @@ struct TimeSetting: View {
                             }
                     )
                     
-                    Spacer()
+//                    Spacer()
                 }
             }.navigationBarTitle("Details")
             .padding()
