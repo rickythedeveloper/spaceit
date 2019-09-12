@@ -11,13 +11,13 @@ import SwiftUI
 struct TimeSetting: View {
     @Environment(\.presentationMode) private var presentationMode
     
-    @EnvironmentObject var userSettings: UserSettings
+    @EnvironmentObject private var userSettings: UserSettings
     var index: Int
     
     @ObservedObject var thisSetting: RemindTimeSetting
     @ObservedObject private var kGuardian = KeyboardGuardian(textFieldCount: 8)
     
-    @State var isDeleted =  false
+    @State private var isDeleted =  false
     
     var body: some View {
         GeometryReader { viewGeometry in

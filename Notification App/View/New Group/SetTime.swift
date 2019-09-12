@@ -29,11 +29,15 @@ struct SetTime: View {
                 Divider()
                 Picker(selection: self.$remindTime.typeInt, label: Text("")) {
                     ForEach(0..<TimeTypeStr.allCases.count, id:\.self) {n in
-                        Text(TimeTypeStr.allCases[n].rawValue)
-                            .font(.body)
+                        HStack {
+                            Spacer()
+                            Text(TimeTypeStr.allCases[n].rawValue)
+                                .font(.body)
+                            Spacer()
+                        }
                     }
                 }//.frame(maxWidth: viewGeom.size.width / 2)
-                .clipped()
+//                .clipped()
             }
         }
     }

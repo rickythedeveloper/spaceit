@@ -11,11 +11,11 @@ import GoogleMobileAds
 
 struct AddNewReminder: View {
     
-    @EnvironmentObject var userSettings: UserSettings
+    @EnvironmentObject private var userSettings: UserSettings
     
-    @State var title = ""
-    @State var details = ""
-    @State var selectedIndex = 0
+    @State private var title = ""
+    @State private var details = ""
+    @State private var selectedIndex = 0
     
     var body: some View {
         NavigationView {

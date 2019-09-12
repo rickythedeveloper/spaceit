@@ -11,7 +11,7 @@ import SwiftUI
 struct TimeSettings: View {
     
 //    var timeSettings: [RemindTimeSetting]
-    @EnvironmentObject var userSettings: UserSettings
+    @EnvironmentObject private var userSettings: UserSettings
     
     let newSetting = RemindTimeSetting(title: "New Setting", days: [1])
     
