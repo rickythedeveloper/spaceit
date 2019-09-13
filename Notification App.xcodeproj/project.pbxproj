@@ -123,6 +123,25 @@
 			path = Array;
 			sourceTree = "<group>";
 		};
+		B8845808232BE4B300B5CC3C /* Reminder Tab */ = {
+			isa = PBXGroup;
+			children = (
+				B8D950552326C4E5001236AE /* AddNewReminder.swift */,
+				B88457F8232A8FB500B5CC3C /* PrivacyPolicy.swift */,
+				B84EA8532327AE9C00FAF4A1 /* Settings */,
+			);
+			path = "Reminder Tab";
+			sourceTree = "<group>";
+		};
+		B8845809232BE4D400B5CC3C /* SR Tab */ = {
+			isa = PBXGroup;
+			children = (
+				B88457FC232BA27800B5CC3C /* ReviewSR.swift */,
+				B8845800232BA8EC00B5CC3C /* TaskCard.swift */,
+			);
+			path = "SR Tab";
+			sourceTree = "<group>";
+		};
 		B8D950302326C48F001236AE = {
 			isa = PBXGroup;
 			children = (
@@ -183,12 +202,9 @@
 		B8D950542326C4AB001236AE /* View */ = {
 			isa = PBXGroup;
 			children = (
-				B8D950552326C4E5001236AE /* AddNewReminder.swift */,
-				B84EA8532327AE9C00FAF4A1 /* Settings */,
-				B88457F8232A8FB500B5CC3C /* PrivacyPolicy.swift */,
 				B88457FA232BA0BA00B5CC3C /* MainTab.swift */,
-				B88457FC232BA27800B5CC3C /* ReviewSR.swift */,
-				B8845800232BA8EC00B5CC3C /* TaskCard.swift */,
+				B8845809232BE4D400B5CC3C /* SR Tab */,
+				B8845808232BE4B300B5CC3C /* Reminder Tab */,
 			);
 			path = View;
 			sourceTree = "<group>";
