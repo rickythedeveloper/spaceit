@@ -35,6 +35,9 @@ struct ReviewSR: View {
                                     self.translation.width += value.translation.width
                                     self.translation.height += value.translation.height
                                 })
+                                .onEnded({ (value) in
+                                    self.translation = .zero
+                                })
                         )
                         .offset(self.translation)
                 }
