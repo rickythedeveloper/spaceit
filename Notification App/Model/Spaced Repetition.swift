@@ -37,6 +37,15 @@ class TaskStore: ObservableObject {
             }
         }
     }
+    
+    func findTask(_ task: Task) -> Task? {
+        for each in self.tasks {
+            if each.id == task.id {
+                return each
+            }
+        }
+        return nil
+    }
 }
 
 class Task: Identifiable {
@@ -64,5 +73,12 @@ class Task: Identifiable {
             return true
         }
         return false
+    }
+    
+    func prepareForNext(difficulty: Double) {
+        guard difficulty >= 0 && difficulty <= 1 else { fatalError("The difficulty is not between 0 and 1") }
+        lastChecked = Date()
+        let factor = 0.5 * pow(4, (1 - difficulty))
+        waitTime *= factor
     }
 }

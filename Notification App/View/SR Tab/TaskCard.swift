@@ -33,11 +33,12 @@ struct TaskCard: View {
                     }
                 }.padding()
                 
-            }.padding(30)
-            .onTapGesture {
-                self.showingAnswer.toggle()
             }
-            .animation(.easeInOut(duration: 0.07))
+                .padding()
+                .onTapGesture {
+                    self.showingAnswer.toggle()
+                }
+                .animation(.easeInOut(duration: 0.07))
         }
     }
 }
