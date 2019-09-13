@@ -11,6 +11,12 @@
 		B88457F5232A4E3200B5CC3C /* KeyboardGuardian.swift in Sources */ = {isa = PBXBuildFile; fileRef = B88457F4232A4E3200B5CC3C /* KeyboardGuardian.swift */; };
 		B88457F7232A589C00B5CC3C /* UIApplication+.swift in Sources */ = {isa = PBXBuildFile; fileRef = B88457F6232A589C00B5CC3C /* UIApplication+.swift */; };
 		B88457F9232A8FB500B5CC3C /* PrivacyPolicy.swift in Sources */ = {isa = PBXBuildFile; fileRef = B88457F8232A8FB500B5CC3C /* PrivacyPolicy.swift */; };
+		B88457FB232BA0BA00B5CC3C /* MainTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = B88457FA232BA0BA00B5CC3C /* MainTab.swift */; };
+		B88457FD232BA27800B5CC3C /* ReviewSR.swift in Sources */ = {isa = PBXBuildFile; fileRef = B88457FC232BA27800B5CC3C /* ReviewSR.swift */; };
+		B88457FF232BA2A100B5CC3C /* Spaced Repetition.swift in Sources */ = {isa = PBXBuildFile; fileRef = B88457FE232BA2A100B5CC3C /* Spaced Repetition.swift */; };
+		B8845801232BA8EC00B5CC3C /* TaskCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8845800232BA8EC00B5CC3C /* TaskCard.swift */; };
+		B8845804232BADFB00B5CC3C /* Color+.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8845803232BADFB00B5CC3C /* Color+.swift */; };
+		B8845807232BCEDE00B5CC3C /* Array+.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8845806232BCEDE00B5CC3C /* Array+.swift */; };
 		B8B8023C2326EDB60041098F /* SetTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8B8023B2326EDB60041098F /* SetTime.swift */; };
 		B8D9503D2326C48F001236AE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8D9503C2326C48F001236AE /* AppDelegate.swift */; };
 		B8D9503F2326C48F001236AE /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8D9503E2326C48F001236AE /* SceneDelegate.swift */; };
@@ -34,6 +40,12 @@
 		B88457F4232A4E3200B5CC3C /* KeyboardGuardian.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardGuardian.swift; sourceTree = "<group>"; };
 		B88457F6232A589C00B5CC3C /* UIApplication+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIApplication+.swift"; sourceTree = "<group>"; };
 		B88457F8232A8FB500B5CC3C /* PrivacyPolicy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivacyPolicy.swift; sourceTree = "<group>"; };
+		B88457FA232BA0BA00B5CC3C /* MainTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTab.swift; sourceTree = "<group>"; };
+		B88457FC232BA27800B5CC3C /* ReviewSR.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewSR.swift; sourceTree = "<group>"; };
+		B88457FE232BA2A100B5CC3C /* Spaced Repetition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Spaced Repetition.swift"; sourceTree = "<group>"; };
+		B8845800232BA8EC00B5CC3C /* TaskCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskCard.swift; sourceTree = "<group>"; };
+		B8845803232BADFB00B5CC3C /* Color+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+.swift"; sourceTree = "<group>"; };
+		B8845806232BCEDE00B5CC3C /* Array+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+.swift"; sourceTree = "<group>"; };
 		B8B8023B2326EDB60041098F /* SetTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetTime.swift; sourceTree = "<group>"; };
 		B8D950392326C48F001236AE /* Notification App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Notification App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B8D9503C2326C48F001236AE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -95,6 +107,22 @@
 			path = "Keyboard Guardian";
 			sourceTree = "<group>";
 		};
+		B8845802232BADEE00B5CC3C /* Color */ = {
+			isa = PBXGroup;
+			children = (
+				B8845803232BADFB00B5CC3C /* Color+.swift */,
+			);
+			path = Color;
+			sourceTree = "<group>";
+		};
+		B8845805232BCECD00B5CC3C /* Array */ = {
+			isa = PBXGroup;
+			children = (
+				B8845806232BCEDE00B5CC3C /* Array+.swift */,
+			);
+			path = Array;
+			sourceTree = "<group>";
+		};
 		B8D950302326C48F001236AE = {
 			isa = PBXGroup;
 			children = (
@@ -116,6 +144,8 @@
 		B8D9503B2326C48F001236AE /* Notification App */ = {
 			isa = PBXGroup;
 			children = (
+				B8845805232BCECD00B5CC3C /* Array */,
+				B8845802232BADEE00B5CC3C /* Color */,
 				B88457F3232A4E0E00B5CC3C /* Keyboard Guardian */,
 				B8D9B2D22329A94B00348987 /* Controller */,
 				B8D9505B2326C82D001236AE /* Notification */,
@@ -145,6 +175,7 @@
 			children = (
 				B8D950572326C56D001236AE /* RemindTimeSettings.swift */,
 				B8D950592326C58C001236AE /* UserSettings.swift */,
+				B88457FE232BA2A100B5CC3C /* Spaced Repetition.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -155,6 +186,9 @@
 				B8D950552326C4E5001236AE /* AddNewReminder.swift */,
 				B84EA8532327AE9C00FAF4A1 /* Settings */,
 				B88457F8232A8FB500B5CC3C /* PrivacyPolicy.swift */,
+				B88457FA232BA0BA00B5CC3C /* MainTab.swift */,
+				B88457FC232BA27800B5CC3C /* ReviewSR.swift */,
+				B8845800232BA8EC00B5CC3C /* TaskCard.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -300,14 +334,20 @@
 			buildActionMask = 2147483647;
 			files = (
 				B8D950562326C4E5001236AE /* AddNewReminder.swift in Sources */,
+				B8845804232BADFB00B5CC3C /* Color+.swift in Sources */,
 				B8D9505A2326C58C001236AE /* UserSettings.swift in Sources */,
 				B88457F7232A589C00B5CC3C /* UIApplication+.swift in Sources */,
+				B88457FD232BA27800B5CC3C /* ReviewSR.swift in Sources */,
 				B8D9503D2326C48F001236AE /* AppDelegate.swift in Sources */,
+				B88457FB232BA0BA00B5CC3C /* MainTab.swift in Sources */,
 				B8D950632326CA98001236AE /* TimeSetting.swift in Sources */,
 				B8D9503F2326C48F001236AE /* SceneDelegate.swift in Sources */,
 				B8D9505E2326C85C001236AE /* UNUserNotificationCenter+.swift in Sources */,
 				B8D950582326C56D001236AE /* RemindTimeSettings.swift in Sources */,
 				B88457F5232A4E3200B5CC3C /* KeyboardGuardian.swift in Sources */,
+				B88457FF232BA2A100B5CC3C /* Spaced Repetition.swift in Sources */,
+				B8845807232BCEDE00B5CC3C /* Array+.swift in Sources */,
+				B8845801232BA8EC00B5CC3C /* TaskCard.swift in Sources */,
 				B8D950612326C8E7001236AE /* TimeSettings.swift in Sources */,
 				B88457F9232A8FB500B5CC3C /* PrivacyPolicy.swift in Sources */,
 				B8D950422326C48F001236AE /* Notification_App.xcdatamodeld in Sources */,

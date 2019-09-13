@@ -1,0 +1,68 @@
+//
+//  Spaced Repetition.swift
+//  Notification App
+//
+//  Created by Rintaro Kawagishi on 13/09/2019.
+//  Copyright © 2019 Rintaro Kawagishi. All rights reserved.
+//
+
+import Foundation
+import SwiftUI
+
+class TaskStore: ObservableObject {
+    @Published var tasks: [Task]
+    
+    init(tasks: [Task]) {
+        self.tasks = tasks
+    }
+    
+    func dueTasks() -> [Task] {
+        var dues = [Task]()
+        for task in tasks {
+            if task.isDue() {
+                dues.append(task)
+            }
+        }
+        return dues
+    }
+    
+    func removeTask(_ task: Task) {
+        var index = 0
+        for each in self.tasks {
+            if each.id == task.id {
+                self.tasks.remove(at: index)
+                return
+            } else {
+                index += 1
+            }
+        }
+    }
+}
+
+class Task: Identifiable {
+    var id: UUID
+    var question: String
+    var answer: String?
+    var lastChecked: Date
+    var waitTime: TimeInterval
+    var colour: Color
+    var angle: Angle
+    
+    init(id: UUID = UUID(), question: String, answer: String?, lastChecked: Date = Date(), waitTime: TimeInterval = 60*60*24, colour: Color = Color.random(), angle: Angle = Angle(degrees: Double.random(in: -5.0...5.0))) {
+        self.id = id
+        self.question = question
+        self.answer = answer
+        self.lastChecked = lastChecked
+        self.waitTime = waitTime
+        self.colour = colour
+        self.angle = angle
+    }
+    
+    func isDue() -> Bool {
+        let nextRep = self.lastChecked.addingTimeInterval(self.waitTime)
+        if nextRep < Date() {
+            return true
+        }
+        return false
+    }
+}

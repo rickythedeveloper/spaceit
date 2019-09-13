@@ -12,4 +12,10 @@ class UserSettings: ObservableObject {
     @Published var remindTimeSettings = [RemindTimeSetting(title: "Right Now", seconds: [1]),
                                          RemindTimeSetting(title: "Tomorrow same time", days: [1]),
                                          RemindTimeSetting(title: "Spaced Repetition", days: [1, 2, 4, 8, 16, 32, 64])]
+    
+    @Published var allTaskStore = TaskStore(tasks: [
+        Task(question: "Question 1", answer: "Answer 1"),
+        Task(question: "Dont forget Bernoulli brooooaaaaaaaaa", answer: nil),
+        Task(question: "This is due actually", answer: "Oh boi", lastChecked: Date(timeIntervalSince1970: 100), waitTime: 10000),
+        Task(question: "This one too", answer: "oof", lastChecked: Date(timeIntervalSinceNow: -3600*25))])
 }
