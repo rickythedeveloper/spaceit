@@ -90,7 +90,7 @@ struct ReviewSR: View {
                 
                 Text("Difficulty \(String(Int((sliderValue*100).rounded()))) %")
 
-                Slider(value: $sliderValue, in: 0.0...1.0, minimumValueLabel: Text("min"), maximumValueLabel: Text("max")) {
+                Slider(value: $sliderValue, in: 0.0...1.0, minimumValueLabel: Image(systemName: "hand.thumbsup.fill"), maximumValueLabel: Image(systemName: "hand.thumbsdown.fill")) {
                     Text("a")
                 }
             }
