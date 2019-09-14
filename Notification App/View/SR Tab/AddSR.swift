@@ -55,7 +55,8 @@ struct AddSR: View {
         }
         
         task.lastChecked = Date()
-        task.waitTime = 5
+//        task.waitTime = 5
+        task.waitTime = 60*60*24
         
         self.saveContext()
         self.registerNotification(id: task.id, question: task.question, waitTime: task.waitTime)
