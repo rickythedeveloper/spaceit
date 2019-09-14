@@ -133,6 +133,7 @@ struct ReviewSR: View {
                     self.saveContext()
                 }
             }
+            registerNotification(task: task)
         }
         self.tasksDue.remove(at: 0)
         self.onSomeAction()
@@ -148,6 +149,25 @@ struct ReviewSR: View {
         self.tasksDue.remove(at: 0)
         self.onSomeAction()
     }
+    
+    func registerNotification(task: Task) {
+        let nc = UNUserNotificationCenter.current()
+        nc.getNotificationSettings { (settings) in
+            switch settings.authorizationStatus {
+            case .authorized:
+                nc.sendSRTaskNotification(task: task)
+            default:
+                nc.requestAuthorization(options: [.alert]) { (granted, error) in
+                    if !granted, let error = error {
+                        fatalError(error.localizedDescription)
+                    } else {
+                        nc.sendSRTaskNotification(task: task)
+                    }
+                }
+            }
+        }
+    }
+    
     
     func onSomeAction() {
         self.printInfo()

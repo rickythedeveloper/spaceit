@@ -58,6 +58,7 @@ struct AddSR: View {
         task.waitTime = 5
         
         self.saveContext()
+        self.registerNotification(id: task.id, question: task.question, waitTime: task.waitTime)
         
         self.question = ""
         self.answer = ""
@@ -69,6 +70,24 @@ struct AddSR: View {
         } catch {
             let nserror = error as NSError
             fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
+        }
+    }
+    
+    func registerNotification(id: UUID, question: String, waitTime: TimeInterval) {
+        let nc = UNUserNotificationCenter.current()
+        nc.getNotificationSettings { (settings) in
+            switch settings.authorizationStatus {
+            case .authorized:
+                nc.sendSRTaskNotification(id: id, question: question, waitTime: waitTime)
+            default:
+                nc.requestAuthorization(options: [.alert]) { (granted, error) in
+                    if !granted, let error = error {
+                        fatalError(error.localizedDescription)
+                    } else {
+                        nc.sendSRTaskNotification(id: id, question: question, waitTime: waitTime)
+                    }
+                }
+            }
         }
     }
 }
