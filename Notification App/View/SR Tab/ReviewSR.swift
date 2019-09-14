@@ -21,7 +21,6 @@ struct ReviewSR: View {
             
             HStack {
                 Spacer()
-                
                 Button(action: {
                     self.refresh()
                 }) {
@@ -62,9 +61,7 @@ struct ReviewSR: View {
                     Button(action: {
                         self.tasksDue.moveItemToLast(fromIndex: 0)
 //                        MARK: do not remove from all task store
-                        self.translation = CGSize.zero
-                        self.showingAnswer = false
-                        self.printInfo()
+                        self.onSomeAction()
                     }) {
                         Text("Put off")
                     }
@@ -77,9 +74,7 @@ struct ReviewSR: View {
                             task.prepareForNext(difficulty: self.sliderValue)
                         }
                         self.tasksDue.remove(at: 0)
-                        self.translation = CGSize.zero
-                        self.showingAnswer = false
-                        self.printInfo()
+                        self.onSomeAction()
                     }) {
                         Text("Done")
                     }
@@ -89,9 +84,7 @@ struct ReviewSR: View {
                     Button(action: {
                         self.allTaskStore.removeTask(self.tasksDue[0])
                         self.tasksDue.remove(at: 0)
-                        self.translation = CGSize.zero
-                        self.showingAnswer = false
-                        self.printInfo()
+                        self.onSomeAction()
                     }) {
                         Text("Delete")
                             .foregroundColor(.red)
@@ -115,6 +108,13 @@ struct ReviewSR: View {
     
     func refresh() {
         self.tasksDue = self.allTaskStore.dueTasks()
+        self.onSomeAction()
+    }
+    
+    func onSomeAction() {
+        self.printInfo()
+        self.translation = CGSize.zero
+        self.showingAnswer = false
     }
     
     func printInfo() {
