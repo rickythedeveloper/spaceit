@@ -11,10 +11,13 @@ import SwiftUI
 import UIKit
 
 struct GADBannerViewController: UIViewControllerRepresentable {
+    
+    var adUnitID: String // testing ID is "ca-app-pub-3940256099942544/2934735716"
+    
     func makeUIViewController(context: Context) -> UIViewController {
         let bannerView = GADBannerView(adSize: kGADAdSizeBanner)
         let bannerViewController = UIViewController()
-        bannerView.adUnitID = "ca-app-pub-3940256099942544/2934735716"
+        bannerView.adUnitID = self.adUnitID
         bannerView.rootViewController = bannerViewController
         bannerView.delegate = BannerViewDelegate.shared
         bannerViewController.view.addSubview(bannerView)

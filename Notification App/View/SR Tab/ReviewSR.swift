@@ -7,6 +7,7 @@
 //
 
 import SwiftUI
+import GoogleMobileAds
 
 struct ReviewSR: View {
     
@@ -19,24 +20,32 @@ struct ReviewSR: View {
     @State var tasksDue = [Task]()
     @State private var addingNewSR = false
     
+    var sectionName: String
+    
     var body: some View {
         VStack {
+            GADBannerViewController(adUnitID: "ca-app-pub-3940256099942544/2934735716")
+                .frame(width: kGADAdSizeBanner.size.width, height: kGADAdSizeBanner.size.height)
+            Divider()
             
             HStack {
                 Button(action: {
                     self.addingNewSR = true
                 }) {
                     Image(systemName: "plus.circle")
-                        .imageScale(.large)
                 }
+                Spacer()
+                
+                Text(self.sectionName)
+                
                 Spacer()
                 Button(action: {
                     self.refresh()
                 }) {
                     Image(systemName: "arrow.clockwise")
-                        .imageScale(.large)
                 }
-            }
+            }.padding(EdgeInsets(top: 10, leading: 0, bottom: 0, trailing: 0))
+            .font(.title)
             
             ZStack {
                 TaskCard(task: Task(question: "None left", answer: nil, colour: Color.gray, angle: Angle(degrees: 0)), showingAnswer: .constant(false))

@@ -12,18 +12,23 @@ struct MainTab: View {
     
     @EnvironmentObject var userSettings: UserSettings
     
+    let SRTitle = "Spaced Repetition"
+    let notifSenderTitle = "Notif Sender"
+    
     var body: some View {
         
         TabView {
-            AddNewReminder().environmentObject(userSettings)
-                .tabItem {
-                    Text("a")
-                }
-            
-            ReviewSR()
+            ReviewSR(sectionName: SRTitle)
                 .environment(\.managedObjectContext, (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext)
                 .tabItem {
-                    Text("b")
+                    Image(systemName: "rectangle.stack.fill")
+                    Text(self.SRTitle)
+                }
+            
+            AddNewReminder(sectionName: self.notifSenderTitle).environmentObject(userSettings)
+                .tabItem {
+                    Image(systemName: "exclamationmark")
+                    Text(self.notifSenderTitle)
                 }
         }
     }

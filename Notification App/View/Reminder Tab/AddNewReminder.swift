@@ -7,7 +7,6 @@
 //
 
 import SwiftUI
-import GoogleMobileAds
 
 struct AddNewReminder: View {
     
@@ -18,14 +17,11 @@ struct AddNewReminder: View {
     @State private var selectedIndex = 0
     @State private var showingPrivacyPolicy = false
     
+    var sectionName: String
+    
     var body: some View {
         NavigationView {
             VStack {
-                GADBannerViewController()
-                    .frame(width: kGADAdSizeBanner.size.width, height: kGADAdSizeBanner.size.height)
-                
-                Divider()
-                
                 TextField("Title", text: $title)
                     .font(.largeTitle)
                     .multilineTextAlignment(.center)
@@ -65,7 +61,7 @@ struct AddNewReminder: View {
                 
                 Spacer()
             }
-            .navigationBarTitle("Home", displayMode: .inline)
+            .navigationBarTitle(Text(self.sectionName), displayMode: .inline)
             .navigationBarItems(leading: Button(action: {
                 self.showingPrivacyPolicy = true
             }) {
@@ -121,8 +117,8 @@ struct AddNewReminder: View {
     }
 }
 
-struct AddNewReminder_Previews: PreviewProvider {
-    static var previews: some View {
-        AddNewReminder().environmentObject(UserSettings())
-    }
-}
+//struct AddNewReminder_Previews: PreviewProvider {
+//    static var previews: some View {
+//        AddNewReminder().environmentObject(UserSettings())
+//    }
+//}
