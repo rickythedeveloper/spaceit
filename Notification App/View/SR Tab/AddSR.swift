@@ -47,15 +47,19 @@ struct AddSR: View {
         task.lastChecked = Date()
         task.waitTime = 5
         
-        do {
-            try self.managedObjectContext.save()
-        } catch {
-            print("Oh no couldnt save!!")
-            print(error)
-        }
+        self.saveContext()
         
         self.question = ""
         self.answer = ""
+    }
+    
+    func saveContext() {
+        do {
+            try self.managedObjectContext.save()
+        } catch {
+            let nserror = error as NSError
+            fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
+        }
     }
 }
 

@@ -87,13 +87,7 @@ struct ReviewSR: View {
                                 if eachTaskFetched.id == task.id {
                                     eachTaskFetched.setValue(task.lastChecked, forKey: "lastChecked")
                                     eachTaskFetched.setValue(task.waitTime, forKey: "waitTime")
-                                    
-                                    do {
-                                        try self.managedObjectContext.save()
-                                    } catch {
-                                        print("Oh no couldnt save!!")
-                                        print(error)
-                                    }
+                                    self.saveContext()
                                 }
                             }
                         }
@@ -109,13 +103,7 @@ struct ReviewSR: View {
                         for eachTaskFetched in self.tasksFetched {
                             if eachTaskFetched.id == self.tasksDue[0].id {
                                 self.managedObjectContext.delete(eachTaskFetched)
-                                
-                                do {
-                                    try self.managedObjectContext.save()
-                                } catch {
-                                    print("Oh no couldnt save!!")
-                                    print(error)
-                                }
+                                self.saveContext()
                             }
                         }
                         self.tasksDue.remove(at: 0)
@@ -163,6 +151,15 @@ struct ReviewSR: View {
         self.printInfo()
         self.translation = CGSize.zero
         self.showingAnswer = false
+    }
+    
+    func saveContext() {
+        do {
+            try self.managedObjectContext.save()
+        } catch {
+            let nserror = error as NSError
+            fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
+        }
     }
     
     func printInfo() {
