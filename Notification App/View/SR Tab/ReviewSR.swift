@@ -56,14 +56,15 @@ struct ReviewSR: View {
             
             if self.tasksDue.count > 0 {
                 HStack {
-                    Spacer()
-                    
-                    Button(action: {
-                        self.tasksDue.moveItemToLast(fromIndex: 0)
-//                        MARK: do not remove from all task store
-                        self.onSomeAction()
-                    }) {
-                        Text("Put off")
+                    if self.tasksDue.count > 1 {
+                        Spacer()
+                        Button(action: {
+//                            MARK: do not remove from all task store
+                            self.tasksDue.moveItemToLast(fromIndex: 0)
+                            self.onSomeAction()
+                        }) {
+                            Text("Put off")
+                        }
                     }
                     
                     Spacer()
