@@ -11,7 +11,7 @@ import SwiftUI
 struct DeveloperPage: View {
     
     let devName = "Ricky Kawagishi"
-    let intro = "Hi, my name is Ricky, and I am an amateur developer just turning some of my everyday ideas into reality. This is my first ever official app, and I hope you enjoy using it! If you have any suggestions/feedback, please email me at\nrintaro.kawagishi.developer@gmail.com"
+    let intro = "Hi, my name is Ricky, and I am an amateur developer just turning some of my everyday ideas into reality. This is my first ever official app.\n\nI hope you enjoy using it and if you do, please go give it a 5-star rating on App Store as it would help to get more people to use it!\n\nIf you have any suggestions/feedback, please email me at\nrintaro.kawagishi.developer@gmail.com"
 //    let emailAddress = "rintaro.kawagishi.developer@gmail.com"
 //    let emailBody = "Your name:\nAny suggestions/feedback:\n\n\n-----\n\(UIDevice.current.model), iOS \(UIDevice.current.systemVersion)"
     

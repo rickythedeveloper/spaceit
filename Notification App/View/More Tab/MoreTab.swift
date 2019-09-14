@@ -28,6 +28,10 @@ struct MoreTab: View {
                 RoundedRectangle(cornerRadius: 10)
                     .stroke(Color.gray.opacity(0.5), lineWidth: 2)
             )
+            .sheet(isPresented: self.$showingPrivacyPolicy) {
+                    PrivacyPolicy()
+            }
+
             
             Spacer()
             
@@ -42,20 +46,18 @@ struct MoreTab: View {
                 RoundedRectangle(cornerRadius: 10)
                     .stroke(Color.gray.opacity(0.5), lineWidth: 2)
             )
+            .sheet(isPresented: self.$showingDeveloper) {
+                    DeveloperPage()
+            }
             
             Spacer()
         }.padding()
-        .sheet(isPresented: $showingPrivacyPolicy) {
-                PrivacyPolicy()
-        }
-        .sheet(isPresented: $showingDeveloper) {
-                DeveloperPage()
-        }
+                
     }
 }
 
-//struct MoreTab_Previews: PreviewProvider {
-//    static var previews: some View {
-//        MoreTab()
-//    }
-//}
+struct MoreTab_Previews: PreviewProvider {
+    static var previews: some View {
+        MoreTab()
+    }
+}
