@@ -67,52 +67,21 @@ struct ReviewSR: View {
                 HStack {
                     if self.tasksDue.count > 1 {
                         Spacer()
-                        Button(action: {
-//                            MARK: do not remove from all task store
-                            self.tasksDue.moveItemToLast(fromIndex: 0)
-                            self.onSomeAction()
-                        }) {
+                        Button(action: self.putOffPressed) {
                             Text("Put off")
                         }
                     }
                     
                     Spacer()
-                    
-                    Button(action: {
-//                        MARK: change the lastChecked and waitTime of the task inside coreDataTaskStore, remove the task from tasksDue
-                        if let task = self.coreDataTaskStore.findTask(self.tasksDue[0]) {
-                            task.prepareForNext(difficulty: self.sliderValue)
-                            
-                            for eachTaskFetched in self.tasksFetched {
-                                if eachTaskFetched.id == task.id {
-                                    eachTaskFetched.setValue(task.lastChecked, forKey: "lastChecked")
-                                    eachTaskFetched.setValue(task.waitTime, forKey: "waitTime")
-                                    self.saveContext()
-                                }
-                            }
-                        }
-                        self.tasksDue.remove(at: 0)
-                        self.onSomeAction()
-                    }) {
+                    Button(action: self.donePressed) {
                         Text("Done")
                     }
                     
                     Spacer()
-                    
-                    Button(action: {
-                        for eachTaskFetched in self.tasksFetched {
-                            if eachTaskFetched.id == self.tasksDue[0].id {
-                                self.managedObjectContext.delete(eachTaskFetched)
-                                self.saveContext()
-                            }
-                        }
-                        self.tasksDue.remove(at: 0)
-                        self.onSomeAction()
-                    }) {
+                    Button(action: self.deletePressed) {
                         Text("Delete")
                             .foregroundColor(.red)
                     }
-                    
                     Spacer()
                     
                 }.font(.title)
@@ -125,8 +94,9 @@ struct ReviewSR: View {
                     Text("a")
                 }
             }
-        }.onAppear(perform: self.refresh)
-        .padding()
+        }
+            .onAppear(perform: self.refresh)
+            .padding()
             .sheet(isPresented: self.$addingNewSR, onDismiss: self.refresh) {
                 AddSR().environment(\.managedObjectContext, self.managedObjectContext)
             }
@@ -145,6 +115,38 @@ struct ReviewSR: View {
         self.coreDataTaskStore = TaskStore(tasks: temporaryTasks)
         
         self.tasksDue = self.coreDataTaskStore.dueTasks()
+    }
+    
+    private func putOffPressed() {
+        self.tasksDue.moveItemToLast(fromIndex: 0)
+        self.onSomeAction()
+    }
+    
+    private func donePressed() {
+        if let task = self.coreDataTaskStore.findTask(self.tasksDue[0]) {
+            task.prepareForNext(difficulty: self.sliderValue)
+            
+            for eachTaskFetched in self.tasksFetched {
+                if eachTaskFetched.id == task.id {
+                    eachTaskFetched.setValue(task.lastChecked, forKey: "lastChecked")
+                    eachTaskFetched.setValue(task.waitTime, forKey: "waitTime")
+                    self.saveContext()
+                }
+            }
+        }
+        self.tasksDue.remove(at: 0)
+        self.onSomeAction()
+    }
+    
+    private func deletePressed() {
+        for eachTaskFetched in self.tasksFetched {
+            if eachTaskFetched.id == self.tasksDue[0].id {
+                self.managedObjectContext.delete(eachTaskFetched)
+                self.saveContext()
+            }
+        }
+        self.tasksDue.remove(at: 0)
+        self.onSomeAction()
     }
     
     func onSomeAction() {
