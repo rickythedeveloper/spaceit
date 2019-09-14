@@ -10,19 +10,11 @@ import SwiftUI
 
 struct MoreTab: View {
     
-    var sectionName: String
-    
     @State var showingPrivacyPolicy = false
     @State var showingDeveloper = false
     
     var body: some View {
         VStack {
-            
-            HStack {
-                Text(self.sectionName)
-                    .font(.largeTitle)
-                Spacer()
-            }
             Spacer()
             
             Button(action: {

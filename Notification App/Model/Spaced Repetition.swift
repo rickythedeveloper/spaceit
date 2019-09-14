@@ -58,7 +58,7 @@ class Task: Identifiable {
     var colour: Color
     var angle: Angle
     
-    init(id: UUID = UUID(), question: String, answer: String?, lastChecked: Date = Date(), waitTime: TimeInterval = 60*60*24, colour: Color = Color.random(), angle: Angle = Angle(degrees: Double.random(in: -5.0...5.0))) {
+    init(id: UUID = UUID(), question: String, answer: String?, lastChecked: Date = Date(), waitTime: TimeInterval = 60*60*24, colour: Color = Color.randomVibrantColour(), angle: Angle = Angle(degrees: Double.random(in: -5.0...5.0))) {
         self.id = id
         self.question = question
         self.answer = answer
