@@ -15,7 +15,7 @@ struct AddNewReminder: View {
     @State private var title = ""
     @State private var details = ""
     @State private var selectedIndex = 0
-    @State private var showingPrivacyPolicy = false
+//    @State private var showingPrivacyPolicy = false
     
     var sectionName: String
     
@@ -62,18 +62,22 @@ struct AddNewReminder: View {
                 Spacer()
             }
             .navigationBarTitle(Text(self.sectionName), displayMode: .inline)
-            .navigationBarItems(leading: Button(action: {
-                self.showingPrivacyPolicy = true
-            }) {
-                Image(systemName: "info.circle.fill")
-                    .imageScale(.large)
-            }, trailing: NavigationLink(destination: TimeSettings().environmentObject(self.userSettings)) {
+//            .navigationBarItems(leading: Button(action: {
+//                self.showingPrivacyPolicy = true
+//            }) {
+//                Image(systemName: "info.circle.fill")
+//                    .imageScale(.large)
+//            }, trailing: NavigationLink(destination: TimeSettings().environmentObject(self.userSettings)) {
+//                Image(systemName: "ellipsis")
+//                    .imageScale(.large)
+//            })
+            .navigationBarItems(trailing: NavigationLink(destination: TimeSettings().environmentObject(self.userSettings)) {
                 Image(systemName: "ellipsis")
                     .imageScale(.large)
             })
-            .sheet(isPresented: self.$showingPrivacyPolicy, content: {
-                PrivacyPolicy()
-            })
+//            .sheet(isPresented: self.$showingPrivacyPolicy, content: {
+//                PrivacyPolicy()
+//            })
             .padding()
         }
     }

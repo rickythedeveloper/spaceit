@@ -18,6 +18,7 @@
 		B8845804232BADFB00B5CC3C /* Color+.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8845803232BADFB00B5CC3C /* Color+.swift */; };
 		B8845807232BCEDE00B5CC3C /* Array+.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8845806232BCEDE00B5CC3C /* Array+.swift */; };
 		B886E726232D333C00BD76BD /* AddSR.swift in Sources */ = {isa = PBXBuildFile; fileRef = B886E725232D333C00BD76BD /* AddSR.swift */; };
+		B886E729232D8ABF00BD76BD /* MoreTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = B886E728232D8ABF00BD76BD /* MoreTab.swift */; };
 		B8B8023C2326EDB60041098F /* SetTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8B8023B2326EDB60041098F /* SetTime.swift */; };
 		B8D9503D2326C48F001236AE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8D9503C2326C48F001236AE /* AppDelegate.swift */; };
 		B8D9503F2326C48F001236AE /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8D9503E2326C48F001236AE /* SceneDelegate.swift */; };
@@ -48,6 +49,7 @@
 		B8845803232BADFB00B5CC3C /* Color+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+.swift"; sourceTree = "<group>"; };
 		B8845806232BCEDE00B5CC3C /* Array+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+.swift"; sourceTree = "<group>"; };
 		B886E725232D333C00BD76BD /* AddSR.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddSR.swift; sourceTree = "<group>"; };
+		B886E728232D8ABF00BD76BD /* MoreTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreTab.swift; sourceTree = "<group>"; };
 		B8B8023B2326EDB60041098F /* SetTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetTime.swift; sourceTree = "<group>"; };
 		B8D950392326C48F001236AE /* Notification App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Notification App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B8D9503C2326C48F001236AE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -145,6 +147,14 @@
 			path = "SR Tab";
 			sourceTree = "<group>";
 		};
+		B886E727232D8A9900BD76BD /* More Tab */ = {
+			isa = PBXGroup;
+			children = (
+				B886E728232D8ABF00BD76BD /* MoreTab.swift */,
+			);
+			path = "More Tab";
+			sourceTree = "<group>";
+		};
 		B8D950302326C48F001236AE = {
 			isa = PBXGroup;
 			children = (
@@ -208,6 +218,7 @@
 				B88457FA232BA0BA00B5CC3C /* MainTab.swift */,
 				B8845809232BE4D400B5CC3C /* SR Tab */,
 				B8845808232BE4B300B5CC3C /* Reminder Tab */,
+				B886E727232D8A9900BD76BD /* More Tab */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -373,6 +384,7 @@
 				B886E726232D333C00BD76BD /* AddSR.swift in Sources */,
 				B8D9B2D42329A97100348987 /* GADBannerViewController.swift in Sources */,
 				B8B8023C2326EDB60041098F /* SetTime.swift in Sources */,
+				B886E729232D8ABF00BD76BD /* MoreTab.swift in Sources */,
 				B8D9505F2326C85C001236AE /* NotificationDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
