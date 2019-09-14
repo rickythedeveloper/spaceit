@@ -11,7 +11,8 @@ import SwiftUI
 struct TaskCard: View {
     var task: Task
     
-    @State private var showingAnswer = false
+//    @State private var showingAnswer = false
+    @Binding var showingAnswer: Bool
     
     var body: some View {
         GeometryReader { viewGeometry in

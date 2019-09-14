@@ -13,22 +13,34 @@ struct ReviewSR: View {
     @EnvironmentObject var allTaskStore: TaskStore
     @State var sliderValue = 0.5
     @State var translation = CGSize.zero
-    
+    @State var showingAnswer = false
     @State var tasksDue = [Task]()
     
     var body: some View {
         VStack {
+            
+            HStack {
+                Spacer()
+                
+                Button(action: {
+                    self.refresh()
+                }) {
+                    Image(systemName: "arrow.clockwise")
+                        .imageScale(.large)
+                }
+            }
+            
             ZStack {
-                TaskCard(task: Task(question: "None left", answer: nil, colour: Color.gray, angle: Angle(degrees: 0)))
+                TaskCard(task: Task(question: "None left", answer: nil, colour: Color.gray, angle: Angle(degrees: 0)), showingAnswer: .constant(false))
                 
                 if self.tasksDue.count >= 2 {
                     ForEach((1..<self.tasksDue.count).reversed(), id: \.self) { index in
-                        TaskCard(task: self.tasksDue[index])
+                        TaskCard(task: self.tasksDue[index], showingAnswer: .constant(false))
                     }
                 }
 
                 if self.tasksDue.count > 0 {
-                    TaskCard(task: self.tasksDue[0])
+                    TaskCard(task: self.tasksDue[0], showingAnswer: self.$showingAnswer)
                         .gesture(
                             DragGesture()
                                 .onChanged({ (value) in
@@ -51,6 +63,7 @@ struct ReviewSR: View {
                         self.tasksDue.moveItemToLast(fromIndex: 0)
 //                        MARK: do not remove from all task store
                         self.translation = CGSize.zero
+                        self.showingAnswer = false
                         self.printInfo()
                     }) {
                         Text("Put off")
@@ -65,6 +78,7 @@ struct ReviewSR: View {
                         }
                         self.tasksDue.remove(at: 0)
                         self.translation = CGSize.zero
+                        self.showingAnswer = false
                         self.printInfo()
                     }) {
                         Text("Done")
@@ -76,6 +90,7 @@ struct ReviewSR: View {
                         self.allTaskStore.removeTask(self.tasksDue[0])
                         self.tasksDue.remove(at: 0)
                         self.translation = CGSize.zero
+                        self.showingAnswer = false
                         self.printInfo()
                     }) {
                         Text("Delete")
@@ -94,8 +109,12 @@ struct ReviewSR: View {
                     Text("a")
                 }
             }
-        }.onAppear(perform: {self.tasksDue = self.allTaskStore.dueTasks()})
+        }.onAppear(perform: self.refresh)
         .padding()
+    }
+    
+    func refresh() {
+        self.tasksDue = self.allTaskStore.dueTasks()
     }
     
     func printInfo() {
