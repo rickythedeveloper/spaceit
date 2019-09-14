@@ -18,7 +18,7 @@ struct TaskCard: View {
         GeometryReader { viewGeometry in
             ZStack {
                 self.task.colour
-                    .opacity(0.95)
+                    .opacity(0.98)
                     .cornerRadius(20.0)
                     .rotationEffect(self.task.angle)
                     

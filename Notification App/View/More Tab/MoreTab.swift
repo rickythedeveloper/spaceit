@@ -13,6 +13,7 @@ struct MoreTab: View {
     var sectionName: String
     
     @State var showingPrivacyPolicy = false
+    @State var showingDeveloper = false
     
     var body: some View {
         VStack {
@@ -30,11 +31,33 @@ struct MoreTab: View {
                 Text("Privacy Policy")
                     .font(.title)
             }
+            .padding(5)
+            .overlay(
+                RoundedRectangle(cornerRadius: 10)
+                    .stroke(Color.gray.opacity(0.5), lineWidth: 2)
+            )
+            
+            Spacer()
+            
+            Button(action: {
+                self.showingDeveloper = true
+            }) {
+                Text("Developer")
+                    .font(.title)
+            }
+            .padding(5)
+            .overlay(
+                RoundedRectangle(cornerRadius: 10)
+                    .stroke(Color.gray.opacity(0.5), lineWidth: 2)
+            )
             
             Spacer()
         }.padding()
         .sheet(isPresented: $showingPrivacyPolicy) {
                 PrivacyPolicy()
+        }
+        .sheet(isPresented: $showingDeveloper) {
+                DeveloperPage()
         }
     }
 }

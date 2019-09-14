@@ -17,6 +17,6 @@ extension Color {
 
 extension Double {
     static func randomForColour() -> Double {
-        return Double.random(in: 0.3...0.7)
+        return Double.random(in: 0.3...0.8)
     }
 }

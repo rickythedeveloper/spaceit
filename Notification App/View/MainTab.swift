@@ -14,7 +14,7 @@ struct MainTab: View {
     
     let SRTitle = "Spaced Repetition"
     let notifSenderTitle = "Notif Sender"
-    let moreTitle = "Title"
+    let moreTitle = "More"
     
     var body: some View {
         
@@ -34,7 +34,7 @@ struct MainTab: View {
             
             MoreTab(sectionName: self.moreTitle)
                 .tabItem {
-                    Image(systemName: "Ellipsis")
+                    Image(systemName: "ellipsis")
                     Text(self.moreTitle)
                 }
         }
