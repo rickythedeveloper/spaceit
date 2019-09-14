@@ -20,7 +20,8 @@ struct MainTab: View {
                     Text("a")
                 }
             
-            ReviewSR().environmentObject(userSettings.allTaskStore)
+            ReviewSR()
+                .environment(\.managedObjectContext, (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext)
                 .tabItem {
                     Text("b")
                 }

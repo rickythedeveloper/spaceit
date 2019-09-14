@@ -8,6 +8,7 @@
 
 import Foundation
 import SwiftUI
+import CoreData
 
 class TaskStore: ObservableObject {
     @Published var tasks: [Task]
@@ -80,5 +81,23 @@ class Task: Identifiable {
         lastChecked = Date()
         let factor = 0.5 * pow(4, (1 - difficulty))
         waitTime *= factor
+    }
+}
+
+public class TaskSaved: NSManagedObject, Identifiable {
+    @NSManaged public var id: UUID
+    @NSManaged public var question: String
+    @NSManaged public var answer: String?
+    @NSManaged public var lastChecked: Date
+    @NSManaged public var waitTime: TimeInterval
+}
+
+extension TaskSaved {
+    static func getAllItems() -> NSFetchRequest<TaskSaved> {
+//        let request: NSFetchRequest<TaskSaved> = TaskSaved.fetchRequest() as! NSFetchRequest<TaskSaved>
+        let request = NSFetchRequest<TaskSaved>(entityName: "TaskSaved")
+        let sortDescriptor = NSSortDescriptor(key: "lastChecked", ascending: true)
+        request.sortDescriptors = [sortDescriptor]
+        return request
     }
 }

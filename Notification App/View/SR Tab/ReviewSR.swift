@@ -10,16 +10,25 @@ import SwiftUI
 
 struct ReviewSR: View {
     
-    @EnvironmentObject var allTaskStore: TaskStore
+    @Environment(\.managedObjectContext) var managedObjectContext
+    @FetchRequest(fetchRequest: TaskSaved.getAllItems()) var tasksFetched: FetchedResults<TaskSaved>
     @State var sliderValue = 0.5
     @State var translation = CGSize.zero
     @State var showingAnswer = false
+    @State var coreDataTaskStore = TaskStore(tasks: [Task]())
     @State var tasksDue = [Task]()
+    @State private var addingNewSR = false
     
     var body: some View {
         VStack {
             
             HStack {
+                Button(action: {
+                    self.addingNewSR = true
+                }) {
+                    Image(systemName: "plus.circle")
+                        .imageScale(.large)
+                }
                 Spacer()
                 Button(action: {
                     self.refresh()
@@ -70,9 +79,23 @@ struct ReviewSR: View {
                     Spacer()
                     
                     Button(action: {
-//                        MARK: change the lastChecked and waitTime of the task inside allTaskStore, remove the task from tasksDue
-                        if let task = self.allTaskStore.findTask(self.tasksDue[0]) {
+//                        MARK: change the lastChecked and waitTime of the task inside coreDataTaskStore, remove the task from tasksDue
+                        if let task = self.coreDataTaskStore.findTask(self.tasksDue[0]) {
                             task.prepareForNext(difficulty: self.sliderValue)
+                            
+                            for eachTaskFetched in self.tasksFetched {
+                                if eachTaskFetched.id == task.id {
+                                    eachTaskFetched.setValue(task.lastChecked, forKey: "lastChecked")
+                                    eachTaskFetched.setValue(task.waitTime, forKey: "waitTime")
+                                    
+                                    do {
+                                        try self.managedObjectContext.save()
+                                    } catch {
+                                        print("Oh no couldnt save!!")
+                                        print(error)
+                                    }
+                                }
+                            }
                         }
                         self.tasksDue.remove(at: 0)
                         self.onSomeAction()
@@ -83,7 +106,18 @@ struct ReviewSR: View {
                     Spacer()
                     
                     Button(action: {
-                        self.allTaskStore.removeTask(self.tasksDue[0])
+                        for eachTaskFetched in self.tasksFetched {
+                            if eachTaskFetched.id == self.tasksDue[0].id {
+                                self.managedObjectContext.delete(eachTaskFetched)
+                                
+                                do {
+                                    try self.managedObjectContext.save()
+                                } catch {
+                                    print("Oh no couldnt save!!")
+                                    print(error)
+                                }
+                            }
+                        }
                         self.tasksDue.remove(at: 0)
                         self.onSomeAction()
                     }) {
@@ -105,11 +139,24 @@ struct ReviewSR: View {
             }
         }.onAppear(perform: self.refresh)
         .padding()
+            .sheet(isPresented: self.$addingNewSR, onDismiss: self.refresh) {
+                AddSR().environment(\.managedObjectContext, self.managedObjectContext)
+            }
     }
     
     func refresh() {
-        self.tasksDue = self.allTaskStore.dueTasks()
+        self.refreshTasks()
         self.onSomeAction()
+    }
+    
+    func refreshTasks() {
+        var temporaryTasks = [Task]()
+        for each in self.tasksFetched {
+            temporaryTasks.append(Task(id: each.id, question: each.question, answer: each.answer, lastChecked: each.lastChecked, waitTime: each.waitTime))
+        }
+        self.coreDataTaskStore = TaskStore(tasks: temporaryTasks)
+        
+        self.tasksDue = self.coreDataTaskStore.dueTasks()
     }
     
     func onSomeAction() {
@@ -119,7 +166,7 @@ struct ReviewSR: View {
     }
     
     func printInfo() {
-        for each in self.allTaskStore.tasks {
+        for each in self.coreDataTaskStore.tasks {
             print(each.question)
             print(each.waitTime)
         }

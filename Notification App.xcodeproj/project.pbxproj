@@ -17,6 +17,7 @@
 		B8845801232BA8EC00B5CC3C /* TaskCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8845800232BA8EC00B5CC3C /* TaskCard.swift */; };
 		B8845804232BADFB00B5CC3C /* Color+.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8845803232BADFB00B5CC3C /* Color+.swift */; };
 		B8845807232BCEDE00B5CC3C /* Array+.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8845806232BCEDE00B5CC3C /* Array+.swift */; };
+		B886E726232D333C00BD76BD /* AddSR.swift in Sources */ = {isa = PBXBuildFile; fileRef = B886E725232D333C00BD76BD /* AddSR.swift */; };
 		B8B8023C2326EDB60041098F /* SetTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8B8023B2326EDB60041098F /* SetTime.swift */; };
 		B8D9503D2326C48F001236AE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8D9503C2326C48F001236AE /* AppDelegate.swift */; };
 		B8D9503F2326C48F001236AE /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8D9503E2326C48F001236AE /* SceneDelegate.swift */; };
@@ -46,6 +47,7 @@
 		B8845800232BA8EC00B5CC3C /* TaskCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskCard.swift; sourceTree = "<group>"; };
 		B8845803232BADFB00B5CC3C /* Color+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+.swift"; sourceTree = "<group>"; };
 		B8845806232BCEDE00B5CC3C /* Array+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+.swift"; sourceTree = "<group>"; };
+		B886E725232D333C00BD76BD /* AddSR.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddSR.swift; sourceTree = "<group>"; };
 		B8B8023B2326EDB60041098F /* SetTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetTime.swift; sourceTree = "<group>"; };
 		B8D950392326C48F001236AE /* Notification App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Notification App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B8D9503C2326C48F001236AE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -138,6 +140,7 @@
 			children = (
 				B88457FC232BA27800B5CC3C /* ReviewSR.swift */,
 				B8845800232BA8EC00B5CC3C /* TaskCard.swift */,
+				B886E725232D333C00BD76BD /* AddSR.swift */,
 			);
 			path = "SR Tab";
 			sourceTree = "<group>";
@@ -367,6 +370,7 @@
 				B8D950612326C8E7001236AE /* TimeSettings.swift in Sources */,
 				B88457F9232A8FB500B5CC3C /* PrivacyPolicy.swift in Sources */,
 				B8D950422326C48F001236AE /* Notification_App.xcdatamodeld in Sources */,
+				B886E726232D333C00BD76BD /* AddSR.swift in Sources */,
 				B8D9B2D42329A97100348987 /* GADBannerViewController.swift in Sources */,
 				B8B8023C2326EDB60041098F /* SetTime.swift in Sources */,
 				B8D9505F2326C85C001236AE /* NotificationDelegate.swift in Sources */,
