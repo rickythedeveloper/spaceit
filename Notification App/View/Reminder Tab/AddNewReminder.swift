@@ -92,7 +92,7 @@ struct AddNewReminder: View {
             default:
                 nc.requestAuthorization(options: [.alert]) { (granted, error) in
                     if !granted, let error = error {
-                        // handle this
+                        fatalError(error.localizedDescription)
                     } else {
                         self.sendNotification(with: nc)
                     }
