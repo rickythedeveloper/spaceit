@@ -16,20 +16,30 @@ struct AddSR: View {
     @State private var answer: String = ""
     var body: some View {
         VStack {
+            Spacer()
+            Text("New spaced repetition")
+                .font(.title)
+            
             VStack {
                 TextField("Question/Reminder", text: self.$question)
                 TextField("Answer/Hint", text: self.$answer)
             }.padding()
+            .font(.largeTitle)
+            .textFieldStyle(RoundedBorderTextFieldStyle())
             
             Button(action: {
                 self.addButtonPressed()
             }) {
                 Image(systemName: "plus.rectangle")
                     .imageScale(.large)
+                    .font(.title)
             }
+            
+            Spacer()
+            Text("The first reminder will be delivered in 24 hours.")
+                .foregroundColor(.gray)
         }
             .padding()
-            .font(.largeTitle)
             .multilineTextAlignment(.center)
     }
     
