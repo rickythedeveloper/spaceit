@@ -25,6 +25,13 @@ struct MainTab: View {
                     Text(self.SRTitle)
                 }
             
+            CardListView()
+                .environment(\.managedObjectContext, (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext)
+                .tabItem {
+                    Image(systemName: "rectangle.stack.fill")
+                    Text("Cards")
+                }
+            
             AddNewReminder(sectionName: self.notifSenderTitle).environmentObject(userSettings)
                 .tabItem {
                     Image(systemName: "exclamationmark")

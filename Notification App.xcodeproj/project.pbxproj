@@ -21,6 +21,7 @@
 		B886E729232D8ABF00BD76BD /* MoreTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = B886E728232D8ABF00BD76BD /* MoreTab.swift */; };
 		B8AB581C232E80B100AD2012 /* CardEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8AB581B232E80B100AD2012 /* CardEditView.swift */; };
 		B8AB581F232E843C00AD2012 /* NSManagedObject+.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8AB581E232E843C00AD2012 /* NSManagedObject+.swift */; };
+		B8AB5822232E8F7A00AD2012 /* CardListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8AB5821232E8F7A00AD2012 /* CardListView.swift */; };
 		B8B8023C2326EDB60041098F /* SetTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8B8023B2326EDB60041098F /* SetTime.swift */; };
 		B8D53A8E232D924D006887FE /* DeveloperPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8D53A8D232D924D006887FE /* DeveloperPage.swift */; };
 		B8D9503D2326C48F001236AE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8D9503C2326C48F001236AE /* AppDelegate.swift */; };
@@ -55,6 +56,7 @@
 		B886E728232D8ABF00BD76BD /* MoreTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreTab.swift; sourceTree = "<group>"; };
 		B8AB581B232E80B100AD2012 /* CardEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardEditView.swift; sourceTree = "<group>"; };
 		B8AB581E232E843C00AD2012 /* NSManagedObject+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSManagedObject+.swift"; sourceTree = "<group>"; };
+		B8AB5821232E8F7A00AD2012 /* CardListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardListView.swift; sourceTree = "<group>"; };
 		B8B8023B2326EDB60041098F /* SetTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetTime.swift; sourceTree = "<group>"; };
 		B8D53A8D232D924D006887FE /* DeveloperPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeveloperPage.swift; sourceTree = "<group>"; };
 		B8D950392326C48F001236AE /* Notification App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Notification App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -171,6 +173,14 @@
 			path = NSManagedObject;
 			sourceTree = "<group>";
 		};
+		B8AB5820232E8F3300AD2012 /* Cards Tab */ = {
+			isa = PBXGroup;
+			children = (
+				B8AB5821232E8F7A00AD2012 /* CardListView.swift */,
+			);
+			path = "Cards Tab";
+			sourceTree = "<group>";
+		};
 		B8D950302326C48F001236AE = {
 			isa = PBXGroup;
 			children = (
@@ -232,6 +242,7 @@
 		B8D950542326C4AB001236AE /* View */ = {
 			isa = PBXGroup;
 			children = (
+				B8AB5820232E8F3300AD2012 /* Cards Tab */,
 				B88457FA232BA0BA00B5CC3C /* MainTab.swift */,
 				B8845809232BE4D400B5CC3C /* SR Tab */,
 				B8845808232BE4B300B5CC3C /* Reminder Tab */,
@@ -396,6 +407,7 @@
 				B88457F5232A4E3200B5CC3C /* KeyboardGuardian.swift in Sources */,
 				B88457FF232BA2A100B5CC3C /* Spaced Repetition.swift in Sources */,
 				B8845807232BCEDE00B5CC3C /* Array+.swift in Sources */,
+				B8AB5822232E8F7A00AD2012 /* CardListView.swift in Sources */,
 				B8845801232BA8EC00B5CC3C /* TaskCard.swift in Sources */,
 				B8D950612326C8E7001236AE /* TimeSettings.swift in Sources */,
 				B88457F9232A8FB500B5CC3C /* PrivacyPolicy.swift in Sources */,

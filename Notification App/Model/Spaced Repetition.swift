@@ -82,6 +82,26 @@ class Task: Identifiable {
         let factor = 0.5 * pow(4, (1 - difficulty))
         waitTime *= factor
     }
+    
+    func dueDate() -> Date {
+        return self.lastChecked.addingTimeInterval(self.waitTime)
+    }
+    
+    func dueDateString() -> String {
+        let a = DateFormatter()
+        a.dateFormat = "dd/MM/yyyy"
+        return a.string(from: self.dueDate())
+    }
+    
+//    func makeTaskSaved(context: NSManagedObjectContext) -> TaskSaved {
+//        let taskSaved = TaskSaved(context: context)
+//        taskSaved.id = self.id
+//        taskSaved.question = self.question
+//        taskSaved.answer = self.answer
+//        taskSaved.lastChecked = self.lastChecked
+//        taskSaved.waitTime = self.waitTime
+//        return taskSaved
+//    }
 }
 
 public class TaskSaved: NSManagedObject, Identifiable {
@@ -99,5 +119,17 @@ extension TaskSaved {
         let sortDescriptor = NSSortDescriptor(key: "lastChecked", ascending: true)
         request.sortDescriptors = [sortDescriptor]
         return request
+    }
+    
+    func convertToTask() -> Task {
+        return Task(id: self.id, question: self.question, answer: self.answer, lastChecked: self.lastChecked, waitTime: self.waitTime)
+    }
+    
+    func dueDate() -> Date {
+        return self.convertToTask().dueDate()
+    }
+    
+    func dueDateString() -> String {
+        return self.convertToTask().dueDateString()
     }
 }

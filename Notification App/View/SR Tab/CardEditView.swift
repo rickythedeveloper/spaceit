@@ -10,6 +10,7 @@ import SwiftUI
 
 struct CardEditView: View {
     
+    @Environment(\.presentationMode) private var presentationMode
     @Environment(\.managedObjectContext) var managedObjectContext
     @FetchRequest(fetchRequest: TaskSaved.getAllItems()) var tasksFetched: FetchedResults<TaskSaved>
     var task: Task
@@ -32,6 +33,7 @@ struct CardEditView: View {
             
             Button(action: {
                 self.updateData()
+                self.presentationMode.wrappedValue.dismiss()
             }) {
                 Image(systemName: "checkmark")
                     .imageScale(.large)
