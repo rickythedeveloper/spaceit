@@ -10,27 +10,56 @@ import SwiftUI
 
 struct AddSR: View {
     
+    @Environment(\.presentationMode) var presentationMode
     @Environment(\.managedObjectContext) var managedObjectContext
     
     @State private var question: String = ""
     @State private var answer: String = ""
+    @State private var isShowing = true // this protects the view disappearing before the textfields, which in turn prevents the app from crashing. (Since they keyboard guardian needs the geometry of the textfieds...)
+    @ObservedObject var kGuardian = KeyboardGuardian(textFieldCount: 2)
+    
     var body: some View {
         VStack {
-            Spacer()
-            Text("New spaced repetition")
-                .font(.title)
+            ZStack {
+                Text("New spaced repetition")
+                    .font(.title)
+                
+                HStack {
+                    Button(action: {
+                        self.dismissView()
+                    }) {
+                        Image(systemName: "xmark")
+                    }
+                    
+                    Spacer()
+                }
+            }
             
-            VStack {
-                TextField("Question/Reminder", text: self.$question)
-                TextField("Answer/Hint", text: self.$answer)
-            }.padding()
-            .font(.largeTitle)
-            .textFieldStyle(RoundedBorderTextFieldStyle())
+            if self.isShowing {
+                VStack {
+                    HStack {
+                        Text("Question/Concept/Reminder")
+                        Spacer()
+                    }
+                    MultiLineTF(text: self.$question, fontSize: 20, index: 0, kGuardian: kGuardian)
+                        .frame(maxWidth: 500, maxHeight: 100, alignment: .center)
+                        .background(GeometryGetter(rect: self.$kGuardian.rects[0]))
+                    
+                    HStack {
+                        Text("Answer/Hint (optional)")
+                        Spacer()
+                    }.padding(EdgeInsets(top: 10, leading: 0, bottom: 0, trailing: 0))
+                    MultiLineTF(text: self.$answer, fontSize: 20, index: 1, kGuardian: kGuardian)
+                        .frame(maxWidth: 500, maxHeight: 400, alignment: .center)
+                        .background(GeometryGetter(rect: self.$kGuardian.rects[1]))
+                }.padding()
+            }
+            
             
             Button(action: {
                 self.addButtonPressed()
             }) {
-                Image(systemName: "plus.rectangle")
+                Image(systemName: "plus.circle")
                     .imageScale(.large)
                     .font(.title)
             }
@@ -41,6 +70,18 @@ struct AddSR: View {
         }
             .padding()
             .multilineTextAlignment(.center)
+            .offset(y: self.kGuardian.slide).animation(.easeInOut(duration: 0.2))
+            .gesture(
+                DragGesture()
+                    .onChanged {value in
+                        UIApplication.shared.endEditing()
+                    }
+            )
+    }
+    
+    private func dismissView() {
+        self.isShowing = false
+        self.presentationMode.wrappedValue.dismiss()
     }
     
     private func addButtonPressed() {
@@ -63,6 +104,8 @@ struct AddSR: View {
         
         self.question = ""
         self.answer = ""
+        
+        self.dismissView()
     }
     
     func saveContext() {
@@ -93,8 +136,8 @@ struct AddSR: View {
     }
 }
 
-struct AddSR_Previews: PreviewProvider {
-    static var previews: some View {
-        AddSR()
-    }
-}
+//struct AddSR_Previews: PreviewProvider {
+//    static var previews: some View {
+//        AddSR()
+//    }
+//}

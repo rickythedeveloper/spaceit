@@ -15,35 +15,51 @@ struct CardEditView: View {
     @FetchRequest(fetchRequest: TaskSaved.getAllItems()) var tasksFetched: FetchedResults<TaskSaved>
     var task: Task
     
+    @ObservedObject private var kGuardian = KeyboardGuardian(textFieldCount: 2)
+    
     @State var question = ""
     @State var answer = ""
     
     var body: some View {
         VStack {
-            Spacer()
-            Text("Edit card")
-                .font(.title)
-            
-            Group {
-                TextField("Question/Reminder", text: self.$question)
-                TextField("Answer/Hint", text: self.$answer)
+            VStack {
+                HStack {
+                    Text("Question/Concept/Reminder")
+                    Spacer()
+                }
+                MultiLineTF(text: self.$question, fontSize: CGFloat(20.0), index: 0, kGuardian: kGuardian)
+                    .frame(maxWidth: 500, maxHeight: 100, alignment: .center)
+                    .background(GeometryGetter(rect: self.$kGuardian.rects[0]))
+                
+                HStack {
+                    Text("Answer/Hint (optional)")
+                    Spacer()
+                }.padding(EdgeInsets(top: 10, leading: 0, bottom: 0, trailing: 0))
+                MultiLineTF(text: self.$answer, fontSize: CGFloat(20.0), index: 1, kGuardian: kGuardian)
+                    .frame(maxWidth: 500, maxHeight: 400, alignment: .center)
+                    .background(GeometryGetter(rect: self.$kGuardian.rects[1]))
             }.padding()
-            .font(.largeTitle)
-            .textFieldStyle(RoundedBorderTextFieldStyle())
             
             Button(action: {
                 self.updateData()
                 self.presentationMode.wrappedValue.dismiss()
             }) {
-                Image(systemName: "checkmark")
+                Image(systemName: "checkmark.circle")
                     .imageScale(.large)
+                    .font(.title)
             }
-            
-            Spacer()
         }
         .padding()
         .multilineTextAlignment(.center)
         .onAppear(perform: self.setup)
+        .navigationBarTitle("Edit card")
+        .offset(y: self.kGuardian.slide).animation(.easeInOut(duration: 0.2))
+        .gesture(
+            DragGesture()
+                .onChanged {value in
+                    UIApplication.shared.endEditing()
+                }
+        )
     }
     
     private func setup() {
