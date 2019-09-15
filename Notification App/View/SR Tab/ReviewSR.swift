@@ -19,6 +19,7 @@ struct ReviewSR: View {
     @State var coreDataTaskStore = TaskStore(tasks: [Task]())
     @State var tasksDue = [Task]()
     @State private var addingNewSR = false
+    @State private var editingCard = false
     
     var sectionName: String
     
@@ -33,6 +34,9 @@ struct ReviewSR: View {
                     self.addingNewSR = true
                 }) {
                     Image(systemName: "plus.circle")
+                    .sheet(isPresented: self.$addingNewSR, onDismiss: self.refresh) {
+                        AddSR().environment(\.managedObjectContext, self.managedObjectContext)
+                    }
                 }
                 Spacer()
                 
@@ -87,6 +91,14 @@ struct ReviewSR: View {
                     }
                     
                     Spacer()
+                    Button(action: self.editPressed) {
+                        Text("Edit")
+                        .sheet(isPresented: self.$editingCard, onDismiss: nil) {
+                            CardEditView(task: self.tasksDue[0]).environment(\.managedObjectContext, self.managedObjectContext)
+                        }
+                    }
+                    
+                    Spacer()
                     Button(action: self.deletePressed) {
                         Text("Delete")
                             .foregroundColor(.red)
@@ -106,9 +118,7 @@ struct ReviewSR: View {
         }
             .onAppear(perform: self.refresh)
             .padding()
-            .sheet(isPresented: self.$addingNewSR, onDismiss: self.refresh) {
-                AddSR().environment(\.managedObjectContext, self.managedObjectContext)
-            }
+            
     }
     
     func refresh() {
@@ -146,6 +156,10 @@ struct ReviewSR: View {
         }
         self.tasksDue.remove(at: 0)
         self.onSomeAction()
+    }
+    
+    private func editPressed() {
+        self.editingCard = true
     }
     
     private func deletePressed() {
