@@ -41,7 +41,7 @@ struct AddSR: View {
                         Text("Question/Concept/Reminder")
                         Spacer()
                     }
-                    MultiLineTF(text: self.$question, fontSize: 20, index: 0, kGuardian: kGuardian)
+                    MultiLineTF(text: self.$question, fontSize: 20, index: 0, kGuardian: self.kGuardian)
                         .frame(maxWidth: 500, maxHeight: 100, alignment: .center)
                         .background(GeometryGetter(rect: self.$kGuardian.rects[0]))
                     
@@ -49,8 +49,8 @@ struct AddSR: View {
                         Text("Answer/Hint (optional)")
                         Spacer()
                     }.padding(EdgeInsets(top: 10, leading: 0, bottom: 0, trailing: 0))
-                    MultiLineTF(text: self.$answer, fontSize: 20, index: 1, kGuardian: kGuardian)
-                        .frame(maxWidth: 500, maxHeight: 400, alignment: .center)
+                    MultiLineTF(text: self.$answer, fontSize: 20, index: 1, kGuardian: self.kGuardian)
+                        .frame(maxWidth: 500, maxHeight: 300, alignment: .center)
                         .background(GeometryGetter(rect: self.$kGuardian.rects[1]))
                 }.padding()
             }
@@ -68,9 +68,9 @@ struct AddSR: View {
             Text("The first reminder will be delivered in 24 hours.")
                 .foregroundColor(.gray)
         }
-            .padding()
-            .multilineTextAlignment(.center)
             .offset(y: self.kGuardian.slide).animation(.easeInOut(duration: 0.2))
+            .padding()
+            .background(Color(red: 0.5, green: 0.5, blue: 0.5).opacity(0.01)) // this background view is just so the gesture is recgnised everywhere.
             .gesture(
                 DragGesture()
                     .onChanged {value in
