@@ -29,6 +29,7 @@ struct AddSR: View {
                         self.dismissView()
                     }) {
                         Image(systemName: "xmark")
+                            .font(.title)
                     }
                     
                     Spacer()
