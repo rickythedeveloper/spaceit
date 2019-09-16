@@ -78,9 +78,15 @@ class Task: Identifiable {
     
     func prepareForNext(difficulty: Double) {
         guard difficulty >= 0 && difficulty <= 1 else { fatalError("The difficulty is not between 0 and 1") }
+ 
+        let actualWaitTime = Date().timeIntervalSince(self.lastChecked)
         lastChecked = Date()
-        let factor = 0.5 * pow(4, (1 - difficulty))
-        waitTime *= factor
+        print("this actual wait time: \(actualWaitTime)")
+        let minimumFactor = (105 * 60*60*24) / (actualWaitTime + (150 * 60*60*24))
+        
+        let factor = minimumFactor * pow(5, (1 - difficulty))
+        self.waitTime = factor * actualWaitTime
+        print("next wait time: \(self.waitTime)")
     }
     
     func dueDate() -> Date {
