@@ -34,10 +34,16 @@ final class KeyboardGuardian: ObservableObject {
     public var keyboardIsHidden = true
 
     @Published var slide: CGFloat = 0
+    
+    private var rightAfterShowFieldChange: Bool = false
 
     var showField: Int = 0 {
         didSet {
             updateSlide()
+            self.rightAfterShowFieldChange = true
+            Timer.scheduledTimer(withTimeInterval: 0.2, repeats: false) { timer in
+                self.rightAfterShowFieldChange = false
+            }
         }
     }
 
@@ -58,7 +64,10 @@ final class KeyboardGuardian: ObservableObject {
             keyboardIsHidden = false
             if let rect = notification.userInfo?["UIKeyboardFrameEndUserInfoKey"] as? CGRect {
                 keyboardRect = rect
-                updateSlide()
+                
+                if self.rightAfterShowFieldChange {
+                    updateSlide()
+                }
             }
         }
     }
