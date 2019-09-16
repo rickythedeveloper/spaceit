@@ -36,7 +36,7 @@ struct CardEditView: View {
                     Spacer()
                 }.padding(EdgeInsets(top: 10, leading: 0, bottom: 0, trailing: 0))
                 MultiLineTF(text: self.$answer, fontSize: CGFloat(20.0), index: 1, kGuardian: kGuardian)
-                    .frame(maxWidth: 500, maxHeight: 400, alignment: .center)
+                    .frame(maxWidth: 500, maxHeight: 200, alignment: .center)
                     .background(GeometryGetter(rect: self.$kGuardian.rects[1]))
             }.padding()
             
@@ -52,7 +52,7 @@ struct CardEditView: View {
         .padding()
         .multilineTextAlignment(.center)
         .onAppear(perform: self.setup)
-        .navigationBarTitle("Edit card")
+        .navigationBarTitle("Edit card", displayMode: .inline)
         .offset(y: self.kGuardian.slide).animation(.easeInOut(duration: 0.2))
         .gesture(
             DragGesture()
