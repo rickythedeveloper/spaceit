@@ -22,6 +22,8 @@ struct CardEditView: View {
     @State var question = ""
     @State var answer = ""
     
+    var afterDismissing: () -> Void = {}
+    
     var body: some View {
         VStack {
             Spacer()
@@ -46,12 +48,18 @@ struct CardEditView: View {
                 }.padding()
             }
             
-            Button(action: {
-                self.tickPressed()
-            }) {
-                Image(systemName: "checkmark.circle")
-                    .imageScale(.large)
-                    .font(.title)
+            HStack {
+                Button(action: self.deletePressed) {
+                    Image(systemName: "trash.circle")
+                        .imageScale(.large)
+                        .font(.title)
+                }
+                
+                Button(action: self.tickPressed) {
+                    Image(systemName: "checkmark.circle")
+                        .imageScale(.large)
+                        .font(.title)
+                }
             }
             
             Spacer()
@@ -82,6 +90,20 @@ struct CardEditView: View {
         }
     }
     
+    private func deletePressed() {
+        for eachTaskFetched in self.tasksFetched {
+            if eachTaskFetched.id == self.task.id {
+                self.managedObjectContext.delete(eachTaskFetched)
+                self.managedObjectContext.saveContext()
+            }
+        }
+        
+        self.isShowing = false
+        self.presentationMode.wrappedValue.dismiss()
+        
+        self.afterDismissing()
+    }
+    
     private func tickPressed() {
         guard self.question.hasContent() else {
             self.alertShowing = true
@@ -90,6 +112,7 @@ struct CardEditView: View {
         self.updateData()
         self.isShowing = false
         self.presentationMode.wrappedValue.dismiss()
+        self.afterDismissing()
     }
     
     private func updateData() {

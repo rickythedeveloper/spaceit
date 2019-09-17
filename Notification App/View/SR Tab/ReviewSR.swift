@@ -13,7 +13,6 @@ struct ReviewSR: View {
     
     @Environment(\.managedObjectContext) var managedObjectContext
     @FetchRequest(fetchRequest: TaskSaved.getAllItems()) var tasksFetched: FetchedResults<TaskSaved>
-    @State var sliderValue = 0.5
     @State var translation = CGSize.zero
     @State var showingAnswer = false
     @State var coreDataTaskStore = TaskStore(tasks: [Task]())
@@ -22,6 +21,8 @@ struct ReviewSR: View {
     @State private var editingCard = false
     
     var sectionName: String
+    
+    private let diffButtonImgs = ["hand.thumbsup.fill", "hand.thumbsup", "hand.thumbsdown", "hand.thumbsdown.fill"]
     
     var body: some View {
         VStack {
@@ -78,41 +79,47 @@ struct ReviewSR: View {
             
             if self.tasksDue.count > 0 {
                 HStack {
+                    ForEach((0...3).reversed(), id: \.self) { num in
+                        Button(action: {
+                            self.difficultyDecided(diff: num, outOf: 3)
+                        }) {
+                            if num == 0 || num == 3 {
+                                Image(systemName: self.diffButtonImgs[num])
+                                    .font(.title)
+                                    .padding()
+                            } else {
+                                Image(systemName: self.diffButtonImgs[num])
+                                    .padding()
+                            }
+                        }
+                    }
+                    
                     if self.tasksDue.count > 1 {
-                        Spacer()
                         Button(action: self.putOffPressed) {
-                            Text("Put off")
-                        }
+                            VStack {
+                                Image(systemName: "arrow.turn.right.up")
+                                    .font(.title)
+                                
+                                Text("Put off")
+                                    .font(.caption)
+                                    .opacity(0.7)
+                            }
+                        }.padding(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 5))
                     }
                     
-                    Spacer()
-                    Button(action: self.donePressed) {
-                        Text("Done")
-                    }
-                    
-                    Spacer()
                     Button(action: self.editPressed) {
-                        Text("Edit")
-                        .sheet(isPresented: self.$editingCard, onDismiss: nil) {
-                            CardEditView(task: self.tasksDue[0]).environment(\.managedObjectContext, self.managedObjectContext)
-                        }
+                        VStack {
+                            Image(systemName: "pencil")
+                                .font(.title)
+                            
+                            Text("Edit")
+                                .font(.caption)
+                                .opacity(0.7)
+                                .sheet(isPresented: self.$editingCard, onDismiss: nil) {
+                                    CardEditView(task: self.tasksDue[0], afterDismissing: self.refresh).environment(\.managedObjectContext, self.managedObjectContext)
+                                }
+                        }.padding(EdgeInsets(top: 0, leading: 5, bottom: 0, trailing: 0))
                     }
-                    
-                    Spacer()
-                    Button(action: self.deletePressed) {
-                        Text("Delete")
-                            .foregroundColor(.red)
-                    }
-                    Spacer()
-                    
-                }.font(.title)
-                .padding(EdgeInsets(top: 0.0, leading: 0.0, bottom: 10.0, trailing: 0.0))
-                
-                
-                Text("Difficulty \(String(Int((sliderValue*100).rounded()))) %")
-
-                Slider(value: $sliderValue, in: 0.0...1.0, minimumValueLabel: Image(systemName: "hand.thumbsup.fill"), maximumValueLabel: Image(systemName: "hand.thumbsdown.fill")) {
-                    Text("a")
                 }
             }
         }
@@ -141,9 +148,16 @@ struct ReviewSR: View {
         self.onSomeAction()
     }
     
-    private func donePressed() {
+    private func editPressed() {
+        self.editingCard = true
+    }
+    
+    private func difficultyDecided(diff: Int, outOf num: Int) {
+        guard num != 0 else {return}
+        let relativeDiff = Double(diff/num)
+        
         if let task = self.coreDataTaskStore.findTask(self.tasksDue[0]) {
-            task.prepareForNext(difficulty: self.sliderValue)
+            task.prepareForNext(difficulty: relativeDiff)
             
             for eachTaskFetched in self.tasksFetched {
                 if eachTaskFetched.id == task.id {
@@ -153,21 +167,6 @@ struct ReviewSR: View {
                 }
             }
             registerNotification(task: task)
-        }
-        self.tasksDue.remove(at: 0)
-        self.onSomeAction()
-    }
-    
-    private func editPressed() {
-        self.editingCard = true
-    }
-    
-    private func deletePressed() {
-        for eachTaskFetched in self.tasksFetched {
-            if eachTaskFetched.id == self.tasksDue[0].id {
-                self.managedObjectContext.delete(eachTaskFetched)
-                self.saveContext()
-            }
         }
         self.tasksDue.remove(at: 0)
         self.onSomeAction()

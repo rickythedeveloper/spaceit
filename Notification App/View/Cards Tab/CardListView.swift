@@ -54,11 +54,15 @@ struct CardListView: View {
                 }
             }.padding()
             .onAppear(perform: {
-                self.sortAllObjectsByName()
-                self.sortAllObjectsByDueDate()
+                self.refresh()
             })
             .navigationBarTitle("Cards")
         }
+    }
+    
+    private func refresh() {
+        self.sortAllObjectsByName()
+        self.sortAllObjectsByDueDate()
     }
     
     private func sortAllObjectsByName() {
