@@ -16,6 +16,7 @@ struct AddSR: View {
     @State private var question: String = ""
     @State private var answer: String = ""
     @State private var isShowing = true // this protects the view disappearing before the textfields, which in turn prevents the app from crashing. (Since they keyboard guardian needs the geometry of the textfieds...)
+    @State private var alertShowing = false
     @ObservedObject var kGuardian = KeyboardGuardian(textFieldCount: 2)
     
     var body: some View {
@@ -78,6 +79,9 @@ struct AddSR: View {
                         UIApplication.shared.endEditing()
                     }
             )
+            .alert(isPresented: self.$alertShowing) {
+                Alert.invalidQuestion()
+            }
     }
     
     private func dismissView() {
@@ -86,6 +90,11 @@ struct AddSR: View {
     }
     
     private func addButtonPressed() {
+        guard self.question.hasContent() else {
+            self.alertShowing = true
+            return
+        }
+        
         let task = TaskSaved(context: self.managedObjectContext)
         task.id = UUID()
         task.question = self.question

@@ -16,6 +16,7 @@ struct CardEditView: View {
     var task: Task
     
     @State private var isShowing = true // this protects the view disappearing before the textfields, which in turn prevents the app from crashing. (Since they keyboard guardian needs the geometry of the textfieds...)
+    @State private var alertShowing = false
     @ObservedObject private var kGuardian = KeyboardGuardian(textFieldCount: 2)
     
     @State var question = ""
@@ -46,9 +47,7 @@ struct CardEditView: View {
             }
             
             Button(action: {
-                self.updateData()
-                self.isShowing = false
-                self.presentationMode.wrappedValue.dismiss()
+                self.tickPressed()
             }) {
                 Image(systemName: "checkmark.circle")
                     .imageScale(.large)
@@ -68,6 +67,9 @@ struct CardEditView: View {
                     UIApplication.shared.endEditing()
                 }
         )
+        .alert(isPresented: self.$alertShowing) {
+            Alert.invalidQuestion()
+        }
     }
     
     private func setup() {
@@ -78,6 +80,16 @@ struct CardEditView: View {
         } else {
             self.answer = ""
         }
+    }
+    
+    private func tickPressed() {
+        guard self.question.hasContent() else {
+            self.alertShowing = true
+            return
+        }
+        self.updateData()
+        self.isShowing = false
+        self.presentationMode.wrappedValue.dismiss()
     }
     
     private func updateData() {
