@@ -31,6 +31,9 @@ struct TaskCard: View {
                         Text(self.task.answer!)
                             .animation(.easeInOut(duration: 0.07))
                             .padding()
+                    } else if self.task.answer != nil && !(self.showingAnswer) {
+                        Image(systemName: "text.alignleft")
+                            .opacity(0.5)
                     }
                 }.padding()
                 
