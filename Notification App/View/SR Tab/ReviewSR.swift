@@ -13,7 +13,6 @@ struct ReviewSR: View {
     
     @Environment(\.managedObjectContext) var managedObjectContext
     @FetchRequest(fetchRequest: TaskSaved.getAllItems()) var tasksFetched: FetchedResults<TaskSaved>
-    @State var translation = CGSize.zero
     @State var showingAnswer = false
     @State var coreDataTaskStore = TaskStore(tasks: [Task]())
     @State var tasksDue = [Task]()
@@ -63,17 +62,6 @@ struct ReviewSR: View {
 
                 if self.tasksDue.count > 0 {
                     TaskCard(task: self.tasksDue[0], showingAnswer: self.$showingAnswer)
-                        .gesture(
-                            DragGesture()
-                                .onChanged({ (value) in
-                                    self.translation.width += value.translation.width
-                                    self.translation.height += value.translation.height
-                                })
-                                .onEnded({ (value) in
-                                    self.translation = .zero
-                                })
-                        )
-                        .offset(self.translation)
                 }
             }
             
@@ -193,7 +181,6 @@ struct ReviewSR: View {
     
     func onSomeAction() {
         self.printInfo()
-        self.translation = CGSize.zero
         self.showingAnswer = false
     }
     

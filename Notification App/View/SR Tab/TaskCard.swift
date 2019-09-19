@@ -25,17 +25,17 @@ struct TaskCard: View {
                 VStack {
                     Text(self.task.question)
                         .font(.largeTitle)
-                        .animation(.easeInOut(duration: 0.07))
+                        .animation(.easeInOut(duration: 0.2))
                     
                     if self.task.answer != nil && self.showingAnswer {
                         ScrollView {
                             Text(self.task.answer!)
-                            .animation(.easeInOut(duration: 0.07))
-                            .padding()
-                        }
+                                .padding()
+                        }.animation(.easeInOut(duration: 0.4))
                     } else if self.task.answer != nil && !(self.showingAnswer) {
                         Image(systemName: "text.alignleft")
                             .opacity(0.5)
+                            .animation(.easeInOut(duration: 0.2))
                     }
                 }.padding()
                 
@@ -44,7 +44,6 @@ struct TaskCard: View {
                 .onTapGesture {
                     self.showingAnswer.toggle()
                 }
-                .animation(.easeInOut(duration: 0.07))
         }
     }
 }
