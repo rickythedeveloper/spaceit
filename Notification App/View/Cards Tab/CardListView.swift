@@ -16,6 +16,7 @@ struct CardListView: View {
     @State private var listChoice = 0
     @State private var allTasks = [TaskSaved]()
     @State private var upcomingTasks = [TaskSaved]()
+    @State private var addingNewSR = false
     
     var body: some View {
         
@@ -44,7 +45,6 @@ struct CardListView: View {
                 } else {
                     List {
                         ForEach(0..<self.allTasks.count, id: \.self) { index in
-//                            Text(self.allTasks[index].question)
                             NavigationLink(destination:
                                 CardEditView(task: self.allTasks[index].convertToTask()).environment(\.managedObjectContext, self.managedObjectContext), label: {
                                 Text(self.allTasks[index].question)
@@ -57,6 +57,16 @@ struct CardListView: View {
                 self.refresh()
             })
             .navigationBarTitle("Cards")
+            .navigationBarItems(trailing:
+                Button(action: {self.addingNewSR = true}) {
+                    Image(systemName: "plus")
+                        .font(.title)
+                        .foregroundColor(.blue)
+                        .sheet(isPresented: self.$addingNewSR, onDismiss: self.refresh) {
+                            AddSR().environment(\.managedObjectContext, self.managedObjectContext)
+                        }
+                }
+            )
         }
     }
     
