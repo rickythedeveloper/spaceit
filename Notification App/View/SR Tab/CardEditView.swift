@@ -15,6 +15,7 @@ struct CardEditView: View {
     @FetchRequest(fetchRequest: TaskSaved.getAllItems()) var tasksFetched: FetchedResults<TaskSaved>
     var task: Task
     
+    @State private var deleteChecking = false
     @State private var isShowing = true // this protects the view disappearing before the textfields, which in turn prevents the app from crashing. (Since they keyboard guardian needs the geometry of the textfieds...)
     @State private var alertShowing = false
     @ObservedObject private var kGuardian = KeyboardGuardian(textFieldCount: 2)
@@ -37,6 +38,9 @@ struct CardEditView: View {
                     MultiLineTF(text: self.$question, fontSize: CGFloat(20.0), index: 0, kGuardian: kGuardian)
                         .frame(maxWidth: 500, maxHeight: 100, alignment: .center)
                         .background(GeometryGetter(rect: self.$kGuardian.rects[0]))
+                        .alert(isPresented: self.$alertShowing) {
+                            Alert.invalidQuestion()
+                        }
                     
                     HStack {
                         Text("Answer/Hint (optional)")
@@ -49,17 +53,23 @@ struct CardEditView: View {
             }
             
             HStack {
-                Button(action: self.deletePressed) {
+                Spacer()
+                Button(action: {self.deleteChecking = true}) {
                     Image(systemName: "trash.circle")
                         .imageScale(.large)
                         .font(.title)
+                        
+                }.alert(isPresented: self.$deleteChecking) {
+                    Alert.deleteTask(deleteAction: self.deleteTask)
                 }
                 
+                Spacer()
                 Button(action: self.tickPressed) {
                     Image(systemName: "checkmark.circle")
                         .imageScale(.large)
                         .font(.title)
                 }
+                Spacer()
             }
             
             Spacer()
@@ -75,9 +85,6 @@ struct CardEditView: View {
                     UIApplication.shared.endEditing()
                 }
         )
-        .alert(isPresented: self.$alertShowing) {
-            Alert.invalidQuestion()
-        }
     }
     
     private func setup() {
@@ -90,7 +97,7 @@ struct CardEditView: View {
         }
     }
     
-    private func deletePressed() {
+    private func deleteTask() {
         for eachTaskFetched in self.tasksFetched {
             if eachTaskFetched.id == self.task.id {
                 self.managedObjectContext.delete(eachTaskFetched)

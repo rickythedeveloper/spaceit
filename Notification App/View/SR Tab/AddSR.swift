@@ -106,7 +106,7 @@ struct AddSR: View {
         }
         
         task.lastChecked = Date()
-//        task.waitTime = 5
+//        task.waitTime = 2
         task.waitTime = 60*60*24
         
         self.saveContext()

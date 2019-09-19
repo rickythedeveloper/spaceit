@@ -12,4 +12,8 @@ extension Alert {
     static func invalidQuestion() -> Alert {
         return Alert(title: Text("Invalid question"), message: Text("Please enter the question"), dismissButton: .default(Text("OK")))
     }
+    
+    static func deleteTask(deleteAction: (() -> Void)?) -> Alert {
+        return Alert(title: Text("Delete task?"), message: Text("This action cannot be undone."), primaryButton: .cancel(), secondaryButton: .default(Text("Delete"), action: deleteAction))
+    }
 }
