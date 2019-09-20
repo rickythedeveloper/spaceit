@@ -18,6 +18,7 @@ struct ReviewSR: View {
     @State var tasksDue = [Task]()
     @State private var addingNewSR = false
     @State private var editingCard = false
+    @State private var putOffIDs = [UUID]()
     
     var sectionName: String
     
@@ -129,9 +130,28 @@ struct ReviewSR: View {
         self.coreDataTaskStore = TaskStore(tasks: temporaryTasks)
         
         self.tasksDue = self.coreDataTaskStore.dueTasks()
+        
+        self.tasksDue.sort { (lhs, rhs) -> Bool in
+            if lhs.dueDate() < rhs.dueDate() {
+                return true
+            } else {
+                return false
+            }
+        }
+        
+        for putOffID in self.putOffIDs {
+            var index = 0
+            for eachTask in self.tasksDue {
+                if putOffID == eachTask.id {
+                    self.tasksDue.moveItemToLast(fromIndex: index)
+                }
+                index += 1
+            }
+        }
     }
     
     private func putOffPressed() {
+        self.putOffIDs.append(tasksDue[0].id)
         self.tasksDue.moveItemToLast(fromIndex: 0)
         self.onSomeAction()
     }
