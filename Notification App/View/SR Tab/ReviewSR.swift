@@ -12,7 +12,7 @@ import GoogleMobileAds
 struct ReviewSR: View {
     
     @Environment(\.managedObjectContext) var managedObjectContext
-    @FetchRequest(fetchRequest: TaskSaved.getAllItems()) var tasksFetched: FetchedResults<TaskSaved>
+    @FetchRequest(fetchRequest: TaskSaved.fetchRequest()) var tasksFetched: FetchedResults<TaskSaved>
     @State var showingAnswer = false
     @State var coreDataTaskStore = TaskStore(tasks: [Task]())
     @State var tasksDue = [Task]()

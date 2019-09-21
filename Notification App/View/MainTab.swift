@@ -32,6 +32,12 @@ struct MainTab: View {
                     Text("Cards")
                 }
             
+            PageStructureView()
+                .environment(\.managedObjectContext, (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext)
+                .tabItem {
+                    Text("Pages (beta)")
+            }
+            
             AddNewReminder(sectionName: self.notifSenderTitle).environmentObject(userSettings)
                 .tabItem {
                     Image(systemName: "exclamationmark")

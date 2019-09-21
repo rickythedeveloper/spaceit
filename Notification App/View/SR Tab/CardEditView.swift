@@ -12,7 +12,7 @@ struct CardEditView: View {
     
     @Environment(\.presentationMode) private var presentationMode
     @Environment(\.managedObjectContext) var managedObjectContext
-    @FetchRequest(fetchRequest: TaskSaved.getAllItems()) var tasksFetched: FetchedResults<TaskSaved>
+    @FetchRequest(fetchRequest: TaskSaved.fetchRequest()) var tasksFetched: FetchedResults<TaskSaved>
     var task: Task
     
     @State private var deleteChecking = false

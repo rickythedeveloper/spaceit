@@ -11,7 +11,7 @@ import SwiftUI
 struct CardListView: View {
     
     @Environment(\.managedObjectContext) var managedObjectContext
-    @FetchRequest(fetchRequest: TaskSaved.getAllItems()) var tasksFetched: FetchedResults<TaskSaved>
+    @FetchRequest(fetchRequest: TaskSaved.fetchRequest()) var tasksFetched: FetchedResults<TaskSaved>
     
     @State private var listChoice = 0
     @State private var allTasks = [TaskSaved]()
