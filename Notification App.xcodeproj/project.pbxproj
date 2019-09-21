@@ -105,14 +105,6 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
-		B81428C5232EB3FE0085AA1F /* Text Field */ = {
-			isa = PBXGroup;
-			children = (
-				B81428C6232EB41B0085AA1F /* MultiLineTextField.swift */,
-			);
-			path = "Text Field";
-			sourceTree = "<group>";
-		};
 		B84EA8532327AE9C00FAF4A1 /* Settings */ = {
 			isa = PBXGroup;
 			children = (
@@ -131,22 +123,6 @@
 				B88457F6232A589C00B5CC3C /* UIApplication+.swift */,
 			);
 			path = "Keyboard Guardian";
-			sourceTree = "<group>";
-		};
-		B8845802232BADEE00B5CC3C /* Color */ = {
-			isa = PBXGroup;
-			children = (
-				B8845803232BADFB00B5CC3C /* Color+.swift */,
-			);
-			path = Color;
-			sourceTree = "<group>";
-		};
-		B8845805232BCECD00B5CC3C /* Array */ = {
-			isa = PBXGroup;
-			children = (
-				B8845806232BCEDE00B5CC3C /* Array+.swift */,
-			);
-			path = Array;
 			sourceTree = "<group>";
 		};
 		B8845808232BE4B300B5CC3C /* Reminder Tab */ = {
@@ -179,20 +155,27 @@
 			path = "More Tab";
 			sourceTree = "<group>";
 		};
-		B8AB581D232E842B00AD2012 /* NSManagedObject */ = {
-			isa = PBXGroup;
-			children = (
-				B8AB581E232E843C00AD2012 /* NSManagedObject+.swift */,
-			);
-			path = NSManagedObject;
-			sourceTree = "<group>";
-		};
 		B8AB5820232E8F3300AD2012 /* Cards Tab */ = {
 			isa = PBXGroup;
 			children = (
 				B8AB5821232E8F7A00AD2012 /* CardListView.swift */,
 			);
 			path = "Cards Tab";
+			sourceTree = "<group>";
+		};
+		B8C723D12336464F00455480 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				B81428C6232EB41B0085AA1F /* MultiLineTextField.swift */,
+				B8845806232BCEDE00B5CC3C /* Array+.swift */,
+				B8845803232BADFB00B5CC3C /* Color+.swift */,
+				B8AB581E232E843C00AD2012 /* NSManagedObject+.swift */,
+				B895D2DD233159CC00767C4E /* String+.swift */,
+				B895D2DF23315AC600767C4E /* Alert+.swift */,
+				B8D9505B2326C82D001236AE /* Notification */,
+				B88457F3232A4E0E00B5CC3C /* Keyboard Guardian */,
+			);
+			path = Services;
 			sourceTree = "<group>";
 		};
 		B8D950302326C48F001236AE = {
@@ -216,14 +199,9 @@
 		B8D9503B2326C48F001236AE /* Notification App */ = {
 			isa = PBXGroup;
 			children = (
-				B81428C5232EB3FE0085AA1F /* Text Field */,
-				B8AB581D232E842B00AD2012 /* NSManagedObject */,
-				B8845805232BCECD00B5CC3C /* Array */,
-				B8845802232BADEE00B5CC3C /* Color */,
-				B88457F3232A4E0E00B5CC3C /* Keyboard Guardian */,
-				B8D9B2D22329A94B00348987 /* Controller */,
-				B8D9505B2326C82D001236AE /* Notification */,
+				B8C723D12336464F00455480 /* Services */,
 				B8D950542326C4AB001236AE /* View */,
+				B8D9B2D22329A94B00348987 /* Controller */,
 				B8D950532326C4A4001236AE /* Model */,
 				B8D9503C2326C48F001236AE /* AppDelegate.swift */,
 				B8D9503E2326C48F001236AE /* SceneDelegate.swift */,
@@ -232,8 +210,6 @@
 				B8D9504D2326C491001236AE /* Info.plist */,
 				B8D950402326C48F001236AE /* Notification_App.xcdatamodeld */,
 				B8D950472326C491001236AE /* Preview Content */,
-				B895D2DD233159CC00767C4E /* String+.swift */,
-				B895D2DF23315AC600767C4E /* Alert+.swift */,
 			);
 			path = "Notification App";
 			sourceTree = "<group>";
@@ -259,11 +235,11 @@
 		B8D950542326C4AB001236AE /* View */ = {
 			isa = PBXGroup;
 			children = (
-				B8AB5820232E8F3300AD2012 /* Cards Tab */,
 				B88457FA232BA0BA00B5CC3C /* MainTab.swift */,
 				B8845809232BE4D400B5CC3C /* SR Tab */,
-				B8845808232BE4B300B5CC3C /* Reminder Tab */,
+				B8AB5820232E8F3300AD2012 /* Cards Tab */,
 				B886E727232D8A9900BD76BD /* More Tab */,
+				B8845808232BE4B300B5CC3C /* Reminder Tab */,
 			);
 			path = View;
 			sourceTree = "<group>";
