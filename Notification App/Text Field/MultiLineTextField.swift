@@ -31,6 +31,7 @@ struct MultiLineTF: UIViewRepresentable {
         myTextView.isUserInteractionEnabled = true
         myTextView.backgroundColor = UIColor(red: 0.5, green: 0.5, blue: 0.5, alpha: 0.3)
         myTextView.layer.cornerRadius = 10.0
+        myTextView.autocorrectionType = .no
 
         return myTextView
     }
