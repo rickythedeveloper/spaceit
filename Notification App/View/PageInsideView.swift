@@ -17,6 +17,8 @@ struct PageInsideView: View {
     var pageID: UUID
     
     @State private var newPageName = ""
+    @State private var moreActionSheeting = false
+    @State private var editingPageName = false
     
     var body: some View {
         VStack {
@@ -24,7 +26,7 @@ struct PageInsideView: View {
                 TextField("New Page Name", text: self.$newPageName, onCommit: {
                     UIApplication.shared.endEditing()
                 })
-                    .background(Color.gray)
+                    .background(Color.gray.opacity(0.3))
                     .cornerRadius(10.0)
                     .multilineTextAlignment(.center)
                 
@@ -57,6 +59,16 @@ struct PageInsideView: View {
             }
         }
         .navigationBarTitle(self.thisPage() != nil ? self.thisPage()!.name : "This Page Does Not Exist")
+        .navigationBarItems(trailing: Button(action: self.morePressed) {
+            Image(systemName: "ellipsis")
+                .font(.title)
+                .actionSheet(isPresented: self.$moreActionSheeting) {
+                    ActionSheet(title: Text("Action"), message: nil, buttons: [.cancel(), .default(Text("Edit page name"), action: self.editPageNamePressed)])
+                }
+                .sheet(isPresented: self.$editingPageName) {
+                    PageNameEditView(pageID: self.pageID).environment(\.managedObjectContext, self.managedObjectContext)
+                }
+        })
     }
     
     private func thisPage() -> Page? {
@@ -91,6 +103,14 @@ struct PageInsideView: View {
             self.managedObjectContext.delete(self.children()[eachIndex])
         }
         self.managedObjectContext.saveContext()
+    }
+    
+    private func morePressed() {
+        self.moreActionSheeting = true
+    }
+    
+    private func editPageNamePressed() {
+        self.editingPageName = true
     }
     
 //    private func deleteThisPage() {
