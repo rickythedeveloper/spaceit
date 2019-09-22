@@ -41,8 +41,7 @@ struct PageInsideView: View {
 
             List {
                 Section(header: Text("Pages")) {
-                    
-                    ForEach(self.children(), id: \.self) { child in
+                    ForEach(self.pages.childrenOfPage(id: self.pageID), id: \.self) { child in
                         NavigationLink(destination: PageInsideView(pageID: child.id).environment(\.managedObjectContext, self.managedObjectContext)) {
                             Text(child.name)
                         }
@@ -58,7 +57,7 @@ struct PageInsideView: View {
 //                }
             }
         }
-        .navigationBarTitle(self.thisPage() != nil ? self.thisPage()!.name : "This Page Does Not Exist")
+        .navigationBarTitle(self.pages.page(id: self.pageID) != nil ? self.pages.page(id: self.pageID)!.name : "This Page Does Not Exist")
         .navigationBarItems(trailing: Button(action: self.morePressed) {
             Image(systemName: "ellipsis")
                 .font(.title)
@@ -71,28 +70,10 @@ struct PageInsideView: View {
         })
     }
     
-    private func thisPage() -> Page? {
-        let possiblePages = self.pages.filter { (page) -> Bool in
-            if page.id == self.pageID {return true} else {return false}
-            }
-        guard possiblePages.count == 1 else {return nil}
-        return possiblePages[0]
-    }
-    
-    private func children() -> [Page] {
-        if let thisPage = self.thisPage() {
-            let children = (thisPage.children?.allObjects as! [Page]).sortedByName()
-            return children
-        } else {
-            return []
-        }
-        
-    }
-    
     private func addPage() {
-        guard self.thisPage() != nil else {return}
+        guard let thisPage = self.pages.page(id: self.pageID) else {return}
         let newPage = Page.createPageInContext(name: self.newPageName, id: UUID(), context: self.managedObjectContext)
-        self.thisPage()!.addToChildren(newPage)
+        thisPage.addToChildren(newPage)
         self.managedObjectContext.saveContext()
         self.newPageName = ""
         UIApplication.shared.endEditing()
@@ -100,7 +81,7 @@ struct PageInsideView: View {
     
     private func deleteChildren(at indexSet: IndexSet) {
         for eachIndex in indexSet {
-            self.managedObjectContext.delete(self.children()[eachIndex])
+            self.managedObjectContext.delete(self.pages.childrenOfPage(id: self.pageID)[eachIndex])
         }
         self.managedObjectContext.saveContext()
     }
