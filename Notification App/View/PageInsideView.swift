@@ -45,7 +45,7 @@ struct PageInsideView: View {
             List {
                 Section(header: Text("Pages")) {
                     ForEach(self.pages.childrenOfPage(id: self.pageID), id: \.self) { child in
-                        NavigationLink(destination: PageInsideView(pageID: child.id, isInSelectionMode: self.isInSelectionMode, onSelection: self.onSelection).environment(\.managedObjectContext, self.managedObjectContext)) {
+                        NavigationLink(destination: PageInsideView(pageID: child.id, isInSelectionMode: self.isInSelectionMode, onSelection: self.dismissThisViewAndPassInfo(pageSelected:)).environment(\.managedObjectContext, self.managedObjectContext)) {
                             Text(child.name)
                         }
                     }.onDelete(perform: self.deleteChildren(at:))
@@ -97,13 +97,18 @@ struct PageInsideView: View {
     
     private func morePressed() {
         if self.isInSelectionMode {
-            guard let thisPage = self.pages.page(id: self.pageID) else {return}
-            guard let onSelection = self.onSelection else {return}
             self.presentationMode.wrappedValue.dismiss()
-            onSelection(thisPage)
+            guard let thisPage = self.pages.page(id: self.pageID) else {return}
+            self.dismissThisViewAndPassInfo(pageSelected: thisPage)
         } else {
             self.moreActionSheeting = true
         }
+    }
+    
+    private func dismissThisViewAndPassInfo(pageSelected: Page) {
+        self.presentationMode.wrappedValue.dismiss()
+        guard let onSelection = self.onSelection else {return}
+        onSelection(pageSelected)
     }
     
     private func editPageNamePressed() {
