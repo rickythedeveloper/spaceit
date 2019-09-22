@@ -18,7 +18,23 @@ extension Page {
         request.sortDescriptors = [sortDescriptor]
         return request
     }
+    
+//    @nonobjc public class func fetchRequest(pageID: UUID) -> NSFetchRequest<Page> {
+//        let request = NSFetchRequest<Page>(entityName: "Page")
+//        let sortDescriptor = NSSortDescriptor(key: "name", ascending: true)
+//        request.sortDescriptors = [sortDescriptor]
+//        request.predicate = NSPredicate(format: "id = %@", pageID as CVarArg)
+//        return request
+//    }
+    
+    static func createPageInContext(name: String, id: UUID, context: NSManagedObjectContext) -> Page {
+        let page = Page(context: context)
+        page.name = name
+        page.id = id
+        return page
+    }
 
+    @NSManaged public var id: UUID
     @NSManaged public var name: String
     @NSManaged public var children: NSSet?
     @NSManaged public var concepts: NSSet?

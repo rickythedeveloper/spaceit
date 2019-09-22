@@ -18,3 +18,25 @@ extension Array {
         moveItem(fromIndex: fromIndex, toIndex: self.count-1)
     }
 }
+
+extension Array where Element : Page {
+    func sortedByName() -> [Page] {
+        return self.sorted { (lhs, rhs) -> Bool in
+            if lhs.name < rhs.name {
+                return true
+            } else {
+                return false
+            }
+        }
+    }
+    
+    mutating func sortByName() {
+        self.sort { (lhs, rhs) -> Bool in
+            if lhs.name < rhs.name {
+                return true
+            } else {
+                return false
+            }
+        }
+    }
+}

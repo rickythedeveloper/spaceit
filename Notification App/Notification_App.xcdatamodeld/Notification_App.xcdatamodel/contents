@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="14903" systemVersion="19A558d" minimumToolsVersion="Automatic" sourceLanguage="Swift" usedWithCloudKit="YES" userDefinedModelVersionIdentifier="">
     <entity name="Page" representedClassName=".Page" syncable="YES">
+        <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
         <attribute name="name" optional="YES" attributeType="String"/>
         <relationship name="children" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Page" inverseName="parent" inverseEntity="Page"/>
-        <relationship name="concepts" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="TaskSaved" inverseName="page" inverseEntity="TaskSaved"/>
+        <relationship name="concepts" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="TaskSaved" inverseName="page" inverseEntity="TaskSaved"/>
         <relationship name="parent" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Page" inverseName="children" inverseEntity="Page"/>
     </entity>
     <entity name="TaskSaved" representedClassName=".TaskSaved" syncable="YES">
@@ -15,7 +16,7 @@
         <relationship name="page" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Page" inverseName="concepts" inverseEntity="Page"/>
     </entity>
     <elements>
-        <element name="Page" positionX="105.33984375" positionY="-3.2421875" width="128" height="103"/>
+        <element name="Page" positionX="105.33984375" positionY="-3.2421875" width="128" height="118"/>
         <element name="TaskSaved" positionX="-63" positionY="-18" width="128" height="133"/>
     </elements>
 </model>

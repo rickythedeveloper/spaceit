@@ -17,9 +17,9 @@ struct PageStructureView: View {
         NavigationView {
             
             if pages.count == 0 {
-                Text("A")
+                Text("Invalid Page Structure. Please report to the developer.")
             } else {
-                PageInsideView(page: topPage()!).environment(\.managedObjectContext, self.managedObjectContext)
+                PageInsideView(pageID: self.topPage()!.id).environment(\.managedObjectContext, self.managedObjectContext)
             }
         }.onAppear(perform: self.setup)
     }
@@ -29,9 +29,7 @@ struct PageStructureView: View {
     }
     
     private func addTopLevelWorkSpace() {
-        let newPage = Page(context: managedObjectContext)
-        newPage.name = "My Workspace"
-        
+        _ = Page.createPageInContext(name: "My Workspace", id: UUID(), context: self.managedObjectContext)
         self.managedObjectContext.saveContext()
     }
     
