@@ -132,6 +132,16 @@
 			path = "New Group";
 			sourceTree = "<group>";
 		};
+		B85C07DD2338158500200B07 /* Workspace */ = {
+			isa = PBXGroup;
+			children = (
+				B85C07D523365CCB00200B07 /* PageStructureView.swift */,
+				B85C07D723365E3200200B07 /* PageInsideView.swift */,
+				B85C07D923379DBB00200B07 /* PageNameEditView.swift */,
+			);
+			path = Workspace;
+			sourceTree = "<group>";
+		};
 		B88457F3232A4E0E00B5CC3C /* Keyboard Guardian */ = {
 			isa = PBXGroup;
 			children = (
@@ -259,11 +269,9 @@
 				B88457FA232BA0BA00B5CC3C /* MainTab.swift */,
 				B8845809232BE4D400B5CC3C /* SR Tab */,
 				B8AB5820232E8F3300AD2012 /* Cards Tab */,
+				B85C07DD2338158500200B07 /* Workspace */,
 				B886E727232D8A9900BD76BD /* More Tab */,
 				B8845808232BE4B300B5CC3C /* Reminder Tab */,
-				B85C07D523365CCB00200B07 /* PageStructureView.swift */,
-				B85C07D723365E3200200B07 /* PageInsideView.swift */,
-				B85C07D923379DBB00200B07 /* PageNameEditView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
