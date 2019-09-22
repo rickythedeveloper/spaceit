@@ -14,6 +14,8 @@ struct AddSR: View {
     @Environment(\.managedObjectContext) var managedObjectContext
     @FetchRequest(fetchRequest: TaskSaved.fetchRequest()) var tasksFetched: FetchedResults<TaskSaved>
     
+    var preChosenPage: Page?
+    
     @State private var choosingPage = false
     @State private var chosenPage: Page?
     @State private var question: String = ""
@@ -102,6 +104,11 @@ struct AddSR: View {
             .alert(isPresented: self.$alertShowing) {
                 Alert.invalidQuestion()
             }
+            .onAppear(perform: self.setup)
+    }
+    
+    private func setup() {
+        self.chosenPage = self.preChosenPage
     }
     
     private func dismissView() {

@@ -22,6 +22,7 @@ struct PageInsideView: View {
     @State private var newPageName = ""
     @State private var moreActionSheeting = false
     @State private var editingPageName = false
+    @State private var addingConcept = false
     
     var body: some View {
         VStack {
@@ -57,6 +58,22 @@ struct PageInsideView: View {
                             Text(concept.question)
                         }
                     }//.onDelete(perform: self.deleteChildren(at:))
+                    
+                    HStack {
+                        Spacer()
+                        Button(action: {
+                            self.addingConcept = true
+                        }) {
+                            Image(systemName: "plus")
+                                .imageScale(.large)
+                                .multilineTextAlignment(.center)
+                                .sheet(isPresented: self.$addingConcept) {
+                                    AddSR(preChosenPage: self.pages.page(id: self.pageID)).environment(\.managedObjectContext, self.managedObjectContext)
+                                }
+                                .foregroundColor(.blue)
+                        }
+                        Spacer()
+                    }
                 }
             }
         }
