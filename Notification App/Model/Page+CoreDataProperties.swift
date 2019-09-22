@@ -33,6 +33,21 @@ extension Page {
         page.id = id
         return page
     }
+    
+    func breadCrumb() -> String {
+        return self.breadCrumbAlgorithm(bc: "")
+    }
+    
+    private func breadCrumbAlgorithm(bc: String) -> String {
+        var thisPageName = self.name
+        thisPageName = thisPageName + "/" + bc
+        
+        if let parent = self.parent {
+            return parent.breadCrumbAlgorithm(bc: thisPageName)
+        } else {
+            return thisPageName
+        }
+    }
 
     @NSManaged public var id: UUID
     @NSManaged public var name: String

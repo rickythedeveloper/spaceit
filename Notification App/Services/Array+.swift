@@ -40,3 +40,15 @@ extension Array where Element : Page {
         }
     }
 }
+
+extension Array where Element: TaskSaved {
+    func sortedByName() -> [TaskSaved] {
+        return self.sorted { (lhs, rhs) -> Bool in
+            if lhs.question < rhs.question {
+                return true
+            } else {
+                return false
+            }
+        }
+    }
+}

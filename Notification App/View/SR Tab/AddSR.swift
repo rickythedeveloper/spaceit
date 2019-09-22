@@ -12,7 +12,10 @@ struct AddSR: View {
     
     @Environment(\.presentationMode) var presentationMode
     @Environment(\.managedObjectContext) var managedObjectContext
+    @FetchRequest(fetchRequest: TaskSaved.fetchRequest()) var tasksFetched: FetchedResults<TaskSaved>
     
+    @State private var choosingPage = false
+    @State private var chosenPage: Page?
     @State private var question: String = ""
     @State private var answer: String = ""
     @State private var isShowing = true // this protects the view disappearing before the textfields, which in turn prevents the app from crashing. (Since they keyboard guardian needs the geometry of the textfieds...)
@@ -36,6 +39,23 @@ struct AddSR: View {
                     Spacer()
                 }
             }
+            
+            if self.chosenPage != nil {
+                Button(action: {self.choosingPage = true}) {
+                    Text(self.chosenPage!.breadCrumb())
+                        .sheet(isPresented: self.$choosingPage) {
+                            PageStructureView(isInSelectionMode: true, onSelection: self.addPage(page:)).environment(\.managedObjectContext, self.managedObjectContext)
+                        }
+                }
+            } else {
+                Button(action: {self.choosingPage = true}) {
+                    Text("Add page")
+                        .sheet(isPresented: self.$choosingPage) {
+                            PageStructureView(isInSelectionMode: true, onSelection: self.addPage(page:)).environment(\.managedObjectContext, self.managedObjectContext)
+                        }
+                }
+            }
+            
             
             if self.isShowing {
                 VStack {
@@ -108,6 +128,7 @@ struct AddSR: View {
         task.lastChecked = Date()
 //        task.waitTime = 2
         task.waitTime = 60*60*24
+        task.page = self.chosenPage
         
         self.saveContext()
         self.registerNotification(id: task.id, question: task.question, waitTime: task.waitTime)
@@ -143,6 +164,10 @@ struct AddSR: View {
                 }
             }
         }
+    }
+    
+    private func addPage(page: Page) {
+        self.chosenPage = page
     }
 }
 

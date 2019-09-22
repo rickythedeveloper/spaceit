@@ -16,6 +16,9 @@ struct PageInsideView: View {
     
     var pageID: UUID
     
+    var isInSelectionMode: Bool = false
+    var onSelection: ((Page) -> Void)?
+    
     @State private var newPageName = ""
     @State private var moreActionSheeting = false
     @State private var editingPageName = false
@@ -42,31 +45,37 @@ struct PageInsideView: View {
             List {
                 Section(header: Text("Pages")) {
                     ForEach(self.pages.childrenOfPage(id: self.pageID), id: \.self) { child in
-                        NavigationLink(destination: PageInsideView(pageID: child.id).environment(\.managedObjectContext, self.managedObjectContext)) {
+                        NavigationLink(destination: PageInsideView(pageID: child.id, isInSelectionMode: self.isInSelectionMode, onSelection: self.onSelection).environment(\.managedObjectContext, self.managedObjectContext)) {
                             Text(child.name)
                         }
                     }.onDelete(perform: self.deleteChildren(at:))
                 }
-
-//                Section(header: Text("Concepts")) {
-//                    ForEach(self.page.concepts?.allObjects as! [TaskSaved], id: \.self) { concept in
-//                        NavigationLink(destination: CardEditView(task: concept.convertToTask()).environment(\.managedObjectContext, self.managedObjectContext)) {
-//                            Text(concept.question)
-//                        }
-//                    }
-//                }
+                
+                Section(header: Text("Concepts")) {
+                    ForEach(self.pages.conceptsOfPage(id: self.pageID), id: \.self) { concept in
+                        NavigationLink(destination: CardEditView(task: concept.convertToTask()).environment(\.managedObjectContext, self.managedObjectContext)) {
+                            Text(concept.question)
+                        }
+                    }//.onDelete(perform: self.deleteChildren(at:))
+                }
             }
         }
         .navigationBarTitle(self.pages.page(id: self.pageID) != nil ? self.pages.page(id: self.pageID)!.name : "This Page Does Not Exist")
         .navigationBarItems(trailing: Button(action: self.morePressed) {
-            Image(systemName: "ellipsis")
-                .font(.title)
-                .actionSheet(isPresented: self.$moreActionSheeting) {
-                    ActionSheet(title: Text("Action"), message: nil, buttons: [.cancel(), .default(Text("Edit page name"), action: self.editPageNamePressed)])
-                }
-                .sheet(isPresented: self.$editingPageName) {
-                    PageNameEditView(pageID: self.pageID).environment(\.managedObjectContext, self.managedObjectContext)
-                }
+            if !self.isInSelectionMode {
+                Image(systemName: "ellipsis")
+                    .font(.title)
+                    .actionSheet(isPresented: self.$moreActionSheeting) {
+                        ActionSheet(title: Text("Action"), message: nil, buttons: [.cancel(), .default(Text("Edit page name"), action: self.editPageNamePressed)])
+                    }
+                    .sheet(isPresented: self.$editingPageName) {
+                        PageNameEditView(pageID: self.pageID).environment(\.managedObjectContext, self.managedObjectContext)
+                    }
+            } else {
+                Text("Choose")
+                    .font(.title)
+            }
+            
         })
     }
     
@@ -87,7 +96,14 @@ struct PageInsideView: View {
     }
     
     private func morePressed() {
-        self.moreActionSheeting = true
+        if self.isInSelectionMode {
+            guard let thisPage = self.pages.page(id: self.pageID) else {return}
+            guard let onSelection = self.onSelection else {return}
+            self.presentationMode.wrappedValue.dismiss()
+            onSelection(thisPage)
+        } else {
+            self.moreActionSheeting = true
+        }
     }
     
     private func editPageNamePressed() {

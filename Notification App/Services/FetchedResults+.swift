@@ -27,4 +27,23 @@ extension FetchedResults where Result: Page {
             return []
         }
     }
+    
+    func conceptsOfPage(id: UUID) -> [TaskSaved] {
+        if let thisPage = self.page(id: id) {
+            let concepts = (thisPage.concepts?.allObjects as! [TaskSaved]).sortedByName()
+            return concepts
+        } else {
+            return []
+        }
+    }
+}
+
+extension FetchedResults where Result: TaskSaved {
+    func concept(id: UUID) -> TaskSaved? {
+        let possibleConcepts = self.filter { (concept) -> Bool in
+            if concept.id == id {return true} else {return false}
+        }
+        guard possibleConcepts.count == 1 else {return nil}
+        return possibleConcepts[0]
+    }
 }

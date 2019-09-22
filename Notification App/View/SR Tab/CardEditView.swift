@@ -15,6 +15,7 @@ struct CardEditView: View {
     @FetchRequest(fetchRequest: TaskSaved.fetchRequest()) var tasksFetched: FetchedResults<TaskSaved>
     var task: Task
     
+    @State private var choosingPage = false
     @State private var deleteChecking = false
     @State private var isShowing = true // this protects the view disappearing before the textfields, which in turn prevents the app from crashing. (Since they keyboard guardian needs the geometry of the textfieds...)
     @State private var alertShowing = false
@@ -28,6 +29,24 @@ struct CardEditView: View {
     var body: some View {
         VStack {
             Spacer()
+            
+            if tasksFetched.concept(id: self.task.id)?.page?.breadCrumb() != nil {
+                Button(action: {self.choosingPage = true}) {
+                    Text(tasksFetched.concept(id: self.task.id)!.page!.breadCrumb())
+                        .sheet(isPresented: self.$choosingPage) {
+                            PageStructureView(isInSelectionMode: true, onSelection: self.addPage(page:)).environment(\.managedObjectContext, self.managedObjectContext)
+                        }
+                }
+            } else {
+                Button(action: {self.choosingPage = true}) {
+                    Text("Add page")
+                        .sheet(isPresented: self.$choosingPage) {
+                            PageStructureView(isInSelectionMode: true, onSelection: self.addPage(page:)).environment(\.managedObjectContext, self.managedObjectContext)
+                        }
+                }
+            }
+            
+            Divider()
             
             if self.isShowing {
                 VStack {
@@ -142,6 +161,11 @@ struct CardEditView: View {
             }
         }
         return nil
+    }
+    
+    private func addPage(page: Page) {
+        self.tasksFetched.concept(id: self.task.id)?.page = page
+        self.managedObjectContext.saveContext()
     }
 }
 

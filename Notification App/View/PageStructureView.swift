@@ -13,13 +13,16 @@ struct PageStructureView: View {
     @Environment(\.managedObjectContext) var managedObjectContext
     @FetchRequest(fetchRequest: Page.fetchRequest()) var pages: FetchedResults<Page>
     
+    var isInSelectionMode: Bool = false
+    var onSelection: ((Page) -> Void)?
+    
     var body: some View {
         NavigationView {
             
             if pages.count == 0 {
                 Text("Invalid Page Structure. Please report to the developer.")
             } else {
-                PageInsideView(pageID: self.topPage()!.id).environment(\.managedObjectContext, self.managedObjectContext)
+                PageInsideView(pageID: self.topPage()!.id, isInSelectionMode: self.isInSelectionMode, onSelection: self.onSelection).environment(\.managedObjectContext, self.managedObjectContext)
             }
         }.onAppear(perform: self.setup)
     }
