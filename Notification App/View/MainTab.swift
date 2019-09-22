@@ -12,7 +12,7 @@ struct MainTab: View {
     
     @EnvironmentObject var userSettings: UserSettings
     
-    let SRTitle = "Spaced Repetition"
+    let SRTitle = "Review"
     let notifSenderTitle = "Notif Sender"
     
     var body: some View {
@@ -35,14 +35,15 @@ struct MainTab: View {
             PageStructureView()
                 .environment(\.managedObjectContext, (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext)
                 .tabItem {
-                    Text("Pages (beta)")
+                    Image(systemName: "folder.fill")
+                    Text("Workspace")
             }
             
-            AddNewReminder(sectionName: self.notifSenderTitle).environmentObject(userSettings)
-                .tabItem {
-                    Image(systemName: "exclamationmark")
-                    Text(self.notifSenderTitle)
-                }
+//            AddNewReminder(sectionName: self.notifSenderTitle).environmentObject(userSettings)
+//                .tabItem {
+//                    Image(systemName: "exclamationmark")
+//                    Text(self.notifSenderTitle)
+//                }
             
             MoreTab()
                 .tabItem {
