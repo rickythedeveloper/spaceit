@@ -125,11 +125,10 @@ struct AddSR: View {
         let task = TaskSaved(context: self.managedObjectContext)
         task.id = UUID()
         task.question = self.question
-        
-        if self.answer == "" {
-            task.answer = nil
-        } else {
+        if self.answer.hasContent() {
             task.answer = self.answer
+        } else {
+            task.answer = nil
         }
         
         task.lastChecked = Date()
@@ -137,22 +136,13 @@ struct AddSR: View {
         task.waitTime = 60*60*24
         task.page = self.chosenPage
         
-        self.saveContext()
+        self.managedObjectContext.saveContext()
         self.registerNotification(id: task.id, question: task.question, waitTime: task.waitTime)
         
         self.question = ""
         self.answer = ""
         
         self.dismissView()
-    }
-    
-    func saveContext() {
-        do {
-            try self.managedObjectContext.save()
-        } catch {
-            let nserror = error as NSError
-            fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
-        }
     }
     
     func registerNotification(id: UUID, question: String, waitTime: TimeInterval) {
