@@ -9,7 +9,7 @@
 import SwiftUI
 
 struct TaskCard: View {
-    var task: Task
+    var task: TaskSaved
     
 //    @State private var showingAnswer = false
     @Binding var showingAnswer: Bool

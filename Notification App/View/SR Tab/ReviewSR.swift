@@ -14,8 +14,7 @@ struct ReviewSR: View {
     @Environment(\.managedObjectContext) var managedObjectContext
     @FetchRequest(fetchRequest: TaskSaved.fetchRequest()) var tasksFetched: FetchedResults<TaskSaved>
     @State var showingAnswer = false
-    @State var coreDataTaskStore = TaskStore(tasks: [Task]())
-    @State var tasksDue = [Task]()
+    @State var tasksSavedDue = [TaskSaved]()
     @State private var addingNewSR = false
     @State private var editingCard = false
     @State private var putOffIDs = [UUID]()
@@ -31,42 +30,37 @@ struct ReviewSR: View {
             Divider()
             
             HStack {
-                Button(action: {
-                    self.addingNewSR = true
-                }) {
+                Button(action: {self.addingNewSR = true}) {
                     Image(systemName: "plus.circle")
-                    .sheet(isPresented: self.$addingNewSR, onDismiss: self.refresh) {
-                        AddSR().environment(\.managedObjectContext, self.managedObjectContext)
-                    }
+                        .sheet(isPresented: self.$addingNewSR, onDismiss: self.refresh) {
+                            AddSR().environment(\.managedObjectContext, self.managedObjectContext)
+                        }
                 }
                 Spacer()
                 
                 Text(self.sectionName)
                 
                 Spacer()
-                Button(action: {
-                    self.refresh()
-                }) {
+                Button(action: self.refresh) {
                     Image(systemName: "arrow.clockwise")
                 }
             }.padding(EdgeInsets(top: 10, leading: 0, bottom: 0, trailing: 0))
             .font(.title)
             
             ZStack {
-                TaskCard(task: Task(question: "None left", answer: nil, colour: Color.gray, angle: Angle(degrees: 0)), showingAnswer: .constant(false))
-                
-                if self.tasksDue.count >= 2 {
-                    ForEach((1..<self.tasksDue.count).reversed(), id: \.self) { index in
-                        TaskCard(task: self.tasksDue[index], showingAnswer: .constant(false))
+
+                if self.tasksSavedDue.count >= 2 {
+                    ForEach((1..<self.tasksSavedDue.count).reversed(), id: \.self) { index in
+                        TaskCard(task: self.tasksSavedDue[index], showingAnswer: .constant(false))
                     }
                 }
 
-                if self.tasksDue.count > 0 {
-                    TaskCard(task: self.tasksDue[0], showingAnswer: self.$showingAnswer)
+                if self.tasksSavedDue.count > 0 {
+                    TaskCard(task: self.tasksSavedDue[0], showingAnswer: self.$showingAnswer)
                 }
             }
             
-            if self.tasksDue.count > 0 {
+            if self.tasksSavedDue.count > 0 {
                 HStack {
                     ForEach((0...3).reversed(), id: \.self) { num in
                         Button(action: {
@@ -83,7 +77,7 @@ struct ReviewSR: View {
                         }
                     }
                     
-                    if self.tasksDue.count > 1 {
+                    if self.tasksSavedDue.count > 1 {
                         Button(action: self.putOffPressed) {
                             VStack {
                                 Image(systemName: "arrow.turn.right.up")
@@ -105,7 +99,7 @@ struct ReviewSR: View {
                                 .font(.caption)
                                 .opacity(0.7)
                                 .sheet(isPresented: self.$editingCard, onDismiss: nil) {
-                                    CardEditView(task: self.tasksDue[0], afterDismissing: self.refresh).environment(\.managedObjectContext, self.managedObjectContext)
+                                    CardEditView(task: self.tasksSavedDue[0], afterDismissing: self.refresh).environment(\.managedObjectContext, self.managedObjectContext)
                                 }
                         }.padding(EdgeInsets(top: 0, leading: 5, bottom: 0, trailing: 0))
                     }
@@ -123,27 +117,15 @@ struct ReviewSR: View {
     }
     
     func refreshTasks() {
-        var temporaryTasks = [Task]()
-        for each in self.tasksFetched {
-            temporaryTasks.append(Task(id: each.id, question: each.question, answer: each.answer, lastChecked: each.lastChecked, waitTime: each.waitTime))
-        }
-        self.coreDataTaskStore = TaskStore(tasks: temporaryTasks)
-        
-        self.tasksDue = self.coreDataTaskStore.dueTasks()
-        
-        self.tasksDue.sort { (lhs, rhs) -> Bool in
-            if lhs.dueDate() < rhs.dueDate() {
-                return true
-            } else {
-                return false
-            }
-        }
+
+        self.tasksSavedDue = self.tasksFetched.dueTasks()
+        self.tasksSavedDue.sortByDueDate()
         
         for putOffID in self.putOffIDs {
             var index = 0
-            for eachTask in self.tasksDue {
+            for eachTask in self.tasksSavedDue {
                 if putOffID == eachTask.id {
-                    self.tasksDue.moveItemToLast(fromIndex: index)
+                    self.tasksSavedDue.moveItemToLast(fromIndex: index)
                 }
                 index += 1
             }
@@ -151,8 +133,8 @@ struct ReviewSR: View {
     }
     
     private func putOffPressed() {
-        self.putOffIDs.append(tasksDue[0].id)
-        self.tasksDue.moveItemToLast(fromIndex: 0)
+        self.putOffIDs.append(tasksSavedDue[0].id)
+        self.tasksSavedDue.moveItemToLast(fromIndex: 0)
         self.onSomeAction()
     }
     
@@ -164,23 +146,16 @@ struct ReviewSR: View {
         guard num != 0 else {return}
         let relativeDiff = Double(diff/num)
         
-        if let task = self.coreDataTaskStore.findTask(self.tasksDue[0]) {
+        if let task = self.tasksFetched.findTask(self.tasksSavedDue[0]) {
             task.prepareForNext(difficulty: relativeDiff)
-            
-            for eachTaskFetched in self.tasksFetched {
-                if eachTaskFetched.id == task.id {
-                    eachTaskFetched.setValue(task.lastChecked, forKey: "lastChecked")
-                    eachTaskFetched.setValue(task.waitTime, forKey: "waitTime")
-                    self.saveContext()
-                }
-            }
+            self.managedObjectContext.saveContext()
             registerNotification(task: task)
         }
-        self.tasksDue.remove(at: 0)
+        self.tasksSavedDue.remove(at: 0)
         self.onSomeAction()
     }
     
-    func registerNotification(task: Task) {
+    func registerNotification(task: TaskSaved) {
         let nc = UNUserNotificationCenter.current()
         nc.getNotificationSettings { (settings) in
             switch settings.authorizationStatus {
@@ -214,16 +189,10 @@ struct ReviewSR: View {
     }
     
     func printInfo() {
-        for each in self.coreDataTaskStore.tasks {
+        for each in self.tasksFetched {
             print(each.question)
             print(each.waitTime)
         }
         print("\n\n")
     }
 }
-
-//struct ReviewSR_Previews: PreviewProvider {
-//    static var previews: some View {
-//        ReviewSR()
-//    }
-//}

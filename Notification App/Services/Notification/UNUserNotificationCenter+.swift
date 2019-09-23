@@ -62,7 +62,7 @@ extension UNUserNotificationCenter {
         }
     }
     
-    func sendSRTaskNotification(task: Task) {
+    func sendSRTaskNotification(task: TaskSaved) {
         sendSRTaskNotification(id: task.id, question: task.question, waitTime: task.waitTime)
     }
     

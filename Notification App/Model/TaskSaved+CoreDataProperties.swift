@@ -37,15 +37,31 @@ extension TaskSaved {
 //        return request
 //    }
     
-    func convertToTask() -> Task {
-        return Task(id: self.id, question: self.question, answer: self.answer, lastChecked: self.lastChecked, waitTime: self.waitTime)
-    }
     
     func dueDate() -> Date {
-        return self.convertToTask().dueDate()
+        return self.lastChecked.addingTimeInterval(self.waitTime)
     }
     
     func dueDateString() -> String {
-        return self.convertToTask().dueDateString()
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "dd/MM/yyyy"
+        return dateFormatter.string(from: self.dueDate())
     }
+    
+    func isDue() -> Bool {
+        if self.dueDate() < Date() {return true} else {return false}
+   }
+       
+   func prepareForNext(difficulty: Double) {
+       guard difficulty >= 0 && difficulty <= 1 else { fatalError("The difficulty is not between 0 and 1") }
+
+       let actualWaitTime = Date().timeIntervalSince(self.lastChecked)
+       lastChecked = Date()
+       print("this actual wait time: \(actualWaitTime)")
+       let minimumFactor = (105 * 60*60*24) / (actualWaitTime + (150 * 60*60*24))
+       
+       let factor = minimumFactor * pow(5, (1 - difficulty))
+       self.waitTime = factor * actualWaitTime
+       print("next wait time: \(self.waitTime)")
+   }
 }

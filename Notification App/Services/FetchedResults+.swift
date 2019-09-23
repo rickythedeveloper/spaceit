@@ -46,4 +46,31 @@ extension FetchedResults where Result: TaskSaved {
         guard possibleConcepts.count == 1 else {return nil}
         return possibleConcepts[0]
     }
+    
+    func findTask(_ task: TaskSaved) -> TaskSaved? {
+        for each in self {
+            if each.id == task.id {
+                return each
+            }
+        }
+        return nil
+    }
+    
+    func dueTasks() -> [TaskSaved]{
+        return self.filter({ (task) -> Bool in
+            if task.isDue() {return true} else {return false}
+        })
+    }
+    
+    func sortedByName() -> [TaskSaved] {
+        return self.sorted { (lhs, rhs) -> Bool in
+            if lhs.question < rhs.question {return true} else {return false}
+        }
+    }
+    
+    func sortedByDueDate() -> [TaskSaved] {
+        return self.sorted { (lhs, rhs) -> Bool in
+            if lhs.dueDate() < rhs.dueDate() {return true} else {return false}
+        }
+    }
 }

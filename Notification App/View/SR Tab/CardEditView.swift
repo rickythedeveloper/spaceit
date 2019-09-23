@@ -13,7 +13,7 @@ struct CardEditView: View {
     @Environment(\.presentationMode) private var presentationMode
     @Environment(\.managedObjectContext) var managedObjectContext
     @FetchRequest(fetchRequest: TaskSaved.fetchRequest()) var tasksFetched: FetchedResults<TaskSaved>
-    var task: Task
+    var task: TaskSaved
     
     @State private var choosingPage = false
     @State private var deleteChecking = false
@@ -29,26 +29,27 @@ struct CardEditView: View {
     var body: some View {
         VStack {
             Spacer()
-            
-            if tasksFetched.concept(id: self.task.id)?.page?.breadCrumb() != nil {
-                Button(action: {self.choosingPage = true}) {
-                    Text(tasksFetched.concept(id: self.task.id)!.page!.breadCrumb())
-                        .sheet(isPresented: self.$choosingPage) {
-                            PageStructureView(isInSelectionMode: true, onSelection: self.addPage(page:)).environment(\.managedObjectContext, self.managedObjectContext)
-                        }
-                }
-            } else {
-                Button(action: {self.choosingPage = true}) {
-                    Text("Add page")
-                        .sheet(isPresented: self.$choosingPage) {
-                            PageStructureView(isInSelectionMode: true, onSelection: self.addPage(page:)).environment(\.managedObjectContext, self.managedObjectContext)
-                        }
-                }
-            }
-            
-            Divider()
-            
             if self.isShowing {
+                
+                if tasksFetched.concept(id: self.task.id)?.page?.breadCrumb() != nil {
+                    Button(action: {self.choosingPage = true}) {
+                        Text(tasksFetched.concept(id: self.task.id)!.page!.breadCrumb())
+                            .sheet(isPresented: self.$choosingPage) {
+                                PageStructureView(isInSelectionMode: true, onSelection: self.addPage(page:)).environment(\.managedObjectContext, self.managedObjectContext)
+                            }
+                    }
+                } else {
+                    Button(action: {self.choosingPage = true}) {
+                        Text("Add page")
+                            .sheet(isPresented: self.$choosingPage) {
+                                PageStructureView(isInSelectionMode: true, onSelection: self.addPage(page:)).environment(\.managedObjectContext, self.managedObjectContext)
+                            }
+                    }
+                }
+                
+                Divider()
+            
+            
                 VStack {
                     HStack {
                         Text("Question/Concept/Reminder")
@@ -117,14 +118,10 @@ struct CardEditView: View {
     }
     
     private func deleteTask() {
-        for eachTaskFetched in self.tasksFetched {
-            if eachTaskFetched.id == self.task.id {
-                self.managedObjectContext.delete(eachTaskFetched)
-                self.managedObjectContext.saveContext()
-            }
-        }
-        
         self.isShowing = false
+        
+        self.managedObjectContext.delete(self.task)
+        self.managedObjectContext.saveContext()
         self.presentationMode.wrappedValue.dismiss()
         
         self.afterDismissing()
@@ -144,23 +141,7 @@ struct CardEditView: View {
     private func updateData() {
         task.question = self.question
         task.answer = (self.answer != "") ? self.answer : nil
-        
-        if let taskToBeSaved = self.findCoreDataObject(thatMatches: self.task) {
-            taskToBeSaved.question = self.task.question
-            taskToBeSaved.answer = self.task.answer
-        } else {
-            fatalError("Could not find a core data object that matches the task. id: \(self.task.id), question: \(self.task.question)\n\n")
-        }
         managedObjectContext.saveContext()
-    }
-    
-    private func findCoreDataObject(thatMatches task: Task) -> TaskSaved? {
-        for each in tasksFetched {
-            if each.id == task.id {
-                return each
-            }
-        }
-        return nil
     }
     
     private func addPage(page: Page) {
@@ -168,9 +149,3 @@ struct CardEditView: View {
         self.managedObjectContext.saveContext()
     }
 }
-
-//struct CardEditView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        CardEditView()
-//    }
-//}

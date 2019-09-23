@@ -54,7 +54,7 @@ struct PageInsideView: View {
                 
                 Section(header: Text("Concepts")) {
                     ForEach(self.pages.conceptsOfPage(id: self.pageID), id: \.self) { concept in
-                        NavigationLink(destination: CardEditView(task: concept.convertToTask()).environment(\.managedObjectContext, self.managedObjectContext)) {
+                        NavigationLink(destination: CardEditView(task: concept).environment(\.managedObjectContext, self.managedObjectContext)) {
                             Text(concept.question)
                         }
                     }//.onDelete(perform: self.deleteChildren(at:))

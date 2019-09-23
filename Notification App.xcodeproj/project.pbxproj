@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		9936B7853FDD4BE9984BD39E /* Pods_Notification_App.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D1E79BE1585F8564AA316F2F /* Pods_Notification_App.framework */; };
+		B801F1342339312C003218BF /* Angle+.swift in Sources */ = {isa = PBXBuildFile; fileRef = B801F1332339312C003218BF /* Angle+.swift */; };
 		B81428C7232EB41B0085AA1F /* MultiLineTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = B81428C6232EB41B0085AA1F /* MultiLineTextField.swift */; };
 		B85C07D1233657BF00200B07 /* TaskSaved+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = B85C07D0233657BF00200B07 /* TaskSaved+CoreDataProperties.swift */; };
 		B85C07D2233657BF00200B07 /* Page+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = B85C07CF233657BF00200B07 /* Page+CoreDataClass.swift */; };
@@ -54,6 +55,7 @@
 /* Begin PBXFileReference section */
 		5B521FD02162129FF8121734 /* Pods-Notification App.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Notification App.release.xcconfig"; path = "Target Support Files/Pods-Notification App/Pods-Notification App.release.xcconfig"; sourceTree = "<group>"; };
 		6E28032A00F8E10F84C3ACE9 /* Pods-Notification App.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Notification App.debug.xcconfig"; path = "Target Support Files/Pods-Notification App/Pods-Notification App.debug.xcconfig"; sourceTree = "<group>"; };
+		B801F1332339312C003218BF /* Angle+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Angle+.swift"; sourceTree = "<group>"; };
 		B81428C6232EB41B0085AA1F /* MultiLineTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiLineTextField.swift; sourceTree = "<group>"; };
 		B85C07CD233657BF00200B07 /* Page+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Page+CoreDataProperties.swift"; path = "/Users/rintarokawagishi/Library/Mobile Documents/com~apple~CloudDocs/Desktop/iOS/Xcode 11/Notification App/Notification App/Model/Page+CoreDataProperties.swift"; sourceTree = "<absolute>"; };
 		B85C07CE233657BF00200B07 /* TaskSaved+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "TaskSaved+CoreDataClass.swift"; path = "/Users/rintarokawagishi/Library/Mobile Documents/com~apple~CloudDocs/Desktop/iOS/Xcode 11/Notification App/Notification App/Model/TaskSaved+CoreDataClass.swift"; sourceTree = "<absolute>"; };
@@ -201,6 +203,7 @@
 				B8D9505B2326C82D001236AE /* Notification */,
 				B88457F3232A4E0E00B5CC3C /* Keyboard Guardian */,
 				B85C07DB23379E6400200B07 /* FetchedResults+.swift */,
+				B801F1332339312C003218BF /* Angle+.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -437,6 +440,7 @@
 				B895D2E023315AC600767C4E /* Alert+.swift in Sources */,
 				B85C07D1233657BF00200B07 /* TaskSaved+CoreDataProperties.swift in Sources */,
 				B8845807232BCEDE00B5CC3C /* Array+.swift in Sources */,
+				B801F1342339312C003218BF /* Angle+.swift in Sources */,
 				B8AB5822232E8F7A00AD2012 /* CardListView.swift in Sources */,
 				B85C07DC23379E6400200B07 /* FetchedResults+.swift in Sources */,
 				B85C07D2233657BF00200B07 /* Page+CoreDataClass.swift in Sources */,

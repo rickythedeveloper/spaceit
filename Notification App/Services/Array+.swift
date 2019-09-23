@@ -52,3 +52,30 @@ extension Array where Element: TaskSaved {
         }
     }
 }
+
+extension Array where Element : TaskSaved {
+    func dueTasks() -> [TaskSaved] {
+         var dues = [TaskSaved]()
+         for task in self {
+             if task.isDue() {
+                 dues.append(task)
+             }
+         }
+         return dues
+    }
+    
+    func findTask(_ task: TaskSaved) -> TaskSaved? {
+        for each in self {
+            if each.id == task.id {
+                return each
+            }
+        }
+        return nil
+    }
+    
+    mutating func sortByDueDate() {
+        self.sort { (lhs, rhs) -> Bool in
+            if lhs.dueDate() < rhs.dueDate() {return true} else {return false}
+        }
+    }
+}
