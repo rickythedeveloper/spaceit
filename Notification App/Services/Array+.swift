@@ -42,18 +42,6 @@ extension Array where Element : Page {
 }
 
 extension Array where Element: TaskSaved {
-    func sortedByName() -> [TaskSaved] {
-        return self.sorted { (lhs, rhs) -> Bool in
-            if lhs.question < rhs.question {
-                return true
-            } else {
-                return false
-            }
-        }
-    }
-}
-
-extension Array where Element : TaskSaved {
     func dueTasks() -> [TaskSaved] {
          var dues = [TaskSaved]()
          for task in self {
@@ -76,6 +64,32 @@ extension Array where Element : TaskSaved {
     mutating func sortByDueDate() {
         self.sort { (lhs, rhs) -> Bool in
             if lhs.dueDate() < rhs.dueDate() {return true} else {return false}
+        }
+    }
+    
+    func sortedByDueDate() -> [TaskSaved] {
+        return self.sorted { (lhs, rhs) -> Bool in
+            if lhs.dueDate() < rhs.dueDate() {return true} else {return false}
+        }
+    }
+    
+    mutating func sortByName() {
+        self.sort { (lhs, rhs) -> Bool in
+            if lhs.question < rhs.question {
+                return true
+            } else {
+                return false
+            }
+        }
+    }
+    
+    func sortedByName() -> [TaskSaved] {
+        return self.sorted { (lhs, rhs) -> Bool in
+            if lhs.question < rhs.question {
+                return true
+            } else {
+                return false
+            }
         }
     }
 }
