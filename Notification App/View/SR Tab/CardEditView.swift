@@ -23,6 +23,7 @@ struct CardEditView: View {
     
     @State var question = ""
     @State var answer = ""
+    @State private var taskIsActive = true
     
     var afterDismissing: () -> Void = {}
     
@@ -85,10 +86,9 @@ struct CardEditView: View {
                 Spacer()
                 
                 Button(action: {
-                    self.task.isActive.toggle()
-                    self.managedObjectContext.saveContext()
+                    self.taskIsActive.toggle()
                 }) {
-                    (self.task.isActive ? Image(systemName: "nosign") : Image(systemName: "arrow.up.bin"))
+                    (self.taskIsActive ? Image(systemName: "nosign") : Image(systemName: "arrow.up.bin"))
                         .imageScale(.large)
                         .font(.title)
                 }
@@ -125,6 +125,7 @@ struct CardEditView: View {
         } else {
             self.answer = ""
         }
+        self.taskIsActive = self.task.isActive
     }
     
     private func deleteTask() {
@@ -151,6 +152,7 @@ struct CardEditView: View {
     private func updateData() {
         task.question = self.question
         task.answer = (self.answer != "") ? self.answer : nil
+        task.isActive = self.taskIsActive
         managedObjectContext.saveContext()
     }
     
