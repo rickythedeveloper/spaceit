@@ -25,6 +25,7 @@ struct PageStructureView: View {
                 PageInsideView(pageID: self.topPage()!.id, isInSelectionMode: self.isInSelectionMode, onSelection: self.onSelection).environment(\.managedObjectContext, self.managedObjectContext)
             }
         }.onAppear(perform: self.setup)
+        .navigationViewStyle(StackNavigationViewStyle())
     }
     
     private func setup() {

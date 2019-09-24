@@ -53,7 +53,7 @@ struct PrivacyPolicy: View {
                 }.padding()
             }
             .navigationBarTitle("Privacy Policy")
-        }
+        }.navigationViewStyle(StackNavigationViewStyle())
     }
 }
 
