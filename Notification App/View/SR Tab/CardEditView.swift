@@ -82,6 +82,16 @@ struct CardEditView: View {
                 }.alert(isPresented: self.$deleteChecking) {
                     Alert.deleteTask(deleteAction: self.deleteTask)
                 }
+                Spacer()
+                
+                Button(action: {
+                    self.task.isActive.toggle()
+                    self.managedObjectContext.saveContext()
+                }) {
+                    (self.task.isActive ? Image(systemName: "nosign") : Image(systemName: "arrow.up.bin"))
+                        .imageScale(.large)
+                        .font(.title)
+                }
                 
                 Spacer()
                 Button(action: self.tickPressed) {

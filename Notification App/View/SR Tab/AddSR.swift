@@ -135,6 +135,7 @@ struct AddSR: View {
 //        task.waitTime = 2
         task.waitTime = 60*60*24
         task.page = self.chosenPage
+        task.isActive = true
         
         self.managedObjectContext.saveContext()
         self.registerNotification(id: task.id, question: task.question, waitTime: task.waitTime)

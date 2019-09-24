@@ -13,6 +13,7 @@ struct PageInsideView: View {
     @Environment(\.presentationMode) private var presentationMode
     @Environment(\.managedObjectContext) var managedObjectContext
     @FetchRequest(fetchRequest: Page.fetchRequest()) var pages: FetchedResults<Page>
+    @FetchRequest(fetchRequest: TaskSaved.fetchRequest()) var tasks: FetchedResults<TaskSaved> // purely to refresh view when the TaskSaved entity is changed in CoreData. (e.g. task name change / isActive change)
     
     var pageID: UUID
     
@@ -26,6 +27,9 @@ struct PageInsideView: View {
     
     var body: some View {
         VStack {
+            
+            (self.tasks.count == 0 ? EmptyView() : EmptyView()) // purely to refresh view when the TaskSaved entity is changed in CoreData. (e.g. task name change / isActive change)
+            
             HStack {
                 TextField("New Page Name", text: self.$newPageName, onCommit: {
                     UIApplication.shared.endEditing()
@@ -56,6 +60,7 @@ struct PageInsideView: View {
                     ForEach(self.pages.conceptsOfPage(id: self.pageID), id: \.self) { concept in
                         NavigationLink(destination: CardEditView(task: concept).environment(\.managedObjectContext, self.managedObjectContext)) {
                             Text(concept.question)
+                                .opacity(concept.isActive ? 1.0 : 0.5)
                         }
                     }//.onDelete(perform: self.deleteChildren(at:))
                     

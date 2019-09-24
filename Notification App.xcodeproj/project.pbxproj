@@ -196,13 +196,13 @@
 			children = (
 				B81428C6232EB41B0085AA1F /* MultiLineTextField.swift */,
 				B8845806232BCEDE00B5CC3C /* Array+.swift */,
+				B85C07DB23379E6400200B07 /* FetchedResults+.swift */,
 				B8845803232BADFB00B5CC3C /* Color+.swift */,
 				B8AB581E232E843C00AD2012 /* NSManagedObject+.swift */,
 				B895D2DD233159CC00767C4E /* String+.swift */,
 				B895D2DF23315AC600767C4E /* Alert+.swift */,
 				B8D9505B2326C82D001236AE /* Notification */,
 				B88457F3232A4E0E00B5CC3C /* Keyboard Guardian */,
-				B85C07DB23379E6400200B07 /* FetchedResults+.swift */,
 				B801F1332339312C003218BF /* Angle+.swift */,
 			);
 			path = Services;

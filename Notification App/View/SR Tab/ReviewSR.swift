@@ -165,8 +165,8 @@ struct ReviewSR: View {
     }
     
     private func dueTasks() -> [TaskSaved] {
-        var tasks = self.tasksFetched.dueTasks().sortedByDueDate()
-        
+        var tasks = self.tasksFetched.dueTasks().sortedByDueDate().activeTasks()
+
         for putOffID in self.putOffIDs {
             var index = 0
             for eachTask in tasks {

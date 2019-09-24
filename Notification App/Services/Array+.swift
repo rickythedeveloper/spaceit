@@ -92,4 +92,10 @@ extension Array where Element: TaskSaved {
             }
         }
     }
+    
+    func activeTasks() -> [TaskSaved] {
+        return self.filter { (task) -> Bool in
+            task.isActive ? true : false
+        }
+    }
 }

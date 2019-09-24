@@ -33,6 +33,7 @@ struct CardListView: View {
                             NavigationLink(destination: CardEditView(task: self.justUpcoming()[index]).environment(\.managedObjectContext, self.managedObjectContext), label: {
                                 HStack {
                                     Text(self.justUpcoming()[index].question)
+                                        .opacity(self.justUpcoming()[index].isActive ? 1.0 : 0.5)
                                     Spacer()
                                     Text(self.justUpcoming()[index].dueDateString())
                                         .foregroundColor(.gray)
@@ -46,6 +47,7 @@ struct CardListView: View {
                             NavigationLink(destination:
                                 CardEditView(task: self.allOfTasks()[index]).environment(\.managedObjectContext, self.managedObjectContext), label: {
                                 Text(self.allOfTasks()[index].question)
+                                    .opacity(self.allOfTasks()[index].isActive ? 1.0 : 0.5)
                             })
                         }
                     }
@@ -70,7 +72,7 @@ struct CardListView: View {
     }
     
     private func justUpcoming() -> [TaskSaved] {
-        return self.tasksFetched.sortedByDueDate()
+        return self.tasksFetched.sortedByDueDate().activeTasks()
     }
 }
 

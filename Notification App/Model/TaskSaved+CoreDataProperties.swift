@@ -25,6 +25,7 @@ extension TaskSaved: Identifiable {
     @NSManaged public var question: String
     @NSManaged public var waitTime: Double
     @NSManaged public var page: Page?
+    @NSManaged public var isActive: Bool
 
 }
 
