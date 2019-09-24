@@ -18,7 +18,7 @@ struct PageInsideView: View {
     var pageID: UUID
     
     var isInSelectionMode: Bool = false
-    var onSelection: ((Page) -> Void)?
+    var onSelection: ((Page) -> Void)? // after selecting a file location (e.g. when adding a page to a card)
     
     @State private var newPageName = ""
     @State private var moreActionSheeting = false

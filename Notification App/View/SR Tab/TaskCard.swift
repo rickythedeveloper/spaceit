@@ -15,7 +15,7 @@ struct TaskCard: View {
     
     var body: some View {
         ZStack {
-            (self.isBaseCard ? Color.gray : self.task!.colour)
+            (self.isBaseCard ? Color.gray.opacity(0.3) : self.task!.colour)
                 .opacity(0.98)
                 .cornerRadius(20.0)
                 .rotationEffect(self.isBaseCard ? Angle(degrees: 0.0) : self.task!.angle)

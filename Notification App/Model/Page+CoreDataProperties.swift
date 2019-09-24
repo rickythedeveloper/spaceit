@@ -48,6 +48,14 @@ extension Page {
             return thisPageName
         }
     }
+    
+    func topPage() -> Page {
+        if let parent = self.parent {
+            return parent.topPage()
+        } else {
+            return self
+        }
+    }
 
     @NSManaged public var id: UUID
     @NSManaged public var name: String
