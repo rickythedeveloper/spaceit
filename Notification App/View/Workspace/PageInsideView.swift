@@ -73,7 +73,7 @@ struct PageInsideView: View {
                                 .imageScale(.large)
                                 .multilineTextAlignment(.center)
                                 .sheet(isPresented: self.$addingConcept) {
-                                    AddSR(preChosenPage: self.pages.page(id: self.pageID)).environment(\.managedObjectContext, self.managedObjectContext)
+                                    AddSR(preChosenPage: self.thisPage()).environment(\.managedObjectContext, self.managedObjectContext)
                                 }
                                 .foregroundColor(.blue)
                         }
@@ -82,7 +82,7 @@ struct PageInsideView: View {
                 }
             }
         }
-        .navigationBarTitle(self.pages.page(id: self.pageID) != nil ? self.pages.page(id: self.pageID)!.name : "This Page Does Not Exist")
+        .navigationBarTitle(self.thisPage().name)
         .navigationBarItems(trailing: Button(action: self.morePressed) {
             if !self.isInSelectionMode {
                 Image(systemName: "ellipsis")
@@ -102,9 +102,8 @@ struct PageInsideView: View {
     }
     
     private func addPage() {
-        guard let thisPage = self.pages.page(id: self.pageID) else {return}
         let newPage = Page.createPageInContext(name: self.newPageName, id: UUID(), context: self.managedObjectContext)
-        thisPage.addToChildren(newPage)
+        self.thisPage().addToChildren(newPage)
         self.managedObjectContext.saveContext()
         self.newPageName = ""
         UIApplication.shared.endEditing()
@@ -120,8 +119,7 @@ struct PageInsideView: View {
     private func morePressed() {
         if self.isInSelectionMode {
             self.presentationMode.wrappedValue.dismiss()
-            guard let thisPage = self.pages.page(id: self.pageID) else {return}
-            self.dismissThisViewAndPassInfo(pageSelected: thisPage)
+            self.dismissThisViewAndPassInfo(pageSelected: self.thisPage())
         } else {
             self.moreActionSheeting = true
         }
@@ -162,6 +160,14 @@ struct PageInsideView: View {
         return self.thisPage().children?.count == 1
     }
     
+    private func hasNoConcepts() -> Bool {
+        if let concepts = self.thisPage().concepts {
+            return concepts.count == 0
+        } else {
+            return true
+        }
+    }
+    
     private func pageName() -> String {
         return self.thisPage().name
     }
@@ -171,7 +177,7 @@ struct PageInsideView: View {
     }
     
     private func pageType() -> PageType {
-        if self.isTopPage() && self.onlyHasOneChild() {
+        if self.isTopPage() && self.onlyHasOneChild() && self.hasNoConcepts() {
             return .topWithDeleteOption
         } else if self.isTopPage() {
             return .topWithoutDeleteOption
