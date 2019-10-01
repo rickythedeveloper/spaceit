@@ -81,14 +81,6 @@ struct PageStructureView: View {
             return newTopPage
         }
     }
-    
-    private func topPage(of page: Page) -> Page {
-        if let parent = page.parent {
-            return topPage(of: parent)
-        } else {
-            return page
-        }
-    }
 }
 
 //struct PageStructure_Previews: PreviewProvider {

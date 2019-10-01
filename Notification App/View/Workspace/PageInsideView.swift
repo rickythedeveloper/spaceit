@@ -88,7 +88,7 @@ struct PageInsideView: View {
                 Image(systemName: "ellipsis")
                     .font(.title)
                     .actionSheet(isPresented: self.$moreActionSheeting) {
-                        ActionSheet(title: Text("Action"), message: nil, buttons: [.cancel(), .default(Text("Edit page name"), action: self.editPageNamePressed)])
+                        ActionSheet.pageAction(title: self.pageName(), editName: self.editPageNamePressed, addHigherPage: self.addHigherPage, deleteTopPage: self.deleteTopPage, pageType: self.pageType())
                     }
                     .sheet(isPresented: self.$editingPageName) {
                         PageNameEditView(pageID: self.pageID).environment(\.managedObjectContext, self.managedObjectContext)
@@ -135,6 +135,49 @@ struct PageInsideView: View {
     
     private func editPageNamePressed() {
         self.editingPageName = true
+    }
+    
+    private func deleteTopPage() {
+        guard self.isTopPage() && self.onlyHasOneChild() else {return}
+        
+        let onlyChild = (self.thisPage().children as! Set<Page>).first!
+        self.thisPage().removeFromChildren(onlyChild)
+        self.managedObjectContext.delete(self.thisPage())
+        self.managedObjectContext.saveContext()
+    }
+    
+    private func addHigherPage() {
+        guard self.isTopPage() else {return}
+        
+        let higherPage = Page.createPageInContext(name: "My workspace", id: UUID(), context: self.managedObjectContext)
+        self.thisPage().parent = higherPage
+        self.managedObjectContext.saveContext()
+    }
+    
+    private func isTopPage() -> Bool {
+        return self.thisPage().topPage().id == self.pageID
+    }
+    
+    private func onlyHasOneChild() -> Bool {
+        return self.thisPage().children?.count == 1
+    }
+    
+    private func pageName() -> String {
+        return self.thisPage().name
+    }
+    
+    private func thisPage() -> Page {
+        return self.pages.page(id: self.pageID)!
+    }
+    
+    private func pageType() -> PageType {
+        if self.isTopPage() && self.onlyHasOneChild() {
+            return .topWithDeleteOption
+        } else if self.isTopPage() {
+            return .topWithoutDeleteOption
+        } else {
+            return .nonTop
+        }
     }
     
 //    private func deleteThisPage() {
