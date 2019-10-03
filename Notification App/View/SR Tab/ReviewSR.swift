@@ -24,9 +24,9 @@ struct ReviewSR: View {
     
     var body: some View {
         VStack {
-            GADBannerViewController(adUnitID: "ca-app-pub-3940256099942544/2934735716")
-                .frame(width: kGADAdSizeBanner.size.width, height: kGADAdSizeBanner.size.height)
-            Divider()
+//            GADBannerViewController(adUnitID: "ca-app-pub-3940256099942544/2934735716")
+//                .frame(width: kGADAdSizeBanner.size.width, height: kGADAdSizeBanner.size.height)
+//            Divider()
             
             HStack {
                 Spacer()

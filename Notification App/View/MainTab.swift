@@ -45,11 +45,11 @@ struct MainTab: View {
 //                    Text(self.notifSenderTitle)
 //                }
             
-            MoreTab()
-                .tabItem {
-                    Image(systemName: "ellipsis")
-                    Text("About")
-                }
+//            MoreTab()
+//                .tabItem {
+//                    Image(systemName: "ellipsis")
+//                    Text("About")
+//                }
         }
     }
 }

@@ -21,7 +21,7 @@ struct TaskCard: View {
                 .rotationEffect(self.isBaseCard ? Angle(degrees: 0.0) : self.task!.angle)
                 
             VStack {
-                Text(self.isBaseCard ? "No card left" : self.task!.question)
+                Text(self.isBaseCard ? "No card to review" : self.task!.question)
                     .font(.largeTitle)
                     .animation(.easeInOut(duration: 0.2))
 

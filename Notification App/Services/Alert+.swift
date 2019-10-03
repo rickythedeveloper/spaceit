@@ -14,6 +14,6 @@ extension Alert {
     }
     
     static func deleteTask(deleteAction: (() -> Void)?) -> Alert {
-        return Alert(title: Text("Delete task?"), message: Text("This action cannot be undone."), primaryButton: .cancel(), secondaryButton: .default(Text("Delete"), action: deleteAction))
+        return Alert(title: Text("Delete card?"), message: Text("This action cannot be undone."), primaryButton: .cancel(), secondaryButton: .default(Text("Delete"), action: deleteAction))
     }
 }
