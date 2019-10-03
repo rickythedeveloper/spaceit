@@ -29,7 +29,7 @@ struct CardEditView: View {
     
     var body: some View {
         VStack {
-            Spacer()
+//            Spacer()
             if self.isShowing {
                 
                 if tasksFetched.concept(id: self.task.id)?.page?.breadCrumb() != nil {
