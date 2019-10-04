@@ -42,7 +42,7 @@ extension Page {
         var thisPageName = self.name
         thisPageName = thisPageName + "/" + bc
         
-        if let parent = self.parent {
+        if let parent = self.parent, parent.parent != nil { // if the page has two layers above, continue adding. If it just has the top page as a parent, then just return the current breadcrumbs since the top page is obvious.
             return parent.breadCrumbAlgorithm(bc: thisPageName)
         } else {
             return thisPageName
