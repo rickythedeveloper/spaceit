@@ -11,6 +11,6 @@ import SwiftUI
 
 extension Angle {
     static func randomSmallAngle() -> Angle {
-        return Angle(degrees: Double.random(in: -5.0...5.0))
+        return Angle(degrees: Double.random(in: -2.5...2.5))
     }
 }
