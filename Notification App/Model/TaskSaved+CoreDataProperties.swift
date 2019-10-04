@@ -43,9 +43,9 @@ extension TaskSaved {
         return self.lastChecked.addingTimeInterval(self.waitTime)
     }
     
-    func dueDateString() -> String {
+    func dueDateStringShort() -> String {
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "dd/MM/yyyy"
+        dateFormatter.dateFormat = "dd MMM"
         return dateFormatter.string(from: self.dueDate())
     }
     

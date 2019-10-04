@@ -24,6 +24,10 @@ struct TaskCard: View {
                 Text(self.isBaseCard ? "No card to review" : self.task!.question)
                     .font(.largeTitle)
                     .animation(.easeInOut(duration: 0.2))
+                Text( (!self.isBaseCard && self.task!.page != nil) ? self.task!.page!.breadCrumb() : "" )
+                    .font(.body)
+                    .animation(.easeInOut(duration: 0.2))
+                    .opacity(0.5)
 
                 if !self.isBaseCard {
                     if self.task!.answer != nil && self.showingAnswer {

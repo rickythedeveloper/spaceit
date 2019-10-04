@@ -27,7 +27,7 @@ struct AddSR: View {
     var body: some View {
         VStack {
             ZStack {
-                Text("New spaced repetition")
+                Text("New card")
                     .font(.title)
                 
                 HStack {

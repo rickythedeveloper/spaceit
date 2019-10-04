@@ -32,11 +32,28 @@ struct CardListView: View {
                         ForEach(0..<self.justUpcoming().count, id: \.self) { index in
                             NavigationLink(destination: CardEditView(task: self.justUpcoming()[index]).environment(\.managedObjectContext, self.managedObjectContext), label: {
                                 HStack {
-                                    Text(self.justUpcoming()[index].question)
-                                        .opacity(self.justUpcoming()[index].isActive ? 1.0 : 0.5)
+                                    VStack {
+                                        HStack {
+                                            Text(self.justUpcoming()[index].question)
+                                                .opacity(self.justUpcoming()[index].isActive ? 1.0 : 0.5)
+                                            Spacer()
+                                        }
+                                        
+                                        if self.justUpcoming()[index].page != nil {
+                                            HStack {
+                                                Text(self.justUpcoming()[index].page!.breadCrumb())
+                                                    .opacity(0.3)
+                                                    .font(.caption)
+                                                Spacer()
+                                            }
+                                            
+                                        }
+                                    }.multilineTextAlignment(.leading)
+                                    
                                     Spacer()
-                                    Text(self.justUpcoming()[index].dueDateString())
-                                        .foregroundColor(.gray)
+                                    Text(self.justUpcoming()[index].dueDateStringShort())
+                                        .opacity(0.5)
+                                        .font(.callout)
                                 }
                             })
                         }
@@ -46,8 +63,24 @@ struct CardListView: View {
                         ForEach(0..<self.allOfTasks().count, id: \.self) { index in
                             NavigationLink(destination:
                                 CardEditView(task: self.allOfTasks()[index]).environment(\.managedObjectContext, self.managedObjectContext), label: {
-                                Text(self.allOfTasks()[index].question)
-                                    .opacity(self.allOfTasks()[index].isActive ? 1.0 : 0.5)
+                                    VStack {
+                                        HStack {
+                                            Text(self.allOfTasks()[index].question)
+                                                .opacity(self.allOfTasks()[index].isActive ? 1.0 : 0.5)
+                                            Spacer()
+                                        }
+                                        
+                                        
+                                        if self.allOfTasks()[index].page != nil {
+                                            HStack {
+                                                Text(self.allOfTasks()[index].page!.breadCrumb())
+                                                    .opacity(0.3)
+                                                    .font(.caption)
+                                                Spacer()
+                                            }
+                                            
+                                        }
+                                    }
                             })
                         }
                     }
