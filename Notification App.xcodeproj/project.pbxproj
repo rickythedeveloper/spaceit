@@ -11,6 +11,7 @@
 		B801F1342339312C003218BF /* Angle+.swift in Sources */ = {isa = PBXBuildFile; fileRef = B801F1332339312C003218BF /* Angle+.swift */; };
 		B81428C7232EB41B0085AA1F /* MultiLineTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = B81428C6232EB41B0085AA1F /* MultiLineTextField.swift */; };
 		B8419633233AA00A00E6558C /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B8419632233AA00A00E6558C /* CloudKit.framework */; };
+		B846750A23536797006FC44F /* CardCellViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = B846750923536797006FC44F /* CardCellViews.swift */; };
 		B85C07D1233657BF00200B07 /* TaskSaved+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = B85C07D0233657BF00200B07 /* TaskSaved+CoreDataProperties.swift */; };
 		B85C07D2233657BF00200B07 /* Page+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = B85C07CF233657BF00200B07 /* Page+CoreDataClass.swift */; };
 		B85C07D3233657BF00200B07 /* TaskSaved+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = B85C07CE233657BF00200B07 /* TaskSaved+CoreDataClass.swift */; };
@@ -61,6 +62,7 @@
 		B81428C6232EB41B0085AA1F /* MultiLineTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiLineTextField.swift; sourceTree = "<group>"; };
 		B8419631233AA00800E6558C /* Notification App.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Notification App.entitlements"; sourceTree = "<group>"; };
 		B8419632233AA00A00E6558C /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
+		B846750923536797006FC44F /* CardCellViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardCellViews.swift; sourceTree = "<group>"; };
 		B85C07CD233657BF00200B07 /* Page+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Page+CoreDataProperties.swift"; path = "/Users/rintarokawagishi/Library/Mobile Documents/com~apple~CloudDocs/Desktop/iOS/Xcode 11/Notification App/Notification App/Model/Page+CoreDataProperties.swift"; sourceTree = "<absolute>"; };
 		B85C07CE233657BF00200B07 /* TaskSaved+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "TaskSaved+CoreDataClass.swift"; path = "/Users/rintarokawagishi/Library/Mobile Documents/com~apple~CloudDocs/Desktop/iOS/Xcode 11/Notification App/Notification App/Model/TaskSaved+CoreDataClass.swift"; sourceTree = "<absolute>"; };
 		B85C07CF233657BF00200B07 /* Page+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Page+CoreDataClass.swift"; path = "/Users/rintarokawagishi/Library/Mobile Documents/com~apple~CloudDocs/Desktop/iOS/Xcode 11/Notification App/Notification App/Model/Page+CoreDataClass.swift"; sourceTree = "<absolute>"; };
@@ -193,6 +195,7 @@
 			isa = PBXGroup;
 			children = (
 				B8AB5821232E8F7A00AD2012 /* CardListView.swift */,
+				B846750923536797006FC44F /* CardCellViews.swift */,
 			);
 			path = "Cards Tab";
 			sourceTree = "<group>";
@@ -437,6 +440,7 @@
 				B88457FD232BA27800B5CC3C /* ReviewSR.swift in Sources */,
 				B85C07D823365E3200200B07 /* PageInsideView.swift in Sources */,
 				B8D9503D2326C48F001236AE /* AppDelegate.swift in Sources */,
+				B846750A23536797006FC44F /* CardCellViews.swift in Sources */,
 				B85C07DA23379DBB00200B07 /* PageNameEditView.swift in Sources */,
 				B88457FB232BA0BA00B5CC3C /* MainTab.swift in Sources */,
 				B8D950632326CA98001236AE /* TimeSetting.swift in Sources */,
