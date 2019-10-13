@@ -25,27 +25,12 @@ struct PageInsideView: View {
     @State private var editingPageName = false
     @State private var addingConcept = false
     
+    @ObservedObject private var kGuardian = KeyboardGuardian(textFieldCount: 1)
+    
     var body: some View {
         VStack {
             
             (self.tasks.count == 0 ? EmptyView() : EmptyView()) // purely to refresh view when the TaskSaved entity is changed in CoreData. (e.g. task name change / isActive change)
-            
-            HStack {
-                TextField("New Page Name", text: self.$newPageName, onCommit: {
-                    UIApplication.shared.endEditing()
-                })
-                    .background(Color.gray.opacity(0.3))
-                    .cornerRadius(10.0)
-                    .multilineTextAlignment(.center)
-                
-                Button(action: self.addPage) {
-                    Image(systemName: "plus")
-                }
-                    .disabled(!self.newPageName.hasContent())
-            }
-                .font(.title)
-                .padding()
-                
 
             List {
                 Section(header: Text("Pages")) {
@@ -54,6 +39,9 @@ struct PageInsideView: View {
                             Text(child.name)
                         }
                     }.onDelete(perform: self.deleteChildren(at:))
+                    
+                    NewPageTF(newPageName: self.$newPageName, addPageAction: self.addPage, kGuardian: self.kGuardian)
+                        
                 }
                 
                 Section(header: Text("Concepts")) {
@@ -79,7 +67,7 @@ struct PageInsideView: View {
                         Spacer()
                     }
                 }
-            }
+            }.offset(y: self.kGuardian.slide).animation(.easeInOut(duration: 0.2))
         }
         .navigationBarTitle(self.thisPage().name)
         .navigationBarItems(trailing: Button(action: self.morePressed) {

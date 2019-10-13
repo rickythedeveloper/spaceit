@@ -53,6 +53,7 @@
 		B8D950612326C8E7001236AE /* TimeSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8D950602326C8E7001236AE /* TimeSettings.swift */; };
 		B8D950632326CA98001236AE /* TimeSetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8D950622326CA98001236AE /* TimeSetting.swift */; };
 		B8D9B2D42329A97100348987 /* GADBannerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8D9B2D32329A97100348987 /* GADBannerViewController.swift */; };
+		B8F3794623537EC800CA9976 /* NewPageTF.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8F3794523537EC800CA9976 /* NewPageTF.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -106,6 +107,7 @@
 		B8D950602326C8E7001236AE /* TimeSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeSettings.swift; sourceTree = "<group>"; };
 		B8D950622326CA98001236AE /* TimeSetting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeSetting.swift; sourceTree = "<group>"; };
 		B8D9B2D32329A97100348987 /* GADBannerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GADBannerViewController.swift; sourceTree = "<group>"; };
+		B8F3794523537EC800CA9976 /* NewPageTF.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewPageTF.swift; sourceTree = "<group>"; };
 		D1E79BE1585F8564AA316F2F /* Pods_Notification_App.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Notification_App.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -148,6 +150,7 @@
 				B85C07D523365CCB00200B07 /* PageStructureView.swift */,
 				B85C07D723365E3200200B07 /* PageInsideView.swift */,
 				B85C07D923379DBB00200B07 /* PageNameEditView.swift */,
+				B8F3794523537EC800CA9976 /* NewPageTF.swift */,
 			);
 			path = Workspace;
 			sourceTree = "<group>";
@@ -448,6 +451,7 @@
 				B8D9505E2326C85C001236AE /* UNUserNotificationCenter+.swift in Sources */,
 				B8D950582326C56D001236AE /* RemindTimeSettings.swift in Sources */,
 				B88457F5232A4E3200B5CC3C /* KeyboardGuardian.swift in Sources */,
+				B8F3794623537EC800CA9976 /* NewPageTF.swift in Sources */,
 				B88457FF232BA2A100B5CC3C /* Spaced Repetition.swift in Sources */,
 				B81428C7232EB41B0085AA1F /* MultiLineTextField.swift in Sources */,
 				B895D2E023315AC600767C4E /* Alert+.swift in Sources */,
