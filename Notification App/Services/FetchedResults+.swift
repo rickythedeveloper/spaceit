@@ -73,4 +73,20 @@ extension FetchedResults where Result: TaskSaved {
             if lhs.dueDate() < rhs.dueDate() {return true} else {return false}
         }
     }
+    
+    func sortedByCreationDate(newFirst: Bool) -> [TaskSaved] {
+        for each in self {
+            if each.createdAt == nil {
+                each.createdAt = Date()
+            }
+        }
+        
+        return self.sorted { (lhs, rhs) -> Bool in
+            if lhs.createdAt! > rhs.createdAt! {
+                return newFirst
+            } else {
+                return !newFirst
+            }
+        }
+    }
 }

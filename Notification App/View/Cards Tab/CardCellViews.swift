@@ -12,7 +12,7 @@ struct UpcomingCell: View {
     var task: TaskSaved
     
     var body: some View {
-        TaskCell(task: task, showBreadcrumbs: true, showDueDate: true)
+        TaskCell(task: task, showBreadcrumbs: true, showDueDate: true, showCreationDate: false)
     }
 }
 
@@ -20,7 +20,7 @@ struct allTaskCell: View {
     var task: TaskSaved
     
     var body: some View {
-        TaskCell(task: task, showBreadcrumbs: true, showDueDate: false)
+        TaskCell(task: task, showBreadcrumbs: true, showDueDate: false, showCreationDate: false)
     }
 }
 
@@ -28,7 +28,15 @@ struct pageCardCell: View {
     var task: TaskSaved
     
     var body: some View {
-        TaskCell(task: task, showBreadcrumbs: false, showDueDate: false)
+        TaskCell(task: task, showBreadcrumbs: false, showDueDate: false, showCreationDate: false)
+    }
+}
+
+struct creationHistoryCell: View {
+    var task: TaskSaved
+    
+    var body: some View {
+        TaskCell(task: task, showBreadcrumbs: true, showDueDate: false, showCreationDate: true)
     }
 }
 
@@ -38,6 +46,7 @@ struct TaskCell: View {
     
     var showBreadcrumbs: Bool
     var showDueDate: Bool
+    var showCreationDate: Bool
     
     var body: some View {
         HStack {
@@ -51,7 +60,7 @@ struct TaskCell: View {
                 if self.task.page != nil && self.showBreadcrumbs {
                     HStack {
                         Text(self.task.page!.breadCrumb())
-                            .opacity(self.task.isActive ? 0.5 : 0.2)
+                            .opacity(self.task.isActive ? 0.6 : 0.2)
                             .font(.caption)
                         Spacer()
                     }
@@ -63,7 +72,11 @@ struct TaskCell: View {
             
             if self.showDueDate {
                 Text(self.task.dueDateStringShort())
-                    .opacity(0.7)
+                    .opacity(self.task.isActive ? 0.9 : 0.2)
+                    .font(.callout)
+            } else if self.showCreationDate && self.task.creationDateString() != nil {
+                Text(self.task.creationDateString()!)
+                    .opacity(self.task.isActive ? 0.9 : 0.2)
                     .font(.callout)
             }
         }.foregroundColor(task.isDue() && task.isActive ? .red : nil)

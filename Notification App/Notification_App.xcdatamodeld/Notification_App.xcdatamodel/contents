@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="14903" systemVersion="19A558d" minimumToolsVersion="Automatic" sourceLanguage="Swift" usedWithCloudKit="YES" userDefinedModelVersionIdentifier="">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="15508" systemVersion="19A582a" minimumToolsVersion="Automatic" sourceLanguage="Swift" usedWithCloudKit="YES" userDefinedModelVersionIdentifier="">
     <entity name="Page" representedClassName=".Page" syncable="YES">
         <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
         <attribute name="name" optional="YES" attributeType="String"/>
@@ -9,6 +9,7 @@
     </entity>
     <entity name="TaskSaved" representedClassName=".TaskSaved" syncable="YES">
         <attribute name="answer" optional="YES" attributeType="String"/>
+        <attribute name="createdAt" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
         <attribute name="isActive" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
         <attribute name="lastChecked" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
@@ -18,6 +19,6 @@
     </entity>
     <elements>
         <element name="Page" positionX="105.33984375" positionY="-3.2421875" width="128" height="118"/>
-        <element name="TaskSaved" positionX="-63" positionY="-18" width="128" height="148"/>
+        <element name="TaskSaved" positionX="-63" positionY="-18" width="128" height="163"/>
     </elements>
 </model>

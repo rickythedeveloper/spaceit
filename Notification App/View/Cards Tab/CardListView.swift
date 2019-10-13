@@ -24,6 +24,7 @@ struct CardListView: View {
                 Picker(selection: self.$listChoice, label: Text("choose")) {
                     Text("Upcoming").tag(0)
                     Text("All").tag(1)
+                    Text("Creation History").tag(2)
                 }.pickerStyle(SegmentedPickerStyle())
                 
                 
@@ -35,12 +36,20 @@ struct CardListView: View {
                             })
                         }
                     }
-                } else {
+                } else if self.listChoice == 1 {
                     List {
                         ForEach(0..<self.allOfTasks().count, id: \.self) { index in
                             NavigationLink(destination:
                                 CardEditView(task: self.allOfTasks()[index]).environment(\.managedObjectContext, self.managedObjectContext), label: {
                                     allTaskCell(task: self.allOfTasks()[index])
+                            })
+                        }
+                    }
+                } else {
+                    List {
+                        ForEach(0..<self.tasksByCreationDate().count, id: \.self) { index in
+                            NavigationLink(destination: CardEditView(task: self.tasksByCreationDate()[index]).environment(\.managedObjectContext, self.managedObjectContext), label: {
+                                    creationHistoryCell(task: self.tasksByCreationDate()[index])
                             })
                         }
                     }
@@ -66,6 +75,10 @@ struct CardListView: View {
     
     private func justUpcoming() -> [TaskSaved] {
         return self.tasksFetched.sortedByDueDate().activeTasks()
+    }
+    
+    private func tasksByCreationDate() -> [TaskSaved] {
+        return self.tasksFetched.sortedByCreationDate(newFirst: true)
     }
 }
 

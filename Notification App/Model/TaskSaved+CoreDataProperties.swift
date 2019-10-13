@@ -26,6 +26,7 @@ extension TaskSaved: Identifiable {
     @NSManaged public var waitTime: Double
     @NSManaged public var page: Page?
     @NSManaged public var isActive: Bool
+    @NSManaged public var createdAt: Date?
 
 }
 
@@ -51,9 +52,9 @@ extension TaskSaved {
     
     func isDue() -> Bool {
         if self.dueDate() < Date() {return true} else {return false}
-   }
+    }
        
-   func prepareForNext(difficulty: Double) {
+    func prepareForNext(difficulty: Double) {
        guard difficulty >= 0 && difficulty <= 1 else { fatalError("The difficulty is not between 0 and 1") }
 
        let actualWaitTime = Date().timeIntervalSince(self.lastChecked)
@@ -64,5 +65,15 @@ extension TaskSaved {
        let factor = minimumFactor * pow(5, (1 - difficulty))
        self.waitTime = factor * actualWaitTime
        print("next wait time: \(self.waitTime)")
-   }
+    }
+    
+    func creationDateString() -> String? {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "dd MMM"
+        if let createdAt = self.createdAt {
+            return dateFormatter.string(from: createdAt)
+        } else {
+            return nil
+        }
+    }
 }
