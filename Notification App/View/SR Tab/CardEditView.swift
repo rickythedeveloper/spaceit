@@ -100,6 +100,14 @@ struct CardEditView: View {
                         .font(.title)
                 }
                 Spacer()
+            }.padding(.bottom)
+            
+            VStack {
+                HStack {
+                    Text("Status:")
+                    Text(!self.task.isActive ? "Inactive" : (self.task.isDue() ? "Overdue" : "Due on \(self.task.dueDateStringShort())"))
+                        .foregroundColor((self.task.isActive && self.task.isDue()) ? .red :  nil)
+                }
             }
             
             Spacer()
