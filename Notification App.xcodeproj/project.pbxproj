@@ -10,6 +10,7 @@
 		9936B7853FDD4BE9984BD39E /* Pods_Notification_App.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D1E79BE1585F8564AA316F2F /* Pods_Notification_App.framework */; };
 		B801F1342339312C003218BF /* Angle+.swift in Sources */ = {isa = PBXBuildFile; fileRef = B801F1332339312C003218BF /* Angle+.swift */; };
 		B81428C7232EB41B0085AA1F /* MultiLineTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = B81428C6232EB41B0085AA1F /* MultiLineTextField.swift */; };
+		B82D2F24235C87D60055A506 /* UpcomingRIghtView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B82D2F23235C87D60055A506 /* UpcomingRIghtView.swift */; };
 		B8419633233AA00A00E6558C /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B8419632233AA00A00E6558C /* CloudKit.framework */; };
 		B846750A23536797006FC44F /* CardCellViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = B846750923536797006FC44F /* CardCellViews.swift */; };
 		B85C07D1233657BF00200B07 /* TaskSaved+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = B85C07D0233657BF00200B07 /* TaskSaved+CoreDataProperties.swift */; };
@@ -53,6 +54,7 @@
 		B8D950612326C8E7001236AE /* TimeSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8D950602326C8E7001236AE /* TimeSettings.swift */; };
 		B8D950632326CA98001236AE /* TimeSetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8D950622326CA98001236AE /* TimeSetting.swift */; };
 		B8D9B2D42329A97100348987 /* GADBannerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8D9B2D32329A97100348987 /* GADBannerViewController.swift */; };
+		B8EA1694235C90BA00845F04 /* CreationHistoryLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8EA1693235C90BA00845F04 /* CreationHistoryLabel.swift */; };
 		B8F3794623537EC800CA9976 /* NewPageTF.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8F3794523537EC800CA9976 /* NewPageTF.swift */; };
 /* End PBXBuildFile section */
 
@@ -61,6 +63,7 @@
 		6E28032A00F8E10F84C3ACE9 /* Pods-Notification App.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Notification App.debug.xcconfig"; path = "Target Support Files/Pods-Notification App/Pods-Notification App.debug.xcconfig"; sourceTree = "<group>"; };
 		B801F1332339312C003218BF /* Angle+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Angle+.swift"; sourceTree = "<group>"; };
 		B81428C6232EB41B0085AA1F /* MultiLineTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiLineTextField.swift; sourceTree = "<group>"; };
+		B82D2F23235C87D60055A506 /* UpcomingRIghtView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpcomingRIghtView.swift; sourceTree = "<group>"; };
 		B8419631233AA00800E6558C /* Notification App.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Notification App.entitlements"; sourceTree = "<group>"; };
 		B8419632233AA00A00E6558C /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		B846750923536797006FC44F /* CardCellViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardCellViews.swift; sourceTree = "<group>"; };
@@ -107,6 +110,7 @@
 		B8D950602326C8E7001236AE /* TimeSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeSettings.swift; sourceTree = "<group>"; };
 		B8D950622326CA98001236AE /* TimeSetting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeSetting.swift; sourceTree = "<group>"; };
 		B8D9B2D32329A97100348987 /* GADBannerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GADBannerViewController.swift; sourceTree = "<group>"; };
+		B8EA1693235C90BA00845F04 /* CreationHistoryLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreationHistoryLabel.swift; sourceTree = "<group>"; };
 		B8F3794523537EC800CA9976 /* NewPageTF.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewPageTF.swift; sourceTree = "<group>"; };
 		D1E79BE1585F8564AA316F2F /* Pods_Notification_App.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Notification_App.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -199,6 +203,8 @@
 			children = (
 				B8AB5821232E8F7A00AD2012 /* CardListView.swift */,
 				B846750923536797006FC44F /* CardCellViews.swift */,
+				B82D2F23235C87D60055A506 /* UpcomingRIghtView.swift */,
+				B8EA1693235C90BA00845F04 /* CreationHistoryLabel.swift */,
 			);
 			path = "Cards Tab";
 			sourceTree = "<group>";
@@ -443,6 +449,7 @@
 				B88457FD232BA27800B5CC3C /* ReviewSR.swift in Sources */,
 				B85C07D823365E3200200B07 /* PageInsideView.swift in Sources */,
 				B8D9503D2326C48F001236AE /* AppDelegate.swift in Sources */,
+				B8EA1694235C90BA00845F04 /* CreationHistoryLabel.swift in Sources */,
 				B846750A23536797006FC44F /* CardCellViews.swift in Sources */,
 				B85C07DA23379DBB00200B07 /* PageNameEditView.swift in Sources */,
 				B88457FB232BA0BA00B5CC3C /* MainTab.swift in Sources */,
@@ -462,6 +469,7 @@
 				B85C07DC23379E6400200B07 /* FetchedResults+.swift in Sources */,
 				B85C07D2233657BF00200B07 /* Page+CoreDataClass.swift in Sources */,
 				B8845801232BA8EC00B5CC3C /* TaskCard.swift in Sources */,
+				B82D2F24235C87D60055A506 /* UpcomingRIghtView.swift in Sources */,
 				B8D950612326C8E7001236AE /* TimeSettings.swift in Sources */,
 				B88457F9232A8FB500B5CC3C /* PrivacyPolicy.swift in Sources */,
 				B8AB581F232E843C00AD2012 /* NSManagedObject+.swift in Sources */,
@@ -614,7 +622,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "Notification App/Notification App.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 21;
+				CURRENT_PROJECT_VERSION = 22;
 				DEVELOPMENT_ASSET_PATHS = "\"Notification App/Preview Content\"";
 				DEVELOPMENT_TEAM = G763XN7D9Q;
 				ENABLE_PREVIEWS = YES;
@@ -637,7 +645,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "Notification App/Notification App.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 21;
+				CURRENT_PROJECT_VERSION = 22;
 				DEVELOPMENT_ASSET_PATHS = "\"Notification App/Preview Content\"";
 				DEVELOPMENT_TEAM = G763XN7D9Q;
 				ENABLE_PREVIEWS = YES;

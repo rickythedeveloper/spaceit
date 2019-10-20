@@ -11,8 +11,10 @@ import SwiftUI
 struct UpcomingCell: View {
     var task: TaskSaved
     
+    var isFirst: Bool
+    
     var body: some View {
-        TaskCell(task: task, showBreadcrumbs: true, showDueDate: true, showCreationDate: false)
+        TaskCell(task: task, showBreadcrumbs: true, showDueDate: true, showDescriptions: self.isFirst, showCreationDate: false)
     }
 }
 
@@ -20,7 +22,7 @@ struct allTaskCell: View {
     var task: TaskSaved
     
     var body: some View {
-        TaskCell(task: task, showBreadcrumbs: true, showDueDate: false, showCreationDate: false)
+        TaskCell(task: task, showBreadcrumbs: true, showDueDate: false, showDescriptions: false, showCreationDate: false)
     }
 }
 
@@ -28,15 +30,16 @@ struct pageCardCell: View {
     var task: TaskSaved
     
     var body: some View {
-        TaskCell(task: task, showBreadcrumbs: false, showDueDate: false, showCreationDate: false)
+        TaskCell(task: task, showBreadcrumbs: false, showDueDate: false, showDescriptions: false, showCreationDate: false)
     }
 }
 
 struct creationHistoryCell: View {
     var task: TaskSaved
+    var isFirst: Bool
     
     var body: some View {
-        TaskCell(task: task, showBreadcrumbs: true, showDueDate: false, showCreationDate: true)
+        TaskCell(task: task, showBreadcrumbs: true, showDueDate: false, showDescriptions: self.isFirst, showCreationDate: true)
     }
 }
 
@@ -46,6 +49,7 @@ struct TaskCell: View {
     
     var showBreadcrumbs: Bool
     var showDueDate: Bool
+    var showDescriptions: Bool
     var showCreationDate: Bool
     
     var body: some View {
@@ -71,13 +75,9 @@ struct TaskCell: View {
             Spacer()
             
             if self.showDueDate {
-                Text(self.task.dueDateStringShort())
-                    .opacity(self.task.isActive ? 0.9 : 0.2)
-                    .font(.callout)
+                UpcomingRIghtView(task: self.task, showingDescriptions: self.showDescriptions)
             } else if self.showCreationDate && self.task.creationDateString() != nil {
-                Text(self.task.creationDateString()!)
-                    .opacity(self.task.isActive ? 0.9 : 0.2)
-                    .font(.callout)
+                CreationHistoryLabel(task: self.task, showingDescriptions: self.showDescriptions)
             }
         }.foregroundColor(task.isDue() && task.isActive ? .red : nil)
     }

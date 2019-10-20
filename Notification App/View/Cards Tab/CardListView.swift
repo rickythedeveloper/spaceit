@@ -32,7 +32,7 @@ struct CardListView: View {
                     List {
                         ForEach(0..<self.justUpcoming().count, id: \.self) { index in
                             NavigationLink(destination: CardEditView(task: self.justUpcoming()[index]).environment(\.managedObjectContext, self.managedObjectContext), label: {
-                                UpcomingCell(task: self.justUpcoming()[index])
+                                UpcomingCell(task: self.justUpcoming()[index], isFirst: index == 0)
                             })
                         }
                     }
@@ -49,7 +49,7 @@ struct CardListView: View {
                     List {
                         ForEach(0..<self.tasksByCreationDate().count, id: \.self) { index in
                             NavigationLink(destination: CardEditView(task: self.tasksByCreationDate()[index]).environment(\.managedObjectContext, self.managedObjectContext), label: {
-                                    creationHistoryCell(task: self.tasksByCreationDate()[index])
+                                    creationHistoryCell(task: self.tasksByCreationDate()[index], isFirst: index == 0)
                             })
                         }
                     }
