@@ -57,7 +57,7 @@ struct CardEditView: View {
                         Spacer()
                     }
                     MultiLineTF(text: self.$question, fontSize: CGFloat(20.0), index: 0, kGuardian: kGuardian)
-                        .frame(maxWidth: 500, maxHeight: 100, alignment: .center)
+                        .frame(maxWidth: .infinity, maxHeight: 150, alignment: .center)
                         .background(GeometryGetter(rect: self.$kGuardian.rects[0]))
                         .alert(isPresented: self.$alertShowing) {
                             Alert.invalidQuestion()
@@ -68,7 +68,7 @@ struct CardEditView: View {
                         Spacer()
                     }.padding(EdgeInsets(top: 10, leading: 0, bottom: 0, trailing: 0))
                     MultiLineTF(text: self.$answer, fontSize: CGFloat(20.0), index: 1, kGuardian: kGuardian)
-                        .frame(maxWidth: 500, maxHeight: 250, alignment: .center)
+                        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
                         .background(GeometryGetter(rect: self.$kGuardian.rects[1]))
                 }.padding()
             }

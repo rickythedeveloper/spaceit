@@ -89,7 +89,11 @@ extension TaskSaved {
             }
         } else {
             let days = Int((self.waitTime / (60*60*24)).rounded())
-            return "\(days) days"
+            if days == 1 {
+                return "1 day"
+            } else {
+                return "\(days) days"
+            }
         }
     }
 }
