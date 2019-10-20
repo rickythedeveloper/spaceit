@@ -23,30 +23,31 @@ struct TaskCard: View {
             VStack {
                 Text(self.isBaseCard ? "No card to review" : self.task!.question)
                     .font(.largeTitle)
-                    .animation(.easeInOut(duration: 0.2))
-                Text( (!self.isBaseCard && self.task!.page != nil) ? self.task!.page!.breadCrumb() : "" )
-                    .font(.body)
-                    .animation(.easeInOut(duration: 0.2))
-                    .opacity(0.5)
+                
+                if !self.isBaseCard && self.task!.page != nil {
+                    Text(self.task!.page!.breadCrumb())
+                        .font(.body)
+                        .opacity(0.5)
+                }
 
                 if !self.isBaseCard {
                     if self.task!.answer != nil && self.showingAnswer {
                         ScrollView {
                             Text(self.task!.answer!)
                                 .padding()
-                        }.animation(.easeInOut(duration: 0.4))
+                        }
                     } else if self.task!.answer != nil && !(self.showingAnswer) {
                         Image(systemName: "text.alignleft")
                             .opacity(0.5)
-                            .animation(.easeInOut(duration: 0.2))
                     }
                 }
             }.padding()
-            
         }
             .padding()
             .onTapGesture {
-                self.showingAnswer.toggle()
+                withAnimation(.easeInOut(duration: 0.2)) {
+                    self.showingAnswer.toggle()
+                }
             }
     }
 }
