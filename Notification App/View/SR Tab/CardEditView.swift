@@ -107,12 +107,14 @@ struct CardEditView: View {
                     VStack(alignment: .trailing) {
                         Text("Status:")
                         Text("Review interval:")
+                            .opacity(self.task.isActive ? 1.0 : 0.3)
                     }.multilineTextAlignment(.trailing)
                     
                     VStack(alignment: .leading) {
                         Text(!self.task.isActive ? "Inactive" : "Due on \(self.task.dueDateStringShort())")
                             .foregroundColor((self.task.isActive && self.task.isDue()) ? .red :  nil)
                         Text(self.task.waitTimeString())
+                            .opacity(self.task.isActive ? 1.0 : 0.3)
                     }.multilineTextAlignment(.leading)
                     
                 }
