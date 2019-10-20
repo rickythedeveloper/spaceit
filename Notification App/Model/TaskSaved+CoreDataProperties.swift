@@ -76,4 +76,20 @@ extension TaskSaved {
             return nil
         }
     }
+    
+    func waitTimeString() -> String {
+        if self.waitTime < 60*60*24 {
+            let hours = Int((self.waitTime / (60*60) ).rounded())
+            if hours == 0 {
+                return "< 30 minutes"
+            } else if hours == 1 {
+                return "1 hour"
+            } else {
+                return "\(hours) hours"
+            }
+        } else {
+            let days = Int((self.waitTime / (60*60*24)).rounded())
+            return "\(days) days"
+        }
+    }
 }

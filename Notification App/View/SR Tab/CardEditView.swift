@@ -104,9 +104,17 @@ struct CardEditView: View {
             
             VStack {
                 HStack {
-                    Text("Status:")
-                    Text(!self.task.isActive ? "Inactive" : (self.task.isDue() ? "Overdue" : "Due on \(self.task.dueDateStringShort())"))
-                        .foregroundColor((self.task.isActive && self.task.isDue()) ? .red :  nil)
+                    VStack(alignment: .trailing) {
+                        Text("Status:")
+                        Text("Review interval:")
+                    }.multilineTextAlignment(.trailing)
+                    
+                    VStack(alignment: .leading) {
+                        Text(!self.task.isActive ? "Inactive" : "Due on \(self.task.dueDateStringShort())")
+                            .foregroundColor((self.task.isActive && self.task.isDue()) ? .red :  nil)
+                        Text(self.task.waitTimeString())
+                    }.multilineTextAlignment(.leading)
+                    
                 }
             }
             
