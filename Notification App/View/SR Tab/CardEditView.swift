@@ -68,7 +68,7 @@ struct CardEditView: View {
                         Spacer()
                     }.padding(EdgeInsets(top: 10, leading: 0, bottom: 0, trailing: 0))
                     MultiLineTF(text: self.$answer, fontSize: CGFloat(20.0), index: 1, kGuardian: kGuardian)
-                        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
+                        .frame(maxWidth: .infinity, maxHeight: 250, alignment: .center)
                         .background(GeometryGetter(rect: self.$kGuardian.rects[1]))
                 }.padding()
             }
