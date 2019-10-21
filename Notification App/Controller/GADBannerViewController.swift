@@ -6,6 +6,7 @@
 //  Copyright © 2019 Rintaro Kawagishi. All rights reserved.
 //
 
+/*
 import GoogleMobileAds
 import SwiftUI
 import UIKit
@@ -65,3 +66,5 @@ class BannerViewDelegate: NSObject, GADBannerViewDelegate {
       print("adViewWillLeaveApplication")
     }
 }
+
+ */

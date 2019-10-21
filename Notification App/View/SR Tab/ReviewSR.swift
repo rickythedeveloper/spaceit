@@ -7,7 +7,7 @@
 //
 
 import SwiftUI
-import GoogleMobileAds
+//import GoogleMobileAds
 
 struct ReviewSR: View {
     
