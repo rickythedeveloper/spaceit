@@ -36,7 +36,13 @@ struct PageInsideView: View {
                 Section(header: Text("Pages")) {
                     ForEach(self.pages.childrenOfPage(id: self.pageID), id: \.self) { child in
                         NavigationLink(destination: PageInsideView(pageID: child.id, isInSelectionMode: self.isInSelectionMode, onSelection: self.dismissThisViewAndPassInfo(pageSelected:)).environment(\.managedObjectContext, self.managedObjectContext)) {
-                            Text(child.name)
+                            HStack {
+                                Text(child.name)
+                                Spacer()
+                                Text(String(child.nOfConceptsUnder()))
+                                    .opacity(0.5)
+                            }
+                            
                         }
                     }.onDelete(perform: self.deleteChildren(at:))
                     

@@ -98,3 +98,24 @@ extension Page {
     @NSManaged public func removeFromConcepts(_ values: NSSet)
 
 }
+
+extension Page {
+    func nOfConceptsUnder() -> Int {
+        return self.countConceptsInChildren(alreadyCounted: 0)
+    }
+    
+    func countConceptsInChildren(alreadyCounted: Int) -> Int {
+        var count = alreadyCounted
+        if self.concepts != nil {
+            count += self.concepts!.count
+        }
+        if self.children != nil {
+            var countFromKids = 0
+            for child in self.children! as! Set<Page> {
+                countFromKids += child.countConceptsInChildren(alreadyCounted: 0)
+            }
+            return count + countFromKids
+        }
+        return count
+    }
+}
