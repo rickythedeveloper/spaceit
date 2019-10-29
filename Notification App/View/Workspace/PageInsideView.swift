@@ -80,9 +80,9 @@ struct PageInsideView: View {
             if !self.isInSelectionMode {
                 Image(systemName: "ellipsis")
                     .font(.title)
-                    .actionSheet(isPresented: self.$moreActionSheeting) {
-                        ActionSheet.pageAction(title: self.pageName(), editName: self.editPageNamePressed, addHigherPage: self.addHigherPage, deleteTopPage: self.deleteTopPage, pageType: self.pageType())
-                    }
+                    .popSheet(isPresented: self.$moreActionSheeting, arrowEdge: .top, content: { () -> PopSheet in
+                        PopSheet.pageAction(title: self.pageName(), editName: self.editPageNamePressed, addHigherPage: self.addHigherPage, deleteTopPage: self.deleteTopPage, pageType: self.pageType())
+                    })
                     .sheet(isPresented: self.$editingPageName) {
                         PageNameEditView(pageID: self.pageID).environment(\.managedObjectContext, self.managedObjectContext)
                     }
