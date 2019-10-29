@@ -75,7 +75,7 @@ struct PageInsideView: View {
                 }
             }.offset(y: self.kGuardian.slide).animation(.easeInOut(duration: 0.2))
         }
-        .navigationBarTitle(self.thisPage().name)
+        .navigationBarTitle(self.pageName())
         .navigationBarItems(trailing: Button(action: self.morePressed) {
             if !self.isInSelectionMode {
                 Image(systemName: "ellipsis")
@@ -96,8 +96,10 @@ struct PageInsideView: View {
     
     private func addPage() {
         let newPage = Page.createPageInContext(name: self.newPageName, id: UUID(), context: self.managedObjectContext)
-        self.thisPage().addToChildren(newPage)
-        self.managedObjectContext.saveContext()
+        if let thisPage = self.thisPage() {
+            thisPage.addToChildren(newPage)
+            self.managedObjectContext.saveContext()
+        }
         self.newPageName = ""
         UIApplication.shared.endEditing()
     }
@@ -112,7 +114,7 @@ struct PageInsideView: View {
     private func morePressed() {
         if self.isInSelectionMode {
             self.presentationMode.wrappedValue.dismiss()
-            self.dismissThisViewAndPassInfo(pageSelected: self.thisPage())
+            self.dismissThisViewAndPassInfo(pageSelected: self.thisPage()!)
         } else {
             self.moreActionSheeting = true
         }
@@ -131,30 +133,42 @@ struct PageInsideView: View {
     private func deleteTopPage() {
         guard self.isTopPage() && self.onlyHasOneChild() else {return}
         
-        let onlyChild = (self.thisPage().children as! Set<Page>).first!
-        self.thisPage().removeFromChildren(onlyChild)
-        self.managedObjectContext.delete(self.thisPage())
-        self.managedObjectContext.saveContext()
+        if let thisPage = self.thisPage() {
+            let onlyChild = (thisPage.children as! Set<Page>).first!
+            thisPage.removeFromChildren(onlyChild)
+            self.managedObjectContext.delete(thisPage)
+            self.managedObjectContext.saveContext()
+        }
     }
     
     private func addHigherPage() {
         guard self.isTopPage() else {return}
         
         let higherPage = Page.createPageInContext(name: "My workspace", id: UUID(), context: self.managedObjectContext)
-        self.thisPage().parent = higherPage
-        self.managedObjectContext.saveContext()
+        if let thisPage = self.thisPage() {
+            thisPage.parent = higherPage
+            self.managedObjectContext.saveContext()
+        }
     }
     
     private func isTopPage() -> Bool {
-        return self.thisPage().topPage().id == self.pageID
+        if let thisPage = self.thisPage() {
+            return thisPage.topPage().id == self.pageID
+        } else {
+            return false
+        }
     }
     
     private func onlyHasOneChild() -> Bool {
-        return self.thisPage().children?.count == 1
+        if let thisPage = self.thisPage() {
+            return thisPage.children?.count == 1
+        } else {
+            return false
+        }
     }
     
     private func hasNoConcepts() -> Bool {
-        if let concepts = self.thisPage().concepts {
+        if let thisPage = self.thisPage(), let concepts = thisPage.concepts {
             return concepts.count == 0
         } else {
             return true
@@ -162,11 +176,11 @@ struct PageInsideView: View {
     }
     
     private func pageName() -> String {
-        return self.thisPage().name
+        return (self.thisPage() != nil ? self.thisPage()!.name : "")
     }
     
-    private func thisPage() -> Page {
-        return self.pages.page(id: self.pageID)!
+    private func thisPage() -> Page? {
+        return self.pages.page(id: self.pageID)
     }
     
     private func pageType() -> PageType {
