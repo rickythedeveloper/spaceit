@@ -54,6 +54,7 @@ public struct PopSheet {
     /// Creates a `.popover` for use on an iPad device
     func popover(isPresented: Binding<Bool>) -> some View {
         VStack {
+            Divider()
             ForEach(Array(buttons.enumerated()), id: \.offset) { (offset, button) in
                 Group {
                     SwiftUI.Button(action: {
