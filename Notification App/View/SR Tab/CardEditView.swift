@@ -163,10 +163,18 @@ struct CardEditView: View {
             self.alertShowing = true
             return
         }
-        self.updateData()
-        self.isShowing = false
-        self.presentationMode.wrappedValue.dismiss()
-        self.afterDismissing()
+        
+        let duration = 0.3
+        let buffer = 0.1
+        withAnimation(.easeInOut(duration: duration)) {
+            self.isShowing = false
+        }
+        
+        _ = Timer.scheduledTimer(withTimeInterval: duration + buffer, repeats: false, block: { (timer) in
+            self.updateData()
+            self.presentationMode.wrappedValue.dismiss()
+            self.afterDismissing()
+        })
     }
     
     private func updateData() {
