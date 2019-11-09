@@ -147,7 +147,9 @@ struct CardEditView: View {
     }
     
     private func deleteTask() {
-        self.isShowing = false
+        withAnimation(.easeInOut(duration: 0.5)) {
+            self.isShowing = false
+        }
         
         self.managedObjectContext.delete(self.task)
         self.managedObjectContext.saveContext()

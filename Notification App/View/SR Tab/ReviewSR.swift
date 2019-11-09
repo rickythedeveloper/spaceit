@@ -104,8 +104,10 @@ struct ReviewSR: View {
     }
     
     private func putOffPressed() {
-        self.putOffIDs.append(self.dueTasks()[0].id)
-        self.onSomeAction()
+        withAnimation(.easeInOut(duration: 0.5)) {
+            self.putOffIDs.append(self.dueTasks()[0].id)
+            self.onSomeAction()
+        }
     }
     
     private func editPressed() {
@@ -116,10 +118,12 @@ struct ReviewSR: View {
         guard num != 0 else {return}
         let relativeDiff = Double(diff/num)
         
-        let task = self.dueTasks()[0]
-        task.prepareForNext(difficulty: relativeDiff)
-        self.managedObjectContext.saveContext()
-        self.registerNotification(task: task)
+        withAnimation(.easeInOut(duration: 0.5)) {
+            let task = self.dueTasks()[0]
+            task.prepareForNext(difficulty: relativeDiff)
+            self.managedObjectContext.saveContext()
+            self.registerNotification(task: task)
+        }
         self.onSomeAction()
     }
     

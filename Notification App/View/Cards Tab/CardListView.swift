@@ -66,6 +66,7 @@ struct CardListView: View {
                         }
                 }
             )
+            .animation(.easeInOut(duration: 0.7))
         }.navigationViewStyle(StackNavigationViewStyle())
     }
     
