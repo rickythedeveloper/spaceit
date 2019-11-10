@@ -179,10 +179,14 @@ struct CardEditView: View {
         task.question = self.question
         task.answer = (self.answer != "") ? self.answer : nil
         task.isActive = self.taskIsActive
-        managedObjectContext.saveContext {
+        managedObjectContext.saveContext(completion: {
             self.presentationMode.wrappedValue.dismiss()
             self.afterDismissing()
-        }
+        }, errorHandler: {
+            self.presentationMode.wrappedValue.dismiss()
+            self.afterDismissing()
+//            TO DO: handle the error.
+        })
     }
     
     private func addPage(page: Page) {

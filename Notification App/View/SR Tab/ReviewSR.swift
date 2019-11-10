@@ -90,7 +90,7 @@ struct ReviewSR: View {
                                 .font(.caption)
                                 .opacity(0.7)
                                 .sheet(isPresented: self.$editingCard, onDismiss: nil) {
-                                    CardEditView(task: self.dueTasks()[0]).environment(\.managedObjectContext, self.managedObjectContext)
+                                    CardEditView(task: self.dueTasks()[0], afterDismissing: self.onEditingCard).environment(\.managedObjectContext, self.managedObjectContext)
                                 }
                         }.padding(EdgeInsets(top: 0, leading: 5, bottom: 0, trailing: 0))
                     }
@@ -99,6 +99,11 @@ struct ReviewSR: View {
         }
             .padding()
             
+    }
+    
+    private func onEditingCard() {
+        self.showingAnswer.toggle()
+        self.showingAnswer = false
     }
     
     private func putOffPressed() {
