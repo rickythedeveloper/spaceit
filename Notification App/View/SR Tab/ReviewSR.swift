@@ -27,6 +27,13 @@ struct ReviewSR: View {
 //            Divider()
             
             HStack {
+                HStack {
+                    Text("\(self.dueTasks().count)")
+                        .font(.title)
+                        .foregroundColor(.red)
+                    Text("cards to review")
+                        .font(.caption)
+                }
                 Spacer()
                 Button(action: {self.addingNewSR = true}) {
                     Image(systemName: "plus.circle")
