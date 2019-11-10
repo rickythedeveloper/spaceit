@@ -98,4 +98,13 @@ extension Array where Element: TaskSaved {
             task.isActive ? true : false
         }
     }
+    
+    func filterByWord(searchPhrase: String) -> [TaskSaved] {
+        self.filter { (task) -> Bool in
+            if task.question.contains(searchPhrase) {return true}
+            if let answer = task.answer, answer.contains(searchPhrase) {return true}
+            if let page = task.page, page.breadCrumb().contains(searchPhrase) {return true}
+            return false
+        }
+    }
 }

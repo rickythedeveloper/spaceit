@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		B801F1342339312C003218BF /* Angle+.swift in Sources */ = {isa = PBXBuildFile; fileRef = B801F1332339312C003218BF /* Angle+.swift */; };
 		B81428C7232EB41B0085AA1F /* MultiLineTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = B81428C6232EB41B0085AA1F /* MultiLineTextField.swift */; };
+		B828BC0F23786DBF00F2D959 /* ClearButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B828BC0E23786DBF00F2D959 /* ClearButton.swift */; };
 		B82D2F24235C87D60055A506 /* UpcomingRIghtView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B82D2F23235C87D60055A506 /* UpcomingRIghtView.swift */; };
 		B8419633233AA00A00E6558C /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B8419632233AA00A00E6558C /* CloudKit.framework */; };
 		B846750A23536797006FC44F /* CardCellViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = B846750923536797006FC44F /* CardCellViews.swift */; };
@@ -61,6 +62,7 @@
 /* Begin PBXFileReference section */
 		B801F1332339312C003218BF /* Angle+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Angle+.swift"; sourceTree = "<group>"; };
 		B81428C6232EB41B0085AA1F /* MultiLineTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiLineTextField.swift; sourceTree = "<group>"; };
+		B828BC0E23786DBF00F2D959 /* ClearButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClearButton.swift; sourceTree = "<group>"; };
 		B82D2F23235C87D60055A506 /* UpcomingRIghtView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpcomingRIghtView.swift; sourceTree = "<group>"; };
 		B8419631233AA00800E6558C /* Notification App.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Notification App.entitlements"; sourceTree = "<group>"; };
 		B8419632233AA00A00E6558C /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
@@ -219,6 +221,7 @@
 				B801F1332339312C003218BF /* Angle+.swift */,
 				B871756D2343F55A00BB9E6F /* ActionSheet+.swift */,
 				B8916D9B2367B8A5003A5758 /* View+.swift */,
+				B828BC0E23786DBF00F2D959 /* ClearButton.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -402,6 +405,7 @@
 				B8D9503D2326C48F001236AE /* AppDelegate.swift in Sources */,
 				B8EA1694235C90BA00845F04 /* CreationHistoryLabel.swift in Sources */,
 				B846750A23536797006FC44F /* CardCellViews.swift in Sources */,
+				B828BC0F23786DBF00F2D959 /* ClearButton.swift in Sources */,
 				B85C07DA23379DBB00200B07 /* PageNameEditView.swift in Sources */,
 				B88457FB232BA0BA00B5CC3C /* MainTab.swift in Sources */,
 				B8916D9C2367B8A5003A5758 /* View+.swift in Sources */,
@@ -573,7 +577,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "Notification App/Notification App.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 28;
+				CURRENT_PROJECT_VERSION = 29;
 				DERIVE_MACCATALYST_PRODUCT_BUNDLE_IDENTIFIER = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"Notification App/Preview Content\"";
 				DEVELOPMENT_TEAM = G763XN7D9Q;
@@ -598,7 +602,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "Notification App/Notification App.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 28;
+				CURRENT_PROJECT_VERSION = 29;
 				DERIVE_MACCATALYST_PRODUCT_BUNDLE_IDENTIFIER = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"Notification App/Preview Content\"";
 				DEVELOPMENT_TEAM = G763XN7D9Q;

@@ -15,18 +15,24 @@ struct CardListView: View {
     
     @State private var listChoice = 0
     @State private var addingNewSR = false
+    @State private var searchPhrase = ""
     
     var body: some View {
         
         NavigationView {
             VStack {
                         
-                Picker(selection: self.$listChoice, label: Text("choose")) {
+                Picker(selection: self.$listChoice.animation(.easeInOut(duration: 0.7)), label: Text("choose")) {
                     Text("Upcoming").tag(0)
                     Text("All").tag(1)
                     Text("Creation History").tag(2)
                 }.pickerStyle(SegmentedPickerStyle())
                 
+                TextField("Search", text: self.$searchPhrase)
+                    .padding([.horizontal])
+                    .background(Color.gray.opacity(0.2))
+                    .cornerRadius(10.0)
+                    .modifier(ClearButton(text: self.$searchPhrase))
                 
                 if self.listChoice == 0 {
                     List {
@@ -66,20 +72,31 @@ struct CardListView: View {
                         }
                 }
             )
-            .animation(.easeInOut(duration: 0.7))
         }.navigationViewStyle(StackNavigationViewStyle())
     }
     
     private func allOfTasks() -> [TaskSaved] {
-        return self.tasksFetched.sortedByName()
+        if self.searchPhrase.hasContent() {
+            return self.tasksFetched.sortedByName().filterByWord(searchPhrase: self.searchPhrase)
+        } else {
+            return self.tasksFetched.sortedByName()
+        }
     }
     
     private func justUpcoming() -> [TaskSaved] {
-        return self.tasksFetched.sortedByDueDate().activeTasks()
+        if self.searchPhrase.hasContent() {
+            return self.tasksFetched.sortedByDueDate().activeTasks().filterByWord(searchPhrase: self.searchPhrase)
+        } else {
+            return self.tasksFetched.sortedByDueDate().activeTasks()
+        }
     }
     
     private func tasksByCreationDate() -> [TaskSaved] {
-        return self.tasksFetched.sortedByCreationDate(newFirst: true)
+        if self.searchPhrase.hasContent() {
+            return self.tasksFetched.sortedByCreationDate(newFirst: true).filterByWord(searchPhrase: self.searchPhrase)
+        } else {
+            return self.tasksFetched.sortedByCreationDate(newFirst: true)
+        }
     }
 }
 
