@@ -101,9 +101,9 @@ extension Array where Element: TaskSaved {
     
     func filterByWord(searchPhrase: String) -> [TaskSaved] {
         self.filter { (task) -> Bool in
-            if task.question.contains(searchPhrase) {return true}
-            if let answer = task.answer, answer.contains(searchPhrase) {return true}
-            if let page = task.page, page.breadCrumb().contains(searchPhrase) {return true}
+            if task.question.localizedCaseInsensitiveContains(searchPhrase) {return true}
+            if let answer = task.answer, answer.localizedCaseInsensitiveContains(searchPhrase) {return true}
+            if let page = task.page, page.breadCrumb().localizedCaseInsensitiveContains(searchPhrase) {return true}
             return false
         }
     }
