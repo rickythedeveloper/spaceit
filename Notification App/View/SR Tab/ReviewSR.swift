@@ -13,12 +13,10 @@ struct ReviewSR: View {
     
     @Environment(\.managedObjectContext) var managedObjectContext
     @FetchRequest(fetchRequest: TaskSaved.fetchRequest()) var tasksFetched: FetchedResults<TaskSaved>
-    @State var showingAnswer = false
+    @State private var showingAnswer = false
     @State private var addingNewSR = false
     @State private var editingCard = false
     @State private var putOffIDs = [UUID]()
-    
-    var sectionName: String
     
     private let diffButtonImgs = ["hand.thumbsup.fill", "hand.thumbsup", "hand.thumbsdown", "hand.thumbsdown.fill"]
     

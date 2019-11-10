@@ -9,17 +9,16 @@
 import SwiftUI
 
 struct MainTab: View {
-    let SRTitle = "Review"
     let notifSenderTitle = "Notif Sender"
     
     var body: some View {
         
         TabView {
-            ReviewSR(sectionName: SRTitle)
+            ReviewSR()
                 .environment(\.managedObjectContext, (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext)
                 .tabItem {
                     Image(systemName: "rectangle.stack.fill")
-                    Text(self.SRTitle)
+                    Text("Review")
                 }
             
             CardListView()
