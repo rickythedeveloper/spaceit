@@ -10,12 +10,16 @@ import Foundation
 import CoreData
 
 extension NSManagedObjectContext {
-    func saveContext() {
+    func saveContext(completion: @escaping ()->Void = {}) {
         do {
             try self.save()
+            _ = Timer.scheduledTimer(withTimeInterval: 0.3, repeats: false, block: { (timer) in
+                completion()
+            })
         } catch {
             let nserror = error as NSError
-            fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
+            print("Unresolved error \(nserror), \(nserror.userInfo)")
+            self.saveContext(completion: completion)
         }
     }
 }

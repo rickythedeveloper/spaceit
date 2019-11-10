@@ -24,56 +24,56 @@ struct PageInsideView: View {
     @State private var moreActionSheeting = false
     @State private var editingPageName = false
     @State private var addingConcept = false
+    @State private var listShowing = false
     
     @ObservedObject private var kGuardian = KeyboardGuardian(textFieldCount: 1)
     
     var body: some View {
         VStack {
-            
-            (self.tasks.count == 0 ? EmptyView() : EmptyView()) // purely to refresh view when the TaskSaved entity is changed in CoreData. (e.g. task name change / isActive change)
-
-            List {
-                Section(header: Text("Pages")) {
-                    ForEach(self.pages.childrenOfPage(id: self.pageID), id: \.self) { child in
-                        NavigationLink(destination: PageInsideView(pageID: child.id, isInSelectionMode: self.isInSelectionMode, onSelection: self.dismissThisViewAndPassInfo(pageSelected:)).environment(\.managedObjectContext, self.managedObjectContext)) {
-                            HStack {
-                                Text(child.name)
-                                Spacer()
-                                Text(String(child.nOfConceptsUnder()))
-                                    .opacity(0.5)
-                            }
-                            
-                        }
-                    }.onDelete(perform: self.deleteChildren(at:))
-                    
-                    NewPageTF(newPageName: self.$newPageName, addPageAction: self.addPage, kGuardian: self.kGuardian)
-                        
-                }
-                
-                Section(header: Text("Concepts")) {
-                    ForEach(self.pages.conceptsOfPage(id: self.pageID), id: \.self) { concept in
-                        NavigationLink(destination: CardEditView(task: concept).environment(\.managedObjectContext, self.managedObjectContext)) {
-                            pageCardCell(task: concept)
-                        }
-                    }//.onDelete(perform: self.deleteChildren(at:))
-                    
-                    HStack {
-                        Spacer()
-                        Button(action: {
-                            self.addingConcept = true
-                        }) {
-                            Image(systemName: "plus")
-                                .imageScale(.large)
-                                .multilineTextAlignment(.center)
-                                .sheet(isPresented: self.$addingConcept) {
-                                    AddSR(preChosenPage: self.thisPage()).environment(\.managedObjectContext, self.managedObjectContext)
+            if self.listShowing {
+                List {
+                    Section(header: Text("Pages")) {
+                        ForEach(self.pages.childrenOfPage(id: self.pageID), id: \.self) { child in
+                            NavigationLink(destination: PageInsideView(pageID: child.id, isInSelectionMode: self.isInSelectionMode, onSelection: self.dismissThisViewAndPassInfo(pageSelected:)).environment(\.managedObjectContext, self.managedObjectContext)) {
+                                HStack {
+                                    Text(child.name)
+                                    Spacer()
+                                    Text(String(child.nOfConceptsUnder()))
+                                        .opacity(0.5)
                                 }
-                                .foregroundColor(.blue)
-                        }
-                        Spacer()
+                                
+                            }
+                        }.onDelete(perform: self.deleteChildren(at:))
+                        
+                        NewPageTF(newPageName: self.$newPageName, addPageAction: self.addPage, kGuardian: self.kGuardian)
+                            
                     }
-                }
-            }.offset(y: self.kGuardian.slide).animation(.easeInOut(duration: 0.2))
+                    
+                    Section(header: Text("Concepts")) {
+                        ForEach(self.pages.conceptsOfPage(id: self.pageID), id: \.self) { concept in
+                            NavigationLink(destination: CardEditView(task: concept).environment(\.managedObjectContext, self.managedObjectContext)) {
+                                pageCardCell(task: concept)
+                            }
+                        }//.onDelete(perform: self.deleteChildren(at:))
+                        
+                        HStack {
+                            Spacer()
+                            Button(action: {
+                                self.addingConcept = true
+                            }) {
+                                Image(systemName: "plus")
+                                    .imageScale(.large)
+                                    .multilineTextAlignment(.center)
+                                    .sheet(isPresented: self.$addingConcept) {
+                                        AddSR(preChosenPage: self.thisPage()).environment(\.managedObjectContext, self.managedObjectContext)
+                                    }
+                                    .foregroundColor(.blue)
+                            }
+                            Spacer()
+                        }
+                    }
+                }.offset(y: self.kGuardian.slide).animation(.easeInOut(duration: 0.2))
+            }
         }
         .navigationBarTitle(self.pageName())
         .navigationBarItems(trailing: Button(action: self.morePressed) {
@@ -92,6 +92,17 @@ struct PageInsideView: View {
             }
             
         })
+        .onAppear(perform: self.onAppear)
+    }
+    
+    private func onAppear() {
+        self.listShowing = false
+        _ = Timer.scheduledTimer(withTimeInterval: 0.3, repeats: false, block: { (timer) in
+            withAnimation(.easeInOut(duration: 0.5)) {
+                self.listShowing = true
+            }
+        })
+        
     }
     
     private func addPage() {

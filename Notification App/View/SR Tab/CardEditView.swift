@@ -172,8 +172,6 @@ struct CardEditView: View {
         
         _ = Timer.scheduledTimer(withTimeInterval: duration + buffer, repeats: false, block: { (timer) in
             self.updateData()
-            self.presentationMode.wrappedValue.dismiss()
-            self.afterDismissing()
         })
     }
     
@@ -181,7 +179,10 @@ struct CardEditView: View {
         task.question = self.question
         task.answer = (self.answer != "") ? self.answer : nil
         task.isActive = self.taskIsActive
-        managedObjectContext.saveContext()
+        managedObjectContext.saveContext {
+            self.presentationMode.wrappedValue.dismiss()
+            self.afterDismissing()
+        }
     }
     
     private func addPage(page: Page) {
