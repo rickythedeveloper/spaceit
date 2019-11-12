@@ -574,10 +574,10 @@
 		B8D950512326C491001236AE /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-1";
+				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-1.1.1";
 				CODE_SIGN_ENTITLEMENTS = "Notification App/Notification App.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 32;
+				CURRENT_PROJECT_VERSION = 33;
 				DERIVE_MACCATALYST_PRODUCT_BUNDLE_IDENTIFIER = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"Notification App/Preview Content\"";
 				DEVELOPMENT_TEAM = G763XN7D9Q;
@@ -587,7 +587,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.1.0;
+				MARKETING_VERSION = 1.1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.rickythedeveloper.Notification-App";
 				PRODUCT_NAME = "Space It";
 				SUPPORTS_MACCATALYST = YES;
@@ -599,10 +599,10 @@
 		B8D950522326C491001236AE /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-1";
+				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-1.1.1";
 				CODE_SIGN_ENTITLEMENTS = "Notification App/Notification App.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 32;
+				CURRENT_PROJECT_VERSION = 33;
 				DERIVE_MACCATALYST_PRODUCT_BUNDLE_IDENTIFIER = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"Notification App/Preview Content\"";
 				DEVELOPMENT_TEAM = G763XN7D9Q;
@@ -612,7 +612,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.1.0;
+				MARKETING_VERSION = 1.1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.rickythedeveloper.Notification-App";
 				PRODUCT_NAME = "Space It";
 				SUPPORTS_MACCATALYST = YES;

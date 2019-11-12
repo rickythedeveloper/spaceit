@@ -28,9 +28,10 @@ struct allTaskCell: View {
 
 struct pageCardCell: View {
     var task: TaskSaved
+    var isFirst: Bool
     
     var body: some View {
-        TaskCell(task: task, showBreadcrumbs: false, showDueDate: false, showDescriptions: false, showCreationDate: false)
+        TaskCell(task: task, showBreadcrumbs: false, showDueDate: false, showDescriptions: self.isFirst, showCreationDate: true)
     }
 }
 

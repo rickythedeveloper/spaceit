@@ -30,7 +30,7 @@ extension FetchedResults where Result: Page {
     
     func conceptsOfPage(id: UUID) -> [TaskSaved] {
         if let thisPage = self.page(id: id) {
-            let concepts = (thisPage.concepts?.allObjects as! [TaskSaved]).sortedByName()
+            let concepts = (thisPage.concepts?.allObjects as! [TaskSaved]).sortedByCreationDate(oldFirst: true)
             return concepts
         } else {
             return []

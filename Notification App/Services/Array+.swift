@@ -93,6 +93,23 @@ extension Array where Element: TaskSaved {
         }
     }
     
+    func sortedByCreationDate(oldFirst: Bool) -> [TaskSaved] {
+        return self.sorted { (lhs, rhs) -> Bool in
+            if lhs.createdAt == nil {
+                lhs.createdAt = Date()
+            }
+            if rhs.createdAt == nil {
+                rhs.createdAt = Date()
+            }
+            
+            if oldFirst {
+                return lhs.createdAt! < rhs.createdAt!
+            } else {
+                return rhs.createdAt! < lhs.createdAt!
+            }
+        }
+    }
+    
     func activeTasks() -> [TaskSaved] {
         return self.filter { (task) -> Bool in
             task.isActive ? true : false
