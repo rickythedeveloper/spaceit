@@ -22,11 +22,7 @@ extension Array {
 extension Array where Element : Page {
     func sortedByName() -> [Page] {
         return self.sorted { (lhs, rhs) -> Bool in
-            if lhs.name < rhs.name {
-                return true
-            } else {
-                return false
-            }
+            return lhs.name.localizedStandardCompare(rhs.name) == .orderedAscending
         }
     }
     
@@ -63,33 +59,25 @@ extension Array where Element: TaskSaved {
     
     mutating func sortByDueDate() {
         self.sort { (lhs, rhs) -> Bool in
-            if lhs.dueDate() < rhs.dueDate() {return true} else {return false}
+            return lhs.dueDate() < rhs.dueDate()
         }
     }
     
     func sortedByDueDate() -> [TaskSaved] {
         return self.sorted { (lhs, rhs) -> Bool in
-            if lhs.dueDate() < rhs.dueDate() {return true} else {return false}
+            return lhs.dueDate() < rhs.dueDate()
         }
     }
     
     mutating func sortByName() {
         self.sort { (lhs, rhs) -> Bool in
-            if lhs.question < rhs.question {
-                return true
-            } else {
-                return false
-            }
+            return lhs.question < rhs.question
         }
     }
     
     func sortedByName() -> [TaskSaved] {
         return self.sorted { (lhs, rhs) -> Bool in
-            if lhs.question < rhs.question {
-                return true
-            } else {
-                return false
-            }
+            return lhs.question.localizedStandardCompare(rhs.question) == .orderedAscending
         }
     }
     

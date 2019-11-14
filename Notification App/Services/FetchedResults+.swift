@@ -58,19 +58,19 @@ extension FetchedResults where Result: TaskSaved {
     
     func dueTasks() -> [TaskSaved]{
         return self.filter({ (task) -> Bool in
-            if task.isDue() {return true} else {return false}
+            return task.isDue()
         })
     }
     
     func sortedByName() -> [TaskSaved] {
         return self.sorted { (lhs, rhs) -> Bool in
-            if lhs.question < rhs.question {return true} else {return false}
+            return lhs.question.localizedStandardCompare(rhs.question) == .orderedAscending
         }
     }
     
     func sortedByDueDate() -> [TaskSaved] {
         return self.sorted { (lhs, rhs) -> Bool in
-            if lhs.dueDate() < rhs.dueDate() {return true} else {return false}
+            return lhs.dueDate() < rhs.dueDate()
         }
     }
     
