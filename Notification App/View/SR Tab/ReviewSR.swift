@@ -19,6 +19,7 @@ struct ReviewSR: View {
     @State private var putOffIDs = [UUID]()
     
     private let diffButtonImgs = ["hand.thumbsup.fill", "hand.thumbsup", "hand.thumbsdown", "hand.thumbsdown.fill"]
+    private let nCardsShown = 5
     
     var body: some View {
         VStack {
@@ -48,13 +49,13 @@ struct ReviewSR: View {
                 TaskCard(task: nil, isBaseCard: true, showingAnswer: .constant(false))
 
                 if self.dueTasks().count > 1 {
-                    ForEach((1..<self.dueTasks().count).reversed(), id: \.self) { index in
-                        TaskCard(task: self.dueTasks()[index], showingAnswer: .constant(false))
+                    ForEach((1..<self.someDueTasks(number: self.nCardsShown).count).reversed(), id: \.self) { index in
+                        TaskCard(task: self.someDueTasks(number: self.nCardsShown)[index], showingAnswer: .constant(false))
                     }
                 }
 
                 if self.dueTasks().count > 0 {
-                    TaskCard(task: self.dueTasks()[0], showingAnswer: self.$showingAnswer)
+                    TaskCard(task: self.someDueTasks(number: nCardsShown)[0], showingAnswer: self.$showingAnswer)
                 }
             }
             
@@ -97,7 +98,7 @@ struct ReviewSR: View {
                                 .font(.caption)
                                 .opacity(0.7)
                                 .sheet(isPresented: self.$editingCard, onDismiss: nil) {
-                                    CardEditView(task: self.dueTasks()[0], afterDismissing: self.onEditingCard).environment(\.managedObjectContext, self.managedObjectContext)
+                                    CardEditView(task: self.someDueTasks(number: self.nCardsShown)[0], afterDismissing: self.onEditingCard).environment(\.managedObjectContext, self.managedObjectContext)
                                 }
                         }.padding(EdgeInsets(top: 0, leading: 5, bottom: 0, trailing: 0))
                     }
@@ -191,5 +192,15 @@ struct ReviewSR: View {
             }
         }
         return tasks
+    }
+    
+    private func someDueTasks(number: Int) -> [TaskSaved] {
+        guard number >= 0 else {return [TaskSaved]()}
+        let tasks = self.dueTasks()
+        var someTasks = [TaskSaved]()
+        for each in 0..<number {
+            someTasks.append(tasks[each])
+        }
+        return someTasks
     }
 }
