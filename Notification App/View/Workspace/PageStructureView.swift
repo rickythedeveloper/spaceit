@@ -14,7 +14,7 @@ struct PageStructureView: View {
     @FetchRequest(fetchRequest: Page.fetchRequest()) var pages: FetchedResults<Page>
     
     var isInSelectionMode: Bool = false
-    var onSelection: ((Page) -> Void)?
+    var onSelection: ((Page?) -> Void)?
     
     let welcome = "Welcome to Workspace"
     let welcomeText = "If you haven't created your own workspace on any of your devices, start by tapping the plus button below!\n\nIf you already do have a workspace on a different iCloud-enabled device, then please wait for this device to load up the data..."

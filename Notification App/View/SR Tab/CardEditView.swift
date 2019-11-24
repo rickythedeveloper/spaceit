@@ -189,7 +189,7 @@ struct CardEditView: View {
         })
     }
     
-    private func addPage(page: Page) {
+    private func addPage(page: Page?) {
         self.tasksFetched.concept(id: self.task.id)?.page = page
         self.managedObjectContext.saveContext()
     }

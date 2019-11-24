@@ -165,7 +165,7 @@ struct AddSR: View {
         }
     }
     
-    private func addPage(page: Page) {
+    private func addPage(page: Page?) {
         self.chosenPage = page
     }
 }

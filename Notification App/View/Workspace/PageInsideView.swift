@@ -18,7 +18,7 @@ struct PageInsideView: View {
     var pageID: UUID
     
     var isInSelectionMode: Bool = false
-    var onSelection: ((Page) -> Void)? // after selecting a file location (e.g. when adding a page to a card)
+    var onSelection: ((Page?) -> Void)? // after selecting a file location (e.g. when adding a page to a card)
     
     @State private var newPageName = ""
     @State private var moreActionSheeting = false
@@ -76,7 +76,10 @@ struct PageInsideView: View {
             }
         }
         .navigationBarTitle(self.pageName())
-        .navigationBarItems(trailing: Button(action: self.morePressed) {
+        .navigationBarItems(leading: (self.isInSelectionMode ? AnyView(Button(action: self.deselected) {
+                Text("Deselect")
+                    .font(.title)
+            }) : AnyView(EmptyView())), trailing: Button(action: self.morePressed) {
             if !self.isInSelectionMode {
                 Image(systemName: "ellipsis")
                     .font(.title)
@@ -85,12 +88,11 @@ struct PageInsideView: View {
                     })
                     .sheet(isPresented: self.$editingPageName) {
                         PageNameEditView(pageID: self.pageID).environment(\.managedObjectContext, self.managedObjectContext)
-                    }
+                }
             } else {
                 Text("Choose")
                     .font(.title)
             }
-            
         })
         .onAppear(perform: self.onAppear)
     }
@@ -103,6 +105,14 @@ struct PageInsideView: View {
             }
         })
         
+    }
+    
+    private func deselected() {
+        self.dismissThisViewAndPassInfo(pageSelected: nil)
+    }
+    
+    private func dismissView() {
+        self.presentationMode.wrappedValue.dismiss()
     }
     
     private func addPage() {
@@ -131,7 +141,7 @@ struct PageInsideView: View {
         }
     }
     
-    private func dismissThisViewAndPassInfo(pageSelected: Page) {
+    private func dismissThisViewAndPassInfo(pageSelected: Page?) {
         self.presentationMode.wrappedValue.dismiss()
         guard let onSelection = self.onSelection else {return}
         onSelection(pageSelected)
