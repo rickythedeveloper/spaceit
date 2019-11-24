@@ -36,6 +36,11 @@ extension FetchedResults where Result: Page {
             return []
         }
     }
+    
+    func topPage() -> Page? {
+        guard self.count > 0 else {return nil}
+        return self[0].topPage()
+    }
 }
 
 extension FetchedResults where Result: TaskSaved {

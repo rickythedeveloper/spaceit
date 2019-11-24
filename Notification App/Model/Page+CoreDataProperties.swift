@@ -118,4 +118,34 @@ extension Page {
         }
         return count
     }
+    
+    func conceptsUnderThisPage() -> [TaskSaved] {
+        return self.conceptsInChildren(alreadyAdded: [TaskSaved]())
+    }
+    
+    func conceptsInChildren(alreadyAdded: [TaskSaved]) -> [TaskSaved] {
+        var addedConcepts = alreadyAdded
+        
+        if self.concepts != nil {
+            for concept in self.concepts! as! Set<TaskSaved> {
+                addedConcepts.append(concept)
+            }
+        }
+        
+        if self.children != nil {
+            var conceptsFromKids = [TaskSaved]()
+            for child in self.children! as! Set<Page> {
+                for eachConcept in child.conceptsInChildren(alreadyAdded: [TaskSaved]()) {
+                    conceptsFromKids.append(eachConcept)
+                }
+            }
+            
+            for eachConceptFromKid in conceptsFromKids {
+                addedConcepts.append(eachConceptFromKid)
+            }
+            return addedConcepts
+        }
+        
+        return addedConcepts
+    }
 }

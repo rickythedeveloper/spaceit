@@ -17,9 +17,11 @@ struct ReviewSR: View {
     @State private var addingNewSR = false
     @State private var editingCard = false
     @State private var putOffIDs = [UUID]()
+    @State private var choosingPage = false
+    @State private var chosenPage: Page?
     
     private let diffButtonImgs = ["hand.thumbsup.fill", "hand.thumbsup", "hand.thumbsdown", "hand.thumbsdown.fill"]
-    private let nCardsShown = 5
+    private let maxNCardsShown = 5
     
     var body: some View {
         VStack {
@@ -45,21 +47,32 @@ struct ReviewSR: View {
             }.padding(EdgeInsets(top: 10, leading: 0, bottom: 0, trailing: 0))
             .font(.title)
             
+            Button(action: {
+                self.choosingPage = true
+            }) {
+                Text(self.chosenPage != nil ? chosenPage!.breadCrumb() : "Select page")
+                    .sheet(isPresented: self.$choosingPage) {
+                        PageStructureView(isInSelectionMode: true, onSelection: { (page) in
+                            self.chosenPage = page
+                        }).environment(\.managedObjectContext, self.managedObjectContext)
+                    }
+            }
+            
             ZStack {
                 TaskCard(task: nil, isBaseCard: true, showingAnswer: .constant(false))
 
-                if self.dueTasks().count > 1 {
-                    ForEach((1..<self.someDueTasks(number: self.nCardsShown).count).reversed(), id: \.self) { index in
-                        TaskCard(task: self.someDueTasks(number: self.nCardsShown)[index], showingAnswer: .constant(false))
+                if self.someTasksUnderChosenPage().count > 1 {
+                    ForEach((1..<self.someTasksUnderChosenPage().count).reversed(), id: \.self) { index in
+                        TaskCard(task: self.someTasksUnderChosenPage()[index], showingAnswer: .constant(false))
                     }
                 }
 
-                if self.dueTasks().count > 0 {
-                    TaskCard(task: self.someDueTasks(number: nCardsShown)[0], showingAnswer: self.$showingAnswer)
+                if self.someTasksUnderChosenPage().count > 0 {
+                    TaskCard(task: self.someTasksUnderChosenPage()[0], showingAnswer: self.$showingAnswer)
                 }
             }
             
-            if self.dueTasks().count > 0 {
+            if self.someTasksUnderChosenPage().count > 0 {
                 HStack {
                     ForEach((0...3).reversed(), id: \.self) { num in
                         Button(action: {
@@ -76,7 +89,7 @@ struct ReviewSR: View {
                         }
                     }
                     
-                    if self.dueTasks().count > 1 {
+                    if self.someTasksUnderChosenPage().count > 1 {
                         Button(action: self.putOffPressed) {
                             VStack {
                                 Image(systemName: "arrow.turn.right.up")
@@ -98,7 +111,7 @@ struct ReviewSR: View {
                                 .font(.caption)
                                 .opacity(0.7)
                                 .sheet(isPresented: self.$editingCard, onDismiss: nil) {
-                                    CardEditView(task: self.someDueTasks(number: self.nCardsShown)[0], afterDismissing: self.onEditingCard).environment(\.managedObjectContext, self.managedObjectContext)
+                                    CardEditView(task: self.someTasksUnderChosenPage()[0], afterDismissing: self.onEditingCard).environment(\.managedObjectContext, self.managedObjectContext)
                                 }
                         }.padding(EdgeInsets(top: 0, leading: 5, bottom: 0, trailing: 0))
                     }
@@ -116,7 +129,7 @@ struct ReviewSR: View {
     
     private func putOffPressed() {
         withAnimation(.easeInOut(duration: 0.5)) {
-            self.putOffIDs.append(self.dueTasks()[0].id)
+            self.putOffIDs.append(self.someTasksUnderChosenPage()[0].id)
             self.onSomeAction()
         }
     }
@@ -130,7 +143,7 @@ struct ReviewSR: View {
         let relativeDiff = Double(diff/num)
         
         withAnimation(.easeInOut(duration: 0.5)) {
-            let task = self.dueTasks()[0]
+            let task = self.someTasksUnderChosenPage()[0]
             task.prepareForNext(difficulty: relativeDiff)
             self.managedObjectContext.saveContext()
             self.registerNotification(task: task)
@@ -194,11 +207,27 @@ struct ReviewSR: View {
         return tasks
     }
     
-    private func someDueTasks(number: Int) -> [TaskSaved] {
-        guard number >= 0 else {return [TaskSaved]()}
-        let tasks = self.dueTasks()
+    private func someDueTasks() -> [TaskSaved] {
+        return self.limitedNUmberOfTasks(tasks: self.dueTasks())
+    }
+    
+    private func someTasksUnderChosenPage() -> [TaskSaved] {
+        guard self.chosenPage != nil else {return self.someDueTasks()}
+        return limitedNUmberOfTasks(tasks: self.chosenPage!.conceptsUnderThisPage())
+    }
+    
+    private func limitedNUmberOfTasks(tasks: [TaskSaved]) -> [TaskSaved] {
+        guard self.maxNCardsShown >= 0 else {return [TaskSaved]()}
+        
+        var realNCardsShown: Int
+        if self.maxNCardsShown > tasks.count {
+            realNCardsShown = tasks.count
+        } else {
+            realNCardsShown = maxNCardsShown
+        }
+        
         var someTasks = [TaskSaved]()
-        for each in 0..<number {
+        for each in 0..<realNCardsShown {
             someTasks.append(tasks[each])
         }
         return someTasks
