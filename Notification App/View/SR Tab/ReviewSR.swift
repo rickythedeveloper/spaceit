@@ -31,10 +31,17 @@ struct ReviewSR: View {
             
             HStack {
                 HStack {
+                    Text("Showing")
+                        .font(.caption)
+                    Text(String(self.tasksUnderChosenPage().count))
+                        .font(.title)
+                        .foregroundColor(.red)
+                    Text("of")
+                        .font(.caption)
                     Text("\(self.dueTasks().count)")
                         .font(.title)
                         .foregroundColor(.red)
-                    Text("cards to review")
+                    Text("to review")
                         .font(.caption)
                 }
                 Spacer()
@@ -200,8 +207,12 @@ struct ReviewSR: View {
         return self.dueTasks().elementsFromBeginning(number: maxNCardsShown)
     }
     
+    private func tasksUnderChosenPage() -> [TaskSaved] {
+        guard self.chosenPage != nil else {return self.dueTasks()}
+        return self.chosenPage!.conceptsUnderThisPage().dueTasks().sortedByDueDate().activeTasks().orderAccountingForPutOffs(putOffIDs: self.putOffIDs)
+    }
+    
     private func someTasksUnderChosenPage() -> [TaskSaved] {
-        guard self.chosenPage != nil else {return self.someDueTasks()}
-        return self.chosenPage!.conceptsUnderThisPage().dueTasks().sortedByDueDate().activeTasks().orderAccountingForPutOffs(putOffIDs: self.putOffIDs).elementsFromBeginning(number: maxNCardsShown)
+        return self.tasksUnderChosenPage().elementsFromBeginning(number: self.maxNCardsShown)
     }
 }

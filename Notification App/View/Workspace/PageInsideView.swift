@@ -73,7 +73,7 @@ struct PageInsideView: View {
         .navigationBarTitle(self.pageName())
         .navigationBarItems(leading: (self.isInSelectionMode ? AnyView(Button(action: self.deselected) {
                 Text("Deselect")
-                    .font(.title)
+                    .foregroundColor(.red)
             }) : AnyView(EmptyView())), trailing: Button(action: self.morePressed) {
             if !self.isInSelectionMode {
                 Image(systemName: "ellipsis")
@@ -85,8 +85,7 @@ struct PageInsideView: View {
                         PageNameEditView(pageID: self.pageID).environment(\.managedObjectContext, self.managedObjectContext)
                 }
             } else {
-                Text("Choose")
-                    .font(.title)
+                Text("Select")
             }
         })
         .onAppear(perform: self.onAppear)
