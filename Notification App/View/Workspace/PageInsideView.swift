@@ -71,10 +71,7 @@ struct PageInsideView: View {
             }
         }
         .navigationBarTitle(self.pageName())
-        .navigationBarItems(leading: (self.isInSelectionMode ? AnyView(Button(action: self.deselected) {
-                Text("Deselect")
-                    .foregroundColor(.red)
-            }) : AnyView(EmptyView())), trailing: Button(action: self.morePressed) {
+        .navigationBarItems(leading: WorkspaceBackButton(includesDeselect: self.isInSelectionMode, canGoBack: !self.isTopPage(), backAction: self.dismissView, deselectAction: self.deselected), trailing: Button(action: self.morePressed) {
             if !self.isInSelectionMode {
                 Image(systemName: "ellipsis")
                     .font(.title)

@@ -34,6 +34,7 @@
 		B886E726232D333C00BD76BD /* AddSR.swift in Sources */ = {isa = PBXBuildFile; fileRef = B886E725232D333C00BD76BD /* AddSR.swift */; };
 		B886E729232D8ABF00BD76BD /* MoreTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = B886E728232D8ABF00BD76BD /* MoreTab.swift */; };
 		B88CD833238B0FF400901DF6 /* PageNameCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B88CD832238B0FF400901DF6 /* PageNameCell.swift */; };
+		B88CD835238B1D1D00901DF6 /* WorkspaceBackButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B88CD834238B1D1D00901DF6 /* WorkspaceBackButton.swift */; };
 		B8916D9C2367B8A5003A5758 /* View+.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8916D9B2367B8A5003A5758 /* View+.swift */; };
 		B895D2DE233159CC00767C4E /* String+.swift in Sources */ = {isa = PBXBuildFile; fileRef = B895D2DD233159CC00767C4E /* String+.swift */; };
 		B895D2E023315AC600767C4E /* Alert+.swift in Sources */ = {isa = PBXBuildFile; fileRef = B895D2DF23315AC600767C4E /* Alert+.swift */; };
@@ -89,6 +90,7 @@
 		B886E725232D333C00BD76BD /* AddSR.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddSR.swift; sourceTree = "<group>"; };
 		B886E728232D8ABF00BD76BD /* MoreTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreTab.swift; sourceTree = "<group>"; };
 		B88CD832238B0FF400901DF6 /* PageNameCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageNameCell.swift; sourceTree = "<group>"; };
+		B88CD834238B1D1D00901DF6 /* WorkspaceBackButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkspaceBackButton.swift; sourceTree = "<group>"; };
 		B8916D9B2367B8A5003A5758 /* View+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+.swift"; sourceTree = "<group>"; };
 		B895D2DD233159CC00767C4E /* String+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+.swift"; sourceTree = "<group>"; };
 		B895D2DF23315AC600767C4E /* Alert+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Alert+.swift"; sourceTree = "<group>"; };
@@ -155,6 +157,7 @@
 				B85C07D923379DBB00200B07 /* PageNameEditView.swift */,
 				B8F3794523537EC800CA9976 /* NewPageTF.swift */,
 				B88CD832238B0FF400901DF6 /* PageNameCell.swift */,
+				B88CD834238B1D1D00901DF6 /* WorkspaceBackButton.swift */,
 			);
 			path = Workspace;
 			sourceTree = "<group>";
@@ -429,6 +432,7 @@
 				B85C07D2233657BF00200B07 /* Page+CoreDataClass.swift in Sources */,
 				B8845801232BA8EC00B5CC3C /* TaskCard.swift in Sources */,
 				B82D2F24235C87D60055A506 /* UpcomingRIghtView.swift in Sources */,
+				B88CD835238B1D1D00901DF6 /* WorkspaceBackButton.swift in Sources */,
 				B8D950612326C8E7001236AE /* TimeSettings.swift in Sources */,
 				B88457F9232A8FB500B5CC3C /* PrivacyPolicy.swift in Sources */,
 				B8AB581F232E843C00AD2012 /* NSManagedObject+.swift in Sources */,
@@ -581,7 +585,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-1.1.1";
 				CODE_SIGN_ENTITLEMENTS = "Notification App/Notification App.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 38;
+				CURRENT_PROJECT_VERSION = 39;
 				DERIVE_MACCATALYST_PRODUCT_BUNDLE_IDENTIFIER = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"Notification App/Preview Content\"";
 				DEVELOPMENT_TEAM = G763XN7D9Q;
@@ -606,7 +610,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-1.1.1";
 				CODE_SIGN_ENTITLEMENTS = "Notification App/Notification App.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 38;
+				CURRENT_PROJECT_VERSION = 39;
 				DERIVE_MACCATALYST_PRODUCT_BUNDLE_IDENTIFIER = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"Notification App/Preview Content\"";
 				DEVELOPMENT_TEAM = G763XN7D9Q;
