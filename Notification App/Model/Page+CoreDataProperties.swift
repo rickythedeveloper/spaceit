@@ -119,6 +119,10 @@ extension Page {
         return count
     }
     
+    func nOfDueConcepts() -> Int {
+        return self.conceptsUnderThisPage().dueTasks().activeTasks().count
+    }
+    
     func conceptsUnderThisPage() -> [TaskSaved] {
         return self.conceptsInChildren(alreadyAdded: [TaskSaved]())
     }

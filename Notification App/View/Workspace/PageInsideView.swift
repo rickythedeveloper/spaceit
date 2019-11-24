@@ -33,15 +33,10 @@ struct PageInsideView: View {
             if self.listShowing {
                 List {
                     Section(header: Text("Pages")) {
-                        ForEach(self.pages.childrenOfPage(id: self.pageID), id: \.self) { child in
-                            NavigationLink(destination: PageInsideView(pageID: child.id, isInSelectionMode: self.isInSelectionMode, onSelection: self.dismissThisViewAndPassInfo(pageSelected:)).environment(\.managedObjectContext, self.managedObjectContext)) {
-                                HStack {
-                                    Text(child.name)
-                                    Spacer()
-                                    Text(String(child.nOfConceptsUnder()))
-                                        .opacity(0.5)
-                                }
+                        ForEach(0..<self.pages.childrenOfPage(id: self.pageID).count) { index in
+                            NavigationLink(destination: PageInsideView(pageID: self.pages.childrenOfPage(id: self.pageID)[index].id, isInSelectionMode: self.isInSelectionMode, onSelection: self.dismissThisViewAndPassInfo(pageSelected:)).environment(\.managedObjectContext, self.managedObjectContext)) {
                                 
+                                PageNameCell(page: self.pages.childrenOfPage(id: self.pageID)[index], isFirst: index==0)
                             }
                         }.onDelete(perform: self.deleteChildren(at:))
                         

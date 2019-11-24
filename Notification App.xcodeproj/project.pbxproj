@@ -33,6 +33,7 @@
 		B8845807232BCEDE00B5CC3C /* Array+.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8845806232BCEDE00B5CC3C /* Array+.swift */; };
 		B886E726232D333C00BD76BD /* AddSR.swift in Sources */ = {isa = PBXBuildFile; fileRef = B886E725232D333C00BD76BD /* AddSR.swift */; };
 		B886E729232D8ABF00BD76BD /* MoreTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = B886E728232D8ABF00BD76BD /* MoreTab.swift */; };
+		B88CD833238B0FF400901DF6 /* PageNameCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B88CD832238B0FF400901DF6 /* PageNameCell.swift */; };
 		B8916D9C2367B8A5003A5758 /* View+.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8916D9B2367B8A5003A5758 /* View+.swift */; };
 		B895D2DE233159CC00767C4E /* String+.swift in Sources */ = {isa = PBXBuildFile; fileRef = B895D2DD233159CC00767C4E /* String+.swift */; };
 		B895D2E023315AC600767C4E /* Alert+.swift in Sources */ = {isa = PBXBuildFile; fileRef = B895D2DF23315AC600767C4E /* Alert+.swift */; };
@@ -87,6 +88,7 @@
 		B8845806232BCEDE00B5CC3C /* Array+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+.swift"; sourceTree = "<group>"; };
 		B886E725232D333C00BD76BD /* AddSR.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddSR.swift; sourceTree = "<group>"; };
 		B886E728232D8ABF00BD76BD /* MoreTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreTab.swift; sourceTree = "<group>"; };
+		B88CD832238B0FF400901DF6 /* PageNameCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageNameCell.swift; sourceTree = "<group>"; };
 		B8916D9B2367B8A5003A5758 /* View+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+.swift"; sourceTree = "<group>"; };
 		B895D2DD233159CC00767C4E /* String+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+.swift"; sourceTree = "<group>"; };
 		B895D2DF23315AC600767C4E /* Alert+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Alert+.swift"; sourceTree = "<group>"; };
@@ -152,6 +154,7 @@
 				B85C07D723365E3200200B07 /* PageInsideView.swift */,
 				B85C07D923379DBB00200B07 /* PageNameEditView.swift */,
 				B8F3794523537EC800CA9976 /* NewPageTF.swift */,
+				B88CD832238B0FF400901DF6 /* PageNameCell.swift */,
 			);
 			path = Workspace;
 			sourceTree = "<group>";
@@ -440,6 +443,7 @@
 				B8B8023C2326EDB60041098F /* SetTime.swift in Sources */,
 				B886E729232D8ABF00BD76BD /* MoreTab.swift in Sources */,
 				B8D9505F2326C85C001236AE /* NotificationDelegate.swift in Sources */,
+				B88CD833238B0FF400901DF6 /* PageNameCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -577,7 +581,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-1.1.1";
 				CODE_SIGN_ENTITLEMENTS = "Notification App/Notification App.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 36;
+				CURRENT_PROJECT_VERSION = 37;
 				DERIVE_MACCATALYST_PRODUCT_BUNDLE_IDENTIFIER = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"Notification App/Preview Content\"";
 				DEVELOPMENT_TEAM = G763XN7D9Q;
@@ -602,7 +606,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-1.1.1";
 				CODE_SIGN_ENTITLEMENTS = "Notification App/Notification App.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 36;
+				CURRENT_PROJECT_VERSION = 37;
 				DERIVE_MACCATALYST_PRODUCT_BUNDLE_IDENTIFIER = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"Notification App/Preview Content\"";
 				DEVELOPMENT_TEAM = G763XN7D9Q;
