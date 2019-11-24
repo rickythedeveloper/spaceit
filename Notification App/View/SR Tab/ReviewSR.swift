@@ -193,43 +193,15 @@ struct ReviewSR: View {
     }
     
     private func dueTasks() -> [TaskSaved] {
-        var tasks = self.tasksFetched.dueTasks().sortedByDueDate().activeTasks()
-
-        for putOffID in self.putOffIDs {
-            var index = 0
-            for eachTask in tasks {
-                if putOffID == eachTask.id {
-                    tasks.moveItemToLast(fromIndex: index)
-                }
-                index += 1
-            }
-        }
-        return tasks
+        return self.tasksFetched.dueTasks().sortedByDueDate().activeTasks().orderAccountingForPutOffs(putOffIDs: self.putOffIDs)
     }
     
     private func someDueTasks() -> [TaskSaved] {
-        return self.limitedNUmberOfTasks(tasks: self.dueTasks())
+        return self.dueTasks().elementsFromBeginning(number: maxNCardsShown)
     }
     
     private func someTasksUnderChosenPage() -> [TaskSaved] {
         guard self.chosenPage != nil else {return self.someDueTasks()}
-        return limitedNUmberOfTasks(tasks: self.chosenPage!.conceptsUnderThisPage())
-    }
-    
-    private func limitedNUmberOfTasks(tasks: [TaskSaved]) -> [TaskSaved] {
-        guard self.maxNCardsShown >= 0 else {return [TaskSaved]()}
-        
-        var realNCardsShown: Int
-        if self.maxNCardsShown > tasks.count {
-            realNCardsShown = tasks.count
-        } else {
-            realNCardsShown = maxNCardsShown
-        }
-        
-        var someTasks = [TaskSaved]()
-        for each in 0..<realNCardsShown {
-            someTasks.append(tasks[each])
-        }
-        return someTasks
+        return self.chosenPage!.conceptsUnderThisPage().dueTasks().sortedByDueDate().activeTasks().orderAccountingForPutOffs(putOffIDs: self.putOffIDs).elementsFromBeginning(number: maxNCardsShown)
     }
 }

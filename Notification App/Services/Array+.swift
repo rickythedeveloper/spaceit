@@ -17,6 +17,21 @@ extension Array {
     mutating func moveItemToLast(fromIndex: Int) {
         moveItem(fromIndex: fromIndex, toIndex: self.count-1)
     }
+    
+    func elementsFromBeginning(number: Int) -> [Element] {
+        guard number >= 0 else {return [Element]()}
+        
+        var nElements: Int
+        if number > self.count {
+            nElements = self.count
+        } else {
+            nElements = number
+        }
+        
+        var array = [Element]()
+        array = Array(self.prefix(nElements))
+        return array
+    }
 }
 
 extension Array where Element : Page {
@@ -111,5 +126,19 @@ extension Array where Element: TaskSaved {
             if let page = task.page, page.breadCrumb().localizedCaseInsensitiveContains(searchPhrase) {return true}
             return false
         }
+    }
+    
+    func orderAccountingForPutOffs(putOffIDs: [UUID]) -> [TaskSaved] {
+        var tasks = self
+        for putOffID in putOffIDs {
+            var index = 0
+            for eachTask in tasks {
+                if putOffID == eachTask.id {
+                    tasks.moveItemToLast(fromIndex: index)
+                }
+                index += 1
+            }
+        }
+        return tasks
     }
 }
