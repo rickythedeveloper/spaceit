@@ -42,7 +42,6 @@ struct PageNameEditView: View {
         guard let thisPage = pages.page(id: pageID) else { return }
         guard name.hasContent() else {return}
         thisPage.name = self.name
-        print(managedObjectContext.hasChanges)
         self.managedObjectContext.saveContext()
         self.presentationMode.wrappedValue.dismiss()
     }

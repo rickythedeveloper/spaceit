@@ -147,7 +147,7 @@ struct ReviewSR: View {
     
     private func difficultyDecided(diff: Int, outOf num: Int) {
         guard num != 0 else {return}
-        let relativeDiff = Double(diff/num)
+        let relativeDiff = Double(diff) / Double(num)
         
         withAnimation(.easeInOut(duration: 0.5)) {
             let task = self.someTasksUnderChosenPage()[0]
@@ -178,7 +178,6 @@ struct ReviewSR: View {
     
     
     func onSomeAction() {
-        self.printInfo()
         self.showingAnswer = false
     }
     
@@ -189,14 +188,6 @@ struct ReviewSR: View {
             let nserror = error as NSError
             fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
         }
-    }
-    
-    func printInfo() {
-        for each in self.tasksFetched {
-            print(each.question)
-            print(each.waitTime)
-        }
-        print("\n\n")
     }
     
     private func dueTasks() -> [TaskSaved] {
