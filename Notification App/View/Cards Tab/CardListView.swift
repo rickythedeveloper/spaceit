@@ -24,7 +24,7 @@ struct CardListView: View {
                         
                 Picker(selection: self.$listChoice.animation(.easeInOut(duration: 0.7)), label: Text("choose")) {
                     Text("Upcoming").tag(0)
-                    Text("All").tag(1)
+                    Text("Alphabetical").tag(1)
                     Text("Creation History").tag(2)
                 }.pickerStyle(SegmentedPickerStyle())
                 

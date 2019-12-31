@@ -53,7 +53,7 @@ struct CardEditView: View {
             
                 VStack {
                     HStack {
-                        Text("Question/Concept/Reminder")
+                        Text("Front")
                         Spacer()
                     }
                     MultiLineTF(text: self.$question, fontSize: CGFloat(20.0), index: 0, kGuardian: kGuardian)
@@ -64,7 +64,7 @@ struct CardEditView: View {
                         }
                     
                     HStack {
-                        Text("Answer/Hint (optional)")
+                        Text("Back")
                         Spacer()
                     }.padding(EdgeInsets(top: 10, leading: 0, bottom: 0, trailing: 0))
                     MultiLineTF(text: self.$answer, fontSize: CGFloat(20.0), index: 1, kGuardian: kGuardian)

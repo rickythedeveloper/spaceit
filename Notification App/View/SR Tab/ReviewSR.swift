@@ -31,18 +31,16 @@ struct ReviewSR: View {
             
             HStack {
                 HStack {
-                    Text("Showing")
-                        .font(.caption)
                     Text(String(self.tasksUnderChosenPage().count))
                         .font(.title)
                         .foregroundColor(.red)
-                    Text("of")
-                        .font(.caption)
-                    Text("\(self.dueTasks().count)")
-                        .font(.title)
-                        .foregroundColor(.red)
-                    Text("to review")
-                        .font(.caption)
+                    if chosenPage == nil {
+                        Text("cards to review in total")
+                            .font(.caption)
+                    } else {
+                        Text("cards to review in this page")
+                            .font(.caption)
+                    }
                 }
                 Spacer()
                 Button(action: {self.addingNewSR = true}) {
@@ -57,7 +55,10 @@ struct ReviewSR: View {
             Button(action: {
                 self.choosingPage = true
             }) {
-                Text(self.chosenPage != nil ? chosenPage!.breadCrumb() : "Select page")
+                Text(self.chosenPage != nil ? "Reviewing: \(chosenPage!.breadCrumb())" : "Select Page to Review")
+                    .padding(EdgeInsets(top: 5, leading: 10, bottom: 5, trailing: 10))
+                    .background(Color.gray.opacity(0.3))
+                    .cornerRadius(10)
                     .sheet(isPresented: self.$choosingPage) {
                         PageStructureView(isInSelectionMode: true, onSelection: { (page) in
                             self.chosenPage = page
@@ -81,19 +82,36 @@ struct ReviewSR: View {
             
             if self.someTasksUnderChosenPage().count > 0 {
                 HStack {
-                    ForEach((0...3).reversed(), id: \.self) { num in
-                        Button(action: {
-                            self.difficultyDecided(diff: num, outOf: 3)
-                        }) {
-                            if num == 0 || num == 3 {
-                                Image(systemName: self.diffButtonImgs[num])
-                                    .font(.title)
-                                    .padding()
-                            } else {
-                                Image(systemName: self.diffButtonImgs[num])
-                                    .padding()
+                    VStack {
+                        HStack {
+                            ForEach((0...3).reversed(), id: \.self) { num in
+                                VStack {
+                                    Button(action: {
+                                        self.difficultyDecided(diff: num, outOf: 3)
+                                    }) {
+                                        if num == 0 || num == 3 {
+                                            Image(systemName: self.diffButtonImgs[num])
+                                                .font(.title)
+                                                .padding([.horizontal])
+                                        } else {
+                                            Image(systemName: self.diffButtonImgs[num])
+                                                .font(.title)
+                                                .padding([.horizontal])
+                                        }
+                                    }
+                                    
+                                    Text("\(num)")
+                                        .font(.caption)
+                                        .scaleEffect(0.9)
+                                        .padding(EdgeInsets(top: 5, leading: 0, bottom: 0, trailing: 0))
+                                }
+                                
                             }
                         }
+                        
+                        Text("<-----Difficulty------")
+                            .font(.caption)
+                            .padding(EdgeInsets(top: 5, leading: 0, bottom: 0, trailing: 0))
                     }
                     
                     if self.someTasksUnderChosenPage().count > 1 {
@@ -114,7 +132,7 @@ struct ReviewSR: View {
                             Image(systemName: "pencil")
                                 .font(.title)
                             
-                            Text("Edit")
+                            Text("Edit card")
                                 .font(.caption)
                                 .opacity(0.7)
                                 .sheet(isPresented: self.$editingCard, onDismiss: nil) {
@@ -125,8 +143,7 @@ struct ReviewSR: View {
                 }
             }
         }
-            .padding()
-            
+        .padding()
     }
     
     private func onEditingCard() {

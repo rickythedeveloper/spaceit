@@ -44,7 +44,7 @@ struct PageInsideView: View {
                             
                     }
                     
-                    Section(header: Text("Concepts")) {
+                    Section(header: Text("Cards")) {
                         ForEach(0..<self.pages.conceptsOfPage(id: self.pageID).count, id: \.self) { index in
                             NavigationLink(destination: CardEditView(task: self.pages.conceptsOfPage(id: self.pageID)[index]).environment(\.managedObjectContext, self.managedObjectContext)) {
                                 pageCardCell(task: self.pages.conceptsOfPage(id: self.pageID)[index], isFirst: index==0)

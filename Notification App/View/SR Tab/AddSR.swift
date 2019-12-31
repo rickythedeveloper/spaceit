@@ -27,7 +27,7 @@ struct AddSR: View {
     var body: some View {
         VStack {
             ZStack {
-                Text("New card")
+                Text("New Flashcard")
                     .font(.title)
                 
                 HStack {
@@ -35,7 +35,9 @@ struct AddSR: View {
                         self.dismissView()
                     }) {
                         Image(systemName: "xmark")
-                            .font(.title)
+                            .font(.body)
+                            .scaleEffect(1.3)
+                            .padding()
                     }
                     
                     Spacer()
@@ -45,13 +47,19 @@ struct AddSR: View {
             if self.chosenPage != nil {
                 Button(action: {self.choosingPage = true}) {
                     Text(self.chosenPage!.breadCrumb())
+                        .padding(EdgeInsets(top: 5, leading: 10, bottom: 5, trailing: 10))
+                        .background(Color.gray.opacity(0.1))
+                        .cornerRadius(10)
                         .sheet(isPresented: self.$choosingPage) {
                             PageStructureView(isInSelectionMode: true, onSelection: self.addPage(page:)).environment(\.managedObjectContext, self.managedObjectContext)
                         }
                 }
             } else {
                 Button(action: {self.choosingPage = true}) {
-                    Text("Add page")
+                    Text("Select page for this card")
+                        .padding(EdgeInsets(top: 5, leading: 10, bottom: 5, trailing: 10))
+                        .background(Color.gray.opacity(0.1))
+                        .cornerRadius(10)
                         .sheet(isPresented: self.$choosingPage) {
                             PageStructureView(isInSelectionMode: true, onSelection: self.addPage(page:)).environment(\.managedObjectContext, self.managedObjectContext)
                         }
@@ -62,7 +70,7 @@ struct AddSR: View {
             if self.isShowing {
                 VStack {
                     HStack {
-                        Text("Question/Concept/Reminder")
+                        Text("Front")
                         Spacer()
                     }
                     MultiLineTF(text: self.$question, fontSize: 20, index: 0, kGuardian: self.kGuardian)
@@ -70,7 +78,7 @@ struct AddSR: View {
                         .background(GeometryGetter(rect: self.$kGuardian.rects[0]))
                     
                     HStack {
-                        Text("Answer/Hint (optional)")
+                        Text("Back")
                         Spacer()
                     }.padding(EdgeInsets(top: 10, leading: 0, bottom: 0, trailing: 0))
                     MultiLineTF(text: self.$answer, fontSize: 20, index: 1, kGuardian: self.kGuardian)
@@ -89,8 +97,11 @@ struct AddSR: View {
             }
             
             Spacer()
-            Text("The first reminder will be delivered in 24 hours.")
-                .foregroundColor(.gray)
+            Text("The first review is in 24 hours.")
+                .foregroundColor(.red)
+                .opacity(0.8)
+                .scaleEffect(1.1)
+                .padding()
         }
             .offset(y: self.kGuardian.slide).animation(.easeInOut(duration: 0.2))
             .padding()
