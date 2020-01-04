@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		B801F1342339312C003218BF /* Angle+.swift in Sources */ = {isa = PBXBuildFile; fileRef = B801F1332339312C003218BF /* Angle+.swift */; };
+		B8099DE923C0BE4300A56471 /* CardEditVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8099DE823C0BE4300A56471 /* CardEditVC.swift */; };
 		B81428C7232EB41B0085AA1F /* MultiLineTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = B81428C6232EB41B0085AA1F /* MultiLineTextField.swift */; };
 		B828BC0F23786DBF00F2D959 /* ClearButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B828BC0E23786DBF00F2D959 /* ClearButton.swift */; };
 		B82D2F24235C87D60055A506 /* UpcomingRIghtView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B82D2F23235C87D60055A506 /* UpcomingRIghtView.swift */; };
@@ -63,6 +64,7 @@
 
 /* Begin PBXFileReference section */
 		B801F1332339312C003218BF /* Angle+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Angle+.swift"; sourceTree = "<group>"; };
+		B8099DE823C0BE4300A56471 /* CardEditVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardEditVC.swift; sourceTree = "<group>"; };
 		B81428C6232EB41B0085AA1F /* MultiLineTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiLineTextField.swift; sourceTree = "<group>"; };
 		B828BC0E23786DBF00F2D959 /* ClearButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClearButton.swift; sourceTree = "<group>"; };
 		B82D2F23235C87D60055A506 /* UpcomingRIghtView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpcomingRIghtView.swift; sourceTree = "<group>"; };
@@ -136,6 +138,14 @@
 			children = (
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		B8099DE723C0BE1F00A56471 /* Cards Tab */ = {
+			isa = PBXGroup;
+			children = (
+				B8099DE823C0BE4300A56471 /* CardEditVC.swift */,
+			);
+			path = "Cards Tab";
 			sourceTree = "<group>";
 		};
 		B84EA8532327AE9C00FAF4A1 /* Settings */ = {
@@ -316,6 +326,7 @@
 		B8D9B2D22329A94B00348987 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				B8099DE723C0BE1F00A56471 /* Cards Tab */,
 				B8D9B2D32329A97100348987 /* GADBannerViewController.swift */,
 			);
 			path = Controller;
@@ -414,6 +425,7 @@
 				B828BC0F23786DBF00F2D959 /* ClearButton.swift in Sources */,
 				B85C07DA23379DBB00200B07 /* PageNameEditView.swift in Sources */,
 				B88457FB232BA0BA00B5CC3C /* MainTab.swift in Sources */,
+				B8099DE923C0BE4300A56471 /* CardEditVC.swift in Sources */,
 				B8916D9C2367B8A5003A5758 /* View+.swift in Sources */,
 				B8D950632326CA98001236AE /* TimeSetting.swift in Sources */,
 				B8D9503F2326C48F001236AE /* SceneDelegate.swift in Sources */,
@@ -595,7 +607,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.2.1;
+				MARKETING_VERSION = 2.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.rickythedeveloper.Notification-App";
 				PRODUCT_NAME = "Space It";
 				SUPPORTS_MACCATALYST = YES;
@@ -620,7 +632,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.2.1;
+				MARKETING_VERSION = 2.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.rickythedeveloper.Notification-App";
 				PRODUCT_NAME = "Space It";
 				SUPPORTS_MACCATALYST = YES;
