@@ -21,9 +21,12 @@ extension UIButton {
 }
 
 extension UILabel {
-    fileprivate static func text(str: String) -> UILabel {
+    fileprivate static func text(str: String, alignment: NSTextAlignment = .left, color: UIColor? = nil, alpha: CGFloat = 1.0) -> UILabel {
         let lbl = UILabel()
         lbl.text = str
+        lbl.textAlignment = alignment
+        lbl.textColor = color
+        lbl.alpha = alpha
         lbl.translatesAutoresizingMaskIntoConstraints = false
         return lbl
     }
@@ -75,10 +78,10 @@ class CardEditVC: UIViewController {
     
     var actionButtonContainer = UIStackView()
     
-    let statusText = UILabel.text(str: "Status")
-    let RIText = UILabel.text(str: "Review interval")
+    let statusText = UILabel.text(str: "Status:", alignment: .right)
+    let RIText = UILabel.text(str: "Review interval:", alignment: .right)
     
-    let status = UILabel.text(str: "active")
+    let status = UILabel.text(str: "Active", color: .red)
     let reviewInterval = UILabel.text(str: "15 days")
     
 //    var task: TaskSaved
@@ -100,6 +103,12 @@ class CardEditVC: UIViewController {
         setupViews()
     }
     
+    @objc private func buttonPressed() {
+        print("show page structure now")
+    }
+}
+
+extension CardEditVC {
     private func setupViews() {
         let padding: CGFloat = 10.0
         let minTVHeight: CGFloat = 1/4
@@ -123,6 +132,11 @@ class CardEditVC: UIViewController {
         view.addSubview(backTextView)
         
         view.addSubview(actionButtonContainer)
+        
+        view.addSubview(statusText)
+        view.addSubview(RIText)
+        view.addSubview(status)
+        view.addSubview(reviewInterval)
         
         pageButton.constrainToTopSafeAreaOf(view)
         pageButton.alignToCenterXOf(view)
@@ -152,41 +166,25 @@ class CardEditVC: UIViewController {
         actionButtonContainer.heightAnchor.constraint(greaterThanOrEqualToConstant: minButtonHeight).isActive = true
         actionButtonContainer.heightAnchor.constraint(lessThanOrEqualToConstant: maxButtonHeight).isActive = true
         
-//        let textVStack = UIStackView(arrangedSubviews: [statusText, RIText])
-//        let infoVStack = UIStackView(arrangedSubviews: [status, reviewInterval])
-//        let bottomHStack = UIStackView(arrangedSubviews: [textVStack, infoVStack])
-//        
-//        textVStack.axis = .vertical
-//        textVStack.distribution = .fillEqually
-//        textVStack.alignment = .trailing
-//        
-//        infoVStack.axis = .vertical
-//        infoVStack.distribution = .fillEqually
-//        infoVStack.alignment = .leading
-//        
-//        bottomHStack.axis = .horizontal
-//        bottomHStack.distribution = .fillProportionally
-//        bottomHStack.alignment = .center
-//        
-//        view.addSubview(bottomHStack)
-//        
-//        bottomHStack.topAnchor.constraint(equalTo: actionButtonContainer.bottomAnchor, constant: padding).isActive = true
-//        bottomHStack.constrainToSideSafeAreasOf(view, padding: padding)
-//        bottomHStack.widthAnchor.constraint(equalToConstant: 50.0).isActive = true
-//        
-//        textVStack.trailingAnchor.constraint(equalTo: bottomHStack.centerXAnchor).isActive = true
-//        textVStack.widthAnchor.constraint(equalTo: bottomHStack.widthAnchor).isActive = true
-//        textVStack.heightAnchor.constraint(equalTo: bottomHStack.heightAnchor).isActive = true
-//        infoVStack.leadingAnchor.constraint(equalTo: bottomHStack.centerXAnchor).isActive = true
-//        infoVStack.widthAnchor.constraint(equalTo: bottomHStack.widthAnchor).isActive = true
-//        infoVStack.heightAnchor.constraint(equalTo: bottomHStack.heightAnchor).isActive = true
         
+        statusText.topAnchor.constraint(equalTo: actionButtonContainer.bottomAnchor).isActive = true
+        statusText.trailingAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        statusText.constrainToLeadingSafeAreaOf(view, padding: padding)
+        statusText.heightAnchor.constraint(lessThanOrEqualToConstant: 40).isActive = true
         
+        RIText.topAnchor.constraint(equalTo: statusText.bottomAnchor).isActive = true
+        RIText.trailingAnchor.constraint(equalTo: statusText.trailingAnchor).isActive = true
+        RIText.constrainToLeadingSafeAreaOf(view, padding: padding)
+        RIText.heightAnchor.constraint(lessThanOrEqualToConstant: 40).isActive = true
         
+        status.topAnchor.constraint(equalTo: statusText.topAnchor).isActive = true
+        status.leadingAnchor.constraint(equalTo: statusText.trailingAnchor, constant: padding).isActive = true
+        status.constrainToTrailingSafeAreaOf(view, padding: padding)
+        status.heightAnchor.constraint(equalTo: statusText.heightAnchor).isActive = true
         
-    }
-    
-    @objc private func buttonPressed() {
-        print("show page structure now")
+        reviewInterval.topAnchor.constraint(equalTo: RIText.topAnchor).isActive = true
+        reviewInterval.leadingAnchor.constraint(equalTo: status.leadingAnchor).isActive = true
+        reviewInterval.constrainToTrailingSafeAreaOf(view, padding: padding)
+        reviewInterval.heightAnchor.constraint(equalTo: RIText.heightAnchor).isActive = true
     }
 }
