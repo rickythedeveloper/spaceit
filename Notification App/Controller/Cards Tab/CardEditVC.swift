@@ -26,8 +26,8 @@ extension UITextView {
     fileprivate static func cardSIdeTV() -> UITextView {
         let tv = UITextView()
         tv.translatesAutoresizingMaskIntoConstraints = false
-        tv.backgroundColor = .systemGray3
-        tv.alpha = 0.5
+        tv.backgroundColor = (UIColor.systemGray3).withAlphaComponent(0.5)
+        tv.font = UIFont.preferredFont(forTextStyle: .title3)
         tv.layer.cornerRadius = 10
         tv.layer.masksToBounds = true
         return tv
@@ -49,10 +49,15 @@ class CardEditVC: UIViewController {
     let pageButton: UIButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.setTitle("Hello World", for: .normal)
+        button.setTitle("Select page for this card", for: .normal)
         button.setTitleColor(.systemBlue, for: .normal)
         button.setTitleColor(.gray, for: .highlighted)
+        button.titleLabel?.font = UIFont.preferredFont(forTextStyle: .title3)
         button.sizeToFit()
+        button.backgroundColor = (UIColor.systemGray).withAlphaComponent(0.2)
+        button.layer.cornerRadius = button.frame.height / 4.0
+        button.layer.masksToBounds = true
+        button.contentEdgeInsets = UIEdgeInsets(top: 5, left: 10, bottom: 5, right: 10)
         return button
     }()
     
