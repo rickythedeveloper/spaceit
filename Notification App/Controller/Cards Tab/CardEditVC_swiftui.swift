@@ -54,5 +54,10 @@ struct CardEditView2: View {
     var body: some View {
         CardEditVCRepresentable(task: self.task, managedObjectContext: self.managedObjectContext, showsDeactivate: self.$showsDeactivate)
             .navigationBarTitle("Edit Card", displayMode: .inline)
+        .onAppear(perform: setup)
+    }
+    
+    private func setup() {
+        self.showsDeactivate = self.task.isActive
     }
 }

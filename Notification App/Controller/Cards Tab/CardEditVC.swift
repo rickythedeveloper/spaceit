@@ -72,16 +72,13 @@ class CardEditVC: UIViewController {
     
     let backTextView = UITextView.cardSIdeTV()
     
-    let deleteButton = UIButton.actionButton(text: "Delete", action: #selector(deletePressed), backgroundColor: .systemRed, backgroundAlpha: 0.7, usesAutoLayout: true)
-    let deactivateButton = UIButton.actionButton(text: "Deactivate", action: #selector(deactivatePressed), backgroundColor: .systemGray, backgroundAlpha: 0.7, usesAutoLayout: true)
+    let deleteButton = UIButton.actionButton(text: "Delete Card", action: #selector(deletePressed), backgroundColor: .systemRed, backgroundAlpha: 0.7, usesAutoLayout: true)
+    let deactivateButton = UIButton.actionButton(action: #selector(deactivatePressed), backgroundColor: .systemGray, backgroundAlpha: 0.7, usesAutoLayout: true)
     let okButton = UIButton.actionButton(text: "Save", action: #selector(okPressed), backgroundColor: .systemGreen, backgroundAlpha: 0.7, usesAutoLayout: true)
     
     var actionButtonContainer = UIStackView()
     
-    let statusText = UILabel.text(str: "Status:", alignment: .right)
     let RIText = UILabel.text(str: "Review interval:", alignment: .right)
-    
-    let status = UILabel.text(str: "Active", color: .red)
     let reviewInterval = UILabel.text(str: "15 days")
     
     var task: TaskSaved
@@ -101,6 +98,7 @@ class CardEditVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupViews()
+        putCardInfo()
     }
     
     @objc private func buttonPressed() {
@@ -111,9 +109,9 @@ class CardEditVC: UIViewController {
 extension CardEditVC {
     func updateView(showsDeactivate: Bool) {
         if showsDeactivate {
-            deactivateButton.setTitle("Deactivate", for: .normal)
+            deactivateButton.setTitle("Stop Review", for: .normal)
         } else {
-            deactivateButton.setTitle("Reactivate", for: .normal)
+            deactivateButton.setTitle("Resume Revious", for: .normal)
         }
     }
     
@@ -135,8 +133,8 @@ extension CardEditVC {
         let padding: CGFloat = 10.0
         let minTVHeight: CGFloat = 1/4
         let maxTVHeight: CGFloat = 1/3
-        let minButtonHeight: CGFloat = 30.0
-        let maxButtonHeight: CGFloat = 40.0
+        let minButtonHeight: CGFloat = 45.0
+        let maxButtonHeight: CGFloat = 70.0
         
         view.addSubview(scrollView)
         
@@ -163,9 +161,7 @@ extension CardEditVC {
 
         scrollView.addSubview(actionButtonContainer)
 
-        scrollView.addSubview(statusText)
         scrollView.addSubview(RIText)
-        scrollView.addSubview(status)
         scrollView.addSubview(reviewInterval)
         
         pageButton.isBelow(scrollView.topAnchor, padding: padding)
@@ -196,25 +192,21 @@ extension CardEditVC {
         actionButtonContainer.heightAnchor.constraint(greaterThanOrEqualToConstant: minButtonHeight).isActive = true
         actionButtonContainer.heightAnchor.constraint(lessThanOrEqualToConstant: maxButtonHeight).isActive = true
         
-        statusText.topAnchor.constraint(equalTo: actionButtonContainer.bottomAnchor, constant: padding).isActive = true
-        statusText.trailingAnchor.constraint(equalTo: scrollView.centerXAnchor).isActive = true
-        statusText.constrainToLeadingSafeAreaOf(scrollView, padding: padding)
-        statusText.heightAnchor.constraint(lessThanOrEqualToConstant: 40).isActive = true
-        
-        RIText.topAnchor.constraint(equalTo: statusText.bottomAnchor).isActive = true
-        RIText.trailingAnchor.constraint(equalTo: statusText.trailingAnchor).isActive = true
+        RIText.isBelow(actionButtonContainer, padding: padding)
+        RIText.trailingAnchor.constraint(equalTo: scrollView.centerXAnchor).isActive = true
         RIText.constrainToLeadingSafeAreaOf(scrollView, padding: padding)
         RIText.heightAnchor.constraint(lessThanOrEqualToConstant: 40).isActive = true
-        
-        status.topAnchor.constraint(equalTo: statusText.topAnchor).isActive = true
-        status.leadingAnchor.constraint(equalTo: statusText.trailingAnchor, constant: padding).isActive = true
-        status.constrainToTrailingSafeAreaOf(scrollView, padding: padding)
-        status.heightAnchor.constraint(equalTo: statusText.heightAnchor).isActive = true
-         
+                 
         reviewInterval.topAnchor.constraint(equalTo: RIText.topAnchor).isActive = true
-        reviewInterval.leadingAnchor.constraint(equalTo: status.leadingAnchor).isActive = true
+        reviewInterval.leadingAnchor.constraint(equalTo: RIText.trailingAnchor, constant: padding).isActive = true
         reviewInterval.constrainToTrailingSafeAreaOf(scrollView, padding: padding)
         reviewInterval.heightAnchor.constraint(equalTo: RIText.heightAnchor).isActive = true
         reviewInterval.bottomAnchor.constraint(greaterThanOrEqualTo: scrollView.bottomAnchor, constant: -padding).isActive = true
+    }
+    
+    private func putCardInfo() {
+        frontTextView.text = self.task.question
+        backTextView.text = self.task.answer
+        reviewInterval.text = self.task.waitTimeString()
     }
 }

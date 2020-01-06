@@ -9,10 +9,12 @@
 import UIKit
 
 extension UIButton {
-    static func actionButton(text: String, action: Selector, font: UIFont? = nil, backgroundColor: UIColor? = nil, backgroundAlpha: CGFloat = 1.0, usesAutoLayout: Bool) -> UIButton {
+    static func actionButton(text: String = "", action: Selector, font: UIFont? = nil, backgroundColor: UIColor? = nil, backgroundAlpha: CGFloat = 1.0, usesAutoLayout: Bool) -> UIButton {
         let button = UIButton()
         button.setTitle(text, for: .normal)
         button.titleLabel?.font = font
+        button.titleLabel?.lineBreakMode = .byWordWrapping
+        button.titleLabel?.sizeToFit()
         button.backgroundColor = backgroundColor?.withAlphaComponent(backgroundAlpha)
         button.translatesAutoresizingMaskIntoConstraints = !usesAutoLayout
         button.sizeToFit()
