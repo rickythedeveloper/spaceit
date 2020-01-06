@@ -7,15 +7,18 @@
 //
 
 import UIKit
+import SwiftUI
+import CoreData
 
 extension UIButton {
-    fileprivate static func actionButton(imageName: String) -> UIButton {
+    fileprivate static func actionButton(imageName: String, action: Selector) -> UIButton {
         let button = UIButton()
         button.setImage(UIImage(systemName: imageName), for: .normal)
         let config = UIImage.SymbolConfiguration(scale: .large)
         button.setPreferredSymbolConfiguration(config, forImageIn: .normal)
         button.translatesAutoresizingMaskIntoConstraints = false
         button.sizeToFit()
+        button.addTarget(nil, action: action, for: .touchUpInside)
         return button
     }
 }
@@ -44,6 +47,10 @@ extension UITextView {
     }
 }
 
+protocol CardEditVCDelegate {
+    func decativatePressed()
+}
+
 class CardEditVC: UIViewController {
     
     let pageButton: UIButton = {
@@ -58,7 +65,7 @@ class CardEditVC: UIViewController {
     
     let divider: UIView = {
         let divider = UIView()
-        divider.backgroundColor = .black
+        divider.backgroundColor = .systemGray
         divider.translatesAutoresizingMaskIntoConstraints = false
         divider.alpha = 0.5
         return divider
@@ -72,9 +79,9 @@ class CardEditVC: UIViewController {
     
     let backTextView = UITextView.cardSIdeTV()
     
-    let deleteButton = UIButton.actionButton(imageName: "trash.circle")
-    let deactivateButton = UIButton.actionButton(imageName: "nosign")
-    let okButton = UIButton.actionButton(imageName: "checkmark.circle")
+    let deleteButton = UIButton.actionButton(imageName: "trash.circle", action: #selector(deletePressed))
+    let deactivateButton = UIButton.actionButton(imageName: "nosign", action: #selector(deactivatePressed))
+    let okButton = UIButton.actionButton(imageName: "checkmark.circle", action: #selector(okPressed))
     
     var actionButtonContainer = UIStackView()
     
@@ -84,27 +91,49 @@ class CardEditVC: UIViewController {
     let status = UILabel.text(str: "Active", color: .red)
     let reviewInterval = UILabel.text(str: "15 days")
     
-//    var task: TaskSaved
-//
-//    init(task: TaskSaved) {
-//        self.task = task
-//        super.init(nibName: nil, bundle: nil)
-//    }
-//
-//    required init?(coder: NSCoder) {
-//        fatalError("init(coder:) has not been implemented")
-//    }
+    var task: TaskSaved
+    var managedObjectContext: NSManagedObjectContext
+    var delegate: CardEditVCDelegate?
+
+    init(task: TaskSaved, managedObjectContext: NSManagedObjectContext) {
+        self.task = task
+        self.managedObjectContext = managedObjectContext
+        super.init(nibName: nil, bundle: nil)
+    }
+
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        self.view.backgroundColor = .systemGray
-        
         setupViews()
     }
     
     @objc private func buttonPressed() {
         print("show page structure now")
+    }
+}
+
+extension CardEditVC {
+    func updateView(showsDeactivate: Bool) {
+        if showsDeactivate {
+            deactivateButton.setImage(UIImage(systemName: "nosign"), for: .normal)
+        } else {
+            deactivateButton.setImage(UIImage(systemName: "arrow.up.bin"), for: .normal)
+        }
+    }
+    
+    @objc private func deletePressed() {
+        
+    }
+    
+    @objc private func deactivatePressed() {
+        self.delegate?.decativatePressed()
+    }
+    
+    @objc private func okPressed() {
+        
     }
 }
 
@@ -138,7 +167,7 @@ extension CardEditVC {
         view.addSubview(status)
         view.addSubview(reviewInterval)
         
-        pageButton.constrainToTopSafeAreaOf(view)
+        pageButton.constrainToTopSafeAreaOf(view, padding: padding)
         pageButton.alignToCenterXOf(view)
         
         divider.topAnchor.constraint(lessThanOrEqualTo: pageButton.bottomAnchor, constant: 10).isActive = true

@@ -61,6 +61,7 @@
 		B8D9B2D42329A97100348987 /* GADBannerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8D9B2D32329A97100348987 /* GADBannerViewController.swift */; };
 		B8EA1694235C90BA00845F04 /* CreationHistoryLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8EA1693235C90BA00845F04 /* CreationHistoryLabel.swift */; };
 		B8F3794623537EC800CA9976 /* NewPageTF.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8F3794523537EC800CA9976 /* NewPageTF.swift */; };
+		B8F8282323C22B8200143BAA /* CardEditVC_swiftui.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8F8282223C22B8200143BAA /* CardEditVC_swiftui.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -121,6 +122,7 @@
 		B8D9B2D32329A97100348987 /* GADBannerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GADBannerViewController.swift; sourceTree = "<group>"; };
 		B8EA1693235C90BA00845F04 /* CreationHistoryLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreationHistoryLabel.swift; sourceTree = "<group>"; };
 		B8F3794523537EC800CA9976 /* NewPageTF.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewPageTF.swift; sourceTree = "<group>"; };
+		B8F8282223C22B8200143BAA /* CardEditVC_swiftui.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardEditVC_swiftui.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -146,6 +148,7 @@
 			isa = PBXGroup;
 			children = (
 				B8099DE823C0BE4300A56471 /* CardEditVC.swift */,
+				B8F8282223C22B8200143BAA /* CardEditVC_swiftui.swift */,
 			);
 			path = "Cards Tab";
 			sourceTree = "<group>";
@@ -466,6 +469,7 @@
 				B886E726232D333C00BD76BD /* AddSR.swift in Sources */,
 				B85C07D623365CCB00200B07 /* PageStructureView.swift in Sources */,
 				B85C07D4233657BF00200B07 /* Page+CoreDataProperties.swift in Sources */,
+				B8F8282323C22B8200143BAA /* CardEditVC_swiftui.swift in Sources */,
 				B8D9B2D42329A97100348987 /* GADBannerViewController.swift in Sources */,
 				B895D2DE233159CC00767C4E /* String+.swift in Sources */,
 				B8B8023C2326EDB60041098F /* SetTime.swift in Sources */,

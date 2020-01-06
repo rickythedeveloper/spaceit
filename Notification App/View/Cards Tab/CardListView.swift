@@ -37,7 +37,8 @@ struct CardListView: View {
                 if self.listChoice == 0 {
                     List {
                         ForEach(0..<self.justUpcoming().count, id: \.self) { index in
-                            NavigationLink(destination: CardEditView(task: self.justUpcoming()[index]).environment(\.managedObjectContext, self.managedObjectContext), label: {
+                            NavigationLink(destination: CardEditView2(task: self.justUpcoming()[index], managedObjectContext: self.managedObjectContext)
+                                /*CardEditView(task: self.justUpcoming()[index]).environment(\.managedObjectContext, self.managedObjectContext)*/, label: {
                                 UpcomingCell(task: self.justUpcoming()[index], isFirst: index == 0)
                             })
                         }
