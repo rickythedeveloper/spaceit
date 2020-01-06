@@ -138,8 +138,12 @@ extension CardEditVC {
         let minButtonHeight: CGFloat = 30.0
         let maxButtonHeight: CGFloat = 40.0
         
-        scrollView.frame = view.safeAreaLayoutGuide.layoutFrame
         view.addSubview(scrollView)
+        
+        scrollView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
+        scrollView.constrainToSideSafeAreasOf(view)
+        scrollView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
+        scrollView.translatesAutoresizingMaskIntoConstraints = false
         
         pageButton.addTarget(self, action: #selector(buttonPressed), for: .touchUpInside)
         
@@ -192,8 +196,7 @@ extension CardEditVC {
         actionButtonContainer.heightAnchor.constraint(greaterThanOrEqualToConstant: minButtonHeight).isActive = true
         actionButtonContainer.heightAnchor.constraint(lessThanOrEqualToConstant: maxButtonHeight).isActive = true
         
-        
-        statusText.topAnchor.constraint(equalTo: actionButtonContainer.bottomAnchor).isActive = true
+        statusText.topAnchor.constraint(equalTo: actionButtonContainer.bottomAnchor, constant: padding).isActive = true
         statusText.trailingAnchor.constraint(equalTo: scrollView.centerXAnchor).isActive = true
         statusText.constrainToLeadingSafeAreaOf(scrollView, padding: padding)
         statusText.heightAnchor.constraint(lessThanOrEqualToConstant: 40).isActive = true
@@ -212,5 +215,6 @@ extension CardEditVC {
         reviewInterval.leadingAnchor.constraint(equalTo: status.leadingAnchor).isActive = true
         reviewInterval.constrainToTrailingSafeAreaOf(scrollView, padding: padding)
         reviewInterval.heightAnchor.constraint(equalTo: RIText.heightAnchor).isActive = true
+        reviewInterval.bottomAnchor.constraint(greaterThanOrEqualTo: scrollView.bottomAnchor, constant: -padding).isActive = true
     }
 }
