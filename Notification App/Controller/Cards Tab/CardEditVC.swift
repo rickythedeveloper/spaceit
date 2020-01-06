@@ -53,6 +53,12 @@ protocol CardEditVCDelegate {
 
 class CardEditVC: UIViewController {
     
+    var scrollView: UIScrollView = {
+        let sv = UIScrollView()
+        sv.alwaysBounceVertical = true
+        return sv
+    }()
+    
     let pageButton: UIButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
@@ -145,6 +151,9 @@ extension CardEditVC {
         let minButtonHeight: CGFloat = 30.0
         let maxButtonHeight: CGFloat = 40.0
         
+        scrollView.frame = view.safeAreaLayoutGuide.layoutFrame
+        view.addSubview(scrollView)
+        
         pageButton.addTarget(self, action: #selector(buttonPressed), for: .touchUpInside)
         
         actionButtonContainer = UIStackView(arrangedSubviews: [deleteButton, deactivateButton, okButton])
@@ -152,68 +161,68 @@ extension CardEditVC {
         actionButtonContainer.backgroundColor = .red
         actionButtonContainer.distribution = .fillEqually
         
-        view.addSubview(pageButton)
-        view.addSubview(divider)
+        scrollView.addSubview(pageButton)
+        scrollView.addSubview(divider)
+
+        scrollView.addSubview(frontLabel)
+        scrollView.addSubview(frontTextView)
+        scrollView.addSubview(backLabel)
+        scrollView.addSubview(backTextView)
+
+        scrollView.addSubview(actionButtonContainer)
+
+        scrollView.addSubview(statusText)
+        scrollView.addSubview(RIText)
+        scrollView.addSubview(status)
+        scrollView.addSubview(reviewInterval)
         
-        view.addSubview(frontLabel)
-        view.addSubview(frontTextView)
-        view.addSubview(backLabel)
-        view.addSubview(backTextView)
-        
-        view.addSubview(actionButtonContainer)
-        
-        view.addSubview(statusText)
-        view.addSubview(RIText)
-        view.addSubview(status)
-        view.addSubview(reviewInterval)
-        
-        pageButton.constrainToTopSafeAreaOf(view, padding: padding)
-        pageButton.alignToCenterXOf(view)
+        pageButton.isBelow(scrollView.topAnchor, padding: padding)
+        pageButton.alignToCenterXOf(scrollView)
         
         divider.topAnchor.constraint(lessThanOrEqualTo: pageButton.bottomAnchor, constant: 10).isActive = true
-        divider.constrainToSideSafeAreasOf(view, padding: 2*padding)
+        divider.constrainToSideSafeAreasOf(scrollView, padding: 2*padding)
         divider.heightAnchor.constraint(equalToConstant: 1.0).isActive = true
         
         frontLabel.topAnchor.constraint(equalTo: divider.bottomAnchor, constant: padding).isActive = true
-        frontLabel.constrainToLeadingSafeAreaOf(view, padding: padding)
+        frontLabel.constrainToLeadingSafeAreaOf(scrollView, padding: padding)
         
         frontTextView.topAnchor.constraint(lessThanOrEqualTo: frontLabel.bottomAnchor, constant: padding).isActive = true
-        frontTextView.constrainToSideSafeAreasOf(view, padding: padding)
-        frontTextView.heightAnchor.constraint(greaterThanOrEqualTo: view.safeAreaLayoutGuide.heightAnchor, multiplier: minTVHeight).isActive = true
-        frontTextView.heightAnchor.constraint(lessThanOrEqualTo: view.safeAreaLayoutGuide.heightAnchor, multiplier: maxTVHeight).isActive = true
+        frontTextView.constrainToSideSafeAreasOf(scrollView, padding: padding)
+        frontTextView.heightAnchor.constraint(greaterThanOrEqualTo: scrollView.safeAreaLayoutGuide.heightAnchor, multiplier: minTVHeight).isActive = true
+        frontTextView.heightAnchor.constraint(lessThanOrEqualTo: scrollView.safeAreaLayoutGuide.heightAnchor, multiplier: maxTVHeight).isActive = true
         
         backLabel.topAnchor.constraint(equalTo: frontTextView.bottomAnchor, constant: padding).isActive = true
-        backLabel.constrainToLeadingSafeAreaOf(view, padding: padding)
+        backLabel.constrainToLeadingSafeAreaOf(scrollView, padding: padding)
         
         backTextView.topAnchor.constraint(lessThanOrEqualTo: backLabel.bottomAnchor, constant: padding).isActive = true
-        backTextView.constrainToSideSafeAreasOf(view, padding: padding)
-        backTextView.heightAnchor.constraint(greaterThanOrEqualTo: view.safeAreaLayoutGuide.heightAnchor, multiplier: minTVHeight).isActive = true
-        backTextView.heightAnchor.constraint(lessThanOrEqualTo: view.safeAreaLayoutGuide.heightAnchor, multiplier: maxTVHeight).isActive = true
+        backTextView.constrainToSideSafeAreasOf(scrollView, padding: padding)
+        backTextView.heightAnchor.constraint(greaterThanOrEqualTo: scrollView.safeAreaLayoutGuide.heightAnchor, multiplier: minTVHeight).isActive = true
+        backTextView.heightAnchor.constraint(lessThanOrEqualTo: scrollView.safeAreaLayoutGuide.heightAnchor, multiplier: maxTVHeight).isActive = true
         
         actionButtonContainer.topAnchor.constraint(equalTo: backTextView.bottomAnchor, constant: padding).isActive = true
-        actionButtonContainer.constrainToSideSafeAreasOf(view, padding: padding)
+        actionButtonContainer.constrainToSideSafeAreasOf(scrollView, padding: padding)
         actionButtonContainer.heightAnchor.constraint(greaterThanOrEqualToConstant: minButtonHeight).isActive = true
         actionButtonContainer.heightAnchor.constraint(lessThanOrEqualToConstant: maxButtonHeight).isActive = true
         
         
         statusText.topAnchor.constraint(equalTo: actionButtonContainer.bottomAnchor).isActive = true
-        statusText.trailingAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        statusText.constrainToLeadingSafeAreaOf(view, padding: padding)
+        statusText.trailingAnchor.constraint(equalTo: scrollView.centerXAnchor).isActive = true
+        statusText.constrainToLeadingSafeAreaOf(scrollView, padding: padding)
         statusText.heightAnchor.constraint(lessThanOrEqualToConstant: 40).isActive = true
         
         RIText.topAnchor.constraint(equalTo: statusText.bottomAnchor).isActive = true
         RIText.trailingAnchor.constraint(equalTo: statusText.trailingAnchor).isActive = true
-        RIText.constrainToLeadingSafeAreaOf(view, padding: padding)
+        RIText.constrainToLeadingSafeAreaOf(scrollView, padding: padding)
         RIText.heightAnchor.constraint(lessThanOrEqualToConstant: 40).isActive = true
         
         status.topAnchor.constraint(equalTo: statusText.topAnchor).isActive = true
         status.leadingAnchor.constraint(equalTo: statusText.trailingAnchor, constant: padding).isActive = true
-        status.constrainToTrailingSafeAreaOf(view, padding: padding)
+        status.constrainToTrailingSafeAreaOf(scrollView, padding: padding)
         status.heightAnchor.constraint(equalTo: statusText.heightAnchor).isActive = true
-        
+         
         reviewInterval.topAnchor.constraint(equalTo: RIText.topAnchor).isActive = true
         reviewInterval.leadingAnchor.constraint(equalTo: status.leadingAnchor).isActive = true
-        reviewInterval.constrainToTrailingSafeAreaOf(view, padding: padding)
+        reviewInterval.constrainToTrailingSafeAreaOf(scrollView, padding: padding)
         reviewInterval.heightAnchor.constraint(equalTo: RIText.heightAnchor).isActive = true
     }
 }
