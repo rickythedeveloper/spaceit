@@ -10,19 +10,6 @@ import UIKit
 import SwiftUI
 import CoreData
 
-extension UIButton {
-    fileprivate static func actionButton(imageName: String, action: Selector) -> UIButton {
-        let button = UIButton()
-        button.setImage(UIImage(systemName: imageName), for: .normal)
-        let config = UIImage.SymbolConfiguration(scale: .large)
-        button.setPreferredSymbolConfiguration(config, forImageIn: .normal)
-        button.translatesAutoresizingMaskIntoConstraints = false
-        button.sizeToFit()
-        button.addTarget(nil, action: action, for: .touchUpInside)
-        return button
-    }
-}
-
 extension UILabel {
     fileprivate static func text(str: String, alignment: NSTextAlignment = .left, color: UIColor? = nil, alpha: CGFloat = 1.0) -> UILabel {
         let lbl = UILabel()
@@ -85,9 +72,9 @@ class CardEditVC: UIViewController {
     
     let backTextView = UITextView.cardSIdeTV()
     
-    let deleteButton = UIButton.actionButton(imageName: "trash.circle", action: #selector(deletePressed))
-    let deactivateButton = UIButton.actionButton(imageName: "nosign", action: #selector(deactivatePressed))
-    let okButton = UIButton.actionButton(imageName: "checkmark.circle", action: #selector(okPressed))
+    let deleteButton = UIButton.actionButton(text: "Delete", action: #selector(deletePressed), backgroundColor: .systemRed, backgroundAlpha: 0.7, usesAutoLayout: true)
+    let deactivateButton = UIButton.actionButton(text: "Deactivate", action: #selector(deactivatePressed), backgroundColor: .systemGray, backgroundAlpha: 0.7, usesAutoLayout: true)
+    let okButton = UIButton.actionButton(text: "Save", action: #selector(okPressed), backgroundColor: .systemGreen, backgroundAlpha: 0.7, usesAutoLayout: true)
     
     var actionButtonContainer = UIStackView()
     
@@ -124,9 +111,9 @@ class CardEditVC: UIViewController {
 extension CardEditVC {
     func updateView(showsDeactivate: Bool) {
         if showsDeactivate {
-            deactivateButton.setImage(UIImage(systemName: "nosign"), for: .normal)
+            deactivateButton.setTitle("Deactivate", for: .normal)
         } else {
-            deactivateButton.setImage(UIImage(systemName: "arrow.up.bin"), for: .normal)
+            deactivateButton.setTitle("Reactivate", for: .normal)
         }
     }
     
@@ -160,6 +147,7 @@ extension CardEditVC {
         actionButtonContainer.translatesAutoresizingMaskIntoConstraints = false
         actionButtonContainer.backgroundColor = .red
         actionButtonContainer.distribution = .fillEqually
+        actionButtonContainer.spacing = padding
         
         scrollView.addSubview(pageButton)
         scrollView.addSubview(divider)

@@ -14,6 +14,7 @@
 		B828BC0F23786DBF00F2D959 /* ClearButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B828BC0E23786DBF00F2D959 /* ClearButton.swift */; };
 		B82D2F24235C87D60055A506 /* UpcomingRIghtView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B82D2F23235C87D60055A506 /* UpcomingRIghtView.swift */; };
 		B8419633233AA00A00E6558C /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B8419632233AA00A00E6558C /* CloudKit.framework */; };
+		B844EDB023C3471C0033D657 /* UIButton+.swift in Sources */ = {isa = PBXBuildFile; fileRef = B844EDAF23C3471C0033D657 /* UIButton+.swift */; };
 		B846750A23536797006FC44F /* CardCellViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = B846750923536797006FC44F /* CardCellViews.swift */; };
 		B85C07D1233657BF00200B07 /* TaskSaved+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = B85C07D0233657BF00200B07 /* TaskSaved+CoreDataProperties.swift */; };
 		B85C07D2233657BF00200B07 /* Page+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = B85C07CF233657BF00200B07 /* Page+CoreDataClass.swift */; };
@@ -73,6 +74,7 @@
 		B82D2F23235C87D60055A506 /* UpcomingRIghtView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpcomingRIghtView.swift; sourceTree = "<group>"; };
 		B8419631233AA00800E6558C /* Notification App.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Notification App.entitlements"; sourceTree = "<group>"; };
 		B8419632233AA00A00E6558C /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
+		B844EDAF23C3471C0033D657 /* UIButton+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+.swift"; sourceTree = "<group>"; };
 		B846750923536797006FC44F /* CardCellViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardCellViews.swift; sourceTree = "<group>"; };
 		B85C07CD233657BF00200B07 /* Page+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Page+CoreDataProperties.swift"; path = "/Users/rintarokawagishi/Library/Mobile Documents/com~apple~CloudDocs/Desktop/iOS/Xcode 11/Notification App/Notification App/Model/Page+CoreDataProperties.swift"; sourceTree = "<absolute>"; };
 		B85C07CE233657BF00200B07 /* TaskSaved+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "TaskSaved+CoreDataClass.swift"; path = "/Users/rintarokawagishi/Library/Mobile Documents/com~apple~CloudDocs/Desktop/iOS/Xcode 11/Notification App/Notification App/Model/TaskSaved+CoreDataClass.swift"; sourceTree = "<absolute>"; };
@@ -153,12 +155,13 @@
 			path = "Cards Tab";
 			sourceTree = "<group>";
 		};
-		B8099DEA23C0BEBD00A56471 /* UIViews */ = {
+		B8099DEA23C0BEBD00A56471 /* UIKit+ */ = {
 			isa = PBXGroup;
 			children = (
 				B8099DEB23C0C59700A56471 /* UIVIew+.swift */,
+				B844EDAF23C3471C0033D657 /* UIButton+.swift */,
 			);
-			path = UIViews;
+			path = "UIKit+";
 			sourceTree = "<group>";
 		};
 		B84EA8532327AE9C00FAF4A1 /* Settings */ = {
@@ -276,7 +279,7 @@
 		B8D9503B2326C48F001236AE /* Notification App */ = {
 			isa = PBXGroup;
 			children = (
-				B8099DEA23C0BEBD00A56471 /* UIViews */,
+				B8099DEA23C0BEBD00A56471 /* UIKit+ */,
 				B8419631233AA00800E6558C /* Notification App.entitlements */,
 				B8C723D12336464F00455480 /* Services */,
 				B8D950542326C4AB001236AE /* View */,
@@ -452,6 +455,7 @@
 				B81428C7232EB41B0085AA1F /* MultiLineTextField.swift in Sources */,
 				B895D2E023315AC600767C4E /* Alert+.swift in Sources */,
 				B85C07D1233657BF00200B07 /* TaskSaved+CoreDataProperties.swift in Sources */,
+				B844EDB023C3471C0033D657 /* UIButton+.swift in Sources */,
 				B8845807232BCEDE00B5CC3C /* Array+.swift in Sources */,
 				B801F1342339312C003218BF /* Angle+.swift in Sources */,
 				B8AB5822232E8F7A00AD2012 /* CardListView.swift in Sources */,
