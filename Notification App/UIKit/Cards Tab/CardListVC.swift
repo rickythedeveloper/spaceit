@@ -9,10 +9,26 @@
 import UIKit
 import CoreData
 
-class CardListVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class CardListVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate {
     
     private let segments = ["Upcoming", "Alphabetical", "Creation Date"]
     private var segControl = UISegmentedControl()
+    
+    private let searchTextField: UITextField = {
+        let tf = UITextField()
+        tf.translatesAutoresizingMaskIntoConstraints = false
+        tf.placeholder = "Search"
+        tf.addTarget(nil, action: #selector(tfInputChanged), for: .editingChanged)
+        tf.addTarget(nil, action: #selector(tfEndedEditing), for: .editingDidEnd)
+        tf.backgroundColor = UIColor.systemGray.withAlphaComponent(0.5)
+        let padding: CGFloat = 10
+        let paddingView = UIView(frame: CGRect(x: 0, y: 0, width: padding, height: 1))
+        tf.leftView = paddingView
+        tf.leftViewMode = .always
+        tf.layer.cornerRadius = padding
+        tf.layer.masksToBounds = true
+        return tf
+    }()
     
     private let cellId = "cardListTableViewCell"
     private var cardListTV = UITableView()
@@ -45,6 +61,7 @@ extension CardListVC {
         segControl.selectedSegmentIndex = 0
         segControl.addTarget(nil, action: #selector(segControlValueChanged), for: .valueChanged)
         
+        searchTextField.delegate = self
         cardListTV.translatesAutoresizingMaskIntoConstraints = false
         cardListTV.delegate = self
         cardListTV.dataSource = self
@@ -54,6 +71,14 @@ extension CardListVC {
     private func layoutViews() {
         view.addSubview(segControl)
         view.addSubview(cardListTV)
+        view.addSubview(searchTextField)
+        
+        let clearButton = UIButton()
+        clearButton.setImage(UIImage(systemName: "multiply.circle.fill"), for: .normal)
+        clearButton.tintColor = (UIColor.white).withAlphaComponent(0.5)
+        clearButton.addTarget(nil, action: #selector(clearPressed), for: .touchUpInside)
+        searchTextField.rightView = clearButton
+        searchTextField.rightViewMode = .whileEditing
         
         let padding: CGFloat = 10.0
         
@@ -61,43 +86,80 @@ extension CardListVC {
         segControl.constrainToSideSafeAreasOf(view, padding: padding)
         segControl.heightAnchor.constraint(greaterThanOrEqualToConstant: 30).isActive = true
         segControl.heightAnchor.constraint(lessThanOrEqualToConstant: 50).isActive = true
-        cardListTV.isBelow(segControl, padding: padding)
+        
+        searchTextField.isBelow(segControl, padding: padding)
+        searchTextField.constrainToSideSafeAreasOf(view, padding: padding)
+        searchTextField.heightAnchor.constraint(greaterThanOrEqualToConstant: 20).isActive = true
+        searchTextField.heightAnchor.constraint(lessThanOrEqualToConstant: 30).isActive = true
+        
+        cardListTV.isBelow(searchTextField, padding: padding)
         cardListTV.constrainToSideSafeAreasOf(view, padding: padding)
         cardListTV.constrainToBottomSafeAreaOf(view, padding: padding)
+    }
+    
+    private func update() {
+        managedObjectContext = defaultManagedObjectContext()
+        tasks = tasksFetched()
+        updateCustomTaskArrays()
+    }
+    
+    private func updateCustomTaskArrays() {
+        if let text = searchTextField.text, text.hasContent() {
+            upcomingTasks = tasks.activeTasks().filterByWord(searchPhrase: text)
+            alphabeticalTasks = tasks.sortedByName().filterByWord(searchPhrase: text)
+            creationDateTasks = tasks.sortedByCreationDate(oldFirst: false).filterByWord(searchPhrase: text)
+        } else {
+            upcomingTasks = tasks.activeTasks()
+            alphabeticalTasks = tasks.sortedByName()
+            creationDateTasks = tasks.sortedByCreationDate(oldFirst: false)
+        }
+        cardListTV.reloadData()
     }
     
     @objc private func segControlValueChanged() {
         UIView.transition(with: cardListTV, duration: 0.5, options: .transitionCrossDissolve, animations: {self.cardListTV.reloadData()}, completion: nil)
     }
     
-    private func update() {
-        managedObjectContext = defaultManagedObjectContext()
-        tasks = tasksFetched()
-        upcomingTasks = tasks.activeTasks()
-        alphabeticalTasks = tasks.sortedByName()
-        creationDateTasks = tasks.sortedByCreationDate(oldFirst: false)
+    @objc private func tfInputChanged() {
+        updateCustomTaskArrays()
     }
-
+    
+    @objc private func tfEndedEditing() {
+        view.endEditing(true)
+    }
+    
+    @objc private func clearPressed() {
+        searchTextField.text = ""
+        view.endEditing(true)
+        updateCustomTaskArrays()
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        view.endEditing(true)
+        return true
+    }
 }
 
 // Table View
 extension CardListVC {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if segControl.selectedSegmentIndex == 0 {
-            return tasks.activeTasks().count
+            return upcomingTasks.count
+        } else if segControl.selectedSegmentIndex == 1 {
+            return alphabeticalTasks.count
         } else {
-            return tasks.count
+            return creationDateTasks.count
         }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let cell = tableView.dequeueReusableCell(withIdentifier: cellId) {
             if segControl.selectedSegmentIndex == 0 {
-                cell.textLabel?.text = tasks.activeTasks()[indexPath.row].question
+                cell.textLabel?.text = upcomingTasks[indexPath.row].question
             } else if segControl.selectedSegmentIndex == 1{
-                cell.textLabel?.text = tasks.sortedByName()[indexPath.row].question
+                cell.textLabel?.text = alphabeticalTasks[indexPath.row].question
             } else {
-                cell.textLabel?.text = tasks.sortedByCreationDate(oldFirst: false)[indexPath.row].question
+                cell.textLabel?.text = creationDateTasks[indexPath.row].question
             }
             return cell
         } else {
@@ -108,9 +170,23 @@ extension CardListVC {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        self.navigationController?.pushViewController(CardEditVC(task: tasks[indexPath.row], managedObjectContext: managedObjectContext, onDismiss: {
-            self.cardListTV.reloadData()
+        var selectedTask: TaskSaved
+        let segment = segControl.selectedSegmentIndex
+        if segment == 0 {
+            selectedTask = upcomingTasks[indexPath.row]
+        } else if segment == 1 {
+            selectedTask = alphabeticalTasks[indexPath.row]
+        } else {
+            selectedTask = creationDateTasks[indexPath.row]
+        }
+        
+        self.navigationController?.pushViewController(CardEditVC(task: selectedTask, managedObjectContext: managedObjectContext, onDismiss: {
+            self.update()
         }), animated: true)
         tableView.deselectRow(at: indexPath, animated: true)
+    }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        view.endEditing(true)
     }
 }
