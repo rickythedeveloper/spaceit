@@ -10,18 +10,6 @@ import UIKit
 import SwiftUI
 import CoreData
 
-extension UILabel {
-    fileprivate static func text(str: String, alignment: NSTextAlignment = .left, color: UIColor? = nil, alpha: CGFloat = 1.0) -> UILabel {
-        let lbl = UILabel()
-        lbl.text = str
-        lbl.textAlignment = alignment
-        lbl.textColor = color
-        lbl.alpha = alpha
-        lbl.translatesAutoresizingMaskIntoConstraints = false
-        return lbl
-    }
-}
-
 extension UITextView {
     fileprivate static func cardSIdeTV() -> UITextView {
         let tv = UITextView()
@@ -34,11 +22,11 @@ extension UITextView {
     }
 }
 
-protocol CardEditVCDelegate {
-    func decativatePressed()
-}
+//protocol CardEditVCDelegate {
+//    func decativatePressed()
+//}
 
-class CardEditVC: UIViewController {
+class CardEditVC: UIViewController, UIScrollViewDelegate {
     
     var scrollView: UIScrollView = {
         let sv = UIScrollView()
@@ -78,7 +66,7 @@ class CardEditVC: UIViewController {
     let backTextView = UITextView.cardSIdeTV()
     
     let deleteButton = UIButton.actionButton(text: "Delete Card", action: #selector(deletePressed), backgroundColor: .systemRed, backgroundAlpha: 0.7, usesAutoLayout: true)
-    let deactivateButton = UIButton.actionButton(action: #selector(deactivatePressed), backgroundColor: .systemGray, backgroundAlpha: 0.7, usesAutoLayout: true)
+    let deactivateButton = UIButton.actionButton(text: "Stop Review", action: #selector(deactivatePressed), backgroundColor: .systemGray, backgroundAlpha: 0.7, usesAutoLayout: true)
     let okButton = UIButton.actionButton(text: "Save", action: #selector(okPressed), backgroundColor: .systemGreen, backgroundAlpha: 0.7, usesAutoLayout: true)
     
     var actionButtonContainer = UIStackView()
@@ -88,11 +76,14 @@ class CardEditVC: UIViewController {
     
     var task: TaskSaved
     var managedObjectContext: NSManagedObjectContext
-    var delegate: CardEditVCDelegate?
+//    var delegate: CardEditVCDelegate?
+    
+    var onDismiss: () -> Void
 
-    init(task: TaskSaved, managedObjectContext: NSManagedObjectContext) {
+    init(task: TaskSaved, managedObjectContext: NSManagedObjectContext, onDismiss: @escaping () -> Void = {}) {
         self.task = task
         self.managedObjectContext = managedObjectContext
+        self.onDismiss = onDismiss
         super.init(nibName: nil, bundle: nil)
     }
 
@@ -112,24 +103,55 @@ class CardEditVC: UIViewController {
 }
 
 extension CardEditVC {
-    func updateView(showsDeactivate: Bool) {
-        if showsDeactivate {
-            deactivateButton.setTitle("Stop Review", for: .normal)
-        } else {
-            deactivateButton.setTitle("Resume Revious", for: .normal)
-        }
+    private func saveCardInfo(completion: @escaping () -> Void = {}) {
+        self.task.question = self.frontTextView.text
+        self.task.answer = self.backTextView.text
+        
+        
+        self.managedObjectContext.saveContext(completion: {
+            completion()
+        }, errorHandler: {
+            self.present(UIAlertController.saveFailedAlert(), animated: true, completion: nil)
+        })
     }
+}
+
+extension CardEditVC {
+//    func updateView(showsDeactivate: Bool) {
+//        if showsDeactivate {
+//            deactivateButton.setTitle("Stop Review", for: .normal)
+//        } else {
+//            deactivateButton.setTitle("Resume Revious", for: .normal)
+//        }
+//    }
     
     @objc private func deletePressed() {
         
     }
     
     @objc private func deactivatePressed() {
-        self.delegate?.decativatePressed()
+//        self.delegate?.decativatePressed()
     }
     
     @objc private func okPressed() {
-        
+        if !frontTextView.hasText {
+            self.present(UIAlertController.noContentAlert(), animated: true) {
+                self.frontTextView.becomeFirstResponder()
+            }
+        } else {
+            saveCardInfo(completion: {
+                self.navigationController?.popViewController(animated: true)
+                self.onDismiss()
+            })
+        }
+    }
+    
+    @objc private func dismissKeyboard() {
+        view.endEditing(true)
+    }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        dismissKeyboard()
     }
 }
 
@@ -141,12 +163,15 @@ extension CardEditVC {
         let minButtonHeight: CGFloat = 45.0
         let maxButtonHeight: CGFloat = 70.0
         
+        self.title = "Edit Card"
+        view.backgroundColor = UIColor.myBackGroundColor()
         view.addSubview(scrollView)
         
         scrollView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
         scrollView.constrainToSideSafeAreasOf(view)
         scrollView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
         scrollView.translatesAutoresizingMaskIntoConstraints = false
+        scrollView.delegate = self
         
         pageButton.addTarget(self, action: #selector(buttonPressed), for: .touchUpInside)
         

@@ -15,7 +15,7 @@ extension UIView {
     }
     
     public func constrainToBottomSafeAreaOf(_ view: UIView, padding: CGFloat = 0.0) {
-        self.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: padding).isActive = true
+        self.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -padding).isActive = true
     }
     
     public func constrainToLeadingSafeAreaOf(_ view: UIView, padding: CGFloat = 0.0) {

@@ -10,9 +10,13 @@
 		B801F1342339312C003218BF /* Angle+.swift in Sources */ = {isa = PBXBuildFile; fileRef = B801F1332339312C003218BF /* Angle+.swift */; };
 		B8099DE923C0BE4300A56471 /* CardEditVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8099DE823C0BE4300A56471 /* CardEditVC.swift */; };
 		B8099DEC23C0C59700A56471 /* UIVIew+.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8099DEB23C0C59700A56471 /* UIVIew+.swift */; };
+		B80FF84D23C58B21005F3AA7 /* CardListNavC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B80FF84C23C58B21005F3AA7 /* CardListNavC.swift */; };
+		B80FF85123C5913C005F3AA7 /* UILabel+.swift in Sources */ = {isa = PBXBuildFile; fileRef = B80FF85023C5913C005F3AA7 /* UILabel+.swift */; };
 		B81428C7232EB41B0085AA1F /* MultiLineTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = B81428C6232EB41B0085AA1F /* MultiLineTextField.swift */; };
 		B828BC0F23786DBF00F2D959 /* ClearButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B828BC0E23786DBF00F2D959 /* ClearButton.swift */; };
 		B82D2F24235C87D60055A506 /* UpcomingRIghtView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B82D2F23235C87D60055A506 /* UpcomingRIghtView.swift */; };
+		B83C305D23C5B301008A24D4 /* UIViewController+.swift in Sources */ = {isa = PBXBuildFile; fileRef = B83C305C23C5B301008A24D4 /* UIViewController+.swift */; };
+		B83C305F23C5B7C3008A24D4 /* UIColor+.swift in Sources */ = {isa = PBXBuildFile; fileRef = B83C305E23C5B7C3008A24D4 /* UIColor+.swift */; };
 		B8419633233AA00A00E6558C /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B8419632233AA00A00E6558C /* CloudKit.framework */; };
 		B844EDB023C3471C0033D657 /* UIButton+.swift in Sources */ = {isa = PBXBuildFile; fileRef = B844EDAF23C3471C0033D657 /* UIButton+.swift */; };
 		B846750A23536797006FC44F /* CardCellViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = B846750923536797006FC44F /* CardCellViews.swift */; };
@@ -25,6 +29,7 @@
 		B85C07DA23379DBB00200B07 /* PageNameEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B85C07D923379DBB00200B07 /* PageNameEditView.swift */; };
 		B85C07DC23379E6400200B07 /* FetchedResults+.swift in Sources */ = {isa = PBXBuildFile; fileRef = B85C07DB23379E6400200B07 /* FetchedResults+.swift */; };
 		B871756E2343F55A00BB9E6F /* ActionSheet+.swift in Sources */ = {isa = PBXBuildFile; fileRef = B871756D2343F55A00BB9E6F /* ActionSheet+.swift */; };
+		B87BF76123C59358006D372F /* CardListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B87BF76023C59358006D372F /* CardListVC.swift */; };
 		B88457F5232A4E3200B5CC3C /* KeyboardGuardian.swift in Sources */ = {isa = PBXBuildFile; fileRef = B88457F4232A4E3200B5CC3C /* KeyboardGuardian.swift */; };
 		B88457F7232A589C00B5CC3C /* UIApplication+.swift in Sources */ = {isa = PBXBuildFile; fileRef = B88457F6232A589C00B5CC3C /* UIApplication+.swift */; };
 		B88457F9232A8FB500B5CC3C /* PrivacyPolicy.swift in Sources */ = {isa = PBXBuildFile; fileRef = B88457F8232A8FB500B5CC3C /* PrivacyPolicy.swift */; };
@@ -45,6 +50,7 @@
 		B8AB581F232E843C00AD2012 /* NSManagedObject+.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8AB581E232E843C00AD2012 /* NSManagedObject+.swift */; };
 		B8AB5822232E8F7A00AD2012 /* CardListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8AB5821232E8F7A00AD2012 /* CardListView.swift */; };
 		B8B8023C2326EDB60041098F /* SetTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8B8023B2326EDB60041098F /* SetTime.swift */; };
+		B8CF591023C474E600F83DDB /* UIAlertController+.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8CF590F23C474E600F83DDB /* UIAlertController+.swift */; };
 		B8D53A8E232D924D006887FE /* DeveloperPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8D53A8D232D924D006887FE /* DeveloperPage.swift */; };
 		B8D9503D2326C48F001236AE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8D9503C2326C48F001236AE /* AppDelegate.swift */; };
 		B8D9503F2326C48F001236AE /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8D9503E2326C48F001236AE /* SceneDelegate.swift */; };
@@ -69,9 +75,13 @@
 		B801F1332339312C003218BF /* Angle+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Angle+.swift"; sourceTree = "<group>"; };
 		B8099DE823C0BE4300A56471 /* CardEditVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardEditVC.swift; sourceTree = "<group>"; };
 		B8099DEB23C0C59700A56471 /* UIVIew+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIVIew+.swift"; sourceTree = "<group>"; };
+		B80FF84C23C58B21005F3AA7 /* CardListNavC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardListNavC.swift; sourceTree = "<group>"; };
+		B80FF85023C5913C005F3AA7 /* UILabel+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+.swift"; sourceTree = "<group>"; };
 		B81428C6232EB41B0085AA1F /* MultiLineTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiLineTextField.swift; sourceTree = "<group>"; };
 		B828BC0E23786DBF00F2D959 /* ClearButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClearButton.swift; sourceTree = "<group>"; };
 		B82D2F23235C87D60055A506 /* UpcomingRIghtView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpcomingRIghtView.swift; sourceTree = "<group>"; };
+		B83C305C23C5B301008A24D4 /* UIViewController+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+.swift"; sourceTree = "<group>"; };
+		B83C305E23C5B7C3008A24D4 /* UIColor+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+.swift"; sourceTree = "<group>"; };
 		B8419631233AA00800E6558C /* Notification App.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Notification App.entitlements"; sourceTree = "<group>"; };
 		B8419632233AA00A00E6558C /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		B844EDAF23C3471C0033D657 /* UIButton+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+.swift"; sourceTree = "<group>"; };
@@ -85,6 +95,7 @@
 		B85C07D923379DBB00200B07 /* PageNameEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageNameEditView.swift; sourceTree = "<group>"; };
 		B85C07DB23379E6400200B07 /* FetchedResults+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FetchedResults+.swift"; sourceTree = "<group>"; };
 		B871756D2343F55A00BB9E6F /* ActionSheet+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ActionSheet+.swift"; sourceTree = "<group>"; };
+		B87BF76023C59358006D372F /* CardListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardListVC.swift; sourceTree = "<group>"; };
 		B88457F4232A4E3200B5CC3C /* KeyboardGuardian.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardGuardian.swift; sourceTree = "<group>"; };
 		B88457F6232A589C00B5CC3C /* UIApplication+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIApplication+.swift"; sourceTree = "<group>"; };
 		B88457F8232A8FB500B5CC3C /* PrivacyPolicy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivacyPolicy.swift; sourceTree = "<group>"; };
@@ -105,6 +116,7 @@
 		B8AB581E232E843C00AD2012 /* NSManagedObject+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSManagedObject+.swift"; sourceTree = "<group>"; };
 		B8AB5821232E8F7A00AD2012 /* CardListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardListView.swift; sourceTree = "<group>"; };
 		B8B8023B2326EDB60041098F /* SetTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetTime.swift; sourceTree = "<group>"; };
+		B8CF590F23C474E600F83DDB /* UIAlertController+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIAlertController+.swift"; sourceTree = "<group>"; };
 		B8D53A8D232D924D006887FE /* DeveloperPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeveloperPage.swift; sourceTree = "<group>"; };
 		B8D950392326C48F001236AE /* Space It.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Space It.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B8D9503C2326C48F001236AE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -151,6 +163,8 @@
 			children = (
 				B8099DE823C0BE4300A56471 /* CardEditVC.swift */,
 				B8F8282223C22B8200143BAA /* CardEditVC_swiftui.swift */,
+				B80FF84C23C58B21005F3AA7 /* CardListNavC.swift */,
+				B87BF76023C59358006D372F /* CardListVC.swift */,
 			);
 			path = "Cards Tab";
 			sourceTree = "<group>";
@@ -160,6 +174,10 @@
 			children = (
 				B8099DEB23C0C59700A56471 /* UIVIew+.swift */,
 				B844EDAF23C3471C0033D657 /* UIButton+.swift */,
+				B8CF590F23C474E600F83DDB /* UIAlertController+.swift */,
+				B80FF85023C5913C005F3AA7 /* UILabel+.swift */,
+				B83C305C23C5B301008A24D4 /* UIViewController+.swift */,
+				B83C305E23C5B7C3008A24D4 /* UIColor+.swift */,
 			);
 			path = "UIKit+";
 			sourceTree = "<group>";
@@ -283,7 +301,7 @@
 				B8419631233AA00800E6558C /* Notification App.entitlements */,
 				B8C723D12336464F00455480 /* Services */,
 				B8D950542326C4AB001236AE /* View */,
-				B8D9B2D22329A94B00348987 /* Controller */,
+				B8D9B2D22329A94B00348987 /* UIKit */,
 				B8D950532326C4A4001236AE /* Model */,
 				B8D9503C2326C48F001236AE /* AppDelegate.swift */,
 				B8D9503E2326C48F001236AE /* SceneDelegate.swift */,
@@ -340,13 +358,13 @@
 			path = Notification;
 			sourceTree = "<group>";
 		};
-		B8D9B2D22329A94B00348987 /* Controller */ = {
+		B8D9B2D22329A94B00348987 /* UIKit */ = {
 			isa = PBXGroup;
 			children = (
 				B8099DE723C0BE1F00A56471 /* Cards Tab */,
 				B8D9B2D32329A97100348987 /* GADBannerViewController.swift */,
 			);
-			path = Controller;
+			path = UIKit;
 			sourceTree = "<group>";
 		};
 		E13778E240410AA0E96101A8 /* Frameworks */ = {
@@ -441,10 +459,13 @@
 				B846750A23536797006FC44F /* CardCellViews.swift in Sources */,
 				B828BC0F23786DBF00F2D959 /* ClearButton.swift in Sources */,
 				B8099DEC23C0C59700A56471 /* UIVIew+.swift in Sources */,
+				B87BF76123C59358006D372F /* CardListVC.swift in Sources */,
 				B85C07DA23379DBB00200B07 /* PageNameEditView.swift in Sources */,
 				B88457FB232BA0BA00B5CC3C /* MainTab.swift in Sources */,
 				B8099DE923C0BE4300A56471 /* CardEditVC.swift in Sources */,
+				B83C305D23C5B301008A24D4 /* UIViewController+.swift in Sources */,
 				B8916D9C2367B8A5003A5758 /* View+.swift in Sources */,
+				B80FF85123C5913C005F3AA7 /* UILabel+.swift in Sources */,
 				B8D950632326CA98001236AE /* TimeSetting.swift in Sources */,
 				B8D9503F2326C48F001236AE /* SceneDelegate.swift in Sources */,
 				B8D9505E2326C85C001236AE /* UNUserNotificationCenter+.swift in Sources */,
@@ -453,6 +474,7 @@
 				B8F3794623537EC800CA9976 /* NewPageTF.swift in Sources */,
 				B88457FF232BA2A100B5CC3C /* Spaced Repetition.swift in Sources */,
 				B81428C7232EB41B0085AA1F /* MultiLineTextField.swift in Sources */,
+				B80FF84D23C58B21005F3AA7 /* CardListNavC.swift in Sources */,
 				B895D2E023315AC600767C4E /* Alert+.swift in Sources */,
 				B85C07D1233657BF00200B07 /* TaskSaved+CoreDataProperties.swift in Sources */,
 				B844EDB023C3471C0033D657 /* UIButton+.swift in Sources */,
@@ -478,6 +500,8 @@
 				B895D2DE233159CC00767C4E /* String+.swift in Sources */,
 				B8B8023C2326EDB60041098F /* SetTime.swift in Sources */,
 				B886E729232D8ABF00BD76BD /* MoreTab.swift in Sources */,
+				B8CF591023C474E600F83DDB /* UIAlertController+.swift in Sources */,
+				B83C305F23C5B7C3008A24D4 /* UIColor+.swift in Sources */,
 				B8D9505F2326C85C001236AE /* NotificationDelegate.swift in Sources */,
 				B88CD833238B0FF400901DF6 /* PageNameCell.swift in Sources */,
 			);

@@ -11,6 +11,7 @@ import CoreData
 
 extension NSManagedObjectContext {
     func saveContext(completion: @escaping ()->Void = {}, errorHandler: ()->Void = {}, iteration: Int = 0) {
+        guard self.hasChanges else {completion(); return}
         do {
             try self.save()
             _ = Timer.scheduledTimer(withTimeInterval: 0.3, repeats: false, block: { (timer) in

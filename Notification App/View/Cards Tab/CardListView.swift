@@ -37,8 +37,7 @@ struct CardListView: View {
                 if self.listChoice == 0 {
                     List {
                         ForEach(0..<self.justUpcoming().count, id: \.self) { index in
-                            NavigationLink(destination: CardEditView2(task: self.justUpcoming()[index], managedObjectContext: self.managedObjectContext)
-                                /*CardEditView(task: self.justUpcoming()[index]).environment(\.managedObjectContext, self.managedObjectContext)*/, label: {
+                            NavigationLink(destination: CardEditView(task: self.justUpcoming()[index]).environment(\.managedObjectContext, self.managedObjectContext), label: {
                                 UpcomingCell(task: self.justUpcoming()[index], isFirst: index == 0)
                             })
                         }
@@ -46,8 +45,7 @@ struct CardListView: View {
                 } else if self.listChoice == 1 {
                     List {
                         ForEach(0..<self.allOfTasks().count, id: \.self) { index in
-                            NavigationLink(destination: CardEditView2(task: self.allOfTasks()[index], managedObjectContext: self.managedObjectContext)
-                                /*CardEditView(task: self.allOfTasks()[index]).environment(\.managedObjectContext, self.managedObjectContext)*/, label: {
+                            NavigationLink(destination: CardEditView(task: self.allOfTasks()[index]).environment(\.managedObjectContext, self.managedObjectContext), label: {
                                     allTaskCell(task: self.allOfTasks()[index])
                             })
                         }
@@ -55,7 +53,7 @@ struct CardListView: View {
                 } else {
                     List {
                         ForEach(0..<self.tasksByCreationDate().count, id: \.self) { index in
-                            NavigationLink(destination: CardEditView2(task: self.tasksByCreationDate()[index], managedObjectContext: self.managedObjectContext)/*CardEditView(task: self.tasksByCreationDate()[index]).environment(\.managedObjectContext, self.managedObjectContext)*/, label: {
+                            NavigationLink(destination: CardEditView(task: self.tasksByCreationDate()[index]).environment(\.managedObjectContext, self.managedObjectContext), label: {
                                     creationHistoryCell(task: self.tasksByCreationDate()[index], isFirst: index == 0)
                             })
                         }
