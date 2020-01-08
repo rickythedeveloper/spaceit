@@ -19,6 +19,10 @@ class CardListVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     private var managedObjectContext: NSManagedObjectContext!
     private var tasks = [TaskSaved]()
+    
+    private var upcomingTasks = [TaskSaved]()
+    private var alphabeticalTasks = [TaskSaved]()
+    private var creationDateTasks = [TaskSaved]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,8 +31,7 @@ class CardListVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        self.managedObjectContext = defaultManagedObjectContext()
-        self.tasks = tasksFetched()
+        update()
     }
 }
 
@@ -66,20 +69,35 @@ extension CardListVC {
     @objc private func segControlValueChanged() {
         UIView.transition(with: cardListTV, duration: 0.5, options: .transitionCrossDissolve, animations: {self.cardListTV.reloadData()}, completion: nil)
     }
+    
+    private func update() {
+        managedObjectContext = defaultManagedObjectContext()
+        tasks = tasksFetched()
+        upcomingTasks = tasks.activeTasks()
+        alphabeticalTasks = tasks.sortedByName()
+        creationDateTasks = tasks.sortedByCreationDate(oldFirst: false)
+    }
+
 }
 
 // Table View
 extension CardListVC {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return tasks.count
+        if segControl.selectedSegmentIndex == 0 {
+            return tasks.activeTasks().count
+        } else {
+            return tasks.count
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let cell = tableView.dequeueReusableCell(withIdentifier: cellId) {
             if segControl.selectedSegmentIndex == 0 {
-                cell.textLabel?.text = tasks[indexPath.row].question
+                cell.textLabel?.text = tasks.activeTasks()[indexPath.row].question
+            } else if segControl.selectedSegmentIndex == 1{
+                cell.textLabel?.text = tasks.sortedByName()[indexPath.row].question
             } else {
-                cell.textLabel?.text = String(indexPath.row)
+                cell.textLabel?.text = tasks.sortedByCreationDate(oldFirst: false)[indexPath.row].question
             }
             return cell
         } else {
