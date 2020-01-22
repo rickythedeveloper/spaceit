@@ -6,13 +6,13 @@
 //  Copyright © 2020 Rintaro Kawagishi. All rights reserved.
 //
 
-import UIKit
-
-class CardListNavC: UINavigationController {
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        view.backgroundColor = UIColor.myBackGroundColor()
-    }
-}
+//import UIKit
+//
+//class CardListNavC: UINavigationController {
+//
+//    override func viewDidLoad() {
+//        super.viewDidLoad()
+//        
+//        view.backgroundColor = UIColor.myBackGroundColor()
+//    }
+//}

@@ -51,10 +51,24 @@ class CardListVC: UIViewController, UITableViewDelegate, UITableViewDataSource, 
     }
 }
 
+// Action
+extension CardListVC {
+    @objc private func addCardPressed() {
+    }
+    
+    @objc private func clearPressed() {
+        searchTextField.text = ""
+        view.endEditing(true)
+        updateCustomTaskArrays()
+    }
+}
+
 // Views
 extension CardListVC {
     private func setup() {
         self.title = "Cards"
+        
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "plus"), style: .plain, target: self, action: #selector(addCardPressed))
         
         segControl = UISegmentedControl(items: segments)
         segControl.translatesAutoresizingMaskIntoConstraints = false
@@ -126,12 +140,6 @@ extension CardListVC {
     
     @objc private func tfEndedEditing() {
         view.endEditing(true)
-    }
-    
-    @objc private func clearPressed() {
-        searchTextField.text = ""
-        view.endEditing(true)
-        updateCustomTaskArrays()
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {

@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9C3B270F23CF11C400CC5A13 /* Page+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C3B270B23CF11C400CC5A13 /* Page+CoreDataProperties.swift */; };
+		9C3B271023CF11C400CC5A13 /* TaskSaved+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C3B270C23CF11C400CC5A13 /* TaskSaved+CoreDataProperties.swift */; };
+		9C3B271123CF11C400CC5A13 /* Page+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C3B270D23CF11C400CC5A13 /* Page+CoreDataClass.swift */; };
+		9C3B271223CF11C400CC5A13 /* TaskSaved+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C3B270E23CF11C400CC5A13 /* TaskSaved+CoreDataClass.swift */; };
 		B801F1342339312C003218BF /* Angle+.swift in Sources */ = {isa = PBXBuildFile; fileRef = B801F1332339312C003218BF /* Angle+.swift */; };
 		B8099DE923C0BE4300A56471 /* CardEditVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8099DE823C0BE4300A56471 /* CardEditVC.swift */; };
 		B8099DEC23C0C59700A56471 /* UIVIew+.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8099DEB23C0C59700A56471 /* UIVIew+.swift */; };
@@ -20,10 +24,6 @@
 		B8419633233AA00A00E6558C /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B8419632233AA00A00E6558C /* CloudKit.framework */; };
 		B844EDB023C3471C0033D657 /* UIButton+.swift in Sources */ = {isa = PBXBuildFile; fileRef = B844EDAF23C3471C0033D657 /* UIButton+.swift */; };
 		B846750A23536797006FC44F /* CardCellViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = B846750923536797006FC44F /* CardCellViews.swift */; };
-		B85C07D1233657BF00200B07 /* TaskSaved+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = B85C07D0233657BF00200B07 /* TaskSaved+CoreDataProperties.swift */; };
-		B85C07D2233657BF00200B07 /* Page+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = B85C07CF233657BF00200B07 /* Page+CoreDataClass.swift */; };
-		B85C07D3233657BF00200B07 /* TaskSaved+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = B85C07CE233657BF00200B07 /* TaskSaved+CoreDataClass.swift */; };
-		B85C07D4233657BF00200B07 /* Page+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = B85C07CD233657BF00200B07 /* Page+CoreDataProperties.swift */; };
 		B85C07D623365CCB00200B07 /* PageStructureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B85C07D523365CCB00200B07 /* PageStructureView.swift */; };
 		B85C07D823365E3200200B07 /* PageInsideView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B85C07D723365E3200200B07 /* PageInsideView.swift */; };
 		B85C07DA23379DBB00200B07 /* PageNameEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B85C07D923379DBB00200B07 /* PageNameEditView.swift */; };
@@ -72,6 +72,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		9C3B270B23CF11C400CC5A13 /* Page+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Page+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		9C3B270C23CF11C400CC5A13 /* TaskSaved+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "TaskSaved+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		9C3B270D23CF11C400CC5A13 /* Page+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Page+CoreDataClass.swift"; sourceTree = "<group>"; };
+		9C3B270E23CF11C400CC5A13 /* TaskSaved+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "TaskSaved+CoreDataClass.swift"; sourceTree = "<group>"; };
 		B801F1332339312C003218BF /* Angle+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Angle+.swift"; sourceTree = "<group>"; };
 		B8099DE823C0BE4300A56471 /* CardEditVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardEditVC.swift; sourceTree = "<group>"; };
 		B8099DEB23C0C59700A56471 /* UIVIew+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIVIew+.swift"; sourceTree = "<group>"; };
@@ -86,10 +90,6 @@
 		B8419632233AA00A00E6558C /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		B844EDAF23C3471C0033D657 /* UIButton+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+.swift"; sourceTree = "<group>"; };
 		B846750923536797006FC44F /* CardCellViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardCellViews.swift; sourceTree = "<group>"; };
-		B85C07CD233657BF00200B07 /* Page+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Page+CoreDataProperties.swift"; path = "/Users/rintarokawagishi/Library/Mobile Documents/com~apple~CloudDocs/Desktop/iOS/Xcode 11/Notification App/Notification App/Model/Page+CoreDataProperties.swift"; sourceTree = "<absolute>"; };
-		B85C07CE233657BF00200B07 /* TaskSaved+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "TaskSaved+CoreDataClass.swift"; path = "/Users/rintarokawagishi/Library/Mobile Documents/com~apple~CloudDocs/Desktop/iOS/Xcode 11/Notification App/Notification App/Model/TaskSaved+CoreDataClass.swift"; sourceTree = "<absolute>"; };
-		B85C07CF233657BF00200B07 /* Page+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Page+CoreDataClass.swift"; path = "/Users/rintarokawagishi/Library/Mobile Documents/com~apple~CloudDocs/Desktop/iOS/Xcode 11/Notification App/Notification App/Model/Page+CoreDataClass.swift"; sourceTree = "<absolute>"; };
-		B85C07D0233657BF00200B07 /* TaskSaved+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "TaskSaved+CoreDataProperties.swift"; path = "/Users/rintarokawagishi/Library/Mobile Documents/com~apple~CloudDocs/Desktop/iOS/Xcode 11/Notification App/Notification App/Model/TaskSaved+CoreDataProperties.swift"; sourceTree = "<absolute>"; };
 		B85C07D523365CCB00200B07 /* PageStructureView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageStructureView.swift; sourceTree = "<group>"; };
 		B85C07D723365E3200200B07 /* PageInsideView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageInsideView.swift; sourceTree = "<group>"; };
 		B85C07D923379DBB00200B07 /* PageNameEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageNameEditView.swift; sourceTree = "<group>"; };
@@ -328,10 +328,10 @@
 				B8D950572326C56D001236AE /* RemindTimeSettings.swift */,
 				B8D950592326C58C001236AE /* UserSettings.swift */,
 				B88457FE232BA2A100B5CC3C /* Spaced Repetition.swift */,
-				B85C07CF233657BF00200B07 /* Page+CoreDataClass.swift */,
-				B85C07CD233657BF00200B07 /* Page+CoreDataProperties.swift */,
-				B85C07CE233657BF00200B07 /* TaskSaved+CoreDataClass.swift */,
-				B85C07D0233657BF00200B07 /* TaskSaved+CoreDataProperties.swift */,
+				9C3B270D23CF11C400CC5A13 /* Page+CoreDataClass.swift */,
+				9C3B270B23CF11C400CC5A13 /* Page+CoreDataProperties.swift */,
+				9C3B270E23CF11C400CC5A13 /* TaskSaved+CoreDataClass.swift */,
+				9C3B270C23CF11C400CC5A13 /* TaskSaved+CoreDataProperties.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -448,9 +448,11 @@
 			files = (
 				B8D950562326C4E5001236AE /* AddNewReminder.swift in Sources */,
 				B8D53A8E232D924D006887FE /* DeveloperPage.swift in Sources */,
+				9C3B271023CF11C400CC5A13 /* TaskSaved+CoreDataProperties.swift in Sources */,
 				B8845804232BADFB00B5CC3C /* Color+.swift in Sources */,
 				B8D9505A2326C58C001236AE /* UserSettings.swift in Sources */,
 				B8AB581C232E80B100AD2012 /* CardEditView.swift in Sources */,
+				9C3B271223CF11C400CC5A13 /* TaskSaved+CoreDataClass.swift in Sources */,
 				B88457F7232A589C00B5CC3C /* UIApplication+.swift in Sources */,
 				B88457FD232BA27800B5CC3C /* ReviewSR.swift in Sources */,
 				B85C07D823365E3200200B07 /* PageInsideView.swift in Sources */,
@@ -476,13 +478,12 @@
 				B81428C7232EB41B0085AA1F /* MultiLineTextField.swift in Sources */,
 				B80FF84D23C58B21005F3AA7 /* CardListNavC.swift in Sources */,
 				B895D2E023315AC600767C4E /* Alert+.swift in Sources */,
-				B85C07D1233657BF00200B07 /* TaskSaved+CoreDataProperties.swift in Sources */,
+				9C3B271123CF11C400CC5A13 /* Page+CoreDataClass.swift in Sources */,
 				B844EDB023C3471C0033D657 /* UIButton+.swift in Sources */,
 				B8845807232BCEDE00B5CC3C /* Array+.swift in Sources */,
 				B801F1342339312C003218BF /* Angle+.swift in Sources */,
 				B8AB5822232E8F7A00AD2012 /* CardListView.swift in Sources */,
 				B85C07DC23379E6400200B07 /* FetchedResults+.swift in Sources */,
-				B85C07D2233657BF00200B07 /* Page+CoreDataClass.swift in Sources */,
 				B8845801232BA8EC00B5CC3C /* TaskCard.swift in Sources */,
 				B82D2F24235C87D60055A506 /* UpcomingRIghtView.swift in Sources */,
 				B88CD835238B1D1D00901DF6 /* WorkspaceBackButton.swift in Sources */,
@@ -490,11 +491,9 @@
 				B88457F9232A8FB500B5CC3C /* PrivacyPolicy.swift in Sources */,
 				B8AB581F232E843C00AD2012 /* NSManagedObject+.swift in Sources */,
 				B8D950422326C48F001236AE /* Notification_App.xcdatamodeld in Sources */,
-				B85C07D3233657BF00200B07 /* TaskSaved+CoreDataClass.swift in Sources */,
 				B871756E2343F55A00BB9E6F /* ActionSheet+.swift in Sources */,
 				B886E726232D333C00BD76BD /* AddSR.swift in Sources */,
 				B85C07D623365CCB00200B07 /* PageStructureView.swift in Sources */,
-				B85C07D4233657BF00200B07 /* Page+CoreDataProperties.swift in Sources */,
 				B8F8282323C22B8200143BAA /* CardEditVC_swiftui.swift in Sources */,
 				B8D9B2D42329A97100348987 /* GADBannerViewController.swift in Sources */,
 				B895D2DE233159CC00767C4E /* String+.swift in Sources */,
@@ -502,6 +501,7 @@
 				B886E729232D8ABF00BD76BD /* MoreTab.swift in Sources */,
 				B8CF591023C474E600F83DDB /* UIAlertController+.swift in Sources */,
 				B83C305F23C5B7C3008A24D4 /* UIColor+.swift in Sources */,
+				9C3B270F23CF11C400CC5A13 /* Page+CoreDataProperties.swift in Sources */,
 				B8D9505F2326C85C001236AE /* NotificationDelegate.swift in Sources */,
 				B88CD833238B0FF400901DF6 /* PageNameCell.swift in Sources */,
 			);
