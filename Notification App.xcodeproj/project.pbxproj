@@ -154,15 +154,6 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
-		B8099DE723C0BE1F00A56471 /* Cards Tab */ = {
-			isa = PBXGroup;
-			children = (
-				B8099DE823C0BE4300A56471 /* CardEditVC.swift */,
-				B87BF76023C59358006D372F /* CardListVC.swift */,
-			);
-			path = "Cards Tab";
-			sourceTree = "<group>";
-		};
 		B8099DEA23C0BEBD00A56471 /* UIKit+ */ = {
 			isa = PBXGroup;
 			children = (
@@ -295,7 +286,7 @@
 				B8419631233AA00800E6558C /* Notification App.entitlements */,
 				B8C723D12336464F00455480 /* Services */,
 				B8D950542326C4AB001236AE /* View */,
-				B8D9B2D22329A94B00348987 /* UIKit */,
+				B8D9B2D22329A94B00348987 /* UIViewController */,
 				B8D950532326C4A4001236AE /* Model */,
 				B8D9503C2326C48F001236AE /* AppDelegate.swift */,
 				B8D9503E2326C48F001236AE /* SceneDelegate.swift */,
@@ -352,13 +343,14 @@
 			path = Notification;
 			sourceTree = "<group>";
 		};
-		B8D9B2D22329A94B00348987 /* UIKit */ = {
+		B8D9B2D22329A94B00348987 /* UIViewController */ = {
 			isa = PBXGroup;
 			children = (
-				B8099DE723C0BE1F00A56471 /* Cards Tab */,
+				B8099DE823C0BE4300A56471 /* CardEditVC.swift */,
+				B87BF76023C59358006D372F /* CardListVC.swift */,
 				B8D9B2D32329A97100348987 /* GADBannerViewController.swift */,
 			);
-			path = UIKit;
+			path = UIViewController;
 			sourceTree = "<group>";
 		};
 		E13778E240410AA0E96101A8 /* Frameworks */ = {
