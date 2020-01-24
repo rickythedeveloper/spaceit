@@ -10,18 +10,6 @@ import UIKit
 import SwiftUI
 import CoreData
 
-extension UITextView {
-    fileprivate static func cardSIdeTV() -> UITextView {
-        let tv = UITextView()
-        tv.translatesAutoresizingMaskIntoConstraints = false
-        tv.backgroundColor = (UIColor.systemGray3).withAlphaComponent(0.5)
-        tv.font = UIFont.preferredFont(forTextStyle: .title3)
-        tv.layer.cornerRadius = 10
-        tv.layer.masksToBounds = true
-        return tv
-    }
-}
-
 //protocol CardEditVCDelegate {
 //    func decativatePressed()
 //}
@@ -57,11 +45,11 @@ class CardEditVC: UIViewController, UIScrollViewDelegate {
         return divider
     }()
     
-    let frontLabel = UILabel.text(str: "Front")
+    let frontLabel = UILabel.front()
     
     let frontTextView = UITextView.cardSIdeTV()
     
-    let backLabel = UILabel.text(str: "Back")
+    let backLabel = UILabel.back()
     
     let backTextView = UITextView.cardSIdeTV()
     

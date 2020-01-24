@@ -27,8 +27,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         if let windowScene = scene as? UIWindowScene {
             let window = UIWindow(windowScene: windowScene)
 //            window.rootViewController = UIHostingController(rootView: mainTab)
-//            window.rootViewController = CardListNavC(rootViewController: CardListVC())
-            window.rootViewController = UINavigationController(rootViewController: CardListVC())
+//            window.rootViewController = UINavigationController(rootViewController: CardListVC())
+            window.rootViewController = NewCardVC()
             self.window = window
             window.makeKeyAndVisible()
         }

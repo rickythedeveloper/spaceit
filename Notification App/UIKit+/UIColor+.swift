@@ -12,4 +12,12 @@ extension UIColor {
     public static func myBackGroundColor() -> UIColor {
         return UIColor(named: "myBackgroundColor") ?? UIColor.red
     }
+    
+    static func tvBackground() -> UIColor {
+        return (UIColor.systemGray3).withAlphaComponent(0.5)
+    }
+    
+    static func pageButtonBackground() -> UIColor {
+        return (UIColor.systemGray).withAlphaComponent(0.2)
+    }
 }

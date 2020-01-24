@@ -18,4 +18,12 @@ extension UILabel {
         lbl.translatesAutoresizingMaskIntoConstraints = false
         return lbl
     }
+    
+    static func front() -> UILabel {
+        return UILabel.text(str: "Front")
+    }
+    
+    static func back() -> UILabel {
+        return UILabel.text(str: "Back")
+    }
 }

@@ -9,17 +9,29 @@
 import UIKit
 
 extension UIButton {
-    static func actionButton(text: String = "", action: Selector, font: UIFont? = nil, backgroundColor: UIColor? = nil, backgroundAlpha: CGFloat = 1.0, usesAutoLayout: Bool) -> UIButton {
+    static func actionButton(text: String = "", action: Selector, font: UIFont? = nil, backgroundColor: UIColor? = nil, backgroundAlpha: CGFloat? = nil, usesAutoLayout: Bool) -> UIButton {
         let button = UIButton()
         button.setTitle(text, for: .normal)
         button.titleLabel?.font = font
         button.titleLabel?.lineBreakMode = .byWordWrapping
         button.titleLabel?.sizeToFit()
-        button.backgroundColor = backgroundColor?.withAlphaComponent(backgroundAlpha)
+        if let alpha = backgroundAlpha {
+            button.backgroundColor = backgroundColor?.withAlphaComponent(alpha)
+        } else {
+            button.backgroundColor = backgroundColor
+        }
         button.translatesAutoresizingMaskIntoConstraints = !usesAutoLayout
         button.sizeToFit()
         button.addTarget(nil, action: action, for: .touchUpInside)
         button.layer.cornerRadius = button.layer.frame.height / 4.0
+        button.contentEdgeInsets = UIEdgeInsets(top: 5, left: 15, bottom: 5, right: 15)
+        return button
+    }
+    
+    static func pageButton(text: String, action: Selector, usesAutoLayout: Bool) -> UIButton {
+        let button = UIButton.actionButton(text: text, action: action, font: UIFont.preferredFont(forTextStyle: .title3), backgroundColor: UIColor.pageButtonBackground(), usesAutoLayout: usesAutoLayout)
+        button.setTitleColor(.systemBlue, for: .normal)
+        button.setTitleColor(.gray, for: .highlighted)
         return button
     }
 }
