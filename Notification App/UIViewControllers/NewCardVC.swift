@@ -57,12 +57,7 @@ extension NewCardVC {
     
     func textViewDidEndEditing(_ textView: UITextView) {
         if textView.text.isEmpty {
-            if textView == frontTV {
-                textView.text = frontPlaceholder
-            } else if textView == backTV {
-                textView.text = backPlaceholder
-            }
-            textView.textColor = UIColor.placeholderText
+            setPlaceholder(textView: textView)
         }
     }
     
@@ -76,6 +71,15 @@ extension NewCardVC {
         if self.view.frame.origin.y != 0 {
             self.view.frame.origin.y = 0
         }
+    }
+    
+    private func setPlaceholder(textView: UITextView) {
+        if textView == frontTV {
+            textView.text = frontPlaceholder
+        } else if textView == backTV {
+            textView.text = backPlaceholder
+        }
+        textView.textColor = UIColor.placeholderText
     }
 }
 
@@ -102,29 +106,31 @@ extension NewCardVC {
         pageButton.alignToCenterXOf(view)
         
         frontLabel.isBelow(pageButton, padding: padding)
-        frontLabel.constrainToLeadingSafeAreaOf(view, padding: padding)
+        frontLabel.alignToCenterXOf(view)
         
         frontTV.isBelow(frontLabel, padding: padding)
         frontTV.constrainToSideSafeAreasOf(view, padding: padding)
         frontTV.heightAnchor.constraint(greaterThanOrEqualTo: view.safeAreaLayoutGuide.heightAnchor, multiplier: minTVHeight).isActive = true
         frontTV.heightAnchor.constraint(lessThanOrEqualTo: view.safeAreaLayoutGuide.heightAnchor, multiplier: maxTVHeight).isActive = true
-        frontTV.text = frontPlaceholder
-        frontTV.textColor = UIColor.placeholderText
-        frontTV.delegate = self
+        setupTextView(textView: frontTV)
         
-        backLabel.isBelow(frontTV, padding: padding)
-        backLabel.leadingAnchor.constraint(equalTo: frontLabel.leadingAnchor).isActive = true
+        backLabel.isBelow(frontTV, padding: 3*padding)
+        backLabel.alignToCenterXOf(view)
 
         backTV.isBelow(backLabel, padding: padding)
         backTV.leadingAnchor.constraint(equalTo: frontTV.leadingAnchor).isActive = true
         backTV.trailingAnchor.constraint(equalTo: frontTV.trailingAnchor).isActive = true
         backTV.heightAnchor.constraint(greaterThanOrEqualTo: view.safeAreaLayoutGuide.heightAnchor, multiplier: minTVHeight).isActive = true
         backTV.heightAnchor.constraint(lessThanOrEqualTo: view.safeAreaLayoutGuide.heightAnchor, multiplier: maxTVHeight).isActive = true
-        backTV.text = backPlaceholder
-        backTV.textColor = UIColor.placeholderText
-        backTV.delegate = self
+        setupTextView(textView: backTV)
         
         addButton.isBelow(backTV, padding: padding*2)
         addButton.alignToCenterXOf(view)
+    }
+    
+    private func setupTextView(textView: UITextView) {
+        textView.text = (textView == frontTV ? frontPlaceholder : backPlaceholder)
+        textView.textColor = UIColor.placeholderText
+        textView.delegate = self
     }
 }
