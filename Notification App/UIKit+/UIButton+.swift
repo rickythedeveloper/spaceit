@@ -13,6 +13,7 @@ extension UIButton {
         let button = UIButton()
         button.setTitle(text, for: .normal)
         button.titleLabel?.font = font
+        button.setTitleColor(.myTextColor(), for: .normal)
         button.titleLabel?.lineBreakMode = .byWordWrapping
         button.titleLabel?.sizeToFit()
         if let alpha = backgroundAlpha {

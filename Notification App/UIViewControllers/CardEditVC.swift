@@ -53,8 +53,8 @@ class CardEditVC: UIViewController, UIScrollViewDelegate {
     
     let backTextView = UITextView.cardSIdeTV()
     
-    let deleteButton = UIButton.actionButton(text: "Delete Card", action: #selector(deletePressed), backgroundColor: .systemRed, backgroundAlpha: 0.7, usesAutoLayout: true)
-    let deactivateButton = UIButton.actionButton(text: "Stop Review", action: #selector(deactivatePressed), backgroundColor: .systemGray, backgroundAlpha: 0.7, usesAutoLayout: true)
+    let deleteButton = UIButton.actionButton(text: "Delete", action: #selector(deletePressed), backgroundColor: .systemRed, backgroundAlpha: 0.7, usesAutoLayout: true)
+    let deactivateButton = UIButton.actionButton(text: "Archive", action: #selector(archivePressed), backgroundColor: .systemGray, backgroundAlpha: 0.7, usesAutoLayout: true)
     let okButton = UIButton.actionButton(text: "Save", action: #selector(okPressed), backgroundColor: .systemGreen, backgroundAlpha: 0.7, usesAutoLayout: true)
     
     var actionButtonContainer = UIStackView()
@@ -117,7 +117,7 @@ extension CardEditVC {
         
     }
     
-    @objc private func deactivatePressed() {
+    @objc private func archivePressed() {
 //        self.delegate?.decativatePressed()
     }
     

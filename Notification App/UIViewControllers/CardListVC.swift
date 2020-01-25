@@ -20,7 +20,7 @@ class CardListVC: UIViewController, UITableViewDelegate, UITableViewDataSource, 
         tf.placeholder = "Search"
         tf.addTarget(nil, action: #selector(tfInputChanged), for: .editingChanged)
         tf.addTarget(nil, action: #selector(tfEndedEditing), for: .editingDidEnd)
-        tf.backgroundColor = UIColor.systemGray.withAlphaComponent(0.5)
+        tf.backgroundColor = UIColor.systemGray.withAlphaComponent(0.2)
         let padding: CGFloat = 10
         let paddingView = UIView(frame: CGRect(x: 0, y: 0, width: padding, height: 1))
         tf.leftView = paddingView

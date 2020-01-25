@@ -18,7 +18,7 @@ extension UIColor {
     }
     
     static func tvBackground() -> UIColor {
-        return (UIColor.systemGray3).withAlphaComponent(0.5)
+        return (UIColor.systemGray).withAlphaComponent(0.2)
     }
     
     static func pageButtonBackground() -> UIColor {
