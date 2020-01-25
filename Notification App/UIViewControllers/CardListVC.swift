@@ -54,6 +54,7 @@ class CardListVC: UIViewController, UITableViewDelegate, UITableViewDataSource, 
 // Action
 extension CardListVC {
     @objc private func addCardPressed() {
+        self.navigationController?.pushViewController(NewCardVC(), animated: true)
     }
     
     @objc private func clearPressed() {
@@ -67,6 +68,7 @@ extension CardListVC {
 extension CardListVC {
     private func setup() {
         self.title = "Cards"
+        self.view.backgroundColor = UIColor.myBackGroundColor()
         
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "plus"), style: .plain, target: self, action: #selector(addCardPressed))
         

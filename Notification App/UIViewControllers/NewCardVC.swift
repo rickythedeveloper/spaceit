@@ -68,7 +68,7 @@ extension NewCardVC {
         self.registerNotification(id: task.id, question: task.question, waitTime: task.waitTime)
         
         self.clearTextsForTVs()
-        self.dismiss(animated: true, completion: nil)
+        self.navigationController?.popViewController(animated: true)
     }
     
     private func registerNotification(id: UUID, question: String, waitTime: TimeInterval) {
