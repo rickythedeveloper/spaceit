@@ -33,9 +33,6 @@ class NewCardVC: UIViewController, UITextViewDelegate {
         super.viewDidLoad()
         setup()
     }
-    
-    override func viewWillAppear(_ animated: Bool) {
-    }
 }
 
 extension NewCardVC {
@@ -44,9 +41,8 @@ extension NewCardVC {
     }
     
     @objc private func addButtonPressed() {
-        
         guard frontTV.text.hasContent() && !showingPlaceholder(textView: frontTV) else {
-            print("show alert")
+            self.present(UIAlertController.noContentAlert(), animated: true, completion: nil)
             return
         }
         
@@ -71,6 +67,7 @@ extension NewCardVC {
         context.saveContext()
         self.registerNotification(id: task.id, question: task.question, waitTime: task.waitTime)
         
+        self.clearTextsForTVs()
         self.dismiss(animated: true, completion: nil)
     }
     
@@ -89,6 +86,12 @@ extension NewCardVC {
                     }
                 }
             }
+        }
+    }
+    
+    private func clearTextsForTVs() {
+        for each in [frontTV, backTV] {
+            self.setPlaceholder(textView: each)
         }
     }
     
