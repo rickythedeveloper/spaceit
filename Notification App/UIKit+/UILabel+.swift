@@ -20,10 +20,10 @@ extension UILabel {
     }
     
     static func front() -> UILabel {
-        return UILabel.text(str: "Front")
+        return UILabel.text(str: "Front", alignment: .center)
     }
     
     static func back() -> UILabel {
-        return UILabel.text(str: "Back")
+        return UILabel.text(str: "Back", alignment: .center)
     }
 }

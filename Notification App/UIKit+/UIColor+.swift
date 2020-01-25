@@ -13,6 +13,10 @@ extension UIColor {
         return UIColor(named: "myBackgroundColor") ?? UIColor.red
     }
     
+    static func myTextColor() -> UIColor {
+        return UIColor(named: "myTextColor") ?? UIColor.red
+    }
+    
     static func tvBackground() -> UIColor {
         return (UIColor.systemGray3).withAlphaComponent(0.5)
     }
