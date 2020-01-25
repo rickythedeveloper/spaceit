@@ -7,10 +7,14 @@
 //
 
 import UIKit
+import CoreData
 
 class NewCardVC: UIViewController, UITextViewDelegate {
     
+    private var managedObjectContext: NSManagedObjectContext?
+    
     private let pageButton = UIButton.pageButton(text: "Select page for this button", action: #selector(addPagePressed), usesAutoLayout: true)
+    private var chosenPage: Page?
     
     private let frontLabel = UILabel.front()
     private let frontTV = UITextView.cardSIdeTV()
@@ -40,7 +44,52 @@ extension NewCardVC {
     }
     
     @objc private func addButtonPressed() {
-        print("add card now")
+        
+        guard frontTV.text.hasContent() && !showingPlaceholder(textView: frontTV) else {
+            print("show alert")
+            return
+        }
+        
+        guard let context = self.managedObjectContext else {return}
+        
+        let task = TaskSaved(context: context)
+        task.id = UUID()
+        task.question = frontTV.text
+        
+        if backTV.text.hasContent() && !showingPlaceholder(textView: backTV) {
+            task.answer = backTV.text
+        } else {
+            task.answer = nil
+        }
+        
+        task.lastChecked = Date()
+        task.waitTime = 60*60*24
+        task.page = self.chosenPage
+        task.isActive = true
+        task.createdAt = Date()
+        
+        context.saveContext()
+        self.registerNotification(id: task.id, question: task.question, waitTime: task.waitTime)
+        
+        self.dismiss(animated: true, completion: nil)
+    }
+    
+    private func registerNotification(id: UUID, question: String, waitTime: TimeInterval) {
+        let nc = UNUserNotificationCenter.current()
+        nc.getNotificationSettings { (settings) in
+            switch settings.authorizationStatus {
+            case .authorized:
+                nc.sendSRTaskNotification(id: id, question: question, waitTime: waitTime)
+            default:
+                nc.requestAuthorization(options: [.alert]) { (granted, error) in
+                    if !granted, let error = error {
+                        fatalError(error.localizedDescription)
+                    } else {
+                        nc.sendSRTaskNotification(id: id, question: question, waitTime: waitTime)
+                    }
+                }
+            }
+        }
     }
     
     func textViewShouldBeginEditing(_ textView: UITextView) -> Bool {
@@ -61,13 +110,13 @@ extension NewCardVC {
         }
     }
     
-    @objc func keyboardWillShow(notification: NSNotification) {
+    @objc private func keyboardWillShow(notification: NSNotification) {
         if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
             self.view.frame.origin.y = min(0, keyboardSize.minY - tvMaxY)
         }
     }
 
-    @objc func keyboardWillHide(notification: NSNotification) {
+    @objc private func keyboardWillHide(notification: NSNotification) {
         if self.view.frame.origin.y != 0 {
             self.view.frame.origin.y = 0
         }
@@ -81,15 +130,28 @@ extension NewCardVC {
         }
         textView.textColor = UIColor.placeholderText
     }
+    
+    @objc private func gestureDetectedOnView() {
+        view.endEditing(true)
+    }
+    
+    private func showingPlaceholder(textView: UITextView) -> Bool {
+        return textView.textColor == UIColor.placeholderText
+    }
 }
 
 extension NewCardVC {
     private func setup() {
+        self.managedObjectContext = self.defaultManagedObjectContext()
+        
         self.title = "New Flashcard"
         self.view.backgroundColor = UIColor.myBackGroundColor()
         
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+        
+        view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(gestureDetectedOnView)))
+        view.addGestureRecognizer(UIPanGestureRecognizer(target: self, action: #selector(gestureDetectedOnView)))
         
         view.addSubview(pageButton)
         view.addSubview(frontLabel)
