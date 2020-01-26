@@ -10,10 +10,6 @@ import UIKit
 import SwiftUI
 import CoreData
 
-//protocol CardEditVCDelegate {
-//    func decativatePressed()
-//}
-
 class CardEditVC: UIViewController, UIScrollViewDelegate {
     
     var scrollView: UIScrollView = {
@@ -54,7 +50,7 @@ class CardEditVC: UIViewController, UIScrollViewDelegate {
     let backTextView = UITextView.cardSIdeTV()
     
     let deleteButton = UIButton.actionButton(text: "Delete", action: #selector(deletePressed), backgroundColor: .systemRed, backgroundAlpha: 0.7, usesAutoLayout: true)
-    let deactivateButton = UIButton.actionButton(text: "Archive", action: #selector(archivePressed), backgroundColor: .systemGray, backgroundAlpha: 0.7, usesAutoLayout: true)
+    let deactivateButton = UIButton.actionButton(text: "", action: #selector(archivePressed), backgroundColor: .systemGray, backgroundAlpha: 0.7, usesAutoLayout: true)
     let okButton = UIButton.actionButton(text: "Save", action: #selector(okPressed), backgroundColor: .systemGreen, backgroundAlpha: 0.7, usesAutoLayout: true)
     
     var actionButtonContainer = UIStackView()
@@ -64,7 +60,6 @@ class CardEditVC: UIViewController, UIScrollViewDelegate {
     
     var task: TaskSaved
     var managedObjectContext: NSManagedObjectContext
-//    var delegate: CardEditVCDelegate?
     
     var onDismiss: () -> Void
 
@@ -85,6 +80,10 @@ class CardEditVC: UIViewController, UIScrollViewDelegate {
         putCardInfo()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        deactivateButton.setTitle(self.task.isActive ? "Archive" : "Recover", for: .normal)
+    }
+    
     @objc private func buttonPressed() {
         print("show page structure now")
     }
@@ -95,7 +94,6 @@ extension CardEditVC {
         self.task.question = self.frontTextView.text
         self.task.answer = self.backTextView.text
         
-        
         self.managedObjectContext.saveContext(completion: {
             completion()
         }, errorHandler: {
@@ -105,14 +103,6 @@ extension CardEditVC {
 }
 
 extension CardEditVC {
-//    func updateView(showsDeactivate: Bool) {
-//        if showsDeactivate {
-//            deactivateButton.setTitle("Stop Review", for: .normal)
-//        } else {
-//            deactivateButton.setTitle("Resume Revious", for: .normal)
-//        }
-//    }
-    
     @objc private func deletePressed() {
         let deleteAlert = UIAlertController.deleteAlert {
             self.managedObjectContext.delete(self.task)
@@ -124,7 +114,13 @@ extension CardEditVC {
     }
     
     @objc private func archivePressed() {
-//        self.delegate?.decativatePressed()
+        let action = {
+            self.task.isActive.toggle()
+            self.navigationController?.popViewController(animated: true)
+            self.managedObjectContext.saveContext()
+        }
+        let alert = self.task.isActive ? UIAlertController.archiveAlert(action: action) : UIAlertController.recoverAlert(action: action)
+        self.present(alert, animated: true, completion: nil)
     }
     
     @objc private func okPressed() {

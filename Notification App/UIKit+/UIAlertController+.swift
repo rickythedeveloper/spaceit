@@ -30,4 +30,22 @@ extension UIAlertController {
         ac.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
         return ac
     }
+    
+    static func archiveAlert(action: @escaping ()->Void) -> UIAlertController {
+        let ac = UIAlertController(title: "Archive card?", message: "You will be able to recover the card later", preferredStyle: .alert)
+        ac.addAction(UIAlertAction(title: "Archive", style: .default, handler: { _ in
+            action()
+        }))
+        ac.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        return ac
+    }
+    
+    static func recoverAlert(action: @escaping ()->Void) -> UIAlertController {
+        let ac = UIAlertController(title: "Recover card?", message: "You will be able to archive the card later", preferredStyle: .alert)
+        ac.addAction(UIAlertAction(title: "Recover", style: .default, handler: { _ in
+            action()
+        }))
+        ac.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        return ac
+    }
 }
