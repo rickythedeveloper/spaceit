@@ -21,4 +21,13 @@ extension UIAlertController {
         ac.addAction(UIAlertAction.init(title: "Stay on this card", style: .cancel, handler: nil))
         return ac
     }
+    
+    static func deleteAlert(action: @escaping ()->Void) -> UIAlertController {
+        let ac = UIAlertController(title: "Delete card?", message: "This action cannot be undone", preferredStyle: .alert)
+        ac.addAction(UIAlertAction(title: "Delete", style: .destructive, handler: { _ in
+            action()
+        }))
+        ac.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        return ac
+    }
 }

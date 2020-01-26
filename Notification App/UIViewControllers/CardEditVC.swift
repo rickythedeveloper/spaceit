@@ -114,7 +114,13 @@ extension CardEditVC {
 //    }
     
     @objc private func deletePressed() {
+        let deleteAlert = UIAlertController.deleteAlert {
+            self.managedObjectContext.delete(self.task)
+            self.navigationController?.popViewController(animated: true)
+            self.managedObjectContext.saveContext()
+        }
         
+        self.present(deleteAlert, animated: true, completion: nil)
     }
     
     @objc private func archivePressed() {
