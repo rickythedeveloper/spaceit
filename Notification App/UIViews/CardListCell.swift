@@ -8,49 +8,7 @@
 
 import UIKit
 
-enum CardListCellType: Int {
-    case upcoming = 0, alphabetical, creationDate
-}
-
-class CardListCell: UITableViewCell {
-    
-    init(style: UITableViewCell.CellStyle, reuseIdentifier: String, task: TaskSaved, isFirst: Bool, cellType: CardListCellType) {
-        super.init(style: style, reuseIdentifier: reuseIdentifier)
-        
-        switch cellType {
-        case .upcoming:
-            self.addSubview(UpcomingCardListCell(frame: frame, task: task, isFirst: isFirst))
-        case .alphabetical:
-            let label = UILabel()
-            label.text = "test"
-            label.frame = self.frame
-            self.addSubview(label)
-        case .creationDate:
-            let label = UILabel()
-            label.text = "test"
-            label.frame = self.frame
-            self.addSubview(label)
-        }
-        
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
-    override func awakeFromNib() {
-        super.awakeFromNib()
-    }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-        
-        // Configure the view for the selected state
-    }
-
-}
-
-class UpcomingCardListCell: UIView {
+class UpcomingCardListCell: UITableViewCell {
     private var isFirst: Bool
     
     private var task: TaskSaved
@@ -60,11 +18,13 @@ class UpcomingCardListCell: UIView {
     private var dueLabel = UILabel()
     private var intervalLabel = UILabel()
     
-    init(frame: CGRect, task: TaskSaved, isFirst: Bool) {
+    private var mainInfoVStack = UIStackView()
+    private var subInfoVStack = UIStackView()
+    
+    init(style: UITableViewCell.CellStyle, reuseIdentifier: String?, task: TaskSaved, isFirst: Bool) {
         self.isFirst = isFirst
         self.task = task
-        
-        super.init(frame: frame)
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
         
         setup()
         viewSetup()
@@ -84,53 +44,55 @@ class UpcomingCardListCell: UIView {
             pageBreadcrumbLabel!.text = breadcrumb
         }
         
+        let descriptionAttirbutes: [NSAttributedString.Key: Any] = [.foregroundColor: UIColor.systemGray, .font: UIFont.preferredFont(forTextStyle: .body)]
+        let bodyAttributes: [NSAttributedString.Key: Any] = [.font: UIFont.preferredFont(forTextStyle: .body)]
+        
         let dueDateText = NSMutableAttributedString()
         if isFirst {
-            let dueAttributes: [NSAttributedString.Key: Any] = [.foregroundColor: UIColor.systemGray, .font: UIFont.preferredFont(forTextStyle: .body)]
-            let due = NSAttributedString(string: "Due: ", attributes: dueAttributes)
-            dueDateText.append(due)
+            dueDateText.append(NSAttributedString(string: "Due: ", attributes: descriptionAttirbutes))
         }
-        let dueDateStringAttributes: [NSAttributedString.Key: Any] = [.font: UIFont.preferredFont(forTextStyle: .body)]
-        let dueDateString = NSAttributedString(string: task.dueDate().dateString(), attributes: dueDateStringAttributes)
-        dueDateText.append(dueDateString)
+        dueDateText.append(NSAttributedString(string: task.dueDate().dateString(), attributes: bodyAttributes))
         dueLabel.attributedText = dueDateText
         
-        intervalLabel.text = task.waitTimeString()
-        intervalLabel.font = UIFont.preferredFont(forTextStyle: .body)
+        let intervalText = NSMutableAttributedString()
+        if isFirst {
+            intervalText.append(NSAttributedString(string: "Interval: ", attributes: descriptionAttirbutes))
+        }
+        intervalText.append(NSAttributedString(string: task.waitTimeString(), attributes: bodyAttributes))
+        intervalLabel.attributedText = intervalText
     }
     
     private func viewSetup() {
-        addSubview(frontTextLabel)
-        frontTextLabel.translatesAutoresizingMaskIntoConstraints = false
-        if let label = pageBreadcrumbLabel {
-            addSubview(label)
-            label.translatesAutoresizingMaskIntoConstraints = false
-        }
-        addSubview(dueLabel)
-        dueLabel.translatesAutoresizingMaskIntoConstraints = false
-        addSubview(intervalLabel)
-        intervalLabel.translatesAutoresizingMaskIntoConstraints = false
-        
         let padding: CGFloat = 5.0
-        dueLabel.constrainToTopSafeAreaOf(self)
-        dueLabel.constrainToTrailingSafeAreaOf(self, padding: padding)
-        dueLabel.widthAnchor.constraint(greaterThanOrEqualToConstant: dueLabel.intrinsicContentSize.width).isActive = true
-        dueLabel.sizeToFit()
         
-        intervalLabel.isBelow(dueLabel, padding: padding)
-        intervalLabel.constrainToTrailingSafeAreaOf(self, padding: padding)
-        intervalLabel.sizeToFit()
-        
-        frontTextLabel.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
-        frontTextLabel.constrainToLeadingSafeAreaOf(self, padding: padding)
-        frontTextLabel.trailingAnchor.constraint(equalTo: dueLabel.leadingAnchor, constant: -padding).isActive = true
-        frontTextLabel.sizeToFit()
-        
+        mainInfoVStack = UIStackView(arrangedSubviews: [frontTextLabel])
         if let label = pageBreadcrumbLabel {
-            label.isBelow(frontTextLabel, padding: padding)
-            label.leadingAnchor.constraint(equalTo: frontTextLabel.leadingAnchor).isActive = true
-            label.trailingAnchor.constraint(equalTo: frontTextLabel.trailingAnchor).isActive = true
-            label.sizeToFit()
+            mainInfoVStack.addArrangedSubview(label)
         }
+        mainInfoVStack.axis = .vertical
+        mainInfoVStack.distribution = .equalSpacing
+        mainInfoVStack.spacing = padding
+        mainInfoVStack.translatesAutoresizingMaskIntoConstraints = false
+        self.contentView.addSubview(mainInfoVStack)
+        
+        subInfoVStack = UIStackView(arrangedSubviews: [dueLabel, intervalLabel])
+        subInfoVStack.axis = .vertical
+        subInfoVStack.distribution = .equalSpacing
+        subInfoVStack.spacing = padding
+        subInfoVStack.alignment = .trailing
+        subInfoVStack.translatesAutoresizingMaskIntoConstraints = false
+        self.contentView.addSubview(subInfoVStack)
+        
+        let minSubInfoWidth = max(dueLabel.intrinsicContentSize.width, intervalLabel.intrinsicContentSize.width)
+        subInfoVStack.constrainToTrailingSafeAreaOf(self.contentView, padding: padding)
+        subInfoVStack.widthAnchor.constraint(equalToConstant: minSubInfoWidth).isActive = true
+        subInfoVStack.centerYAnchor.constraint(equalTo: self.contentView.centerYAnchor).isActive = true
+        
+        mainInfoVStack.trailingAnchor.constraint(equalTo: subInfoVStack.leadingAnchor, constant: -padding).isActive = true
+        mainInfoVStack.constrainToLeadingSafeAreaOf(self.contentView, padding: padding)
+        mainInfoVStack.centerYAnchor.constraint(equalTo: self.contentView.centerYAnchor).isActive = true
+        
+        self.contentView.heightAnchor.constraint(greaterThanOrEqualTo: mainInfoVStack.heightAnchor, constant: padding*2.0).isActive = true
+        self.contentView.heightAnchor.constraint(greaterThanOrEqualTo: subInfoVStack.heightAnchor, constant: padding*2.0).isActive = true
     }
 }
