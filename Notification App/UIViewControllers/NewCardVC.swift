@@ -33,6 +33,10 @@ class NewCardVC: UIViewController, UITextViewDelegate {
         super.viewDidLoad()
         setup()
     }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        self.frontTV.becomeFirstResponder()
+    }
 }
 
 extension NewCardVC {
