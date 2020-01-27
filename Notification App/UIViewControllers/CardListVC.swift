@@ -163,20 +163,24 @@ extension CardListVC {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if let cell = tableView.dequeueReusableCell(withIdentifier: cellId) {
-            if segControl.selectedSegmentIndex == 0 {
-                cell.textLabel?.text = upcomingTasks[indexPath.row].question
-            } else if segControl.selectedSegmentIndex == 1{
-                cell.textLabel?.text = alphabeticalTasks[indexPath.row].question
-            } else {
-                cell.textLabel?.text = creationDateTasks[indexPath.row].question
-            }
-            return cell
-        } else {
-            let cell = UITableViewCell()
-            cell.textLabel?.text = "Error."
-            return cell
-        }
+        
+        let cell = CardListCell(style: .default, reuseIdentifier: cellId, task: upcomingTasks[indexPath.row], isFirst: indexPath.row == 0, cellType: CardListCellType(rawValue: segControl.selectedSegmentIndex)!)
+        return cell
+        
+//        if let cell = tableView.dequeueReusableCell(withIdentifier: cellId) {
+//            if segControl.selectedSegmentIndex == 0 {
+//                cell.textLabel?.text = upcomingTasks[indexPath.row].question
+//            } else if segControl.selectedSegmentIndex == 1{
+//                cell.textLabel?.text = alphabeticalTasks[indexPath.row].question
+//            } else {
+//                cell.textLabel?.text = creationDateTasks[indexPath.row].question
+//            }
+//            return cell
+//        } else {
+//            let cell = UITableViewCell()
+//            cell.textLabel?.text = "Error."
+//            return cell
+//        }
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
