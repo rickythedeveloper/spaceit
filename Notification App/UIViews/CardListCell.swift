@@ -53,10 +53,7 @@ class CardListCell: UITableViewCell {
 class UpcomingCardListCell: UIView {
     private var isFirst: Bool
     
-    private var frontText: String
-    private var pageBreadcrumb: String?
-    private var dueDate: Date
-    private var interval: Double
+    private var task: TaskSaved
     
     private var frontTextLabel = UILabel()
     private var pageBreadcrumbLabel: UILabel?
@@ -65,10 +62,7 @@ class UpcomingCardListCell: UIView {
     
     init(frame: CGRect, task: TaskSaved, isFirst: Bool) {
         self.isFirst = isFirst
-        self.frontText = task.question
-        self.pageBreadcrumb = task.page?.breadCrumb()
-        self.dueDate = task.dueDate()
-        self.interval = task.waitTime
+        self.task = task
         
         super.init(frame: frame)
         
@@ -81,11 +75,11 @@ class UpcomingCardListCell: UIView {
     }
     
     private func setup() {
-        frontTextLabel.text = frontText
+        frontTextLabel.text = task.question
         frontTextLabel.lineBreakMode = .byWordWrapping
         frontTextLabel.numberOfLines = 0
         
-        if let breadcrumb = pageBreadcrumb {
+        if let breadcrumb = task.page?.breadCrumb() {
             pageBreadcrumbLabel = UILabel()
             pageBreadcrumbLabel!.text = breadcrumb
         }
@@ -97,12 +91,11 @@ class UpcomingCardListCell: UIView {
             dueDateText.append(due)
         }
         let dueDateStringAttributes: [NSAttributedString.Key: Any] = [.font: UIFont.preferredFont(forTextStyle: .body)]
-        let dueDateString = NSAttributedString(string: dueDate.dateString(), attributes: dueDateStringAttributes)
+        let dueDateString = NSAttributedString(string: task.dueDate().dateString(), attributes: dueDateStringAttributes)
         dueDateText.append(dueDateString)
         dueLabel.attributedText = dueDateText
         
-        let intervalInDays = Int(interval/(60*60*24))
-        intervalLabel.text = String(intervalInDays) + (intervalInDays == 1 ? " day" : " days")
+        intervalLabel.text = task.waitTimeString()
         intervalLabel.font = UIFont.preferredFont(forTextStyle: .body)
     }
     
