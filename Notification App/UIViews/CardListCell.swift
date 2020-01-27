@@ -44,8 +44,18 @@ class UpcomingCardListCell: UITableViewCell {
             pageBreadcrumbLabel!.text = breadcrumb
         }
         
-        let descriptionAttirbutes: [NSAttributedString.Key: Any] = [.foregroundColor: UIColor.systemGray, .font: UIFont.preferredFont(forTextStyle: .body)]
-        let bodyAttributes: [NSAttributedString.Key: Any] = [.font: UIFont.preferredFont(forTextStyle: .body)]
+        var descriptionAttirbutes: [NSAttributedString.Key: Any]
+        var bodyAttributes: [NSAttributedString.Key: Any]
+        if self.task.isDue() {
+            frontTextLabel.textColor = .systemRed
+            pageBreadcrumbLabel?.textColor = .systemRed
+            descriptionAttirbutes = [.foregroundColor: (UIColor.systemRed).withAlphaComponent(0.6), .font: UIFont.preferredFont(forTextStyle: .body)]
+            bodyAttributes = [.foregroundColor: UIColor.systemRed, .font: UIFont.preferredFont(forTextStyle: .body)]
+        } else {
+            descriptionAttirbutes = [.foregroundColor: UIColor.systemGray, .font: UIFont.preferredFont(forTextStyle: .body)]
+            bodyAttributes = [.font: UIFont.preferredFont(forTextStyle: .body)]
+        }
+        
         
         let dueDateText = NSMutableAttributedString()
         if isFirst {
