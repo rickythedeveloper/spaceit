@@ -1,5 +1,5 @@
 //
-//  CardListCell.swift
+//  UpcomingCardListCell.swift
 //  Notification App
 //
 //  Created by Rintaro Kawagishi on 27/01/2020.
