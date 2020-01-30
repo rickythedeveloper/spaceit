@@ -53,7 +53,11 @@ class AlphabeticalCardListCell: UITableViewCell {
             pageBreadcrumbLabel!.text = breadcrumb
         }
         
-        if self.task.isDue() {
+        
+        if !self.task.isActive {
+            frontTextLabel.textColor = (UIColor.systemGray).withAlphaComponent(0.5)
+            pageBreadcrumbLabel?.textColor = (UIColor.systemGray).withAlphaComponent(0.5)
+        } else if self.task.isDue() {
             frontTextLabel.textColor = .systemRed
             pageBreadcrumbLabel?.textColor = .systemRed
         }
