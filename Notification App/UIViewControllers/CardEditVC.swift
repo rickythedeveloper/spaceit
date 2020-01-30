@@ -55,8 +55,13 @@ class CardEditVC: UIViewController, UIScrollViewDelegate {
     
     var actionButtonContainer = UIStackView()
     
-    let RIText = UILabel.text(str: "Review interval:", alignment: .right)
-    let reviewInterval = UILabel.text(str: "15 days")
+    let dueDateLabel = UILabel()
+    let intervalLabel = UILabel()
+    let infoStack: UIStackView = {
+        let stack = UIStackView()
+        stack.translatesAutoresizingMaskIntoConstraints = false
+        return stack
+    }()
     
     var task: TaskSaved
     var managedObjectContext: NSManagedObjectContext
@@ -171,6 +176,15 @@ extension CardEditVC {
         actionButtonContainer.distribution = .fillEqually
         actionButtonContainer.spacing = padding
         
+        dueDateLabel.font = UIFont.preferredFont(forTextStyle: .body)
+        intervalLabel.font = UIFont.preferredFont(forTextStyle: .body)
+        infoStack.addArrangedSubview(dueDateLabel)
+        infoStack.addArrangedSubview(intervalLabel)
+        infoStack.axis = .vertical
+        infoStack.alignment = .center
+        infoStack.distribution = .equalSpacing
+        infoStack.spacing = padding/2.0
+        
         scrollView.addSubview(pageButton)
         scrollView.addSubview(divider)
 
@@ -180,9 +194,7 @@ extension CardEditVC {
         scrollView.addSubview(backTextView)
 
         scrollView.addSubview(actionButtonContainer)
-
-        scrollView.addSubview(RIText)
-        scrollView.addSubview(reviewInterval)
+        scrollView.addSubview(infoStack)
         
         pageButton.isBelow(scrollView.topAnchor, padding: padding)
         pageButton.alignToCenterXOf(scrollView)
@@ -212,21 +224,14 @@ extension CardEditVC {
         actionButtonContainer.heightAnchor.constraint(greaterThanOrEqualToConstant: minButtonHeight).isActive = true
         actionButtonContainer.heightAnchor.constraint(lessThanOrEqualToConstant: maxButtonHeight).isActive = true
         
-        RIText.isBelow(actionButtonContainer, padding: padding)
-        RIText.trailingAnchor.constraint(equalTo: scrollView.centerXAnchor).isActive = true
-        RIText.constrainToLeadingSafeAreaOf(scrollView, padding: padding)
-        RIText.heightAnchor.constraint(lessThanOrEqualToConstant: 40).isActive = true
-                 
-        reviewInterval.topAnchor.constraint(equalTo: RIText.topAnchor).isActive = true
-        reviewInterval.leadingAnchor.constraint(equalTo: RIText.trailingAnchor, constant: padding).isActive = true
-        reviewInterval.constrainToTrailingSafeAreaOf(scrollView, padding: padding)
-        reviewInterval.heightAnchor.constraint(equalTo: RIText.heightAnchor).isActive = true
-        reviewInterval.bottomAnchor.constraint(greaterThanOrEqualTo: scrollView.bottomAnchor, constant: -padding).isActive = true
+        infoStack.isBelow(actionButtonContainer, padding: padding)
+        infoStack.constrainToSideSafeAreasOf(self.view, padding: padding)
     }
     
     private func putCardInfo() {
         frontTextView.text = self.task.question
         backTextView.text = self.task.answer
-        reviewInterval.text = self.task.waitTimeString()
+        dueDateLabel.text = "Due on " + self.task.dueDateStringShort()
+        intervalLabel.text = "Review interval: " + self.task.waitTimeString()
     }
 }
