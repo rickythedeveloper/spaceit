@@ -35,6 +35,7 @@ class UpcomingCardListCell: UITableViewCell {
     }
     
     private func setup() {
+        // setting of front text and page breadcrumb
         frontTextLabel.text = task.question
         frontTextLabel.lineBreakMode = .byWordWrapping
         frontTextLabel.numberOfLines = 0
@@ -43,12 +44,15 @@ class UpcomingCardListCell: UITableViewCell {
             pageBreadcrumbLabel = UILabel()
             pageBreadcrumbLabel!.text = breadcrumb
         }
-        
-        var descriptionAttirbutes: [NSAttributedString.Key: Any]
-        var bodyAttributes: [NSAttributedString.Key: Any]
         if self.task.isDue() {
             frontTextLabel.textColor = .systemRed
             pageBreadcrumbLabel?.textColor = .systemRed
+        }
+        
+        // setting of due date and interval
+        var descriptionAttirbutes: [NSAttributedString.Key: Any]
+        var bodyAttributes: [NSAttributedString.Key: Any]
+        if self.task.isDue() {
             descriptionAttirbutes = [.foregroundColor: (UIColor.systemRed).withAlphaComponent(0.6), .font: UIFont.preferredFont(forTextStyle: .body)]
             bodyAttributes = [.foregroundColor: UIColor.systemRed, .font: UIFont.preferredFont(forTextStyle: .body)]
         } else {
@@ -96,11 +100,11 @@ class UpcomingCardListCell: UITableViewCell {
         let minSubInfoWidth = max(dueLabel.intrinsicContentSize.width, intervalLabel.intrinsicContentSize.width)
         subInfoVStack.constrainToTrailingSafeAreaOf(self.contentView, padding: padding)
         subInfoVStack.widthAnchor.constraint(equalToConstant: minSubInfoWidth).isActive = true
-        subInfoVStack.centerYAnchor.constraint(equalTo: self.contentView.centerYAnchor).isActive = true
+        subInfoVStack.alignToCenterYOf(self.contentView)
         
         mainInfoVStack.trailingAnchor.constraint(equalTo: subInfoVStack.leadingAnchor, constant: -padding).isActive = true
         mainInfoVStack.constrainToLeadingSafeAreaOf(self.contentView, padding: padding)
-        mainInfoVStack.centerYAnchor.constraint(equalTo: self.contentView.centerYAnchor).isActive = true
+        mainInfoVStack.alignToCenterYOf(self.contentView)
         
         self.contentView.heightAnchor.constraint(greaterThanOrEqualTo: mainInfoVStack.heightAnchor, constant: padding*2.0).isActive = true
         self.contentView.heightAnchor.constraint(greaterThanOrEqualTo: subInfoVStack.heightAnchor, constant: padding*2.0).isActive = true

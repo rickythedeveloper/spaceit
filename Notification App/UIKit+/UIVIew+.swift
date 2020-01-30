@@ -35,6 +35,10 @@ extension UIView {
         self.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
     }
     
+    func alignToCenterYOf(_ view: UIView) {
+        self.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
+    }
+    
     public func isBelow(_ view: UIView, padding: CGFloat = 0.0) {
         self.topAnchor.constraint(equalTo: view.bottomAnchor, constant: padding).isActive = true
     }

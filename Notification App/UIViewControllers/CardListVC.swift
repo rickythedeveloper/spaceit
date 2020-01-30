@@ -166,6 +166,8 @@ extension CardListVC {
         switch segControl.selectedSegmentIndex {
         case 0:
             return UpcomingCardListCell(style: .default, reuseIdentifier: cellId, task: upcomingTasks[indexPath.row], isFirst: indexPath.row == 0)
+        case 1:
+            return AlphabeticalCardListCell(style: .default, reuseIdentifier: cellId, task: alphabeticalTasks[indexPath.row])
         default:
             let cell = UITableViewCell(style: .default, reuseIdentifier: cellId)
             cell.textLabel?.text = "Test"
