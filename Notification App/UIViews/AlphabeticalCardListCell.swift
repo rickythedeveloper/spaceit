@@ -55,11 +55,11 @@ class AlphabeticalCardListCell: UITableViewCell {
         
         
         if !self.task.isActive {
-            frontTextLabel.textColor = (UIColor.systemGray).withAlphaComponent(0.5)
-            pageBreadcrumbLabel?.textColor = (UIColor.systemGray).withAlphaComponent(0.5)
+            frontTextLabel.textColor = UIColor.archivedGray().body
+            pageBreadcrumbLabel?.textColor = UIColor.archivedGray().body
         } else if self.task.isDue() {
-            frontTextLabel.textColor = .systemRed
-            pageBreadcrumbLabel?.textColor = .systemRed
+            frontTextLabel.textColor = UIColor.dueRed().body
+            pageBreadcrumbLabel?.textColor = UIColor.dueRed().body
         }
     }
     

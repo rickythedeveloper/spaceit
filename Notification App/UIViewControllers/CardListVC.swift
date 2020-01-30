@@ -168,6 +168,8 @@ extension CardListVC {
             return UpcomingCardListCell(style: .default, reuseIdentifier: cellId, task: upcomingTasks[indexPath.row], isFirst: indexPath.row == 0)
         case 1:
             return AlphabeticalCardListCell(style: .default, reuseIdentifier: cellId, task: alphabeticalTasks[indexPath.row])
+        case 2:
+            return CreationDateCardListCell(style: .default, reuseIdentifier: cellId, task: creationDateTasks[indexPath.row], isFirst: indexPath.row == 0)
         default:
             let cell = UITableViewCell(style: .default, reuseIdentifier: cellId)
             cell.textLabel?.text = "Test"

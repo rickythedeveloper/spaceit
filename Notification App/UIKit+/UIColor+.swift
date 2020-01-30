@@ -24,4 +24,12 @@ extension UIColor {
     static func pageButtonBackground() -> UIColor {
         return (UIColor.systemGray).withAlphaComponent(0.2)
     }
+    
+    static func dueRed() -> (body: UIColor, desc: UIColor) {
+        return (UIColor.systemRed, (UIColor.systemRed).withAlphaComponent(0.6))
+    }
+    
+    static func archivedGray() -> (body: UIColor, desc: UIColor) {
+        return ((UIColor.systemGray).withAlphaComponent(0.5), (UIColor.systemGray).withAlphaComponent(0.4))
+    }
 }

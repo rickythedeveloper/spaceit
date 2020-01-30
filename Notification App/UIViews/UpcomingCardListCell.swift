@@ -45,22 +45,13 @@ class UpcomingCardListCell: UITableViewCell {
             pageBreadcrumbLabel!.text = breadcrumb
         }
         if self.task.isDue() {
-            frontTextLabel.textColor = .systemRed
-            pageBreadcrumbLabel?.textColor = .systemRed
+            frontTextLabel.textColor = UIColor.dueRed().body
+            pageBreadcrumbLabel?.textColor = UIColor.dueRed().body
         }
         
         // setting of due date and interval
-        var descriptionAttirbutes: [NSAttributedString.Key: Any]
-        var bodyAttributes: [NSAttributedString.Key: Any]
-        if self.task.isDue() {
-            descriptionAttirbutes = [.foregroundColor: (UIColor.systemRed).withAlphaComponent(0.6), .font: UIFont.preferredFont(forTextStyle: .body)]
-            bodyAttributes = [.foregroundColor: UIColor.systemRed, .font: UIFont.preferredFont(forTextStyle: .body)]
-        } else {
-            descriptionAttirbutes = [.foregroundColor: UIColor.systemGray, .font: UIFont.preferredFont(forTextStyle: .body)]
-            bodyAttributes = [.font: UIFont.preferredFont(forTextStyle: .body)]
-        }
-        
-        
+        let descriptionAttirbutes = NSAttributedString.descriptionAttributes(task: self.task)
+        let bodyAttributes = NSAttributedString.bodyAttributes(task: self.task)
         let dueDateText = NSMutableAttributedString()
         if isFirst {
             dueDateText.append(NSAttributedString(string: "Due: ", attributes: descriptionAttirbutes))
@@ -78,6 +69,7 @@ class UpcomingCardListCell: UITableViewCell {
     
     private func viewSetup() {
         let padding: CGFloat = 5.0
+        let minRowHeight: CGFloat = 50.0
         
         mainInfoVStack = UIStackView(arrangedSubviews: [frontTextLabel])
         if let label = pageBreadcrumbLabel {
@@ -108,5 +100,6 @@ class UpcomingCardListCell: UITableViewCell {
         
         self.contentView.heightAnchor.constraint(greaterThanOrEqualTo: mainInfoVStack.heightAnchor, constant: padding*2.0).isActive = true
         self.contentView.heightAnchor.constraint(greaterThanOrEqualTo: subInfoVStack.heightAnchor, constant: padding*2.0).isActive = true
+        self.contentView.heightAnchor.constraint(greaterThanOrEqualToConstant: minRowHeight).isActive = true
     }
 }

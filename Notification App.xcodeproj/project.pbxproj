@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9C3164EC23E32DF90095DF46 /* CreationDateCardListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C3164EB23E32DF90095DF46 /* CreationDateCardListCell.swift */; };
+		9C3164EE23E32F530095DF46 /* NSAttributedString+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C3164ED23E32F530095DF46 /* NSAttributedString+.swift */; };
 		9C35CD5023DF61240099F55D /* UpcomingCardListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C35CD4F23DF61240099F55D /* UpcomingCardListCell.swift */; };
 		9C35CD5323DF725B0099F55D /* Date+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C35CD5223DF725B0099F55D /* Date+.swift */; };
 		9C3B270F23CF11C400CC5A13 /* Page+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C3B270B23CF11C400CC5A13 /* Page+CoreDataProperties.swift */; };
@@ -75,6 +77,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		9C3164EB23E32DF90095DF46 /* CreationDateCardListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreationDateCardListCell.swift; sourceTree = "<group>"; };
+		9C3164ED23E32F530095DF46 /* NSAttributedString+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSAttributedString+.swift"; sourceTree = "<group>"; };
 		9C35CD4F23DF61240099F55D /* UpcomingCardListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpcomingCardListCell.swift; sourceTree = "<group>"; };
 		9C35CD5223DF725B0099F55D /* Date+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+.swift"; sourceTree = "<group>"; };
 		9C3B270B23CF11C400CC5A13 /* Page+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Page+CoreDataProperties.swift"; sourceTree = "<group>"; };
@@ -172,6 +176,7 @@
 				B85C07DB23379E6400200B07 /* FetchedResults+.swift */,
 				B8AB581E232E843C00AD2012 /* NSManagedObject+.swift */,
 				B895D2DD233159CC00767C4E /* String+.swift */,
+				9C3164ED23E32F530095DF46 /* NSAttributedString+.swift */,
 			);
 			path = "Swift+";
 			sourceTree = "<group>";
@@ -181,6 +186,7 @@
 			children = (
 				9C35CD4F23DF61240099F55D /* UpcomingCardListCell.swift */,
 				9C97674A23E24D81004F4E90 /* AlphabeticalCardListCell.swift */,
+				9C3164EB23E32DF90095DF46 /* CreationDateCardListCell.swift */,
 			);
 			path = UIViews;
 			sourceTree = "<group>";
@@ -473,6 +479,7 @@
 				9C3B271223CF11C400CC5A13 /* TaskSaved+CoreDataClass.swift in Sources */,
 				9C35CD5023DF61240099F55D /* UpcomingCardListCell.swift in Sources */,
 				B88457F7232A589C00B5CC3C /* UIApplication+.swift in Sources */,
+				9C3164EC23E32DF90095DF46 /* CreationDateCardListCell.swift in Sources */,
 				B88457FD232BA27800B5CC3C /* ReviewSR.swift in Sources */,
 				B85C07D823365E3200200B07 /* PageInsideView.swift in Sources */,
 				B8D9503D2326C48F001236AE /* AppDelegate.swift in Sources */,
@@ -487,6 +494,7 @@
 				B8099DE923C0BE4300A56471 /* CardEditVC.swift in Sources */,
 				B83C305D23C5B301008A24D4 /* UIViewController+.swift in Sources */,
 				B8916D9C2367B8A5003A5758 /* View+.swift in Sources */,
+				9C3164EE23E32F530095DF46 /* NSAttributedString+.swift in Sources */,
 				B80FF85123C5913C005F3AA7 /* UILabel+.swift in Sources */,
 				B8D950632326CA98001236AE /* TimeSetting.swift in Sources */,
 				B8D9503F2326C48F001236AE /* SceneDelegate.swift in Sources */,
