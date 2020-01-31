@@ -30,6 +30,7 @@ class CardEditVC: UIViewController, UIScrollViewDelegate {
         button.layer.cornerRadius = button.frame.height / 4.0
         button.layer.masksToBounds = true
         button.contentEdgeInsets = UIEdgeInsets(top: 5, left: 10, bottom: 5, right: 10)
+        button.addTarget(self, action: #selector(selectPage), for: .touchUpInside)
         return button
     }()
     
@@ -94,6 +95,7 @@ class CardEditVC: UIViewController, UIScrollViewDelegate {
     }
 }
 
+// MARK: Core Data
 extension CardEditVC {
     private func saveCardInfo(completion: @escaping () -> Void = {}) {
         self.task.question = self.frontTextView.text
@@ -107,11 +109,17 @@ extension CardEditVC {
     }
 }
 
+// MARK: Actions
 extension CardEditVC {
+    
+    @objc private func selectPage() {
+        print("Select page now")
+    }
+    
     @objc private func deletePressed() {
         let deleteAlert = UIAlertController.deleteAlert {
             self.managedObjectContext.delete(self.task)
-            self.navigationController?.popViewController(animated: true)
+            self.dismissView()
             self.managedObjectContext.saveContext()
         }
         
@@ -121,7 +129,7 @@ extension CardEditVC {
     @objc private func archivePressed() {
         let action = {
             self.task.isActive.toggle()
-            self.navigationController?.popViewController(animated: true)
+            self.dismissView()
             self.managedObjectContext.saveContext()
         }
         let alert = self.task.isActive ? UIAlertController.archiveAlert(action: action) : UIAlertController.recoverAlert(action: action)
@@ -135,10 +143,22 @@ extension CardEditVC {
             }
         } else {
             saveCardInfo(completion: {
-                self.navigationController?.popViewController(animated: true)
-                self.onDismiss()
+                self.dismissView()
             })
         }
+    }
+    
+    @objc private func goToNextTextView() {
+        if frontTextView.isFirstResponder {
+            backTextView.becomeFirstResponder()
+        } else {
+            okPressed()
+        }
+    }
+    
+    @objc private func dismissView() {
+        self.navigationController?.popViewController(animated: true)
+        self.onDismiss()
     }
     
     @objc private func dismissKeyboard() {
@@ -150,6 +170,21 @@ extension CardEditVC {
     }
 }
 
+// MARK: Keyboard Shortcuts
+extension CardEditVC {
+    override var keyCommands: [UIKeyCommand]? {
+        return [
+            UIKeyCommand(title: "Select page", action: #selector(selectPage), input: "p", modifierFlags: [.command], discoverabilityTitle: "Select page"),
+            UIKeyCommand(title: "Delete", action: #selector(deletePressed), input: "d", modifierFlags: [.command], discoverabilityTitle: "Delete"),
+            UIKeyCommand(title: "Archive", action: #selector(archivePressed), input: "a", modifierFlags: [.command], discoverabilityTitle: "Archive"),
+            UIKeyCommand(title: "Save", action: #selector(okPressed), input: "s", modifierFlags: [.command], discoverabilityTitle: "Save"),
+            UIKeyCommand(title: "Next/Save", action: #selector(goToNextTextView), input: "\r", modifierFlags: [.command], discoverabilityTitle: "Next/Save"),
+            UIKeyCommand(title: "Go back", action: #selector(dismissView), input: UIKeyCommand.inputLeftArrow, modifierFlags: [.command], discoverabilityTitle: "Go back"),
+        ]
+    }
+}
+
+// MARK: Set Up Views
 extension CardEditVC {
     private func setupViews() {
         let padding: CGFloat = 10.0
