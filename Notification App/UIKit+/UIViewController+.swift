@@ -25,4 +25,13 @@ extension UIViewController {
             return [TaskSaved]()
         }
     }
+    
+    func pagesFetched() -> [Page] {
+        let fetchRequest = NSFetchRequest<Page>(entityName: "Page")
+        do {
+            return try defaultManagedObjectContext().fetch(fetchRequest)
+        } catch {
+            return [Page]()
+        }
+    }
 }
