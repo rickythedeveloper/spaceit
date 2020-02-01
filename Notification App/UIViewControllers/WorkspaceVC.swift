@@ -26,8 +26,11 @@ class WorkspaceVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
         return tf
     }()
     
-    init(page: Page? = nil) {
+    private var onDismiss: () -> Void
+    
+    init(page: Page? = nil, onDismiss: @escaping () -> Void = {}) {
         self.page = page
+        self.onDismiss = onDismiss
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -39,11 +42,30 @@ class WorkspaceVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
         super.viewDidLoad()
         setup()
         viewSetup()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        onDismiss()
+    }
+}
+
+// MARK: Actions
+extension WorkspaceVC {
+    private func addChildPage() {
+        guard let text = newPageTF.text else {return}
+        guard let thisPage = self.page else {return}
         
-//        let label = UILabel()
-//        label.text = self.page?.breadCrumb()
-//        label.frame = CGRect(x: 100, y: 100, width: 200, height: 100)
-//        view.addSubview(label)
+        let newPage = Page.createPageInContext(name: text, context: self.managedObjectContext)
+        thisPage.addToChildren(newPage)
+        self.managedObjectContext.saveContext()
+        self.managedObjectContext.saveContext(completion: {
+            self.reloadTableView()
+        })
+        self.newPageTF.text = ""
+    }
+    
+    private func reloadTableView() {
+        self.tableV.reloadSections(IndexSet(integersIn: 0...1), with: .automatic)
     }
 }
 
@@ -78,12 +100,12 @@ extension WorkspaceVC {
         let padding: CGFloat = 10.0
         
         self.title = self.page?.name
+        self.view.backgroundColor = UIColor.myBackGroundColor()
         
         self.view.addSubview(tableV)
         tableV.constrainToTopSafeAreaOf(view, padding: padding)
         tableV.constrainToSideSafeAreasOf(view, padding: padding)
         tableV.constrainToBottomSafeAreaOf(view, padding: padding)
-        tableV.backgroundColor = .red
         
         newPageTF.backgroundColor = UIColor.tvBackground()
         newPageTF.font = UIFont.preferredFont(forTextStyle: .title2)
@@ -102,10 +124,8 @@ extension WorkspaceVC {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         view.endEditing(true)
         
-        guard let text = textField.text else {return true}
-        if text.hasContent() {
-            // MARK: add a new page here
-        }
+        guard let text = textField.text, text.hasContent() else {return true}
+        addChildPage()
         return true
     }
 }
@@ -143,6 +163,21 @@ extension WorkspaceVC {
             cell.textLabel?.text = self.page?.cardsArray()[indexPath.row].question
             cell.backgroundColor = .clear
             return cell
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if indexPath.section == 0 {
+            let newPageVC = WorkspaceVC(page: self.page?.childrenArray()[indexPath.row], onDismiss: {
+                tableView.deselectRow(at: indexPath, animated: true)
+            })
+            self.navigationController?.pushViewController(newPageVC, animated: true)
+        } else {
+            guard let thisPage = self.page else {return}
+            let cardEditVC = CardEditVC(task: thisPage.cardsArray()[indexPath.row], managedObjectContext: self.managedObjectContext) {
+                tableView.deselectRow(at: indexPath, animated: true)
+            }
+            self.navigationController?.pushViewController(cardEditVC, animated: true)
         }
     }
     

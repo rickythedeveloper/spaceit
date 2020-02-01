@@ -27,7 +27,7 @@ extension Page {
 //        return request
 //    }
     
-    static func createPageInContext(name: String, id: UUID, context: NSManagedObjectContext) -> Page {
+    static func createPageInContext(name: String, id: UUID = UUID(), context: NSManagedObjectContext) -> Page {
         let page = Page(context: context)
         page.name = name
         page.id = id
