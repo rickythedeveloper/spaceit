@@ -67,12 +67,26 @@ extension WorkspaceVC {
     private func reloadTableView() {
         self.tableV.reloadSections(IndexSet(integersIn: 0...1), with: .automatic)
     }
+    
+    @objc private func keyboardWillShow(notification: NSNotification) {
+        if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
+            let textFieldMaxY = (newPageTF.convert(newPageTF.frame, to: self.view)).maxY
+            self.tableV.setContentOffset(CGPoint(x: 0, y: max(0, textFieldMaxY - keyboardSize.minY)), animated: true)
+        }
+    }
+
+    @objc private func keyboardWillHide(notification: NSNotification) {
+        self.tableV.setContentOffset(CGPoint(x: 0, y: 0), animated: true)
+    }
 }
 
 extension WorkspaceVC {
 //    MARK: Data set up
     private func setup() {
         self.managedObjectContext = self.defaultManagedObjectContext()
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
         
         tableV.delegate = self
         tableV.dataSource = self
@@ -167,7 +181,9 @@ extension WorkspaceVC {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if indexPath.section == 0 {
+        if indexPath.section == 0 && indexPath.row == self.page?.childrenArray().count {
+            tableView.deselectRow(at: indexPath, animated: true)
+        } else if indexPath.section == 0 {
             let newPageVC = WorkspaceVC(page: self.page?.childrenArray()[indexPath.row], onDismiss: {
                 tableView.deselectRow(at: indexPath, animated: true)
             })
