@@ -9,10 +9,16 @@
 import UIKit
 import CoreData
 
-class WorkspaceVC: UIViewController {
-    
+class WorkspaceVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     private var page: Page?
     private var managedObjectContext: NSManagedObjectContext!
+    
+    private var tableV: UITableView = {
+        let tv = UITableView()
+        tv.translatesAutoresizingMaskIntoConstraints = false
+        return tv
+    }()
+    private var cellID = "workspaceTableVCell"
     
     init(page: Page? = nil) {
         self.page = page
@@ -26,17 +32,23 @@ class WorkspaceVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setup()
+        viewSetup()
         
-        let label = UILabel()
-        label.text = self.page?.breadCrumb()
-        label.frame = CGRect(x: 100, y: 100, width: 200, height: 100)
-        view.addSubview(label)
+//        let label = UILabel()
+//        label.text = self.page?.breadCrumb()
+//        label.frame = CGRect(x: 100, y: 100, width: 200, height: 100)
+//        view.addSubview(label)
     }
 }
 
 extension WorkspaceVC {
+//    MARK: Data set up
     private func setup() {
         self.managedObjectContext = self.defaultManagedObjectContext()
+        
+        tableV.delegate = self
+        tableV.dataSource = self
+        tableV.register(UITableViewCell.self, forCellReuseIdentifier: cellID)
         
         guard page == nil else {return}
         let pages = self.pagesFetched()
@@ -47,8 +59,55 @@ extension WorkspaceVC {
         }
     }
     
+//    MARK: No page set up
     private func noPageSetup() {
         self.page = Page.createPageInContext(name: "My Workspace", id: UUID(), context: self.managedObjectContext)
         self.managedObjectContext.saveContext()
+    }
+    
+//    MARK: View set up
+    private func viewSetup() {
+        let padding: CGFloat = 10.0
+        self.view.addSubview(tableV)
+        tableV.constrainToTopSafeAreaOf(view, padding: padding)
+        tableV.constrainToSideSafeAreasOf(view, padding: padding)
+        tableV.constrainToBottomSafeAreaOf(view, padding: padding)
+        tableV.backgroundColor = .red
+    }
+}
+
+extension WorkspaceVC {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if section == 0 {
+            return self.page?.numberOfChildren() ?? 0
+        } else {
+            return self.page?.numberOfCards() ?? 0
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        if indexPath.section == 0 {
+            let cell = tableView.dequeueReusableCell(withIdentifier: cellID, for: indexPath)
+            cell.textLabel?.text = self.page?.childrenArray()[indexPath.row].name
+            cell.backgroundColor = .clear
+            return cell
+        } else {
+            let cell = tableView.dequeueReusableCell(withIdentifier: cellID, for: indexPath)
+            cell.textLabel?.text = self.page?.cardsArray()[indexPath.row].question
+            cell.backgroundColor = .clear
+            return cell
+        }
+    }
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 2
+    }
+    
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        if section == 0 {
+            return "Pages"
+        } else {
+            return "Cards"
+        }
     }
 }

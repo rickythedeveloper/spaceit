@@ -152,4 +152,20 @@ extension Page {
         
         return addedConcepts
     }
+    
+    func childrenArray() -> [Page] {
+        return (self.children?.allObjects as! [Page]).sortedByName()
+    }
+    
+    func numberOfChildren() -> Int {
+        return childrenArray().count
+    }
+    
+    func cardsArray() -> [TaskSaved] {
+        return (self.concepts?.allObjects as! [TaskSaved]).sortedByCreationDate(oldFirst: true)
+    }
+    
+    func numberOfCards() -> Int {
+        return cardsArray().count
+    }
 }
