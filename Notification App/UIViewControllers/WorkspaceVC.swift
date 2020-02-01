@@ -9,7 +9,7 @@
 import UIKit
 import CoreData
 
-class WorkspaceVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class WorkspaceVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate {
     private var page: Page?
     private var managedObjectContext: NSManagedObjectContext!
     
@@ -19,6 +19,12 @@ class WorkspaceVC: UIViewController, UITableViewDelegate, UITableViewDataSource 
         return tv
     }()
     private var cellID = "workspaceTableVCell"
+    
+    private var newPageTF: UITextField = {
+        let tf = UITextField()
+        tf.translatesAutoresizingMaskIntoConstraints = false
+        return tf
+    }()
     
     init(page: Page? = nil) {
         self.page = page
@@ -50,6 +56,8 @@ extension WorkspaceVC {
         tableV.dataSource = self
         tableV.register(UITableViewCell.self, forCellReuseIdentifier: cellID)
         
+        newPageTF.delegate = self
+        
         guard page == nil else {return}
         let pages = self.pagesFetched()
         if pages.count == 0 {
@@ -68,25 +76,64 @@ extension WorkspaceVC {
 //    MARK: View set up
     private func viewSetup() {
         let padding: CGFloat = 10.0
+        
+        self.title = self.page?.name
+        
         self.view.addSubview(tableV)
         tableV.constrainToTopSafeAreaOf(view, padding: padding)
         tableV.constrainToSideSafeAreasOf(view, padding: padding)
         tableV.constrainToBottomSafeAreaOf(view, padding: padding)
         tableV.backgroundColor = .red
+        
+        newPageTF.backgroundColor = UIColor.tvBackground()
+        newPageTF.font = UIFont.preferredFont(forTextStyle: .title2)
+        let paddingView = UIView(frame: CGRect(x: 0, y: 0, width: padding, height: 1))
+        newPageTF.leftView = paddingView
+        newPageTF.leftViewMode = .always
+        newPageTF.layer.cornerRadius = padding
+        newPageTF.layer.masksToBounds = true
+        newPageTF.textAlignment = .center
+        newPageTF.placeholder = "New page"
     }
 }
 
+// MARK: Text field delegate & data source
+extension WorkspaceVC {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        view.endEditing(true)
+        
+        guard let text = textField.text else {return true}
+        if text.hasContent() {
+            // MARK: add a new page here
+        }
+        return true
+    }
+}
+
+// MARK: Table view delegate & data source
 extension WorkspaceVC {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if section == 0 {
-            return self.page?.numberOfChildren() ?? 0
+            if let n = self.page?.numberOfChildren() {
+                return n + 1
+            } else {
+                return 1
+            }
         } else {
             return self.page?.numberOfCards() ?? 0
         }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if indexPath.section == 0 {
+        if indexPath.section == 0 && indexPath.row == self.page?.numberOfChildren() {
+            let padding: CGFloat = 10.0
+            let cell = tableView.dequeueReusableCell(withIdentifier: cellID, for: indexPath)
+            cell.contentView.addSubview(newPageTF)
+            newPageTF.constrainToTopSafeAreaOf(cell.contentView, padding: padding)
+            newPageTF.constrainToSideSafeAreasOf(cell.contentView, padding: padding)
+            newPageTF.constrainToBottomSafeAreaOf(cell.contentView, padding: padding)
+            return cell
+        } else if indexPath.section == 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: cellID, for: indexPath)
             cell.textLabel?.text = self.page?.childrenArray()[indexPath.row].name
             cell.backgroundColor = .clear
