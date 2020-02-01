@@ -183,6 +183,7 @@ extension WorkspaceVC {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.section == 0 && indexPath.row == self.page?.childrenArray().count {
             tableView.deselectRow(at: indexPath, animated: true)
+            newPageTF.becomeFirstResponder()
         } else if indexPath.section == 0 {
             let newPageVC = WorkspaceVC(page: self.page?.childrenArray()[indexPath.row], onDismiss: {
                 tableView.deselectRow(at: indexPath, animated: true)
@@ -207,5 +208,9 @@ extension WorkspaceVC {
         } else {
             return "Cards"
         }
+    }
+    
+    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+        view.endEditing(true)
     }
 }
