@@ -48,4 +48,15 @@ extension UIAlertController {
         ac.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
         return ac
     }
+    
+    static func workspaceActionSheet(title: String, actions: [(title: String, style: UIAlertAction.Style, action: ()->Void)]) -> UIAlertController {
+        let ac = UIAlertController(title: title, message: nil, preferredStyle: .actionSheet)
+        for each in actions {
+            ac.addAction(UIAlertAction(title: each.title, style: each.style, handler: { (_) in
+                each.action()
+            }))
+        }
+        ac.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        return ac
+    }
 }

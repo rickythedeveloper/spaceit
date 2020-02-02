@@ -168,4 +168,8 @@ extension Page {
     func numberOfCards() -> Int {
         return cardsArray().count
     }
+    
+    func isTopPage() -> Bool {
+        return self.id == self.topPage().id
+    }
 }

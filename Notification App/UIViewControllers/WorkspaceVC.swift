@@ -78,6 +78,32 @@ extension WorkspaceVC {
     @objc private func keyboardWillHide(notification: NSNotification) {
         self.tableV.setContentOffset(CGPoint(x: 0, y: 0), animated: true)
     }
+    
+    @objc private func optionPressed() {
+        var actions = [(String, UIAlertAction.Style, ()->Void)]()
+        
+        actions.append(("Edit name", UIAlertAction.Style.default, {
+//            MARK: edit name
+        }))
+        
+        if self.page?.isTopPage() == true {
+            actions.append(("Add higher level page", UIAlertAction.Style.default, {
+//                MARK: add higher level page
+            }))
+        }
+        
+        if self.page?.isTopPage() == false || self.page?.numberOfChildren() == 1 {
+            actions.append(("Delete page", UIAlertAction.Style.destructive, {
+//                MARK: delete page
+            }))
+        }
+        
+        let ac = UIAlertController.workspaceActionSheet(title: self.page?.name ?? "Page actions", actions: actions)
+        if let popoverController = ac.popoverPresentationController {
+            popoverController.barButtonItem = self.navigationItem.rightBarButtonItem
+        }
+        self.present(ac, animated: true, completion: nil)
+    }
 }
 
 extension WorkspaceVC {
@@ -115,6 +141,9 @@ extension WorkspaceVC {
         
         self.title = self.page?.name
         self.view.backgroundColor = UIColor.myBackGroundColor()
+        
+        let optionNavBarItem = UIBarButtonItem(image: UIImage(systemName: "ellipsis"), style: .plain, target: self, action: #selector(optionPressed))
+        self.navigationItem.rightBarButtonItem = optionNavBarItem
         
         self.view.addSubview(tableV)
         tableV.constrainToTopSafeAreaOf(view, padding: padding)
