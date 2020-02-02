@@ -44,6 +44,10 @@ class WorkspaceVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
         viewSetup()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        tableV.reloadData()
+    }
+    
     override func viewWillDisappear(_ animated: Bool) {
         onDismiss()
     }
@@ -83,18 +87,24 @@ extension WorkspaceVC {
         var actions = [(String, UIAlertAction.Style, ()->Void)]()
         
         actions.append(("Edit name", UIAlertAction.Style.default, {
-//            MARK: edit name
+            self.editPageName()
         }))
         
-        if self.page?.isTopPage() == true {
-            actions.append(("Add higher level page", UIAlertAction.Style.default, {
-//                MARK: add higher level page
-            }))
-        }
+//        if self.page?.isTopPage() == true {
+//            actions.append(("Add higher level page", UIAlertAction.Style.default, {
+//                self.addHigherPage()
+//            }))
+//        }
         
-        if self.page?.isTopPage() == false || self.page?.numberOfChildren() == 1 {
+//        if self.page?.isTopPage() == false || self.page?.numberOfChildren() == 1 {
+//            actions.append(("Delete page", UIAlertAction.Style.destructive, {
+//                self.deleteThisPage()
+//            }))
+//        }
+        
+        if self.page?.isTopPage() == false {
             actions.append(("Delete page", UIAlertAction.Style.destructive, {
-//                MARK: delete page
+                self.deleteThisPage()
             }))
         }
         
@@ -102,6 +112,44 @@ extension WorkspaceVC {
         if let popoverController = ac.popoverPresentationController {
             popoverController.barButtonItem = self.navigationItem.rightBarButtonItem
         }
+        self.present(ac, animated: true, completion: nil)
+    }
+    
+    private func deleteThisPage() {
+        guard let thisPage = self.page else {return}
+        guard !thisPage.isTopPage() else {return}
+        
+//        let completion = thisPage.isTopPage() ?
+//            {self.transition(from: self, to: WorkspaceVC(), duration: 0.5, options: .transitionCrossDissolve, animations: nil, completion: nil)} :
+//            {self.navigationController?.popViewController(animated: true)}
+        self.managedObjectContext.delete(thisPage)
+        self.managedObjectContext.saveContext(completion: {
+            self.navigationController?.popViewController(animated: true)
+        })
+    }
+    
+//    private func addHigherPage() {
+//        guard self.page?.isTopPage() == true else {return}
+//        guard let thisPage = self.page else {return}
+//
+//        let higherPage = Page.createPageInContext(name: "My workspace", context: self.managedObjectContext)
+//        thisPage.parent = higherPage
+//        self.managedObjectContext.saveContext()
+//
+//        self.transition(from: self, to: WorkspaceVC(), duration: 0.5, options: .transitionCrossDissolve, animations: nil, completion: nil)
+//    }
+    
+    private func editPageName() {
+        guard let thisPage = self.page else {return}
+        
+        let ac = UIAlertController.editPageNameAlert(textFieldDelegate: self, pageName: thisPage.name, doneAction: { (newName) in
+            thisPage.name = newName
+            self.managedObjectContext.saveContext()
+            self.title = thisPage.name
+        }, cancelAction: {
+            self.title = thisPage.name
+        })
+        
         self.present(ac, animated: true, completion: nil)
     }
 }
@@ -165,11 +213,17 @@ extension WorkspaceVC {
 // MARK: Text field delegate & data source
 extension WorkspaceVC {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        view.endEditing(true)
-        
-        guard let text = textField.text, text.hasContent() else {return true}
-        addChildPage()
+        if textField == newPageTF {
+            view.endEditing(true)
+            
+            guard let text = textField.text, text.hasContent() else {return true}
+            addChildPage()
+        }
         return true
+    }
+    
+    @objc func nameEditingChanged(_ textField: UITextField) {
+        self.title = textField.text
     }
 }
 
@@ -191,6 +245,7 @@ extension WorkspaceVC {
         if indexPath.section == 0 && indexPath.row == self.page?.numberOfChildren() {
             let padding: CGFloat = 10.0
             let cell = tableView.dequeueReusableCell(withIdentifier: cellID, for: indexPath)
+            cell.textLabel?.text = nil
             cell.contentView.addSubview(newPageTF)
             newPageTF.constrainToTopSafeAreaOf(cell.contentView, padding: padding)
             newPageTF.constrainToSideSafeAreasOf(cell.contentView, padding: padding)
