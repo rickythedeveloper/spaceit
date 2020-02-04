@@ -158,6 +158,7 @@ extension WorkspaceVC {
     @objc private func coreDataObjectsDidChange() {
         guard self.page == nil else {
             DispatchQueue.main.async {
+                self.title = self.page?.name
                 self.reloadTableView()
             }
             return
@@ -172,12 +173,17 @@ extension WorkspaceVC {
             }
         }
     }
+    
+    @objc private func navBarTouched() {
+        self.editPageName()
+    }
 }
 
 extension WorkspaceVC {
 //    MARK: Data set up
     private func setup() {
         self.managedObjectContext = self.defaultManagedObjectContext()
+        self.navigationController?.navigationBar.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(navBarTouched)))
         
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
@@ -217,9 +223,9 @@ extension WorkspaceVC {
         self.navigationItem.rightBarButtonItem = optionNavBarItem
         
         self.view.addSubview(tableV)
-        tableV.constrainToTopSafeAreaOf(view, padding: padding)
-        tableV.constrainToSideSafeAreasOf(view, padding: padding)
-        tableV.constrainToBottomSafeAreaOf(view, padding: padding)
+        tableV.constrainToTopSafeAreaOf(view)
+        tableV.constrainToSideSafeAreasOf(view)
+        tableV.constrainToBottomSafeAreaOf(view)
         
         newPageTF.backgroundColor = UIColor.tvBackground()
         newPageTF.font = UIFont.preferredFont(forTextStyle: .title2)
