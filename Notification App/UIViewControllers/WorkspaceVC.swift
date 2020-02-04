@@ -69,7 +69,9 @@ extension WorkspaceVC {
     }
     
     private func reloadTableView() {
-        self.tableV.reloadSections(IndexSet(integersIn: 0...1), with: .automatic)
+        DispatchQueue.main.async {
+            self.tableV.reloadData()
+        }
     }
     
     @objc private func keyboardWillShow(notification: NSNotification) {
