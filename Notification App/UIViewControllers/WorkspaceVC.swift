@@ -45,7 +45,7 @@ class WorkspaceVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        tableV.reloadData()
+        self.reloadTableView()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -152,6 +152,24 @@ extension WorkspaceVC {
         
         self.present(ac, animated: true, completion: nil)
     }
+    
+    @objc private func coreDataObjectsDidChange() {
+        guard self.page == nil else {
+            DispatchQueue.main.async {
+                self.reloadTableView()
+            }
+            return
+        }
+        
+        DispatchQueue.main.async {
+            let pages = self.pagesFetched(managedObjectContext: self.managedObjectContext)
+            if pages.count > 0 {
+                self.page = pages[0].topPage()
+                self.title = self.page?.name
+                self.reloadTableView()
+            }
+        }
+    }
 }
 
 extension WorkspaceVC {
@@ -161,6 +179,7 @@ extension WorkspaceVC {
         
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(coreDataObjectsDidChange), name: Notification.Name.NSManagedObjectContextObjectsDidChange, object: nil)
         
         tableV.delegate = self
         tableV.dataSource = self
@@ -169,9 +188,11 @@ extension WorkspaceVC {
         newPageTF.delegate = self
         
         guard page == nil else {return}
-        let pages = self.pagesFetched()
+        let pages = self.pagesFetched(managedObjectContext: self.managedObjectContext)
+        print(pages.count)
         if pages.count == 0 {
-            noPageSetup()
+//            noPageSetup()
+//            MARK: maybe here we can ask if they want to make a workspace.
         } else {
             self.page = pages[0].topPage()
         }

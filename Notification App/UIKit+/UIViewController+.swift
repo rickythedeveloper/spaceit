@@ -12,24 +12,23 @@ import CoreData
 extension UIViewController {
     
     func defaultManagedObjectContext() -> NSManagedObjectContext {
-//        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {return nil}
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         return appDelegate.persistentContainer.viewContext
     }
     
-    func tasksFetched() -> [TaskSaved] {
+    func tasksFetched(managedObjectContext: NSManagedObjectContext) -> [TaskSaved] {
         let fetchRequest = NSFetchRequest<TaskSaved>(entityName: "TaskSaved")
         do {
-            return try defaultManagedObjectContext().fetch(fetchRequest)
+            return try managedObjectContext.fetch(fetchRequest)
         } catch {
             return [TaskSaved]()
         }
     }
     
-    func pagesFetched() -> [Page] {
+    func pagesFetched(managedObjectContext: NSManagedObjectContext) -> [Page] {
         let fetchRequest = NSFetchRequest<Page>(entityName: "Page")
         do {
-            return try defaultManagedObjectContext().fetch(fetchRequest)
+            return try managedObjectContext.fetch(fetchRequest)
         } catch {
             return [Page]()
         }
