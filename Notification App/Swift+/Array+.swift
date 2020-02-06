@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import CoreData
 
 extension Array {
     mutating func moveItem(fromIndex: Int, toIndex: Int) {
@@ -48,6 +49,37 @@ extension Array where Element : Page {
             } else {
                 return false
             }
+        }
+    }
+    
+    func topPageHandlingClashes(managedObjectContext: NSManagedObjectContext? = nil) -> Page? {
+        guard self.count > 0 else {return nil}
+        
+        var topPages = [Page]()
+        for eachPageSaved in self {
+            var willAddToTopPages = true
+            for eachTopPage in topPages {
+                if eachPageSaved.topPage().id == eachTopPage.id {
+                    willAddToTopPages = false
+                }
+            }
+            if willAddToTopPages {
+                topPages.append(eachPageSaved.topPage())
+            }
+        }
+        
+        if topPages.count == 0 {
+            fatalError()
+        } else if topPages.count == 1 {
+            return topPages.first!
+        } else {
+            let managedObjectContext = managedObjectContext ?? NSManagedObjectContext.defaultContext()
+            let newTopPage = Page.createPageInContext(name: "New workspace (merged)", context: managedObjectContext)
+            for eachOldTopPage in topPages {
+                newTopPage.addToChildren(eachOldTopPage)
+            }
+            managedObjectContext.saveContext()
+            return newTopPage
         }
     }
 }

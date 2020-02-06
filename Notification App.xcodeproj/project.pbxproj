@@ -19,6 +19,7 @@
 		9C7C893223D9103800930E99 /* NewCardVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C7C893123D9103800930E99 /* NewCardVC.swift */; };
 		9C7C893423D910DD00930E99 /* UITextView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C7C893323D910DD00930E99 /* UITextView+.swift */; };
 		9C97674B23E24D81004F4E90 /* AlphabeticalCardListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C97674A23E24D81004F4E90 /* AlphabeticalCardListCell.swift */; };
+		9CC51AF223EB8C8800636842 /* NSManagedObjectContext+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CC51AF123EB8C8800636842 /* NSManagedObjectContext+.swift */; };
 		B801F1342339312C003218BF /* Angle+.swift in Sources */ = {isa = PBXBuildFile; fileRef = B801F1332339312C003218BF /* Angle+.swift */; };
 		B8099DE923C0BE4300A56471 /* CardEditVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8099DE823C0BE4300A56471 /* CardEditVC.swift */; };
 		B8099DEC23C0C59700A56471 /* UIVIew+.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8099DEB23C0C59700A56471 /* UIVIew+.swift */; };
@@ -90,6 +91,7 @@
 		9C7C893123D9103800930E99 /* NewCardVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewCardVC.swift; sourceTree = "<group>"; };
 		9C7C893323D910DD00930E99 /* UITextView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextView+.swift"; sourceTree = "<group>"; };
 		9C97674A23E24D81004F4E90 /* AlphabeticalCardListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlphabeticalCardListCell.swift; sourceTree = "<group>"; };
+		9CC51AF123EB8C8800636842 /* NSManagedObjectContext+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSManagedObjectContext+.swift"; sourceTree = "<group>"; };
 		B801F1332339312C003218BF /* Angle+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Angle+.swift"; sourceTree = "<group>"; };
 		B8099DE823C0BE4300A56471 /* CardEditVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardEditVC.swift; sourceTree = "<group>"; };
 		B8099DEB23C0C59700A56471 /* UIVIew+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIVIew+.swift"; sourceTree = "<group>"; };
@@ -179,6 +181,7 @@
 				B8AB581E232E843C00AD2012 /* NSManagedObject+.swift */,
 				B895D2DD233159CC00767C4E /* String+.swift */,
 				9C3164ED23E32F530095DF46 /* NSAttributedString+.swift */,
+				9CC51AF123EB8C8800636842 /* NSManagedObjectContext+.swift */,
 			);
 			path = "Swift+";
 			sourceTree = "<group>";
@@ -511,6 +514,7 @@
 				B895D2E023315AC600767C4E /* Alert+.swift in Sources */,
 				9C3B271123CF11C400CC5A13 /* Page+CoreDataClass.swift in Sources */,
 				B844EDB023C3471C0033D657 /* UIButton+.swift in Sources */,
+				9CC51AF223EB8C8800636842 /* NSManagedObjectContext+.swift in Sources */,
 				B8845807232BCEDE00B5CC3C /* Array+.swift in Sources */,
 				B801F1342339312C003218BF /* Angle+.swift in Sources */,
 				B8AB5822232E8F7A00AD2012 /* CardListView.swift in Sources */,
