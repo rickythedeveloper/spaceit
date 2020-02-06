@@ -121,9 +121,7 @@ extension WorkspaceVC {
         guard let thisPage = self.page else {return}
         guard !thisPage.isTopPage() else {return}
         
-//        let completion = thisPage.isTopPage() ?
-//            {self.transition(from: self, to: WorkspaceVC(), duration: 0.5, options: .transitionCrossDissolve, animations: nil, completion: nil)} :
-//            {self.navigationController?.popViewController(animated: true)}
+        self.page = nil
         self.managedObjectContext.delete(thisPage)
         self.managedObjectContext.saveContext(completion: {
             self.navigationController?.popViewController(animated: true)
@@ -262,19 +260,19 @@ extension WorkspaceVC {
 // MARK: Table view delegate & data source
 extension WorkspaceVC {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        guard let thisPage = self.page else {return 0}
+        
         if section == 0 {
-            if let n = self.page?.numberOfChildren() {
-                return n + 1
-            } else {
-                return 1
-            }
+            return thisPage.numberOfChildren() + 1
         } else {
-            return self.page?.numberOfCards() ?? 0
+            return thisPage.numberOfCards()
         }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if indexPath.section == 0 && indexPath.row == self.page?.numberOfChildren() {
+        guard let thisPage = self.page else {return UITableViewCell()}
+        
+        if indexPath.section == 0 && indexPath.row >= thisPage.numberOfChildren() {
             let padding: CGFloat = 10.0
             let cell = tableView.dequeueReusableCell(withIdentifier: cellID, for: indexPath)
             cell.textLabel?.text = nil
@@ -285,28 +283,29 @@ extension WorkspaceVC {
             return cell
         } else if indexPath.section == 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: cellID, for: indexPath)
-            cell.textLabel?.text = self.page?.childrenArray()[indexPath.row].name
+            cell.textLabel?.text = thisPage.childrenArray()[indexPath.row].name
             cell.backgroundColor = .clear
             return cell
         } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: cellID, for: indexPath)
-            cell.textLabel?.text = self.page?.cardsArray()[indexPath.row].question
+            cell.textLabel?.text = thisPage.cardsArray()[indexPath.row].question
             cell.backgroundColor = .clear
             return cell
         }
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if indexPath.section == 0 && indexPath.row == self.page?.childrenArray().count {
+        guard let thisPage = self.page else {return}
+        
+        if indexPath.section == 0 && indexPath.row == thisPage.childrenArray().count {
             tableView.deselectRow(at: indexPath, animated: true)
             newPageTF.becomeFirstResponder()
         } else if indexPath.section == 0 {
-            let newPageVC = WorkspaceVC(page: self.page?.childrenArray()[indexPath.row], onDismiss: {
+            let newPageVC = WorkspaceVC(page: thisPage.childrenArray()[indexPath.row], onDismiss: {
                 tableView.deselectRow(at: indexPath, animated: true)
             })
             self.navigationController?.pushViewController(newPageVC, animated: true)
         } else {
-            guard let thisPage = self.page else {return}
             let cardEditVC = CardEditVC(task: thisPage.cardsArray()[indexPath.row], managedObjectContext: self.managedObjectContext) {
                 tableView.deselectRow(at: indexPath, animated: true)
             }
