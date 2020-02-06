@@ -27,6 +27,7 @@ class WorkspaceVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
     }()
     
     private var onDismiss: () -> Void
+    private var thisPageDeleted = false
     
     init(page: Page? = nil, onDismiss: @escaping () -> Void = {}) {
         self.page = page
@@ -122,6 +123,7 @@ extension WorkspaceVC {
         guard !thisPage.isTopPage() else {return}
         
         self.page = nil
+        self.thisPageDeleted = true
         self.managedObjectContext.delete(thisPage)
         self.managedObjectContext.saveContext(completion: {
             self.navigationController?.popViewController(animated: true)
@@ -154,6 +156,7 @@ extension WorkspaceVC {
     }
     
     @objc private func coreDataObjectsDidChange() {
+        guard self.thisPageDeleted == false else {return}
         guard self.page == nil else {
             DispatchQueue.main.async {
                 self.title = self.page?.name
