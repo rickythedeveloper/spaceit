@@ -165,7 +165,7 @@ extension WorkspaceVC {
         }
         
         DispatchQueue.main.async {
-            let pages = self.pagesFetched(managedObjectContext: self.managedObjectContext)
+            let pages = Array.pagesFetched(managedObjectContext: self.managedObjectContext)
             if pages.count > 0 {
                 self.page = pages[0].topPage()
                 self.title = self.page?.name
@@ -182,7 +182,7 @@ extension WorkspaceVC {
 extension WorkspaceVC {
 //    MARK: Data set up
     private func setup() {
-        self.managedObjectContext = self.defaultManagedObjectContext()
+        self.managedObjectContext = NSManagedObjectContext.defaultContext()
         self.navigationController?.navigationBar.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(navBarTouched)))
         
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
@@ -196,7 +196,7 @@ extension WorkspaceVC {
         newPageTF.delegate = self
         
         guard page == nil else {return}
-        let pages = self.pagesFetched(managedObjectContext: self.managedObjectContext)
+        let pages = Array.pagesFetched(managedObjectContext: self.managedObjectContext)
         if pages.count == 0 {
 //            noPageSetup()
 //            MARK: maybe here we can ask if they want to make a workspace.

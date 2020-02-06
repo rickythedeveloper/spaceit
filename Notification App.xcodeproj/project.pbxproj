@@ -27,7 +27,6 @@
 		B81428C7232EB41B0085AA1F /* MultiLineTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = B81428C6232EB41B0085AA1F /* MultiLineTextField.swift */; };
 		B828BC0F23786DBF00F2D959 /* ClearButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B828BC0E23786DBF00F2D959 /* ClearButton.swift */; };
 		B82D2F24235C87D60055A506 /* UpcomingRIghtView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B82D2F23235C87D60055A506 /* UpcomingRIghtView.swift */; };
-		B83C305D23C5B301008A24D4 /* UIViewController+.swift in Sources */ = {isa = PBXBuildFile; fileRef = B83C305C23C5B301008A24D4 /* UIViewController+.swift */; };
 		B83C305F23C5B7C3008A24D4 /* UIColor+.swift in Sources */ = {isa = PBXBuildFile; fileRef = B83C305E23C5B7C3008A24D4 /* UIColor+.swift */; };
 		B8419633233AA00A00E6558C /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B8419632233AA00A00E6558C /* CloudKit.framework */; };
 		B844EDB023C3471C0033D657 /* UIButton+.swift in Sources */ = {isa = PBXBuildFile; fileRef = B844EDAF23C3471C0033D657 /* UIButton+.swift */; };
@@ -55,7 +54,6 @@
 		B895D2DE233159CC00767C4E /* String+.swift in Sources */ = {isa = PBXBuildFile; fileRef = B895D2DD233159CC00767C4E /* String+.swift */; };
 		B895D2E023315AC600767C4E /* Alert+.swift in Sources */ = {isa = PBXBuildFile; fileRef = B895D2DF23315AC600767C4E /* Alert+.swift */; };
 		B8AB581C232E80B100AD2012 /* CardEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8AB581B232E80B100AD2012 /* CardEditView.swift */; };
-		B8AB581F232E843C00AD2012 /* NSManagedObject+.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8AB581E232E843C00AD2012 /* NSManagedObject+.swift */; };
 		B8AB5822232E8F7A00AD2012 /* CardListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8AB5821232E8F7A00AD2012 /* CardListView.swift */; };
 		B8B8023C2326EDB60041098F /* SetTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8B8023B2326EDB60041098F /* SetTime.swift */; };
 		B8CF591023C474E600F83DDB /* UIAlertController+.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8CF590F23C474E600F83DDB /* UIAlertController+.swift */; };
@@ -99,7 +97,6 @@
 		B81428C6232EB41B0085AA1F /* MultiLineTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiLineTextField.swift; sourceTree = "<group>"; };
 		B828BC0E23786DBF00F2D959 /* ClearButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClearButton.swift; sourceTree = "<group>"; };
 		B82D2F23235C87D60055A506 /* UpcomingRIghtView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpcomingRIghtView.swift; sourceTree = "<group>"; };
-		B83C305C23C5B301008A24D4 /* UIViewController+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+.swift"; sourceTree = "<group>"; };
 		B83C305E23C5B7C3008A24D4 /* UIColor+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+.swift"; sourceTree = "<group>"; };
 		B8419631233AA00800E6558C /* Notification App.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Notification App.entitlements"; sourceTree = "<group>"; };
 		B8419632233AA00A00E6558C /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
@@ -128,7 +125,6 @@
 		B895D2DD233159CC00767C4E /* String+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+.swift"; sourceTree = "<group>"; };
 		B895D2DF23315AC600767C4E /* Alert+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Alert+.swift"; sourceTree = "<group>"; };
 		B8AB581B232E80B100AD2012 /* CardEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardEditView.swift; sourceTree = "<group>"; };
-		B8AB581E232E843C00AD2012 /* NSManagedObject+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSManagedObject+.swift"; sourceTree = "<group>"; };
 		B8AB5821232E8F7A00AD2012 /* CardListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardListView.swift; sourceTree = "<group>"; };
 		B8B8023B2326EDB60041098F /* SetTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetTime.swift; sourceTree = "<group>"; };
 		B8CF590F23C474E600F83DDB /* UIAlertController+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIAlertController+.swift"; sourceTree = "<group>"; };
@@ -178,7 +174,6 @@
 				9C35CD5223DF725B0099F55D /* Date+.swift */,
 				B8845806232BCEDE00B5CC3C /* Array+.swift */,
 				B85C07DB23379E6400200B07 /* FetchedResults+.swift */,
-				B8AB581E232E843C00AD2012 /* NSManagedObject+.swift */,
 				B895D2DD233159CC00767C4E /* String+.swift */,
 				9C3164ED23E32F530095DF46 /* NSAttributedString+.swift */,
 				9CC51AF123EB8C8800636842 /* NSManagedObjectContext+.swift */,
@@ -203,7 +198,6 @@
 				B844EDAF23C3471C0033D657 /* UIButton+.swift */,
 				B8CF590F23C474E600F83DDB /* UIAlertController+.swift */,
 				B80FF85023C5913C005F3AA7 /* UILabel+.swift */,
-				B83C305C23C5B301008A24D4 /* UIViewController+.swift */,
 				B83C305E23C5B7C3008A24D4 /* UIColor+.swift */,
 				9C7C893323D910DD00930E99 /* UITextView+.swift */,
 			);
@@ -498,7 +492,6 @@
 				B88457FB232BA0BA00B5CC3C /* MainTab.swift in Sources */,
 				9C7C893223D9103800930E99 /* NewCardVC.swift in Sources */,
 				B8099DE923C0BE4300A56471 /* CardEditVC.swift in Sources */,
-				B83C305D23C5B301008A24D4 /* UIViewController+.swift in Sources */,
 				B8916D9C2367B8A5003A5758 /* View+.swift in Sources */,
 				9C3164EE23E32F530095DF46 /* NSAttributedString+.swift in Sources */,
 				B80FF85123C5913C005F3AA7 /* UILabel+.swift in Sources */,
@@ -525,7 +518,6 @@
 				B8D950612326C8E7001236AE /* TimeSettings.swift in Sources */,
 				B88457F9232A8FB500B5CC3C /* PrivacyPolicy.swift in Sources */,
 				9C7C893423D910DD00930E99 /* UITextView+.swift in Sources */,
-				B8AB581F232E843C00AD2012 /* NSManagedObject+.swift in Sources */,
 				B8D950422326C48F001236AE /* Notification_App.xcdatamodeld in Sources */,
 				B871756E2343F55A00BB9E6F /* ActionSheet+.swift in Sources */,
 				9C148EB923E4ECC800901930 /* WorkspaceVC.swift in Sources */,

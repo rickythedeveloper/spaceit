@@ -69,7 +69,7 @@ extension CardListVC {
     private func setup() {
         self.title = "Cards"
         self.view.backgroundColor = UIColor.myBackGroundColor()
-        self.managedObjectContext = defaultManagedObjectContext()
+        self.managedObjectContext = NSManagedObjectContext.defaultContext()
         
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "plus"), style: .plain, target: self, action: #selector(addCardPressed))
         
@@ -115,7 +115,7 @@ extension CardListVC {
     }
     
     private func update() {
-        tasks = tasksFetched(managedObjectContext: self.managedObjectContext)
+        tasks = Array.tasksFetched(managedObjectContext: self.managedObjectContext)
         updateCustomTaskArrays()
     }
     

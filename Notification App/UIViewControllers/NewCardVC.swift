@@ -149,7 +149,7 @@ extension NewCardVC {
 
 extension NewCardVC {
     private func setup() {
-        self.managedObjectContext = self.defaultManagedObjectContext()
+        self.managedObjectContext = NSManagedObjectContext.defaultContext()
         
         self.title = "New Flashcard"
         self.view.backgroundColor = UIColor.myBackGroundColor()

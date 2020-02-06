@@ -14,4 +14,23 @@ extension NSManagedObjectContext {
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         return appDelegate.persistentContainer.viewContext
     }
+    
+    func saveContext(completion: @escaping ()->Void = {}, errorHandler: ()->Void = {}, iteration: Int = 0) {
+        guard self.hasChanges else {completion(); return}
+        do {
+            try self.save()
+            _ = Timer.scheduledTimer(withTimeInterval: 0.3, repeats: false, block: { (timer) in
+                completion()
+            })
+        } catch {
+            let nserror = error as NSError
+            print("Unresolved error \(nserror), \(nserror.userInfo)")
+            if iteration < 10 {
+                self.saveContext(completion: completion, iteration: iteration + 1)
+            } else {
+                print("Error whilst saving to core data. do some error handling.")
+                errorHandler()
+            }
+        }
+    }
 }

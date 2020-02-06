@@ -36,6 +36,15 @@ extension Array {
 }
 
 extension Array where Element : Page {
+    static func pagesFetched(managedObjectContext: NSManagedObjectContext) -> [Page] {
+        let fetchRequest = NSFetchRequest<Page>(entityName: "Page")
+        do {
+            return try managedObjectContext.fetch(fetchRequest)
+        } catch {
+            return [Page]()
+        }
+    }
+    
     func sortedByName() -> [Page] {
         return self.sorted { (lhs, rhs) -> Bool in
             return lhs.name.localizedStandardCompare(rhs.name) == .orderedAscending
@@ -52,7 +61,7 @@ extension Array where Element : Page {
         }
     }
     
-    func topPageHandlingClashes(managedObjectContext: NSManagedObjectContext? = nil) -> Page? {
+    func topPageHandlingClashes(managedObjectContext: NSManagedObjectContext = NSManagedObjectContext.defaultContext()) -> Page? {
         guard self.count > 0 else {return nil}
         
         var topPages = [Page]()
@@ -73,7 +82,7 @@ extension Array where Element : Page {
         } else if topPages.count == 1 {
             return topPages.first!
         } else {
-            let managedObjectContext = managedObjectContext ?? NSManagedObjectContext.defaultContext()
+            let managedObjectContext = managedObjectContext
             let newTopPage = Page.createPageInContext(name: "New workspace (merged)", context: managedObjectContext)
             for eachOldTopPage in topPages {
                 newTopPage.addToChildren(eachOldTopPage)
@@ -85,6 +94,15 @@ extension Array where Element : Page {
 }
 
 extension Array where Element: TaskSaved {
+    static func tasksFetched(managedObjectContext: NSManagedObjectContext) -> [TaskSaved] {
+        let fetchRequest = NSFetchRequest<TaskSaved>(entityName: "TaskSaved")
+        do {
+            return try managedObjectContext.fetch(fetchRequest)
+        } catch {
+            return [TaskSaved]()
+        }
+    }
+    
     func dueTasks() -> [TaskSaved] {
          var dues = [TaskSaved]()
          for task in self {
