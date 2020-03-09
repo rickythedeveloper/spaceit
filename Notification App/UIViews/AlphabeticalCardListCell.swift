@@ -44,24 +44,11 @@ class AlphabeticalCardListCell: UITableViewCell {
     }
     
     private func setup() {
-        frontTextLabel.text = task.question
-        frontTextLabel.lineBreakMode = .byWordWrapping
-        frontTextLabel.numberOfLines = 0
-        frontTextLabel.font = .cardTitleInTable()
+        frontTextLabel.formatCardTitleInTable(task: self.task)
         
         if let breadcrumb = task.page?.breadCrumb() {
             pageBreadcrumbLabel = UILabel()
-            pageBreadcrumbLabel!.text = breadcrumb
-            pageBreadcrumbLabel!.font = .breadCrumbInTable()
-        }
-        
-        
-        if !self.task.isActive {
-            frontTextLabel.textColor = UIColor.archivedGray().body
-            pageBreadcrumbLabel?.textColor = UIColor.archivedGray().body
-        } else if self.task.isDue() {
-            frontTextLabel.textColor = UIColor.dueRed().body
-            pageBreadcrumbLabel?.textColor = UIColor.dueRed().body
+            pageBreadcrumbLabel?.formatBreadcrumbInTable(task: self.task, breadcrumb: breadcrumb)
         }
     }
     

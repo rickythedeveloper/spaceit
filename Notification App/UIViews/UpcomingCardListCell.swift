@@ -36,20 +36,11 @@ class UpcomingCardListCell: UITableViewCell {
     
     private func setup() {
         // setting of front text and page breadcrumb
-        frontTextLabel.text = task.question
-        frontTextLabel.lineBreakMode = .byWordWrapping
-        frontTextLabel.numberOfLines = 0
-        frontTextLabel.font = .cardTitleInTable()
+        frontTextLabel.formatCardTitleInTable(task: self.task)
         
         if let breadcrumb = task.page?.breadCrumb() {
             pageBreadcrumbLabel = UILabel()
-            pageBreadcrumbLabel!.text = breadcrumb
-            pageBreadcrumbLabel!.font = .breadCrumbInTable()
-            pageBreadcrumbLabel!.alpha = 0.7
-        }
-        if self.task.isDue() {
-            frontTextLabel.textColor = UIColor.dueRed().body
-            pageBreadcrumbLabel?.textColor = UIColor.dueRed().body
+            pageBreadcrumbLabel?.formatBreadcrumbInTable(task: self.task, breadcrumb: breadcrumb)
         }
         
         // setting of due date and interval

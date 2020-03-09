@@ -26,4 +26,29 @@ extension UILabel {
     static func back() -> UILabel {
         return UILabel.text(str: "Back", alignment: .center)
     }
+    
+    func formatCardTitleInTable(task: TaskSaved) {
+        self.text = task.question
+        self.font = .cardTitleInTable()
+        self.lineBreakMode = .byWordWrapping
+        self.numberOfLines = 0
+        
+        if !task.isActive {
+            self.textColor = UIColor.archivedGray().body
+        } else if task.isDue() {
+            self.textColor = UIColor.dueRed().body
+        }
+    }
+    
+    func formatBreadcrumbInTable(task: TaskSaved, breadcrumb: String) {
+        self.text = breadcrumb
+        self.font = .breadCrumbInTable()
+        self.alpha = 0.7
+        
+        if !task.isActive {
+            self.textColor = UIColor.archivedGray().body
+        } else if task.isDue() {
+            self.textColor = UIColor.dueRed().body
+        }
+    }
 }

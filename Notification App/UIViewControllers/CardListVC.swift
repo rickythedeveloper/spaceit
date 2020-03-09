@@ -121,11 +121,11 @@ extension CardListVC {
     
     private func updateCustomTaskArrays() {
         if let text = searchTextField.text, text.hasContent() {
-            upcomingTasks = tasks.activeTasks().filterByWord(searchPhrase: text)
+            upcomingTasks = tasks.activeTasks().sortedByDueDate().filterByWord(searchPhrase: text)
             alphabeticalTasks = tasks.sortedByName().filterByWord(searchPhrase: text)
             creationDateTasks = tasks.sortedByCreationDate(oldFirst: false).filterByWord(searchPhrase: text)
         } else {
-            upcomingTasks = tasks.activeTasks()
+            upcomingTasks = tasks.activeTasks().sortedByDueDate()
             alphabeticalTasks = tasks.sortedByName()
             creationDateTasks = tasks.sortedByCreationDate(oldFirst: false)
         }
