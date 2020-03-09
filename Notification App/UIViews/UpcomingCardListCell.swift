@@ -39,10 +39,13 @@ class UpcomingCardListCell: UITableViewCell {
         frontTextLabel.text = task.question
         frontTextLabel.lineBreakMode = .byWordWrapping
         frontTextLabel.numberOfLines = 0
+        frontTextLabel.font = .cardTitleInTable()
         
         if let breadcrumb = task.page?.breadCrumb() {
             pageBreadcrumbLabel = UILabel()
             pageBreadcrumbLabel!.text = breadcrumb
+            pageBreadcrumbLabel!.font = .breadCrumbInTable()
+            pageBreadcrumbLabel!.alpha = 0.7
         }
         if self.task.isDue() {
             frontTextLabel.textColor = UIColor.dueRed().body

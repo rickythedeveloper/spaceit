@@ -49,10 +49,12 @@ class CreationDateCardListCell: UITableViewCell {
         frontTextLabel.text = task.question
         frontTextLabel.lineBreakMode = .byWordWrapping
         frontTextLabel.numberOfLines = 0
+        frontTextLabel.font = .cardTitleInTable()
         
         if let breadcrumb = task.page?.breadCrumb() {
             pageBreadcrumbLabel = UILabel()
             pageBreadcrumbLabel!.text = breadcrumb
+            pageBreadcrumbLabel!.font = .breadCrumbInTable()
         }
         
         if !self.task.isActive {

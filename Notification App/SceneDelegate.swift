@@ -27,8 +27,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         if let windowScene = scene as? UIWindowScene {
             let window = UIWindow(windowScene: windowScene)
 //            window.rootViewController = UIHostingController(rootView: mainTab)
-            window.rootViewController = UINavigationController(rootViewController: WorkspaceVC())
-//            window.rootViewController = NewCardVC()
+//            window.rootViewController = UINavigationController(rootViewController: WorkspaceVC())
+            window.rootViewController = MainTabBarC()
             self.window = window
             window.makeKeyAndVisible()
         }

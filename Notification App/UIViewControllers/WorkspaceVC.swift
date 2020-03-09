@@ -152,7 +152,9 @@ extension WorkspaceVC {
             self.title = thisPage.name
         })
         
+        print("before")
         self.present(ac, animated: true, completion: nil)
+        print("after")
     }
     
     @objc private func coreDataObjectsDidChange() {
