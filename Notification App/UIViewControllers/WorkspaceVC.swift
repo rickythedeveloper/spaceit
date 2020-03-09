@@ -45,6 +45,10 @@ class WorkspaceVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
         viewSetup()
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        self.navigationController?.navigationBar.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(navBarTouched)))
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         self.reloadTableView()
     }
@@ -186,7 +190,6 @@ extension WorkspaceVC {
 //    MARK: Data set up
     private func setup() {
         self.managedObjectContext = NSManagedObjectContext.defaultContext()
-        self.navigationController?.navigationBar.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(navBarTouched)))
         
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
