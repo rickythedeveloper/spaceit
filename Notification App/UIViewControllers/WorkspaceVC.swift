@@ -26,6 +26,14 @@ class WorkspaceVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
         return tf
     }()
     
+    private var newCardButton: UIButton = {
+        let button = UIButton()
+        button.setImage(UIImage(systemName: "plus"), for: .normal)
+        button.setPreferredSymbolConfiguration(UIImage.SymbolConfiguration(textStyle: .title1), forImageIn: .normal)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
+    }()
+    
     private var onDismiss: () -> Void
     private var thisPageDeleted = false
     
@@ -273,29 +281,35 @@ extension WorkspaceVC {
         if section == 0 {
             return thisPage.numberOfChildren() + 1
         } else {
-            return thisPage.numberOfCards()
+            return thisPage.numberOfCards() + 1
         }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let thisPage = self.page else {return UITableViewCell()}
         
+        let padding: CGFloat = 5.0
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier: cellID, for: indexPath)
+        cell.textLabel?.text = nil
         if indexPath.section == 0 && indexPath.row >= thisPage.numberOfChildren() {
-            let padding: CGFloat = 10.0
-            let cell = tableView.dequeueReusableCell(withIdentifier: cellID, for: indexPath)
-            cell.textLabel?.text = nil
             cell.contentView.addSubview(newPageTF)
-            newPageTF.constrainToTopSafeAreaOf(cell.contentView, padding: padding)
-            newPageTF.constrainToSideSafeAreasOf(cell.contentView, padding: padding)
-            newPageTF.constrainToBottomSafeAreaOf(cell.contentView, padding: padding)
+            newPageTF.constrainToTopSafeAreaOf(cell.contentView, padding: padding*2)
+            newPageTF.constrainToSideSafeAreasOf(cell.contentView, padding: padding*2)
+            newPageTF.constrainToBottomSafeAreaOf(cell.contentView, padding: padding*2)
             return cell
         } else if indexPath.section == 0 {
-            let cell = tableView.dequeueReusableCell(withIdentifier: cellID, for: indexPath)
             cell.textLabel?.text = thisPage.childrenArray()[indexPath.row].name
             cell.backgroundColor = .clear
             return cell
+        } else if indexPath.section == 1 && indexPath.row >= thisPage.numberOfCards() {
+            cell.contentView.addSubview(newCardButton)
+            newCardButton.constrainToTopSafeAreaOf(cell.contentView, padding: padding)
+            newCardButton.constrainToBottomSafeAreaOf(cell.contentView, padding: padding
+            )
+            newCardButton.alignToCenterXOf(cell.contentView)
+            return cell
         } else {
-            let cell = tableView.dequeueReusableCell(withIdentifier: cellID, for: indexPath)
             cell.textLabel?.text = thisPage.cardsArray()[indexPath.row].question
             cell.backgroundColor = .clear
             return cell
@@ -313,6 +327,9 @@ extension WorkspaceVC {
                 tableView.deselectRow(at: indexPath, animated: true)
             })
             self.navigationController?.pushViewController(newPageVC, animated: true)
+        } else if indexPath.section == 1 && indexPath.row >= thisPage.numberOfCards() {
+            self.navigationController?.pushViewController(NewCardVC(prechosenPage: thisPage), animated: true)
+            tableView.deselectRow(at: indexPath, animated: true)
         } else {
             let cardEditVC = CardEditVC(task: thisPage.cardsArray()[indexPath.row], managedObjectContext: self.managedObjectContext) {
                 tableView.deselectRow(at: indexPath, animated: true)

@@ -28,6 +28,11 @@ class NewCardVC: UIViewController, UITextViewDelegate {
     private let firstDueLabel = UILabel.text(str: "Due in:")
     
     private let addButton = UIButton.actionButton(text: "Add Card", action: #selector(addButtonPressed), backgroundColor: UIColor.pageButtonBackground(), usesAutoLayout: true)
+    
+    convenience init(prechosenPage: Page? = nil) {
+        self.init()
+        self.chosenPage = prechosenPage
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
