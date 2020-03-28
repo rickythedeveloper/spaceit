@@ -95,9 +95,11 @@ extension WorkspaceVC {
     
     /// Offset the content if needed based on  the keyboard frame.
     @objc private func keyboardWillShow(notification: NSNotification) {
-        if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
-            let textFieldMaxY = (newPageTF.convert(newPageTF.frame, to: nil)).maxY
-            self.tableV.setContentOffset(CGPoint(x: 0, y: self.tableV.contentOffset.y + max(0, textFieldMaxY - keyboardSize.minY)), animated: true)
+        if self.newPageTF.isFirstResponder {
+            if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
+                let textFieldMaxY = (newPageTF.convert(newPageTF.frame, to: nil)).maxY
+                self.tableV.setContentOffset(CGPoint(x: 0, y: self.tableV.contentOffset.y + max(0, textFieldMaxY - keyboardSize.minY)), animated: true)
+            }
         }
     }
     
