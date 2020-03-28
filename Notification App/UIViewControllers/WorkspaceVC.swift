@@ -68,6 +68,7 @@ class WorkspaceVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
 
 // MARK: Actions
 extension WorkspaceVC {
+    /// Add new page under this page if there is a text in the new page text field.
     private func addChildPage() {
         guard let text = newPageTF.text else {return}
         guard let thisPage = self.page else {return}
@@ -81,23 +82,27 @@ extension WorkspaceVC {
         self.newPageTF.text = ""
     }
     
+    /// Reloat table view asynchronously
     private func reloadTableView() {
         DispatchQueue.main.async {
             self.tableV.reloadData()
         }
     }
     
+    /// Offset the content if needed based on  the keyboard frame.
     @objc private func keyboardWillShow(notification: NSNotification) {
         if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
             let textFieldMaxY = (newPageTF.convert(newPageTF.frame, to: self.view)).maxY
             self.tableV.setContentOffset(CGPoint(x: 0, y: max(0, textFieldMaxY - keyboardSize.minY)), animated: true)
         }
     }
-
+    
+    /// Resets the content offset to zero.
     @objc private func keyboardWillHide(notification: NSNotification) {
         self.tableV.setContentOffset(CGPoint(x: 0, y: 0), animated: true)
     }
     
+    /// shows all the possible actions related to this page on an alert.
     @objc private func optionPressed() {
         var actions = [(String, UIAlertAction.Style, ()->Void)]()
         
@@ -130,6 +135,7 @@ extension WorkspaceVC {
         self.present(ac, animated: true, completion: nil)
     }
     
+    /// If this page is not the top page, delete this page and save the core data context.
     private func deleteThisPage() {
         guard let thisPage = self.page else {return}
         guard !thisPage.isTopPage() else {return}
@@ -153,6 +159,7 @@ extension WorkspaceVC {
 //        self.transition(from: self, to: WorkspaceVC(), duration: 0.5, options: .transitionCrossDissolve, animations: nil, completion: nil)
 //    }
     
+    /// Shows an alert with a textfield so that the user can edit the page name.
     private func editPageName() {
         guard let thisPage = self.page else {return}
         
@@ -169,6 +176,7 @@ extension WorkspaceVC {
         print("after")
     }
     
+    /// Reloads the tsble view if this page already exists. Otherwise, sets the page to the top page found in the core data.
     @objc private func coreDataObjectsDidChange() {
         guard self.thisPageDeleted == false else {return}
         guard self.page == nil else {
@@ -189,6 +197,7 @@ extension WorkspaceVC {
         }
     }
     
+    /// Calls edit paeg name.
     @objc private func navBarTouched() {
         self.editPageName()
     }
@@ -196,6 +205,7 @@ extension WorkspaceVC {
 
 extension WorkspaceVC {
 //    MARK: Data set up
+    /// Sets up the data for this view controller.
     private func setup() {
         self.managedObjectContext = NSManagedObjectContext.defaultContext()
         
@@ -224,12 +234,14 @@ extension WorkspaceVC {
     }
     
 //    MARK: No page set up
+    /// Creates a new page called My Workspace and save onto core data.
     private func noPageSetup() {
         self.page = Page.createPageInContext(name: "My Workspace", id: UUID(), context: self.managedObjectContext)
         self.managedObjectContext.saveContext()
     }
     
 //    MARK: View set up
+    /// Sets up the views in this view controller.
     private func viewSetup() {
         let padding: CGFloat = 10.0
         
@@ -258,6 +270,7 @@ extension WorkspaceVC {
 
 // MARK: Text field delegate & data source
 extension WorkspaceVC {
+    /// If the new page textfield is returning and it has a text, then add a new page.
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         if textField == newPageTF {
             view.endEditing(true)
@@ -268,6 +281,7 @@ extension WorkspaceVC {
         return true
     }
     
+    /// Changes the title of this page according to the texrt field.
     @objc func nameEditingChanged(_ textField: UITextField) {
         self.title = textField.text
     }
