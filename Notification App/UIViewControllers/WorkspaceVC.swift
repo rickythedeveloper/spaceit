@@ -96,14 +96,9 @@ extension WorkspaceVC {
     /// Offset the content if needed based on  the keyboard frame.
     @objc private func keyboardWillShow(notification: NSNotification) {
         if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
-            let textFieldMaxY = (newPageTF.convert(newPageTF.frame, to: self.view)).maxY
-            self.tableV.setContentOffset(CGPoint(x: 0, y: max(0, textFieldMaxY - keyboardSize.minY)), animated: true)
+            let textFieldMaxY = (newPageTF.convert(newPageTF.frame, to: nil)).maxY
+            self.tableV.setContentOffset(CGPoint(x: 0, y: self.tableV.contentOffset.y + max(0, textFieldMaxY - keyboardSize.minY)), animated: true)
         }
-    }
-    
-    /// Resets the content offset to zero.
-    @objc private func keyboardWillHide(notification: NSNotification) {
-        self.tableV.setContentOffset(CGPoint(x: 0, y: 0), animated: true)
     }
     
     /// shows all the possible actions related to this page on an alert.
@@ -222,7 +217,6 @@ extension WorkspaceVC {
         self.managedObjectContext = NSManagedObjectContext.defaultContext()
         
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(coreDataObjectsDidChange), name: Notification.Name.NSManagedObjectContextObjectsDidChange, object: nil)
         
         tableV.delegate = self
