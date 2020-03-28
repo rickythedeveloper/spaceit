@@ -9,12 +9,12 @@
 import UIKit
 import CoreData
 
-class NewCardVC: UIViewController, UITextViewDelegate {
+class NewCardVC: UIViewController, UITextViewDelegate, WorkspaceAccessible {
     
     private var managedObjectContext: NSManagedObjectContext?
     
-    private let pageButton = UIButton.pageButton(text: "Select page for this button", action: #selector(addPagePressed), usesAutoLayout: true)
-    private var chosenPage: Page?
+    internal let pageButton = UIButton.pageButton(text: "Select page for this button", action: #selector(addPagePressed), usesAutoLayout: true)
+    internal var chosenPage: Page?
     
     private let frontLabel = UILabel.front()
     private let frontTV = UITextView.cardSIdeTV()
@@ -46,7 +46,7 @@ class NewCardVC: UIViewController, UITextViewDelegate {
 
 extension NewCardVC {
     @objc private func addPagePressed() {
-        print("show pages now")
+        self.present(UINavigationController(rootViewController: WorkspaceVC(workspaceAccessible: self)), animated: true, completion: nil)
     }
     
     @objc private func addButtonPressed() {
@@ -158,6 +158,9 @@ extension NewCardVC {
         
         self.title = "New Flashcard"
         self.view.backgroundColor = UIColor.myBackGroundColor()
+        if self.chosenPage != nil {
+            self.pageButton.setTitle(self.chosenPage?.name, for: .normal)
+        }
         
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)

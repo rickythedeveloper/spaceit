@@ -10,7 +10,8 @@ import UIKit
 import SwiftUI
 import CoreData
 
-class CardEditVC: UIViewController, UIScrollViewDelegate {
+class CardEditVC: UIViewController, UIScrollViewDelegate, WorkspaceAccessible {
+    internal var chosenPage: Page?
     
     var scrollView: UIScrollView = {
         let sv = UIScrollView()
@@ -18,7 +19,7 @@ class CardEditVC: UIViewController, UIScrollViewDelegate {
         return sv
     }()
     
-    let pageButton: UIButton = {
+    internal let pageButton: UIButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setTitle("Select page for this card", for: .normal)
@@ -100,6 +101,9 @@ extension CardEditVC {
     private func saveCardInfo(completion: @escaping () -> Void = {}) {
         self.task.question = self.frontTextView.text
         self.task.answer = self.backTextView.text
+        if chosenPage != nil {
+            self.task.page = chosenPage!
+        }
         
         self.managedObjectContext.saveContext(completion: {
             completion()
@@ -113,7 +117,7 @@ extension CardEditVC {
 extension CardEditVC {
     
     @objc private func selectPage() {
-        print("Select page now")
+        self.present(UINavigationController(rootViewController: WorkspaceVC(workspaceAccessible: self)), animated: true, completion: nil)
     }
     
     @objc private func deletePressed() {
@@ -204,6 +208,9 @@ extension CardEditVC {
         scrollView.delegate = self
         
         pageButton.addTarget(self, action: #selector(buttonPressed), for: .touchUpInside)
+        if self.task.page != nil {
+            pageButton.setTitle(self.task.page!.name, for: .normal)
+        }
         
         actionButtonContainer = UIStackView(arrangedSubviews: [deleteButton, deactivateButton, okButton])
         actionButtonContainer.translatesAutoresizingMaskIntoConstraints = false

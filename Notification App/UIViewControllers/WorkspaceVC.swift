@@ -18,7 +18,9 @@ class WorkspaceVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
         tv.translatesAutoresizingMaskIntoConstraints = false
         return tv
     }()
-    private var cellID = "workspaceTableVCell"
+    private var textCellID = "workspaceTextCell"
+    private let newtfCellID = "workspaceNewTFCell"
+    private let addCardCellID = "workspaceAddCardCell"
     
     private var newPageTF: UITextField = {
         let tf = UITextField()
@@ -36,10 +38,12 @@ class WorkspaceVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
     
     private var onDismiss: () -> Void
     private var thisPageDeleted = false
+    private var workspaceAccessible: WorkspaceAccessible?
     
-    init(page: Page? = nil, onDismiss: @escaping () -> Void = {}) {
+    init(page: Page? = nil, onDismiss: @escaping () -> Void = {}, workspaceAccessible: WorkspaceAccessible? = nil) {
         self.page = page
         self.onDismiss = onDismiss
+        self.workspaceAccessible = workspaceAccessible
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -135,6 +139,14 @@ extension WorkspaceVC {
         self.present(ac, animated: true, completion: nil)
     }
     
+    @objc private func selectThisPage() {
+        if let thisPage = self.page {
+            self.workspaceAccessible?.chosenPage = thisPage
+            self.workspaceAccessible?.pageButton.setTitle(thisPage.name, for: .normal)
+        }
+        self.navigationController?.dismiss(animated: true, completion: nil)
+    }
+    
     /// If this page is not the top page, delete this page and save the core data context.
     private func deleteThisPage() {
         guard let thisPage = self.page else {return}
@@ -215,7 +227,9 @@ extension WorkspaceVC {
         
         tableV.delegate = self
         tableV.dataSource = self
-        tableV.register(UITableViewCell.self, forCellReuseIdentifier: cellID)
+        tableV.register(UITableViewCell.self, forCellReuseIdentifier: textCellID)
+        tableV.register(UITableViewCell.self, forCellReuseIdentifier: newtfCellID)
+        tableV.register(UITableViewCell.self, forCellReuseIdentifier: addCardCellID)
         
         newPageTF.delegate = self
         
@@ -248,8 +262,13 @@ extension WorkspaceVC {
         self.title = self.page?.name
         self.view.backgroundColor = UIColor.myBackGroundColor()
         
-        let optionNavBarItem = UIBarButtonItem(image: UIImage(systemName: "ellipsis"), style: .plain, target: self, action: #selector(optionPressed))
-        self.navigationItem.rightBarButtonItem = optionNavBarItem
+        if self.workspaceAccessible == nil { // not selecting a page
+            let optionNavBarItem = UIBarButtonItem(image: UIImage(systemName: "ellipsis"), style: .plain, target: self, action: #selector(optionPressed))
+            self.navigationItem.rightBarButtonItem = optionNavBarItem
+        } else {
+            let selectThisPageNavBarItem = UIBarButtonItem(image: UIImage(systemName: "checkmark.circle"), style: .plain, target: self, action: #selector(selectThisPage))
+            self.navigationItem.rightBarButtonItem = selectThisPageNavBarItem
+        }
         
         self.view.addSubview(tableV)
         tableV.constrainToTopSafeAreaOf(view)
@@ -295,7 +314,12 @@ extension WorkspaceVC {
         if section == 0 {
             return thisPage.numberOfChildren() + 1
         } else {
-            return thisPage.numberOfCards() + 1
+            if self.workspaceAccessible == nil { // if not seleccting a page, show the 'add card' cell
+                return thisPage.numberOfCards() + 1
+            } else {
+                return thisPage.numberOfCards() // if selecting a page, do not show the 'add card' cell
+            }
+            
         }
     }
     
@@ -304,8 +328,18 @@ extension WorkspaceVC {
         
         let padding: CGFloat = 5.0
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: cellID, for: indexPath)
-        cell.textLabel?.text = nil
+        var cell: UITableViewCell
+        if indexPath.section == 0 && indexPath.row >= thisPage.numberOfChildren() {
+            // new page tf
+            cell = tableView.dequeueReusableCell(withIdentifier: newtfCellID, for: indexPath)
+        } else if indexPath.section == 1 && indexPath.row >= thisPage.numberOfCards() {
+            // add card
+            cell = tableView.dequeueReusableCell(withIdentifier: addCardCellID, for: indexPath)
+        } else {
+            // text
+            cell = tableView.dequeueReusableCell(withIdentifier: textCellID, for: indexPath)
+        }
+        
         if indexPath.section == 0 && indexPath.row >= thisPage.numberOfChildren() {
             cell.contentView.addSubview(newPageTF)
             newPageTF.constrainToTopSafeAreaOf(cell.contentView, padding: padding*2)
@@ -330,6 +364,22 @@ extension WorkspaceVC {
         }
     }
     
+    /// if selecting a page, the user should not be able to select the second section (cards section)
+    func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
+        if self.workspaceAccessible != nil && indexPath.section == 1 {
+            return nil
+        }
+        return indexPath
+    }
+    
+    /// if selecting a page, the user should not be able to highlight the second section (cards section)
+    func tableView(_ tableView: UITableView, shouldHighlightRowAt indexPath: IndexPath) -> Bool {
+        if self.workspaceAccessible != nil && indexPath.section == 1 {
+            return false
+        }
+        return true
+    }
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard let thisPage = self.page else {return}
         
@@ -339,7 +389,7 @@ extension WorkspaceVC {
         } else if indexPath.section == 0 {
             let newPageVC = WorkspaceVC(page: thisPage.childrenArray()[indexPath.row], onDismiss: {
                 tableView.deselectRow(at: indexPath, animated: true)
-            })
+            }, workspaceAccessible: self.workspaceAccessible)
             self.navigationController?.pushViewController(newPageVC, animated: true)
         } else if indexPath.section == 1 && indexPath.row >= thisPage.numberOfCards() {
             self.navigationController?.pushViewController(NewCardVC(prechosenPage: thisPage), animated: true)
