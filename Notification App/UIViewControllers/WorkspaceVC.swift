@@ -414,3 +414,21 @@ extension WorkspaceVC {
         view.endEditing(true)
     }
 }
+
+// MARK: Keyboard Shortcuts
+extension WorkspaceVC {
+    override var keyCommands: [UIKeyCommand]? {
+        return [
+            UIKeyCommand(title: "New Page", action: #selector(newPageTFBecomesFirstResponder), input: "p", modifierFlags: [.command], discoverabilityTitle: "New page"),
+            UIKeyCommand(title: "New Card", action: #selector(createNewCard), input: "\n", modifierFlags: [.command], discoverabilityTitle: "New Card"),
+        ]
+    }
+    
+    @objc private func newPageTFBecomesFirstResponder() {
+        self.newPageTF.becomeFirstResponder()
+    }
+    
+    @objc private func createNewCard() {
+        self.navigationController?.pushViewController(NewCardVC(prechosenPage: self.page), animated: true)
+    }
+}

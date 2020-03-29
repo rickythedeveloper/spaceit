@@ -14,11 +14,11 @@ class MainTabBarC: UITabBarController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        let listTabBarItem = UITabBarItem(title: "hey", image: UIImage(systemName: "square.stack.3d.up"), tag: 0)
+        let listTabBarItem = UITabBarItem(title: "Cards", image: UIImage(systemName: "square.stack.3d.up"), tag: 0)
         let cardListNavC = UINavigationController(rootViewController: CardListVC())
         cardListNavC.tabBarItem = listTabBarItem
         
-        let workspaceItem = UITabBarItem(title: "oiii", image: UIImage(systemName: "folder"), tag: 1)
+        let workspaceItem = UITabBarItem(title: "Workspace", image: UIImage(systemName: "folder"), tag: 1)
         let workspaceNavC = UINavigationController(rootViewController: WorkspaceVC())
         workspaceNavC.tabBarItem = workspaceItem
         self.viewControllers = [cardListNavC, workspaceNavC]

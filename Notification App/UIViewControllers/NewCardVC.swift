@@ -49,6 +49,30 @@ extension NewCardVC {
         self.present(UINavigationController(rootViewController: WorkspaceVC(workspaceAccessible: self)), animated: true, completion: nil)
     }
     
+    @objc private func goToNextTextView() {
+        if self.frontTV.isFirstResponder {
+            self.backTV.becomeFirstResponder()
+        } else if self.backTV.isFirstResponder {
+            self.addButtonPressed()
+        } else {
+            self.addButtonPressed()
+        }
+    }
+    
+    @objc private func previousTF() {
+        if self.backTV.isFirstResponder {
+            self.frontTV.becomeFirstResponder()
+        } else if self.frontTV.isFirstResponder {
+            self.view.endEditing(true)
+        } else {
+            self.backTV.becomeFirstResponder()
+        }
+    }
+    
+    @objc private func dismissView() {
+        self.navigationController?.popViewController(animated: true)
+    }
+    
     @objc private func addButtonPressed() {
         guard frontTV.text.hasContent() && !showingPlaceholder(textView: frontTV) else {
             self.present(UIAlertController.noContentAlert(), animated: true, completion: nil)
@@ -209,5 +233,17 @@ extension NewCardVC {
         textView.text = (textView == frontTV ? frontPlaceholder : backPlaceholder)
         textView.textColor = UIColor.placeholderText
         textView.delegate = self
+    }
+}
+
+// MARK: Keyboard Shortcuts
+extension NewCardVC {
+    override var keyCommands: [UIKeyCommand]? {
+        return [
+            UIKeyCommand(title: "Select page", action: #selector(addPagePressed), input: "p", modifierFlags: [.command], discoverabilityTitle: "Select page"),
+            UIKeyCommand(title: "Next Text Field / Add Card", action: #selector(goToNextTextView), input: "\r", modifierFlags: [.command], discoverabilityTitle: "Next Text Field / Add Card"),
+            UIKeyCommand(title: "Previous Text Field", action: #selector(previousTF), input: "\r", modifierFlags: [.command, .shift], discoverabilityTitle: "Previous Text Field"),
+            UIKeyCommand(title: "Cancel", action: #selector(dismissView), input: UIKeyCommand.inputLeftArrow, modifierFlags: [.command], discoverabilityTitle: "Cancel"),
+        ]
     }
 }

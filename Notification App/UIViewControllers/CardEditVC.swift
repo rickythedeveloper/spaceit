@@ -195,6 +195,10 @@ extension CardEditVC {
             UIKeyCommand(title: "Delete", action: #selector(deletePressed), input: "d", modifierFlags: [.command], discoverabilityTitle: "Delete"),
             UIKeyCommand(title: "Archive", action: #selector(archivePressed), input: "a", modifierFlags: [.command], discoverabilityTitle: "Archive"),
             UIKeyCommand(title: "Save", action: #selector(okPressed), input: "s", modifierFlags: [.command], discoverabilityTitle: "Save"),
+            UIKeyCommand(title: "Review: Very Easy", action: #selector(happyAction), input: "4", modifierFlags: [.command], discoverabilityTitle: "Review: Very Easy"),
+            UIKeyCommand(title: "Review: Easy", action: #selector(okayAction), input: "3", modifierFlags: [.command], discoverabilityTitle: "Review: Easy"),
+            UIKeyCommand(title: "Review: Hard", action: #selector(sadAction), input: "2", modifierFlags: [.command], discoverabilityTitle: "Review: Hard"),
+            UIKeyCommand(title: "Review: Very Hard", action: #selector(depressedAction), input: "1", modifierFlags: [.command], discoverabilityTitle: "Review: Very Hard"),
             UIKeyCommand(title: "Next/Save", action: #selector(goToNextTextView), input: "\r", modifierFlags: [.command], discoverabilityTitle: "Next/Save"),
             UIKeyCommand(title: "Go back", action: #selector(dismissView), input: UIKeyCommand.inputLeftArrow, modifierFlags: [.command], discoverabilityTitle: "Go back"),
         ]
@@ -296,19 +300,19 @@ extension CardEditVC {
 
 extension CardEditVC: ReviewAccessible {
     
-    func happyAction() {
+    @objc func happyAction() {
         reviewWithEase(4)
     }
     
-    func okayAction() {
+    @objc func okayAction() {
         reviewWithEase(3)
     }
     
-    func sadAction() {
+    @objc func sadAction() {
         reviewWithEase(2)
     }
     
-    func depressedAction() {
+    @objc func depressedAction() {
         reviewWithEase(1)
     }
     
