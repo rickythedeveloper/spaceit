@@ -285,6 +285,7 @@ extension CardEditVC {
         
         infoStack.isBelow(actionButtonContainer, padding: padding)
         infoStack.constrainToSideSafeAreasOf(scrollView, padding: padding)
+        infoStack.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor, constant: -padding).isActive = true // this effectively sets the content size of the scrollview
     }
     
     private func putCardInfo() {
