@@ -40,6 +40,8 @@ class WorkspaceVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
     private var thisPageDeleted = false
     private var workspaceAccessible: WorkspaceAccessible?
     
+    private var coredataUpdateTimer: Timer?
+    
     init(page: Page? = nil, onDismiss: @escaping () -> Void = {}, workspaceAccessible: WorkspaceAccessible? = nil) {
         self.page = page
         self.onDismiss = onDismiss
@@ -187,6 +189,14 @@ extension WorkspaceVC {
     
     /// Reloads the tsble view if this page already exists. Otherwise, sets the page to the top page found in the core data.
     @objc private func coreDataObjectsDidChange() {
+        coredataUpdateTimer?.invalidate()
+        coredataUpdateTimer = Timer.scheduledTimer(withTimeInterval: 5.0, repeats: false, block: { (timer) in
+            self.updateViewsOnCoredataChange()
+            print("yo")
+        })
+    }
+    
+    private func updateViewsOnCoredataChange() {
         guard self.thisPageDeleted == false else {return}
         guard self.page == nil else {
             DispatchQueue.main.async {
@@ -233,7 +243,7 @@ extension WorkspaceVC {
         guard page == nil else {return}
         let pages = Array.pagesFetched(managedObjectContext: self.managedObjectContext)
         if pages.count == 0 {
-            noPageSetup()
+//            noPageSetup()
         } else {
             if let topPage = pages.topPageHandlingClashes(managedObjectContext: self.managedObjectContext) {
                 self.page = topPage

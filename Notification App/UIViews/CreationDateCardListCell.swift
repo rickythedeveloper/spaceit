@@ -102,6 +102,7 @@ class CreationDateCardListCell: UITableViewCell {
         if creationDateLabel != nil {
             self.contentView.heightAnchor.constraint(greaterThanOrEqualTo: creationDateLabel!.heightAnchor, constant: padding*3.0).isActive = true
         }
+        self.contentView.heightAnchor.constraint(greaterThanOrEqualToConstant: 50.0).isActive = true
         
     }
 

@@ -41,6 +41,8 @@ class CardListVC: UIViewController, UITableViewDelegate, UITableViewDataSource, 
     private var creationDateTasks = [TaskSaved]()
     
     private var searchTimer: Timer?
+    
+    private var coredataUpdateTimer: Timer?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -67,7 +69,11 @@ extension CardListVC {
     
     /// This function is called when core data objects have been changed. This function reloads the table view data.
     @objc private func coreDataObjectsDidChange() {
-        update()
+        coredataUpdateTimer?.invalidate()
+        coredataUpdateTimer = Timer.scheduledTimer(withTimeInterval: 5.0, repeats: false, block: { (timer) in
+            self.update()
+            print("hey")
+        })
     }
 }
 
