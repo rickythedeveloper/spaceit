@@ -355,21 +355,16 @@ extension CardEditVC: ReviewAccessible {
 extension CardEditVC {
     /// Offset the content if needed based on  the keyboard frame.
     @objc private func keyboardWillShow(notification: NSNotification) {
+        guard let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue else {return}
+        
+        var textFieldMaxY: CGFloat = 0.0
+        
         if self.frontTextView.isFirstResponder {
-            if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
-                let textFieldMaxY = (self.view.convert(frontTextView.frame, to: nil)).maxY
-                print(self.scrollView.contentOffset.y + max(0, textFieldMaxY - keyboardSize.minY))
-                print(self.scrollView.contentOffset.y, textFieldMaxY, keyboardSize.minY)
-                self.scrollView.setContentOffset(CGPoint(x: 0, y: max(self.scrollView.contentOffset.y, 10 + textFieldMaxY - keyboardSize.minY)), animated: true)
-                
-            }
+            textFieldMaxY = (self.frontTextView.superview!.convert(frontTextView.frame, to: nil)).maxY
         } else if self.backTextView.isFirstResponder {
-            if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
-                let textFieldMaxY = (self.view.convert(backTextView.frame, to: nil)).maxY
-                print(self.scrollView.contentOffset.y + max(0, textFieldMaxY - keyboardSize.minY))
-                print(self.scrollView.contentOffset.y, textFieldMaxY, keyboardSize.minY)
-                self.scrollView.setContentOffset(CGPoint(x: 0, y: max(self.scrollView.contentOffset.y, 10 + textFieldMaxY - keyboardSize.minY)), animated: true)
-            }
+            textFieldMaxY = (self.backTextView.superview!.convert(backTextView.frame, to: nil)).maxY
         }
+        
+        self.scrollView.setContentOffset(CGPoint(x: 0, y: max(-self.scrollView.contentInset.top, 10 + textFieldMaxY - keyboardSize.minY)), animated: true)
     }
 }
