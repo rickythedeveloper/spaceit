@@ -64,6 +64,11 @@ extension CardListVC {
         view.endEditing(true)
         updateCustomTaskArrays()
     }
+    
+    /// This function is called when core data objects have been changed. This function reloads the table view data.
+    @objc private func coreDataObjectsDidChange() {
+        update()
+    }
 }
 
 // Views
@@ -74,6 +79,8 @@ extension CardListVC {
         self.managedObjectContext = NSManagedObjectContext.defaultContext()
         
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "plus"), style: .plain, target: self, action: #selector(addCardPressed))
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(coreDataObjectsDidChange), name: Notification.Name.NSManagedObjectContextObjectsDidChange, object: nil)
         
         segControl = UISegmentedControl(items: segments)
         segControl.translatesAutoresizingMaskIntoConstraints = false

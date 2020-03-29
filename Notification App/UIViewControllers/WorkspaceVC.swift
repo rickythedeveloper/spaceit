@@ -233,8 +233,7 @@ extension WorkspaceVC {
         guard page == nil else {return}
         let pages = Array.pagesFetched(managedObjectContext: self.managedObjectContext)
         if pages.count == 0 {
-//            noPageSetup()
-//            MARK: maybe here we can ask if they want to make a workspace.
+            noPageSetup()
         } else {
             if let topPage = pages.topPageHandlingClashes(managedObjectContext: self.managedObjectContext) {
                 self.page = topPage
