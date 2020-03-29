@@ -182,12 +182,8 @@ extension CardEditVC {
         self.onDismiss()
     }
     
-    @objc private func dismissKeyboard() {
+    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
         view.endEditing(true)
-    }
-    
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        dismissKeyboard()
     }
 }
 
@@ -213,6 +209,8 @@ extension CardEditVC {
         let maxTVHeight: CGFloat = 1/3
         let minButtonHeight: CGFloat = 50.0
         let maxButtonHeight: CGFloat = 70.0
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
         
         self.title = "Edit Card"
         view.backgroundColor = UIColor.myBackGroundColor()
@@ -344,6 +342,29 @@ extension CardEditVC: ReviewAccessible {
                         nc.sendSRTaskNotification(task: task)
                     }
                 }
+            }
+        }
+    }
+}
+
+// MARK: Keyboard guardian
+extension CardEditVC {
+    /// Offset the content if needed based on  the keyboard frame.
+    @objc private func keyboardWillShow(notification: NSNotification) {
+        if self.frontTextView.isFirstResponder {
+            if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
+                let textFieldMaxY = (self.view.convert(frontTextView.frame, to: nil)).maxY
+                print(self.scrollView.contentOffset.y + max(0, textFieldMaxY - keyboardSize.minY))
+                print(self.scrollView.contentOffset.y, textFieldMaxY, keyboardSize.minY)
+                self.scrollView.setContentOffset(CGPoint(x: 0, y: max(self.scrollView.contentOffset.y, 10 + textFieldMaxY - keyboardSize.minY)), animated: true)
+                
+            }
+        } else if self.backTextView.isFirstResponder {
+            if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
+                let textFieldMaxY = (self.view.convert(backTextView.frame, to: nil)).maxY
+                print(self.scrollView.contentOffset.y + max(0, textFieldMaxY - keyboardSize.minY))
+                print(self.scrollView.contentOffset.y, textFieldMaxY, keyboardSize.minY)
+                self.scrollView.setContentOffset(CGPoint(x: 0, y: max(self.scrollView.contentOffset.y, 10 + textFieldMaxY - keyboardSize.minY)), animated: true)
             }
         }
     }
