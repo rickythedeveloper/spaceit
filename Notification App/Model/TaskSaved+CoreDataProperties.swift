@@ -67,6 +67,36 @@ extension TaskSaved {
        print("next wait time: \(self.waitTime)")
     }
     
+    
+    /// This function calculates the next wait time for this task and updates the information. Call this function when the task has just been reviewd by the user. Do not forget to save the core data context after this.
+    /// - Parameter ease: Ease of the task on a scale of 1 to 4, with 1 being very hard and 4 being very easy.
+    func reviewed(ease: Int) {
+        let actualWaitTime = Date().timeIntervalSince(self.lastChecked)
+        let actualWaitDays = actualWaitTime / (60*60*24)
+        lastChecked = Date()
+        
+        var nextWaitDays: Double
+        switch ease {
+        case 1:
+            nextWaitDays = 10 - 10 * exp(-actualWaitDays/10.0)
+            break
+        case 2:
+            nextWaitDays = 30 - 28 * exp(-actualWaitDays/28.0)
+            break
+        case 3:
+            nextWaitDays = actualWaitDays * (1.1 + 3.9 * exp(-actualWaitDays/9.0)) + 2
+            break
+        case 4:
+            nextWaitDays = actualWaitDays * (1.5 + 8.5 * exp(-actualWaitDays/10.0)) + 2
+            break
+        default:
+            fatalError("The ease is out of the valid range")
+        }
+        
+        let nextWaitTime = nextWaitDays * (60*60*24)
+        self.waitTime = nextWaitTime
+    }
+    
     func creationDateString() -> String? {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "dd MMM"
