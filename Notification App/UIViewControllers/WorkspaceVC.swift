@@ -226,6 +226,7 @@ extension WorkspaceVC {
         tableV.register(UITableViewCell.self, forCellReuseIdentifier: textCellID)
         tableV.register(UITableViewCell.self, forCellReuseIdentifier: newtfCellID)
         tableV.register(UITableViewCell.self, forCellReuseIdentifier: addCardCellID)
+        tableV.backgroundColor = .clear
         
         newPageTF.delegate = self
         
@@ -335,6 +336,8 @@ extension WorkspaceVC {
             // text
             cell = tableView.dequeueReusableCell(withIdentifier: textCellID, for: indexPath)
         }
+        
+        cell.backgroundColor = .clear
         
         if indexPath.section == 0 && indexPath.row >= thisPage.numberOfChildren() {
             cell.contentView.addSubview(newPageTF)

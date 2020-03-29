@@ -83,7 +83,7 @@ extension CardListVC {
         cardListTV.delegate = self
         cardListTV.dataSource = self
         cardListTV.register(UITableViewCell.self, forCellReuseIdentifier: cellId)
-        cardListTV.backgroundColor = UIColor.myBackGroundColor()
+        cardListTV.backgroundColor = .clear
     }
     
     private func layoutViews() {
@@ -212,6 +212,7 @@ extension CardListVC {
             UIKeyCommand(title: "Alphabetical", action: #selector(switchToAlphabetical), input: "2", modifierFlags: [.command], discoverabilityTitle: "Alphabetical"),
             UIKeyCommand(title: "Upcoming", action: #selector(switchToUpcoming), input: "1", modifierFlags: [.command], discoverabilityTitle: "Upcoming"),
             UIKeyCommand(title: "Scroll to Top", action: #selector(scrollToTop), input: UIKeyCommand.inputUpArrow, modifierFlags: [.command], discoverabilityTitle: "Scroll to Top"),
+            UIKeyCommand(title: "Search", action: #selector(search), input: "f", modifierFlags: [.command], discoverabilityTitle: "Search")
         ]
     }
     
@@ -233,6 +234,9 @@ extension CardListVC {
     @objc private func scrollToTop() {
         let desiredOffset = CGPoint(x: 0, y: -self.cardListTV.contentInset.top)
         self.cardListTV.setContentOffset(desiredOffset, animated: true)
-        
+    }
+    
+    @objc private func search() {
+        self.searchTextField.becomeFirstResponder()
     }
 }
