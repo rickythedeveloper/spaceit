@@ -11,6 +11,8 @@
 		9C3164EC23E32DF90095DF46 /* CreationDateCardListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C3164EB23E32DF90095DF46 /* CreationDateCardListCell.swift */; };
 		9C3164EE23E32F530095DF46 /* NSAttributedString+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C3164ED23E32F530095DF46 /* NSAttributedString+.swift */; };
 		9C331CB124303B0B003934D6 /* ReviewAlgorithmTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C331CB024303B0B003934D6 /* ReviewAlgorithmTest.swift */; };
+		9C331CB924304550003934D6 /* ReviewButtonContainerV.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C331CB824304550003934D6 /* ReviewButtonContainerV.swift */; };
+		9C331CBB2430470C003934D6 /* ReviewAccessible.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C331CBA2430470C003934D6 /* ReviewAccessible.swift */; };
 		9C35CD5023DF61240099F55D /* UpcomingCardListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C35CD4F23DF61240099F55D /* UpcomingCardListCell.swift */; };
 		9C35CD5323DF725B0099F55D /* Date+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C35CD5223DF725B0099F55D /* Date+.swift */; };
 		9C3B270F23CF11C400CC5A13 /* Page+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C3B270B23CF11C400CC5A13 /* Page+CoreDataProperties.swift */; };
@@ -97,6 +99,8 @@
 		9C331CAE24303B0B003934D6 /* ReviewAlgorithmTest.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ReviewAlgorithmTest.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		9C331CB024303B0B003934D6 /* ReviewAlgorithmTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewAlgorithmTest.swift; sourceTree = "<group>"; };
 		9C331CB224303B0B003934D6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9C331CB824304550003934D6 /* ReviewButtonContainerV.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewButtonContainerV.swift; sourceTree = "<group>"; };
+		9C331CBA2430470C003934D6 /* ReviewAccessible.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewAccessible.swift; sourceTree = "<group>"; };
 		9C35CD4F23DF61240099F55D /* UpcomingCardListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpcomingCardListCell.swift; sourceTree = "<group>"; };
 		9C35CD5223DF725B0099F55D /* Date+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+.swift"; sourceTree = "<group>"; };
 		9C3B270B23CF11C400CC5A13 /* Page+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Page+CoreDataProperties.swift"; sourceTree = "<group>"; };
@@ -223,6 +227,7 @@
 				9C35CD4F23DF61240099F55D /* UpcomingCardListCell.swift */,
 				9C97674A23E24D81004F4E90 /* AlphabeticalCardListCell.swift */,
 				9C3164EB23E32DF90095DF46 /* CreationDateCardListCell.swift */,
+				9C331CB824304550003934D6 /* ReviewButtonContainerV.swift */,
 			);
 			path = UIViews;
 			sourceTree = "<group>";
@@ -231,6 +236,7 @@
 			isa = PBXGroup;
 			children = (
 				9CF34023242F269C00897B40 /* WorkspaceAccessible.swift */,
+				9C331CBA2430470C003934D6 /* ReviewAccessible.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -559,7 +565,9 @@
 				9C97674B23E24D81004F4E90 /* AlphabeticalCardListCell.swift in Sources */,
 				B8D950562326C4E5001236AE /* AddNewReminder.swift in Sources */,
 				B8D53A8E232D924D006887FE /* DeveloperPage.swift in Sources */,
+				9C331CB924304550003934D6 /* ReviewButtonContainerV.swift in Sources */,
 				9C3B271023CF11C400CC5A13 /* TaskSaved+CoreDataProperties.swift in Sources */,
+				9C331CBB2430470C003934D6 /* ReviewAccessible.swift in Sources */,
 				B8845804232BADFB00B5CC3C /* Color+.swift in Sources */,
 				9CF34024242F269C00897B40 /* WorkspaceAccessible.swift in Sources */,
 				B8D9505A2326C58C001236AE /* UserSettings.swift in Sources */,
