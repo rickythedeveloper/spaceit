@@ -54,8 +54,6 @@ class AlphabeticalCardListCell: UITableViewCell {
     
     private func viewSetup() {
         let padding: CGFloat = 5
-        let minRowHeight: CGFloat = 50.0
-
         self.backgroundColor = .clear
 
         stack.addArrangedSubview(frontTextLabel)
@@ -71,7 +69,7 @@ class AlphabeticalCardListCell: UITableViewCell {
         stack.alignToCenterYOf(self.contentView)
         stack.constrainToSideSafeAreasOf(self.contentView, padding: padding)
         
-        self.contentView.heightAnchor.constraint(greaterThanOrEqualToConstant: minRowHeight).isActive = true
+        self.contentView.heightAnchor.constraint(equalTo: stack.heightAnchor, constant: padding*3.0).isActive = true
     }
 
 }

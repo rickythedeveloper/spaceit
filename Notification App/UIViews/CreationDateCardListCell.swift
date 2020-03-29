@@ -69,8 +69,6 @@ class CreationDateCardListCell: UITableViewCell {
     
     private func viewSetup() {
         let padding: CGFloat = 5.0
-        let minRowHeight: CGFloat = 50.0
-        
         self.backgroundColor = .clear
 
         vstack.addArrangedSubview(frontTextLabel)
@@ -100,7 +98,11 @@ class CreationDateCardListCell: UITableViewCell {
             vstack.constrainToBottomSafeAreaOf(self.contentView, padding: padding)
         }
         
-        self.contentView.heightAnchor.constraint(greaterThanOrEqualToConstant: minRowHeight).isActive = true
+        self.contentView.heightAnchor.constraint(greaterThanOrEqualTo: vstack.heightAnchor, constant: padding*3.0).isActive = true
+        if creationDateLabel != nil {
+            self.contentView.heightAnchor.constraint(greaterThanOrEqualTo: creationDateLabel!.heightAnchor, constant: padding*3.0).isActive = true
+        }
+        
     }
 
 }

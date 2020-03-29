@@ -94,8 +94,8 @@ class UpcomingCardListCell: UITableViewCell {
         mainInfoVStack.constrainToLeadingSafeAreaOf(self.contentView, padding: padding)
         mainInfoVStack.alignToCenterYOf(self.contentView)
         
-        self.contentView.heightAnchor.constraint(greaterThanOrEqualTo: mainInfoVStack.heightAnchor, constant: padding*2.0).isActive = true
-        self.contentView.heightAnchor.constraint(greaterThanOrEqualTo: subInfoVStack.heightAnchor, constant: padding*2.0).isActive = true
+        self.contentView.heightAnchor.constraint(greaterThanOrEqualTo: mainInfoVStack.heightAnchor, constant: padding*3.0).isActive = true
+        self.contentView.heightAnchor.constraint(greaterThanOrEqualTo: subInfoVStack.heightAnchor, constant: padding*3.0).isActive = true
         self.contentView.heightAnchor.constraint(greaterThanOrEqualToConstant: minRowHeight).isActive = true
     }
 }

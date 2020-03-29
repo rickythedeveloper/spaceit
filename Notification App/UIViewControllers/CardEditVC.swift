@@ -220,9 +220,9 @@ extension CardEditVC {
         view.backgroundColor = UIColor.myBackGroundColor()
         view.addSubview(scrollView)
         
-        scrollView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
+        scrollView.constrainToTopSafeAreaOf(view)
         scrollView.constrainToSideSafeAreasOf(view)
-        scrollView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
+        scrollView.constrainToBottomSafeAreaOf(view)
         scrollView.translatesAutoresizingMaskIntoConstraints = false
         scrollView.delegate = self
         

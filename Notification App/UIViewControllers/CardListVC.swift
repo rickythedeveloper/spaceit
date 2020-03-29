@@ -39,6 +39,8 @@ class CardListVC: UIViewController, UITableViewDelegate, UITableViewDataSource, 
     private var upcomingTasks = [TaskSaved]()
     private var alphabeticalTasks = [TaskSaved]()
     private var creationDateTasks = [TaskSaved]()
+    
+    private var searchTimer: Timer?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -138,7 +140,11 @@ extension CardListVC {
     }
     
     @objc private func tfInputChanged() {
-        updateCustomTaskArrays()
+        searchTimer?.invalidate()
+        searchTimer = Timer.scheduledTimer(withTimeInterval: 0.15, repeats: false, block: { (timer) in
+            print("searched")
+            self.updateCustomTaskArrays()
+        })
     }
     
     @objc private func tfEndedEditing() {
