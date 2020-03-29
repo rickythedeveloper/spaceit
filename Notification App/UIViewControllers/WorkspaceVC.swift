@@ -420,7 +420,7 @@ extension WorkspaceVC {
     override var keyCommands: [UIKeyCommand]? {
         return [
             UIKeyCommand(title: "New Page", action: #selector(newPageTFBecomesFirstResponder), input: "p", modifierFlags: [.command], discoverabilityTitle: "New page"),
-            UIKeyCommand(title: "New Card", action: #selector(createNewCard), input: "\n", modifierFlags: [.command], discoverabilityTitle: "New Card"),
+            UIKeyCommand(title: "New Card", action: #selector(createNewCard), input: "n", modifierFlags: [.command], discoverabilityTitle: "New Card"),
         ]
     }
     

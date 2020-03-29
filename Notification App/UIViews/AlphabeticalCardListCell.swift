@@ -55,6 +55,9 @@ class AlphabeticalCardListCell: UITableViewCell {
     private func viewSetup() {
         let padding: CGFloat = 5
         let minRowHeight: CGFloat = 50.0
+
+        self.backgroundColor = .clear
+
         stack.addArrangedSubview(frontTextLabel)
         if let label = pageBreadcrumbLabel {
             stack.addArrangedSubview(label)

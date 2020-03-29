@@ -83,6 +83,7 @@ extension CardListVC {
         cardListTV.delegate = self
         cardListTV.dataSource = self
         cardListTV.register(UITableViewCell.self, forCellReuseIdentifier: cellId)
+        cardListTV.backgroundColor = UIColor.myBackGroundColor()
     }
     
     private func layoutViews() {
@@ -110,8 +111,8 @@ extension CardListVC {
         searchTextField.heightAnchor.constraint(lessThanOrEqualToConstant: 30).isActive = true
         
         cardListTV.isBelow(searchTextField, padding: padding)
-        cardListTV.constrainToSideSafeAreasOf(view, padding: padding)
-        cardListTV.constrainToBottomSafeAreaOf(view, padding: padding)
+        cardListTV.constrainToSideSafeAreasOf(view)
+        cardListTV.constrainToBottomSafeAreaOf(view)
     }
     
     private func update() {
@@ -196,5 +197,42 @@ extension CardListVC {
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         view.endEditing(true)
+    }
+}
+
+// MARK: Keyboard Shortcuts
+extension CardListVC {
+    override var keyCommands: [UIKeyCommand]? {
+        return [
+//            UIKeyCommand(title: "Select page", action: #selector(selectPage), input: "p", modifierFlags: [.command], discoverabilityTitle: "Select page"),
+//            UIKeyCommand(title: "Delete", action: #selector(deletePressed), input: "d", modifierFlags: [.command], discoverabilityTitle: "Delete"),
+//            UIKeyCommand(title: "Archive", action: #selector(archivePressed), input: "a", modifierFlags: [.command], discoverabilityTitle: "Archive"),
+            UIKeyCommand(title: "New Card", action: #selector(addCardPressed), input: "n", modifierFlags: [.command], discoverabilityTitle: "New Card"),
+            UIKeyCommand(title: "Creation Date", action: #selector(switchToCreationDate), input: "3", modifierFlags: [.command], discoverabilityTitle: "Creation Date"),
+            UIKeyCommand(title: "Alphabetical", action: #selector(switchToAlphabetical), input: "2", modifierFlags: [.command], discoverabilityTitle: "Alphabetical"),
+            UIKeyCommand(title: "Upcoming", action: #selector(switchToUpcoming), input: "1", modifierFlags: [.command], discoverabilityTitle: "Upcoming"),
+            UIKeyCommand(title: "Scroll to Top", action: #selector(scrollToTop), input: UIKeyCommand.inputUpArrow, modifierFlags: [.command], discoverabilityTitle: "Scroll to Top"),
+        ]
+    }
+    
+    @objc private func switchToUpcoming() {
+        self.segControl.selectedSegmentIndex = 0
+        segControlValueChanged()
+    }
+    
+    @objc private func switchToAlphabetical() {
+        self.segControl.selectedSegmentIndex = 1
+        segControlValueChanged()
+    }
+    
+    @objc private func switchToCreationDate() {
+        self.segControl.selectedSegmentIndex = 2
+        segControlValueChanged()
+    }
+    
+    @objc private func scrollToTop() {
+        let desiredOffset = CGPoint(x: 0, y: -self.cardListTV.contentInset.top)
+        self.cardListTV.setContentOffset(desiredOffset, animated: true)
+        
     }
 }

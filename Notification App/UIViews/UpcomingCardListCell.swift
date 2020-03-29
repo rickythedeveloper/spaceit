@@ -65,6 +65,8 @@ class UpcomingCardListCell: UITableViewCell {
         let padding: CGFloat = 5.0
         let minRowHeight: CGFloat = 50.0
         
+        self.backgroundColor = .clear
+        
         mainInfoVStack = UIStackView(arrangedSubviews: [frontTextLabel])
         if let label = pageBreadcrumbLabel {
             mainInfoVStack.addArrangedSubview(label)
