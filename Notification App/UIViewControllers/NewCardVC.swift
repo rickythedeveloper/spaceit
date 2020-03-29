@@ -183,7 +183,7 @@ extension NewCardVC {
         self.title = "New Flashcard"
         self.view.backgroundColor = UIColor.myBackGroundColor()
         if self.chosenPage != nil {
-            self.pageButton.setTitle(self.chosenPage?.name, for: .normal)
+            self.pageButton.setTitle(self.chosenPage?.breadCrumb(), for: .normal)
         }
         
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)

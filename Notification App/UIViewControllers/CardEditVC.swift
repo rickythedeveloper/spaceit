@@ -94,10 +94,6 @@ class CardEditVC: UIViewController, UIScrollViewDelegate, WorkspaceAccessible {
     override func viewWillAppear(_ animated: Bool) {
         deactivateButton.setTitle(self.task.isActive ? "Archive" : "Recover", for: .normal)
     }
-    
-    @objc private func buttonPressed() {
-        print("show page structure now")
-    }
 }
 
 // MARK: Core Data
@@ -226,9 +222,8 @@ extension CardEditVC {
         scrollView.translatesAutoresizingMaskIntoConstraints = false
         scrollView.delegate = self
         
-        pageButton.addTarget(self, action: #selector(buttonPressed), for: .touchUpInside)
         if self.task.page != nil {
-            pageButton.setTitle(self.task.page!.name, for: .normal)
+            pageButton.setTitle(self.task.page!.breadCrumb(), for: .normal)
         }
         
         actionButtonContainer = UIStackView(arrangedSubviews: [deleteButton, deactivateButton, okButton, reviewButton])

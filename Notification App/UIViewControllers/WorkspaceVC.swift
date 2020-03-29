@@ -141,7 +141,7 @@ extension WorkspaceVC {
     @objc private func selectThisPage() {
         if let thisPage = self.page {
             self.workspaceAccessible?.chosenPage = thisPage
-            self.workspaceAccessible?.pageButton.setTitle(thisPage.name, for: .normal)
+            self.workspaceAccessible?.pageButton.setTitle(thisPage.breadCrumb(), for: .normal)
         }
         self.navigationController?.dismiss(animated: true, completion: nil)
     }
