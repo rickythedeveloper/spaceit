@@ -25,7 +25,7 @@ extension UIButton {
         button.sizeToFit()
         button.addTarget(nil, action: action, for: .touchUpInside)
         button.layer.cornerRadius = button.layer.frame.height / 4.0
-        button.contentEdgeInsets = UIEdgeInsets(top: 5, left: 15, bottom: 5, right: 15)
+        button.contentEdgeInsets = UIEdgeInsets(top: 5, left: 5, bottom: 5, right: 5)
         return button
     }
     
