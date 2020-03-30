@@ -40,6 +40,7 @@ class WorkspaceVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
     private var thisPageDeleted = false
     private var workspaceAccessible: WorkspaceAccessible?
     
+    private var noWorkspaceAlert: UIAlertController?
     private var coredataUpdateTimer: Timer?
     
     init(page: Page? = nil, onDismiss: @escaping () -> Void = {}, workspaceAccessible: WorkspaceAccessible? = nil) {
@@ -64,7 +65,7 @@ class WorkspaceVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        self.reloadTableView()
+        standardReloadProcedure()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -190,33 +191,19 @@ extension WorkspaceVC {
     /// Reloads the tsble view if this page already exists. Otherwise, sets the page to the top page found in the core data.
     @objc private func coreDataObjectsDidChange() {
         coredataUpdateTimer?.invalidate()
-        coredataUpdateTimer = Timer.scheduledTimer(withTimeInterval: 5.0, repeats: false, block: { (timer) in
-            self.updateViewsOnCoredataChange()
-            print("yo")
-        })
+        DispatchQueue.main.async {
+            self.coredataUpdateTimer = Timer.scheduledTimer(withTimeInterval: 5.0, repeats: false, block: { (timer) in
+                self.updateViewsOnCoredataChange()
+            })
+        }
     }
     
     private func updateViewsOnCoredataChange() {
         guard self.thisPageDeleted == false else {return}
-        guard self.page == nil else {
-            DispatchQueue.main.async {
-                self.title = self.page?.name
-                self.reloadTableView()
-            }
-            return
-        }
-        
-        DispatchQueue.main.async {
-            let pages = Array.pagesFetched(managedObjectContext: self.managedObjectContext)
-            if pages.count > 0 {
-                self.page = pages[0].topPage()
-                self.title = self.page?.name
-                self.reloadTableView()
-            }
-        }
+        standardReloadProcedure()
     }
     
-    /// Calls edit paeg name.
+    /// Calls edit page name.
     @objc private func navBarTouched() {
         self.editPageName()
     }
@@ -239,18 +226,6 @@ extension WorkspaceVC {
         tableV.backgroundColor = .clear
         
         newPageTF.delegate = self
-        
-        guard page == nil else {return}
-        let pages = Array.pagesFetched(managedObjectContext: self.managedObjectContext)
-        if pages.count == 0 {
-//            noPageSetup()
-        } else {
-            if let topPage = pages.topPageHandlingClashes(managedObjectContext: self.managedObjectContext) {
-                self.page = topPage
-            } else {
-                fatalError()
-            }
-        }
     }
     
 //    MARK: No page set up
@@ -447,5 +422,51 @@ extension WorkspaceVC {
     
     @objc private func goToCards() {
         self.tabBarController?.selectedIndex = 0
+    }
+}
+
+// MARK: Reloading data and views
+extension WorkspaceVC {
+    
+    private func standardReloadProcedure() {
+        let pages = fetchPages()
+        if pages.count == 0 {
+            showNoPageAlert()
+        } else {
+            if page == nil {
+                findTopPageAndAssignToThisPage(pages: pages)
+            }
+            reloadViews()
+            self.noWorkspaceAlert?.dismiss(animated: true, completion: nil)
+        }
+    }
+    
+    /// Fetch all the pages in the core data
+    private func fetchPages() -> [Page] {
+        return Array.pagesFetched(managedObjectContext: self.managedObjectContext)
+    }
+    
+    /// Show alert asking if the user wants to create a page.
+    private func showNoPageAlert() {
+        noWorkspaceAlert = UIAlertController.noWorkspaceAlert(createPage: self.noPageSetup)
+        self.present(noWorkspaceAlert!, animated: true, completion: nil)
+    }
+    
+    /// GIven an array of pages, this function finds the top page whilst handling clashes and then assifns the top page to this page.
+    private func findTopPageAndAssignToThisPage(pages: [Page]) {
+        guard pages.count > 0 else {fatalError("The number of pages is 0 where it should not be")}
+        if let topPage = pages.topPageHandlingClashes(managedObjectContext: self.managedObjectContext) {
+            self.page = topPage
+        } else {
+            fatalError()
+        }
+    }
+    
+    /// Reload table view and title of this viewcontroller.
+    private func reloadViews() {
+        DispatchQueue.main.async {
+            self.title = self.page?.name
+            self.tableV.reloadData()
+        }
     }
 }

@@ -70,9 +70,11 @@ extension CardListVC {
     /// This function is called when core data objects have been changed. This function reloads the table view data.
     @objc private func coreDataObjectsDidChange() {
         coredataUpdateTimer?.invalidate()
-        coredataUpdateTimer = Timer.scheduledTimer(withTimeInterval: 5.0, repeats: false, block: { (timer) in
-            self.update()
-        })
+        DispatchQueue.main.async {
+            self.coredataUpdateTimer = Timer.scheduledTimer(withTimeInterval: 5.0, repeats: false, block: { (timer) in
+                self.update()
+            })
+        }
     }
 }
 

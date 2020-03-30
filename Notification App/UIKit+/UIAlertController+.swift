@@ -80,4 +80,18 @@ extension UIAlertController {
         
         return ac
     }
+    
+    static func noWorkspaceAlert(createPage: @escaping ()->Void) -> UIAlertController {
+        let title = "Are you new here?"
+        let message = "If you are a new customer, go ahead and tap Yes to create a new workspace! If you are an existing customer and you have your workspace on another device, please tap No and wait up to a few minutes to load."
+        
+        let ac = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let no = UIAlertAction(title: "No", style: .cancel, handler: nil)
+        let yes = UIAlertAction(title: "Yes", style: .default) { (_) in
+            createPage()
+        }
+        ac.addAction(no)
+        ac.addAction(yes)
+        return ac
+    }
 }
