@@ -9,21 +9,6 @@
 import UIKit
 
 class CardListStyle {
-    static func frontTextWithAnswerIndicator(task: TaskSaved, padding: CGFloat) -> UIStackView {
-        let frontTextLabel = UILabel()
-        frontTextLabel.formatCardTitleInTable(task: task)
-        let frontTextStack = UIStackView(arrangedSubviews: [frontTextLabel])
-        if let answer = task.answer, answer.hasContent() {
-            let answerIndicator = UIImageView.answerIndicator(usesAutolayout: true)
-            frontTextStack.addArrangedSubview(answerIndicator)
-            answerIndicator.heightAnchor.constraint(greaterThanOrEqualToConstant: 15.0).isActive = true
-            answerIndicator.heightAnchor.constraint(lessThanOrEqualToConstant: 20.0).isActive = true
-            answerIndicator.widthAnchor.constraint(equalTo: answerIndicator.heightAnchor, multiplier: 1.1).isActive = true
-            frontTextStack.spacing = padding
-        }
-        return frontTextStack
-    }
-    
     static func basicElements(task: TaskSaved, padding: CGFloat, usesAutolayout: Bool) -> UIStackView {
         let frontTextLabel = UILabel()
         frontTextLabel.formatCardTitleInTable(task: task)
@@ -61,5 +46,37 @@ class CardListStyle {
         }
         
         return mainStack
+    }
+    
+    static func dueAndIntervalStack(task: TaskSaved, contentView: UIView, isFirst: Bool, padding: CGFloat, usesAutolayout: Bool) -> (stack: UIStackView, dueLabelWidth: CGFloat, intervalLabelWidth: CGFloat){
+        let dueLabel = UILabel()
+        let intervalLabel = UILabel()
+        
+        // setting of due date and interval
+        let descriptionAttirbutes = NSAttributedString.descriptionAttributes(task: task)
+        let bodyAttributes = NSAttributedString.bodyAttributes(task: task)
+        
+        let dueDateText = NSMutableAttributedString()
+        if isFirst {
+            dueDateText.append(NSAttributedString(string: "Due: ", attributes: descriptionAttirbutes))
+        }
+        dueDateText.append(NSAttributedString(string: task.dueDate().dateString(), attributes: bodyAttributes))
+        dueLabel.attributedText = dueDateText
+        
+        let intervalText = NSMutableAttributedString()
+        if isFirst {
+            intervalText.append(NSAttributedString(string: "Interval: ", attributes: descriptionAttirbutes))
+        }
+        intervalText.append(NSAttributedString(string: task.waitTimeString(), attributes: bodyAttributes))
+        intervalLabel.attributedText = intervalText
+        
+        let stack = UIStackView(arrangedSubviews: [dueLabel, intervalLabel])
+        stack.axis = .vertical
+        stack.distribution = .equalSpacing
+        stack.spacing = padding
+        stack.alignment = .trailing
+        stack.translatesAutoresizingMaskIntoConstraints = !usesAutolayout
+        
+        return (stack, dueLabel.intrinsicContentSize.width, intervalLabel.intrinsicContentSize.width)
     }
 }

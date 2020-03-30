@@ -10,42 +10,18 @@ import UIKit
 
 class UpcomingCardListCell: UITableViewCell {
     private var isFirst: Bool
-    
     private var task: TaskSaved
-    
-    private var dueLabel = UILabel()
-    private var intervalLabel = UILabel()
     
     init(style: UITableViewCell.CellStyle, reuseIdentifier: String?, task: TaskSaved, isFirst: Bool) {
         self.isFirst = isFirst
         self.task = task
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
-        setup()
         viewSetup()
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
-    }
-    
-    private func setup() {
-        // setting of due date and interval
-        let descriptionAttirbutes = NSAttributedString.descriptionAttributes(task: self.task)
-        let bodyAttributes = NSAttributedString.bodyAttributes(task: self.task)
-        let dueDateText = NSMutableAttributedString()
-        if isFirst {
-            dueDateText.append(NSAttributedString(string: "Due: ", attributes: descriptionAttirbutes))
-        }
-        dueDateText.append(NSAttributedString(string: task.dueDate().dateString(), attributes: bodyAttributes))
-        dueLabel.attributedText = dueDateText
-        
-        let intervalText = NSMutableAttributedString()
-        if isFirst {
-            intervalText.append(NSAttributedString(string: "Interval: ", attributes: descriptionAttirbutes))
-        }
-        intervalText.append(NSAttributedString(string: task.waitTimeString(), attributes: bodyAttributes))
-        intervalLabel.attributedText = intervalText
     }
     
     private func viewSetup() {
@@ -57,15 +33,10 @@ class UpcomingCardListCell: UITableViewCell {
         let mainInfoVStack = CardListStyle.basicElements(task: self.task, padding: padding, usesAutolayout: true)
         self.contentView.addSubview(mainInfoVStack)
         
-        let subInfoVStack = UIStackView(arrangedSubviews: [dueLabel, intervalLabel])
-        subInfoVStack.axis = .vertical
-        subInfoVStack.distribution = .equalSpacing
-        subInfoVStack.spacing = padding
-        subInfoVStack.alignment = .trailing
-        subInfoVStack.translatesAutoresizingMaskIntoConstraints = false
+        let (subInfoVStack, duelabelWidth, intervalLabelWidth) = CardListStyle.dueAndIntervalStack(task: self.task, contentView: self.contentView, isFirst: isFirst, padding: padding, usesAutolayout: true)
         self.contentView.addSubview(subInfoVStack)
         
-        let minSubInfoWidth = max(dueLabel.intrinsicContentSize.width, intervalLabel.intrinsicContentSize.width)
+        let minSubInfoWidth = max(duelabelWidth, intervalLabelWidth)
         subInfoVStack.constrainToTrailingSafeAreaOf(self.contentView, padding: padding)
         subInfoVStack.widthAnchor.constraint(equalToConstant: minSubInfoWidth).isActive = true
         subInfoVStack.alignToCenterYOf(self.contentView)

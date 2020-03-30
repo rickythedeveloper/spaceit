@@ -30,7 +30,7 @@ extension UIButton {
     }
     
     static func pageButton(text: String, action: Selector, usesAutoLayout: Bool) -> UIButton {
-        let button = UIButton.actionButton(text: text, action: action, font: UIFont.preferredFont(forTextStyle: .title3), backgroundColor: UIColor.pageButtonBackground(), usesAutoLayout: usesAutoLayout)
+        let button = UIButton.actionButton(text: text, action: action, font: UIFont.preferredFont(forTextStyle: .callout), backgroundColor: UIColor.pageButtonBackground(), usesAutoLayout: usesAutoLayout)
         button.setTitleColor(.systemBlue, for: .normal)
         button.setTitleColor(.gray, for: .highlighted)
         button.titleLabel?.lineBreakMode = .byWordWrapping
