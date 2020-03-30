@@ -48,7 +48,7 @@ class CardListStyle {
         return mainStack
     }
     
-    static func dueAndIntervalStack(task: TaskSaved, contentView: UIView, isFirst: Bool, padding: CGFloat, usesAutolayout: Bool) -> (stack: UIStackView, dueLabelWidth: CGFloat, intervalLabelWidth: CGFloat){
+    static func dueAndIntervalStack(task: TaskSaved, isFirst: Bool, padding: CGFloat, usesAutolayout: Bool) -> (stack: UIStackView, dueLabelWidth: CGFloat, intervalLabelWidth: CGFloat) {
         let dueLabel = UILabel()
         let intervalLabel = UILabel()
         
@@ -78,5 +78,21 @@ class CardListStyle {
         stack.translatesAutoresizingMaskIntoConstraints = !usesAutolayout
         
         return (stack, dueLabel.intrinsicContentSize.width, intervalLabel.intrinsicContentSize.width)
+    }
+    
+    static func creationDateStack(task: TaskSaved, isFirst: Bool, usesAutolayout: Bool) -> UILabel {
+        guard let creationDate = task.creationDateString() else {return UILabel()}
+        
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = !usesAutolayout
+        let descriptionAttirbutes = NSAttributedString.descriptionAttributes(task: task)
+        let bodyAttributes = NSAttributedString.bodyAttributes(task: task)
+        let creationDateText = NSMutableAttributedString()
+        if isFirst {
+            creationDateText.append(NSAttributedString(string: "Created on ", attributes: descriptionAttirbutes))
+        }
+        creationDateText.append(NSAttributedString(string: creationDate, attributes: bodyAttributes))
+        label.attributedText = creationDateText
+        return label
     }
 }

@@ -33,7 +33,7 @@ class UpcomingCardListCell: UITableViewCell {
         let mainInfoVStack = CardListStyle.basicElements(task: self.task, padding: padding, usesAutolayout: true)
         self.contentView.addSubview(mainInfoVStack)
         
-        let (subInfoVStack, duelabelWidth, intervalLabelWidth) = CardListStyle.dueAndIntervalStack(task: self.task, contentView: self.contentView, isFirst: isFirst, padding: padding, usesAutolayout: true)
+        let (subInfoVStack, duelabelWidth, intervalLabelWidth) = CardListStyle.dueAndIntervalStack(task: self.task, isFirst: isFirst, padding: padding, usesAutolayout: true)
         self.contentView.addSubview(subInfoVStack)
         
         let minSubInfoWidth = max(duelabelWidth, intervalLabelWidth)
