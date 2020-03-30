@@ -11,7 +11,15 @@ import SwiftUI
 import CoreData
 
 class CardEditVC: UIViewController, UIScrollViewDelegate, WorkspaceAccessible {
-    internal var chosenPage: Page?
+    internal var chosenPage: Page? {
+        willSet(newPage) {
+            if newPage == nil {
+                pageButton.setTitle("Select page for this button", for: .normal)
+            } else {
+                pageButton.setTitle(newPage!.breadCrumb(), for: .normal)
+            }
+        }
+    }
     
     var scrollView: UIScrollView = {
         let sv = UIScrollView()
@@ -19,7 +27,7 @@ class CardEditVC: UIViewController, UIScrollViewDelegate, WorkspaceAccessible {
         return sv
     }()
     
-    internal let pageButton = UIButton.pageButton(text: "Select page for this button", action: #selector(selectPage), usesAutoLayout: true)
+    let pageButton = UIButton.pageButton(text: "Select page for this button", action: #selector(selectPage), usesAutoLayout: true)
     
     let divider: UIView = {
         let divider = UIView()

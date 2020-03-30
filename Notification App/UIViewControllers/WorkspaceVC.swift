@@ -9,7 +9,15 @@
 import UIKit
 import CoreData
 
-class WorkspaceVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate {
+class WorkspaceVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate, WorkspaceAccessible {
+    var chosenPage: Page? {
+        willSet(newPage) {
+            if newPage != nil {
+                moveThisPageUnder(newPage!)
+            }
+        }
+    }
+    
     private var page: Page?
     private var managedObjectContext: NSManagedObjectContext!
     
@@ -125,6 +133,12 @@ extension WorkspaceVC {
 //                self.deleteThisPage()
 //            }))
 //        }
+
+        if self.page?.isTopPage() == false {
+            actions.append(("Move page", .default, {
+                self.choosePageToMoveTo()
+            }))
+        }
         
         if self.page?.isTopPage() == false {
             actions.append(("Delete page", UIAlertAction.Style.destructive, {
@@ -142,7 +156,6 @@ extension WorkspaceVC {
     @objc private func selectThisPage() {
         if let thisPage = self.page {
             self.workspaceAccessible?.chosenPage = thisPage
-            self.workspaceAccessible?.pageButton.setTitle(thisPage.breadCrumb(), for: .normal)
         }
         self.navigationController?.dismiss(animated: true, completion: nil)
     }
@@ -468,5 +481,26 @@ extension WorkspaceVC {
             self.title = self.page?.name
             self.tableV.reloadData()
         }
+    }
+}
+
+// MARK: Page Manipulation
+extension WorkspaceVC {
+    
+    private func choosePageToMoveTo() {
+        self.present(UINavigationController(rootViewController: WorkspaceVC(workspaceAccessible: self)), animated: true, completion: nil)
+    }
+    
+    private func moveThisPageUnder(_ newParent: Page) {
+        guard let thisPage = self.page else {return}
+        
+        thisPage.moveTo(under: newParent, cannotMoveAction: {
+            DispatchQueue.main.async {
+                self.present(UIAlertController.cannotMovePage(), animated: true, completion: nil)
+            }
+        })
+        managedObjectContext.saveContext(completion: {
+            self.standardReloadProcedure()
+        })
     }
 }

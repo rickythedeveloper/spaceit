@@ -94,4 +94,13 @@ extension UIAlertController {
         ac.addAction(yes)
         return ac
     }
+    
+    static func cannotMovePage() -> UIAlertController {
+        let title = "Could not move page"
+        let message = "You cannot move a page into somewhere that's directly below the page itself."
+        let ac = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let ok = UIAlertAction(title: "OK", style: .default, handler: nil)
+        ac.addAction(ok)
+        return ac
+    }
 }

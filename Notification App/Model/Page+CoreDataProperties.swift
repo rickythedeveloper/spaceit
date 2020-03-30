@@ -173,3 +173,38 @@ extension Page {
         return self.id == self.topPage().id
     }
 }
+
+// MARK: Page manipulation
+extension Page {
+    func moveTo(under page: Page, cannotMoveAction: ()->Void) {
+        guard !isAncetorOf(page) && !isSameAs(page) else {
+            cannotMoveAction()
+            return
+        }
+        
+        self.parent = page
+    }
+}
+
+// MARK: Properties
+extension Page {
+    func isSameAs(_ page: Page) -> Bool {
+        if self == page {
+            return true
+        } else {
+            return false
+        }
+    }
+    
+    func isAncetorOf(_ page: Page) -> Bool {
+        if let parent = page.parent { // it has a parent
+            if parent == self {
+                return true
+            } else {
+                return self.isAncetorOf(parent)
+            }
+        } else { // it has no parent
+            return false
+        }
+    }
+}

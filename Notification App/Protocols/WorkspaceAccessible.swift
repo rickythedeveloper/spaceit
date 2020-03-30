@@ -10,5 +10,4 @@ import UIKit
 
 protocol WorkspaceAccessible {
     var chosenPage: Page? {get set}
-    var pageButton: UIButton {get}
 }

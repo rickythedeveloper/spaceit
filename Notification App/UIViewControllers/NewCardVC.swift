@@ -20,8 +20,16 @@ class NewCardVC: UIViewController, UITextViewDelegate, WorkspaceAccessible {
         return sv
     }()
     
-    internal let pageButton = UIButton.pageButton(text: "Select page for this button", action: #selector(addPagePressed), usesAutoLayout: true)
-    internal var chosenPage: Page?
+    let pageButton = UIButton.pageButton(text: "Select page for this button", action: #selector(addPagePressed), usesAutoLayout: true)
+    internal var chosenPage: Page? {
+        willSet(newPage) {
+            if newPage == nil {
+                pageButton.setTitle("Select page for this button", for: .normal)
+            } else {
+                pageButton.setTitle(newPage!.breadCrumb(), for: .normal)
+            }
+        }
+    }
     
     private let frontLabel = UILabel.front()
     private let frontTV = UITextView.cardSIdeTV()
