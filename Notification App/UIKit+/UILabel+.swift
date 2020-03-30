@@ -44,7 +44,8 @@ extension UILabel {
         self.text = breadcrumb
         self.font = .breadCrumbInTable()
         self.alpha = 0.7
-        
+        self.lineBreakMode = .byWordWrapping
+        self.numberOfLines = 0
         if !task.isActive {
             self.textColor = UIColor.archivedGray().body
         } else if task.isDue() {

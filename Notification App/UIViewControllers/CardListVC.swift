@@ -72,7 +72,6 @@ extension CardListVC {
         coredataUpdateTimer?.invalidate()
         coredataUpdateTimer = Timer.scheduledTimer(withTimeInterval: 5.0, repeats: false, block: { (timer) in
             self.update()
-            print("hey")
         })
     }
 }
@@ -145,7 +144,10 @@ extension CardListVC {
             alphabeticalTasks = tasks.sortedByName()
             creationDateTasks = tasks.sortedByCreationDate(oldFirst: false)
         }
-        cardListTV.reloadData()
+        
+        DispatchQueue.main.async {
+            self.cardListTV.reloadData()
+        }
     }
     
     @objc private func segControlValueChanged() {

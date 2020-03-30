@@ -33,6 +33,16 @@ extension UIButton {
         let button = UIButton.actionButton(text: text, action: action, font: UIFont.preferredFont(forTextStyle: .title3), backgroundColor: UIColor.pageButtonBackground(), usesAutoLayout: usesAutoLayout)
         button.setTitleColor(.systemBlue, for: .normal)
         button.setTitleColor(.gray, for: .highlighted)
+        button.titleLabel?.lineBreakMode = .byWordWrapping
         return button
+    }
+    
+    func layoutPageSelectButton(parentView: UIView, padding: CGFloat) {
+        self.isBelow(parentView.topAnchor, padding: padding)
+        self.alignToCenterXOf(parentView)
+        self.widthAnchor.constraint(lessThanOrEqualTo: parentView.widthAnchor, constant: -padding*2.0).isActive = true
+        if self.titleLabel != nil {
+            self.heightAnchor.constraint(equalTo: self.titleLabel!.heightAnchor, constant: padding).isActive = true
+        }
     }
 }

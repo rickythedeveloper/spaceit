@@ -13,6 +13,13 @@ class NewCardVC: UIViewController, UITextViewDelegate, WorkspaceAccessible {
     
     private var managedObjectContext: NSManagedObjectContext?
     
+    private var scrollView: UIScrollView = {
+        let sv = UIScrollView()
+        sv.alwaysBounceVertical = true
+        sv.translatesAutoresizingMaskIntoConstraints = false
+        return sv
+    }()
+    
     internal let pageButton = UIButton.pageButton(text: "Select page for this button", action: #selector(addPagePressed), usesAutoLayout: true)
     internal var chosenPage: Page?
     
@@ -147,9 +154,17 @@ extension NewCardVC {
     }
     
     @objc private func keyboardWillShow(notification: NSNotification) {
-        if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
-            self.view.frame.origin.y = min(0, keyboardSize.minY - tvMaxY)
+        guard let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue else {return}
+
+        var textFieldMaxY: CGFloat = 0.0
+
+        if self.frontTV.isFirstResponder {
+            textFieldMaxY = (self.frontTV.superview!.convert(frontTV.frame, to: nil)).maxY
+        } else if self.backTV.isFirstResponder {
+            textFieldMaxY = (self.backTV.superview!.convert(backTV.frame, to: nil)).maxY
         }
+
+        self.scrollView.setContentOffset(CGPoint(x: 0, y: max(-self.scrollView.contentInset.top, 10 + textFieldMaxY - keyboardSize.minY)), animated: true)
     }
 
     @objc private func keyboardWillHide(notification: NSNotification) {
@@ -189,50 +204,59 @@ extension NewCardVC {
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
         
-        view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(gestureDetectedOnView)))
-        view.addGestureRecognizer(UIPanGestureRecognizer(target: self, action: #selector(gestureDetectedOnView)))
+        view.addSubview(scrollView)
+        scrollView.constrainToTopSafeAreaOf(view)
+        scrollView.constrainToSideSafeAreasOf(view)
+        scrollView.constrainToBottomSafeAreaOf(view)
+        scrollView.delegate = self
         
-        view.addSubview(pageButton)
-        view.addSubview(frontLabel)
-        view.addSubview(frontTV)
-        view.addSubview(backLabel)
-        view.addSubview(backTV)
-        view.addSubview(addButton)
+        scrollView.addSubview(pageButton)
+        scrollView.addSubview(frontLabel)
+        scrollView.addSubview(frontTV)
+        scrollView.addSubview(backLabel)
+        scrollView.addSubview(backTV)
+        scrollView.addSubview(addButton)
         
         let padding: CGFloat = 10.0
         let minTVHeight: CGFloat = 1/4
         let maxTVHeight: CGFloat = 1/3
         
-        pageButton.constrainToTopSafeAreaOf(view, padding: padding)
-        pageButton.alignToCenterXOf(view)
+        pageButton.layoutPageSelectButton(parentView: scrollView, padding: padding)
         
         frontLabel.isBelow(pageButton, padding: padding)
-        frontLabel.alignToCenterXOf(view)
+        frontLabel.alignToCenterXOf(scrollView)
         
         frontTV.isBelow(frontLabel, padding: padding)
-        frontTV.constrainToSideSafeAreasOf(view, padding: padding)
-        frontTV.heightAnchor.constraint(greaterThanOrEqualTo: view.safeAreaLayoutGuide.heightAnchor, multiplier: minTVHeight).isActive = true
-        frontTV.heightAnchor.constraint(lessThanOrEqualTo: view.safeAreaLayoutGuide.heightAnchor, multiplier: maxTVHeight).isActive = true
+        frontTV.constrainToSideSafeAreasOf(scrollView, padding: padding)
+        frontTV.heightAnchor.constraint(greaterThanOrEqualTo: scrollView.safeAreaLayoutGuide.heightAnchor, multiplier: minTVHeight).isActive = true
+        frontTV.heightAnchor.constraint(lessThanOrEqualTo: scrollView.safeAreaLayoutGuide.heightAnchor, multiplier: maxTVHeight).isActive = true
         setupTextView(textView: frontTV)
         
         backLabel.isBelow(frontTV, padding: 3*padding)
-        backLabel.alignToCenterXOf(view)
+        backLabel.alignToCenterXOf(scrollView)
 
         backTV.isBelow(backLabel, padding: padding)
         backTV.leadingAnchor.constraint(equalTo: frontTV.leadingAnchor).isActive = true
         backTV.trailingAnchor.constraint(equalTo: frontTV.trailingAnchor).isActive = true
-        backTV.heightAnchor.constraint(greaterThanOrEqualTo: view.safeAreaLayoutGuide.heightAnchor, multiplier: minTVHeight).isActive = true
-        backTV.heightAnchor.constraint(lessThanOrEqualTo: view.safeAreaLayoutGuide.heightAnchor, multiplier: maxTVHeight).isActive = true
+        backTV.heightAnchor.constraint(greaterThanOrEqualTo: scrollView.safeAreaLayoutGuide.heightAnchor, multiplier: minTVHeight).isActive = true
+        backTV.heightAnchor.constraint(lessThanOrEqualTo: scrollView.safeAreaLayoutGuide.heightAnchor, multiplier: maxTVHeight).isActive = true
         setupTextView(textView: backTV)
         
         addButton.isBelow(backTV, padding: padding*2)
-        addButton.alignToCenterXOf(view)
+        addButton.alignToCenterXOf(scrollView)
     }
     
     private func setupTextView(textView: UITextView) {
         textView.text = (textView == frontTV ? frontPlaceholder : backPlaceholder)
         textView.textColor = UIColor.placeholderText
         textView.delegate = self
+    }
+}
+
+// MARK: Scrollview delegate
+extension NewCardVC: UIScrollViewDelegate {
+    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+        view.endEditing(true)
     }
 }
 

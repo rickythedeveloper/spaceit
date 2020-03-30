@@ -19,21 +19,7 @@ class CardEditVC: UIViewController, UIScrollViewDelegate, WorkspaceAccessible {
         return sv
     }()
     
-    internal let pageButton: UIButton = {
-        let button = UIButton()
-        button.translatesAutoresizingMaskIntoConstraints = false
-        button.setTitle("Select page for this card", for: .normal)
-        button.setTitleColor(.systemBlue, for: .normal)
-        button.setTitleColor(.gray, for: .highlighted)
-        button.titleLabel?.font = UIFont.preferredFont(forTextStyle: .title3)
-        button.sizeToFit()
-        button.backgroundColor = (UIColor.systemGray).withAlphaComponent(0.2)
-        button.layer.cornerRadius = button.frame.height / 4.0
-        button.layer.masksToBounds = true
-        button.contentEdgeInsets = UIEdgeInsets(top: 5, left: 10, bottom: 5, right: 10)
-        button.addTarget(self, action: #selector(selectPage), for: .touchUpInside)
-        return button
-    }()
+    internal let pageButton = UIButton.pageButton(text: "Select page for this button", action: #selector(selectPage), usesAutoLayout: true)
     
     let divider: UIView = {
         let divider = UIView()
@@ -252,8 +238,7 @@ extension CardEditVC {
         scrollView.addSubview(actionButtonContainer)
         scrollView.addSubview(infoStack)
         
-        pageButton.isBelow(scrollView.topAnchor, padding: padding)
-        pageButton.alignToCenterXOf(scrollView)
+        pageButton.layoutPageSelectButton(parentView: scrollView, padding: padding)
         
         divider.topAnchor.constraint(lessThanOrEqualTo: pageButton.bottomAnchor, constant: 10).isActive = true
         divider.constrainToSideSafeAreasOf(scrollView, padding: 2*padding)
