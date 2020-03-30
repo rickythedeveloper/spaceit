@@ -14,11 +14,7 @@ class CreationDateCardListCell: UITableViewCell {
     
     private var task: TaskSaved
     
-    private var frontTextLabel = UILabel()
-    private var pageBreadcrumbLabel: UILabel?
     private var creationDateLabel: UILabel?
-    
-    private var vstack = UIStackView()
     
     init(style: UITableViewCell.CellStyle, reuseIdentifier: String?, task: TaskSaved, isFirst: Bool) {
         self.isFirst = isFirst
@@ -45,14 +41,6 @@ class CreationDateCardListCell: UITableViewCell {
     }
     
     private func setup() {
-        // setting of front text and page breadcrumb
-        frontTextLabel.formatCardTitleInTable(task: self.task)
-        
-        if let breadcrumb = task.page?.breadCrumb() {
-            pageBreadcrumbLabel = UILabel()
-            pageBreadcrumbLabel?.formatBreadcrumbInTable(task: self.task, breadcrumb: breadcrumb)
-        }
-        
         // setting the creation date label
         guard let creationDate = task.creationDateString() else {return}
         
@@ -71,14 +59,7 @@ class CreationDateCardListCell: UITableViewCell {
         let padding: CGFloat = 5.0
         self.backgroundColor = .clear
 
-        vstack.addArrangedSubview(frontTextLabel)
-        if let label = pageBreadcrumbLabel {
-            vstack.addArrangedSubview(label)
-        }
-        vstack.axis = .vertical
-        vstack.distribution = .equalSpacing
-        vstack.spacing = padding
-        vstack.translatesAutoresizingMaskIntoConstraints = false
+        let vstack = CardListStyle.basicElements(task: self.task, padding: padding, usesAutolayout: true)
         self.contentView.addSubview(vstack)
         
         if let label = creationDateLabel {

@@ -13,13 +13,8 @@ class UpcomingCardListCell: UITableViewCell {
     
     private var task: TaskSaved
     
-    private var frontTextLabel = UILabel()
-    private var pageBreadcrumbLabel: UILabel?
     private var dueLabel = UILabel()
     private var intervalLabel = UILabel()
-    
-    private var mainInfoVStack = UIStackView()
-    private var subInfoVStack = UIStackView()
     
     init(style: UITableViewCell.CellStyle, reuseIdentifier: String?, task: TaskSaved, isFirst: Bool) {
         self.isFirst = isFirst
@@ -35,14 +30,6 @@ class UpcomingCardListCell: UITableViewCell {
     }
     
     private func setup() {
-        // setting of front text and page breadcrumb
-        frontTextLabel.formatCardTitleInTable(task: self.task)
-        
-        if let breadcrumb = task.page?.breadCrumb() {
-            pageBreadcrumbLabel = UILabel()
-            pageBreadcrumbLabel?.formatBreadcrumbInTable(task: self.task, breadcrumb: breadcrumb)
-        }
-        
         // setting of due date and interval
         let descriptionAttirbutes = NSAttributedString.descriptionAttributes(task: self.task)
         let bodyAttributes = NSAttributedString.bodyAttributes(task: self.task)
@@ -67,17 +54,10 @@ class UpcomingCardListCell: UITableViewCell {
         
         self.backgroundColor = .clear
         
-        mainInfoVStack = UIStackView(arrangedSubviews: [frontTextLabel])
-        if let label = pageBreadcrumbLabel {
-            mainInfoVStack.addArrangedSubview(label)
-        }
-        mainInfoVStack.axis = .vertical
-        mainInfoVStack.distribution = .equalSpacing
-        mainInfoVStack.spacing = padding
-        mainInfoVStack.translatesAutoresizingMaskIntoConstraints = false
+        let mainInfoVStack = CardListStyle.basicElements(task: self.task, padding: padding, usesAutolayout: true)
         self.contentView.addSubview(mainInfoVStack)
         
-        subInfoVStack = UIStackView(arrangedSubviews: [dueLabel, intervalLabel])
+        let subInfoVStack = UIStackView(arrangedSubviews: [dueLabel, intervalLabel])
         subInfoVStack.axis = .vertical
         subInfoVStack.distribution = .equalSpacing
         subInfoVStack.spacing = padding

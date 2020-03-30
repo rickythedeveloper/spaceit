@@ -173,16 +173,16 @@ extension CardEditVC {
 extension CardEditVC {
     override var keyCommands: [UIKeyCommand]? {
         return [
-            UIKeyCommand(title: "Select page", action: #selector(selectPage), input: "p", modifierFlags: [.command], discoverabilityTitle: "Select page"),
-            UIKeyCommand(title: "Delete", action: #selector(deletePressed), input: "d", modifierFlags: [.command], discoverabilityTitle: "Delete"),
-            UIKeyCommand(title: "Archive", action: #selector(archivePressed), input: "a", modifierFlags: [.command], discoverabilityTitle: "Archive"),
-            UIKeyCommand(title: "Save", action: #selector(okPressed), input: "s", modifierFlags: [.command], discoverabilityTitle: "Save"),
-            UIKeyCommand(title: "Review: Very Easy", action: #selector(happyAction), input: "4", modifierFlags: [.command], discoverabilityTitle: "Review: Very Easy"),
-            UIKeyCommand(title: "Review: Easy", action: #selector(okayAction), input: "3", modifierFlags: [.command], discoverabilityTitle: "Review: Easy"),
-            UIKeyCommand(title: "Review: Hard", action: #selector(sadAction), input: "2", modifierFlags: [.command], discoverabilityTitle: "Review: Hard"),
-            UIKeyCommand(title: "Review: Very Hard", action: #selector(depressedAction), input: "1", modifierFlags: [.command], discoverabilityTitle: "Review: Very Hard"),
-            UIKeyCommand(title: "Next/Save", action: #selector(goToNextTextView), input: "\r", modifierFlags: [.command], discoverabilityTitle: "Next/Save"),
             UIKeyCommand(title: "Go back", action: #selector(dismissView), input: UIKeyCommand.inputLeftArrow, modifierFlags: [.command], discoverabilityTitle: "Go back"),
+            UIKeyCommand(title: "Select page", action: #selector(selectPage), input: "p", modifierFlags: [.command], discoverabilityTitle: "Select page"),
+            UIKeyCommand(title: "Next/Save", action: #selector(goToNextTextView), input: "\r", modifierFlags: [.command], discoverabilityTitle: "Next/Save"),
+            UIKeyCommand(title: "Delete", action: #selector(deletePressed), input: "d", modifierFlags: [.command], discoverabilityTitle: "Delete"),
+            UIKeyCommand(title: "Archive/Recover", action: #selector(archivePressed), input: "a", modifierFlags: [.command], discoverabilityTitle: "Archive/Recover"),
+            UIKeyCommand(title: "Save", action: #selector(okPressed), input: "s", modifierFlags: [.command], discoverabilityTitle: "Save"),
+            UIKeyCommand(title: "Review: Very Hard", action: #selector(depressedAction), input: "1", modifierFlags: [.command], discoverabilityTitle: "Review: Very Hard"),
+            UIKeyCommand(title: "Review: Hard", action: #selector(sadAction), input: "2", modifierFlags: [.command], discoverabilityTitle: "Review: Hard"),
+            UIKeyCommand(title: "Review: Easy", action: #selector(okayAction), input: "3", modifierFlags: [.command], discoverabilityTitle: "Review: Easy"),
+            UIKeyCommand(title: "Review: Very Easy", action: #selector(happyAction), input: "4", modifierFlags: [.command], discoverabilityTitle: "Review: Very Easy"),
         ]
     }
 }

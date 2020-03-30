@@ -225,15 +225,13 @@ extension CardListVC {
 extension CardListVC {
     override var keyCommands: [UIKeyCommand]? {
         return [
-//            UIKeyCommand(title: "Select page", action: #selector(selectPage), input: "p", modifierFlags: [.command], discoverabilityTitle: "Select page"),
-//            UIKeyCommand(title: "Delete", action: #selector(deletePressed), input: "d", modifierFlags: [.command], discoverabilityTitle: "Delete"),
-//            UIKeyCommand(title: "Archive", action: #selector(archivePressed), input: "a", modifierFlags: [.command], discoverabilityTitle: "Archive"),
             UIKeyCommand(title: "New Card", action: #selector(addCardPressed), input: "n", modifierFlags: [.command], discoverabilityTitle: "New Card"),
             UIKeyCommand(title: "Creation Date", action: #selector(switchToCreationDate), input: "3", modifierFlags: [.command], discoverabilityTitle: "Creation Date"),
             UIKeyCommand(title: "Alphabetical", action: #selector(switchToAlphabetical), input: "2", modifierFlags: [.command], discoverabilityTitle: "Alphabetical"),
             UIKeyCommand(title: "Upcoming", action: #selector(switchToUpcoming), input: "1", modifierFlags: [.command], discoverabilityTitle: "Upcoming"),
             UIKeyCommand(title: "Scroll to Top", action: #selector(scrollToTop), input: UIKeyCommand.inputUpArrow, modifierFlags: [.command], discoverabilityTitle: "Scroll to Top"),
-            UIKeyCommand(title: "Search", action: #selector(search), input: "f", modifierFlags: [.command], discoverabilityTitle: "Search")
+            UIKeyCommand(title: "Search", action: #selector(search), input: "f", modifierFlags: [.command], discoverabilityTitle: "Search"),
+            UIKeyCommand(title: "Workspace", action: #selector(goToWorkspace), input: UIKeyCommand.inputRightArrow, modifierFlags: [.command, .shift], discoverabilityTitle: "Workspace"),
         ]
     }
     
@@ -259,5 +257,9 @@ extension CardListVC {
     
     @objc private func search() {
         self.searchTextField.becomeFirstResponder()
+    }
+    
+    @objc private func goToWorkspace() {
+        self.tabBarController?.selectedIndex = 1
     }
 }

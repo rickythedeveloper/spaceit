@@ -264,10 +264,10 @@ extension NewCardVC: UIScrollViewDelegate {
 extension NewCardVC {
     override var keyCommands: [UIKeyCommand]? {
         return [
+            UIKeyCommand(title: "Cancel", action: #selector(dismissView), input: UIKeyCommand.inputLeftArrow, modifierFlags: [.command], discoverabilityTitle: "Cancel"),
             UIKeyCommand(title: "Select page", action: #selector(addPagePressed), input: "p", modifierFlags: [.command], discoverabilityTitle: "Select page"),
             UIKeyCommand(title: "Next Text Field / Add Card", action: #selector(goToNextTextView), input: "\r", modifierFlags: [.command], discoverabilityTitle: "Next Text Field / Add Card"),
             UIKeyCommand(title: "Previous Text Field", action: #selector(previousTF), input: "\r", modifierFlags: [.command, .shift], discoverabilityTitle: "Previous Text Field"),
-            UIKeyCommand(title: "Cancel", action: #selector(dismissView), input: UIKeyCommand.inputLeftArrow, modifierFlags: [.command], discoverabilityTitle: "Cancel"),
         ]
     }
 }

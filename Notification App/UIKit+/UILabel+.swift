@@ -40,8 +40,9 @@ extension UILabel {
         }
     }
     
-    func formatBreadcrumbInTable(task: TaskSaved, breadcrumb: String) {
-        self.text = breadcrumb
+    func formatBreadcrumbInTable(task: TaskSaved) {
+        guard let page = task.page else {return}
+        self.text = page.breadCrumb()
         self.font = .breadCrumbInTable()
         self.alpha = 0.7
         self.lineBreakMode = .byWordWrapping

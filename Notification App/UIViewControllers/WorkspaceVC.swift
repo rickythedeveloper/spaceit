@@ -433,6 +433,7 @@ extension WorkspaceVC {
         return [
             UIKeyCommand(title: "New Page", action: #selector(newPageTFBecomesFirstResponder), input: "p", modifierFlags: [.command], discoverabilityTitle: "New page"),
             UIKeyCommand(title: "New Card", action: #selector(createNewCard), input: "n", modifierFlags: [.command], discoverabilityTitle: "New Card"),
+            UIKeyCommand(title: "Cards", action: #selector(goToCards), input: UIKeyCommand.inputLeftArrow, modifierFlags: [.command, .shift], discoverabilityTitle: "Cards"),
         ]
     }
     
@@ -442,5 +443,9 @@ extension WorkspaceVC {
     
     @objc private func createNewCard() {
         self.navigationController?.pushViewController(NewCardVC(prechosenPage: self.page), animated: true)
+    }
+    
+    @objc private func goToCards() {
+        self.tabBarController?.selectedIndex = 0
     }
 }

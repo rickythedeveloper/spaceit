@@ -22,6 +22,8 @@
 		9C5EF44A2416DD4200FEBE51 /* UIFont+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C5EF4492416DD4200FEBE51 /* UIFont+.swift */; };
 		9C7C893223D9103800930E99 /* NewCardVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C7C893123D9103800930E99 /* NewCardVC.swift */; };
 		9C7C893423D910DD00930E99 /* UITextView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C7C893323D910DD00930E99 /* UITextView+.swift */; };
+		9C9168DF24319E3500AD31A9 /* UIImageView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C9168DE24319E3500AD31A9 /* UIImageView+.swift */; };
+		9C9168E12431A24200AD31A9 /* CardListCellStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C9168E02431A24200AD31A9 /* CardListCellStyle.swift */; };
 		9C97674B23E24D81004F4E90 /* AlphabeticalCardListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C97674A23E24D81004F4E90 /* AlphabeticalCardListCell.swift */; };
 		9CC51AF223EB8C8800636842 /* NSManagedObjectContext+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CC51AF123EB8C8800636842 /* NSManagedObjectContext+.swift */; };
 		9CCB588123F2C590002C3B36 /* MainTabBarC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CCB588023F2C590002C3B36 /* MainTabBarC.swift */; };
@@ -110,6 +112,8 @@
 		9C5EF4492416DD4200FEBE51 /* UIFont+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+.swift"; sourceTree = "<group>"; };
 		9C7C893123D9103800930E99 /* NewCardVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewCardVC.swift; sourceTree = "<group>"; };
 		9C7C893323D910DD00930E99 /* UITextView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextView+.swift"; sourceTree = "<group>"; };
+		9C9168DE24319E3500AD31A9 /* UIImageView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+.swift"; sourceTree = "<group>"; };
+		9C9168E02431A24200AD31A9 /* CardListCellStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardListCellStyle.swift; sourceTree = "<group>"; };
 		9C97674A23E24D81004F4E90 /* AlphabeticalCardListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlphabeticalCardListCell.swift; sourceTree = "<group>"; };
 		9CC51AF123EB8C8800636842 /* NSManagedObjectContext+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSManagedObjectContext+.swift"; sourceTree = "<group>"; };
 		9CCB588023F2C590002C3B36 /* MainTabBarC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarC.swift; sourceTree = "<group>"; };
@@ -228,6 +232,7 @@
 				9C97674A23E24D81004F4E90 /* AlphabeticalCardListCell.swift */,
 				9C3164EB23E32DF90095DF46 /* CreationDateCardListCell.swift */,
 				9C331CB824304550003934D6 /* ReviewButtonContainerV.swift */,
+				9C9168E02431A24200AD31A9 /* CardListCellStyle.swift */,
 			);
 			path = UIViews;
 			sourceTree = "<group>";
@@ -251,6 +256,7 @@
 				B83C305E23C5B7C3008A24D4 /* UIColor+.swift */,
 				9C7C893323D910DD00930E99 /* UITextView+.swift */,
 				9C5EF4492416DD4200FEBE51 /* UIFont+.swift */,
+				9C9168DE24319E3500AD31A9 /* UIImageView+.swift */,
 			);
 			path = "UIKit+";
 			sourceTree = "<group>";
@@ -591,6 +597,7 @@
 				9CCB588123F2C590002C3B36 /* MainTabBarC.swift in Sources */,
 				B8916D9C2367B8A5003A5758 /* View+.swift in Sources */,
 				9C3164EE23E32F530095DF46 /* NSAttributedString+.swift in Sources */,
+				9C9168E12431A24200AD31A9 /* CardListCellStyle.swift in Sources */,
 				B80FF85123C5913C005F3AA7 /* UILabel+.swift in Sources */,
 				B8D950632326CA98001236AE /* TimeSetting.swift in Sources */,
 				B8D9503F2326C48F001236AE /* SceneDelegate.swift in Sources */,
@@ -607,6 +614,7 @@
 				9CC51AF223EB8C8800636842 /* NSManagedObjectContext+.swift in Sources */,
 				B8845807232BCEDE00B5CC3C /* Array+.swift in Sources */,
 				B801F1342339312C003218BF /* Angle+.swift in Sources */,
+				9C9168DF24319E3500AD31A9 /* UIImageView+.swift in Sources */,
 				B8AB5822232E8F7A00AD2012 /* CardListView.swift in Sources */,
 				B85C07DC23379E6400200B07 /* FetchedResults+.swift in Sources */,
 				B8845801232BA8EC00B5CC3C /* TaskCard.swift in Sources */,
