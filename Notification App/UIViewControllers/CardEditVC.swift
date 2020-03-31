@@ -100,7 +100,21 @@ extension CardEditVC {
         }
         
         self.managedObjectContext.saveContext(completion: {
-            completion()
+            let sv = self.savedView()
+            self.view.addSubview(sv)
+            sv.alignToCenterYOf(self.view)
+            sv.alignToCenterXOf(self.view)
+            sv.heightAnchor.constraint(equalToConstant: 100.0).isActive = true
+            sv.alpha = 0.0
+            UIView.animate(withDuration: 0.2, animations: {
+                sv.alpha = 1.0
+            }, completion: { _ in
+                DispatchQueue.main.async {
+                    Timer.scheduledTimer(withTimeInterval: 0.2, repeats: false) { (timer) in
+                        completion()
+                    }
+                }
+            })
         }, errorHandler: {
             self.present(UIAlertController.saveFailedAlert(), animated: true, completion: nil)
         })
@@ -206,9 +220,10 @@ extension CardEditVC {
         
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
         
-        self.title = "Edit Card"
         view.backgroundColor = UIColor.myBackGroundColor()
         view.addSubview(scrollView)
+        
+        navigationItem.rightBarButtonItems = [saveButtonItem(), archiveButtonItem(), deleteButtonItem()]
         
         scrollView.constrainToTopSafeAreaOf(view)
         scrollView.constrainToSideSafeAreasOf(view)
@@ -220,11 +235,7 @@ extension CardEditVC {
             pageButton.setTitle(self.task.page!.breadCrumb(), for: .normal)
         }
         
-        actionButtonContainer = UIStackView(arrangedSubviews: [deleteButton, deactivateButton, okButton, reviewButton])
-        actionButtonContainer.translatesAutoresizingMaskIntoConstraints = false
-        actionButtonContainer.backgroundColor = .red
-        actionButtonContainer.distribution = .fillEqually
-        actionButtonContainer.spacing = padding
+        actionButtonContainer = reviewButtonStack(spacing: padding)
         
         dueDateLabel.font = UIFont.preferredFont(forTextStyle: .body)
         intervalLabel.font = UIFont.preferredFont(forTextStyle: .body)
@@ -354,5 +365,76 @@ extension CardEditVC {
         }
         
         self.scrollView.setContentOffset(CGPoint(x: 0, y: max(-self.scrollView.contentInset.top, 10 + textFieldMaxY - keyboardSize.minY)), animated: true)
+    }
+}
+
+// MARK: Navigation Bar Items
+extension CardEditVC {
+    private func deleteButtonItem() -> UIBarButtonItem {
+        return UIBarButtonItem(image: UIImage(systemName: "trash"), style: .plain, target: self, action: #selector(deletePressed))
+        
+    }
+    private func archiveButtonItem() -> UIBarButtonItem {
+        return UIBarButtonItem(image: UIImage(systemName: "archivebox"), style: .plain, target: self, action: #selector(archivePressed))
+    }
+    
+    private func saveButtonItem() -> UIBarButtonItem {
+        return UIBarButtonItem(image: UIImage(systemName: "rectangle.fill.badge.checkmark"), style: .plain, target: self, action: #selector(okPressed))
+    }
+}
+
+// MARK: Saved View
+extension CardEditVC {
+    private func savedView() -> UIView {
+        let view = UIView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.backgroundColor = (UIColor.systemGray3).withAlphaComponent(0.7)
+        view.layer.cornerRadius = 10.0
+        
+        let image = UIImage(systemName: "checkmark")
+        let iv = UIImageView(image: image)
+        iv.translatesAutoresizingMaskIntoConstraints = false
+        iv.contentMode = .scaleAspectFit
+        
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.text = "Saved"
+        label.textAlignment = .center
+        
+        let stack = UIStackView(arrangedSubviews: [iv, label])
+        stack.translatesAutoresizingMaskIntoConstraints = false
+        stack.axis = .vertical
+        stack.spacing = 5.0
+        
+        view.addSubview(stack)
+        
+        view.heightAnchor.constraint(equalTo: view.widthAnchor).isActive = true
+        
+        iv.widthAnchor.constraint(equalTo: label.widthAnchor).isActive = true
+        
+        stack.alignToCenterXOf(view)
+        stack.alignToCenterYOf(view)
+        stack.heightAnchor.constraint(equalTo: stack.widthAnchor).isActive = true
+        stack.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.9).isActive = true
+        
+        return view
+    }
+}
+
+// MARK: Review Buttons
+extension CardEditVC {
+    private func reviewButtonStack(spacing: CGFloat) -> UIStackView {
+        let veryHard = UIButton.reviewButton(task: task, ease: 1, cardEditVC: self, action: #selector(depressedAction), usesAutolayout: true)
+        let hard = UIButton.reviewButton(task: task, ease: 2, cardEditVC: self, action: #selector(sadAction), usesAutolayout: true)
+        let okay = UIButton.reviewButton(task: task, ease: 3, cardEditVC: self, action: #selector(okayAction), usesAutolayout: true)
+        let easy = UIButton.reviewButton(task: task, ease: 4, cardEditVC: self, action: #selector(happyAction), usesAutolayout: true)
+        
+        let stack = UIStackView(arrangedSubviews: [veryHard, hard, okay, easy])
+        stack.translatesAutoresizingMaskIntoConstraints = false
+        stack.distribution = .fillEqually
+        stack.axis = .horizontal
+        stack.spacing = spacing
+        
+        return stack
     }
 }

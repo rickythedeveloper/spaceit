@@ -45,4 +45,62 @@ extension UIButton {
             self.heightAnchor.constraint(equalTo: self.titleLabel!.heightAnchor, constant: padding).isActive = true
         }
     }
+    
+    static func reviewButton(task: TaskSaved, ease: Int, cardEditVC: CardEditVC, action: Selector, usesAutolayout: Bool) -> UIButton {
+        let nextWaitTime = String.time(timeInterval: task.nextWaitTime(ease: ease))
+        var bgColor: UIColor
+        var description: String
+        switch ease {
+        case 1:
+            bgColor = UIColor(red: 1.0, green: 0, blue: 0, alpha: 1)
+            description = "Very hard"
+            break
+        case 2:
+            bgColor = UIColor(red: 1, green: 102/255, blue: 0, alpha: 1)
+            description = "Hard"
+            break
+        case 3:
+            let brightness: CGFloat = 0.9
+            bgColor = UIColor(red: 1*brightness, green: 208/255*brightness, blue: 0, alpha: 1)
+            description = "Okay"
+            break
+        case 4:
+            let brightness: CGFloat = 0.9
+            bgColor = UIColor(red: 34/255*brightness, green: 1*brightness, blue: 0, alpha: 1)
+            description = "Easy"
+            break
+        default:
+            fatalError("ease is not in the right range")
+        }
+        
+        let descLabel = UILabel()
+        descLabel.text = description
+        descLabel.font = UIFont.preferredFont(forTextStyle: .body)
+        descLabel.textAlignment = .center
+        
+        let waitLabel = UILabel()
+        waitLabel.text = nextWaitTime
+        waitLabel.font = UIFont.preferredFont(forTextStyle: .caption1)
+        waitLabel.textAlignment = .center
+        
+        let stack = UIStackView(arrangedSubviews: [descLabel, waitLabel])
+        stack.translatesAutoresizingMaskIntoConstraints = false
+        stack.axis = .vertical
+        stack.spacing = 5.0
+        stack.isUserInteractionEnabled = false
+        
+        let button = UIButton()
+        button.translatesAutoresizingMaskIntoConstraints = !usesAutolayout
+        button.backgroundColor = bgColor
+        button.layer.cornerRadius = 10.0
+        button.addSubview(stack)
+        button.addTarget(nil, action: action, for: .touchUpInside)
+        
+        stack.alignToCenterXOf(button)
+        stack.alignToCenterYOf(button)
+        stack.heightAnchor.constraint(lessThanOrEqualTo: button.heightAnchor, multiplier: 0.9).isActive = true
+        stack.widthAnchor.constraint(lessThanOrEqualTo: button.widthAnchor, multiplier: 0.9).isActive = true
+        
+        return button
+    }
 }

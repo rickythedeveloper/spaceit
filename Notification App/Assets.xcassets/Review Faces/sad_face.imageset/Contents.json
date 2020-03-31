@@ -1,15 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "sad_face.png",
+      "filename" : "sad face.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
+      "filename" : "sad face@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
+      "filename" : "sad face@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }
