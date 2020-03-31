@@ -38,17 +38,10 @@ class CardEditVC: UIViewController, UIScrollViewDelegate, WorkspaceAccessible {
     }()
     
     let frontLabel = UILabel.front()
-    
     let frontTextView = UITextView.cardSIdeTV()
     
     let backLabel = UILabel.back()
-    
     let backTextView = UITextView.cardSIdeTV()
-    
-    let deleteButton = UIButton.actionButton(text: "Delete", action: #selector(deletePressed), backgroundColor: .systemRed, backgroundAlpha: 0.7, usesAutoLayout: true)
-    let deactivateButton = UIButton.actionButton(text: "", action: #selector(archivePressed), backgroundColor: .systemGray, backgroundAlpha: 0.7, usesAutoLayout: true)
-    let okButton = UIButton.actionButton(text: "Save", action: #selector(okPressed), backgroundColor: .systemGreen, backgroundAlpha: 0.7, usesAutoLayout: true)
-    let reviewButton = UIButton.actionButton(text: "Review", action: #selector(reviewPressed), backgroundColor: .systemBlue, backgroundAlpha: 0.7, usesAutoLayout: true)
     
     var actionButtonContainer = UIStackView()
     lazy var reviewView: ReviewButtonContainerV = { [unowned self] in
@@ -83,10 +76,6 @@ class CardEditVC: UIViewController, UIScrollViewDelegate, WorkspaceAccessible {
         super.viewDidLoad()
         setupViews()
         putCardInfo()
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        deactivateButton.setTitle(self.task.isActive ? "Archive" : "Recover", for: .normal)
     }
 }
 
@@ -157,19 +146,6 @@ extension CardEditVC {
             saveCardInfo(completion: {
                 self.dismissView()
             })
-        }
-    }
-    
-    @objc private func reviewPressed() {
-        reviewView.alpha = 0.0
-        scrollView.addSubview(reviewView)
-        reviewView.translatesAutoresizingMaskIntoConstraints = false
-        reviewView.constrainToTopSafeAreaOf(actionButtonContainer)
-//        reviewView.constrainToBottomSafeAreaOf(actionButtonContainer)
-        reviewView.constrainToSideSafeAreasOf(actionButtonContainer)
-        reviewView.heightAnchor.constraint(equalToConstant: actionButtonContainer.frame.height).isActive = true
-        UIView.animate(withDuration: 0.3) {
-            self.reviewView.alpha = 1.0
         }
     }
     
@@ -421,7 +397,7 @@ extension CardEditVC {
     }
 }
 
-// MARK: Review Buttons
+// MARK: Review Button Stack
 extension CardEditVC {
     private func reviewButtonStack(spacing: CGFloat) -> UIStackView {
         let veryHard = UIButton.reviewButton(task: task, ease: 1, cardEditVC: self, action: #selector(depressedAction), usesAutolayout: true)
