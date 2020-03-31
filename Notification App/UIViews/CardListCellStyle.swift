@@ -27,10 +27,9 @@ class CardListStyle {
         
         if let answer = task.answer, answer.hasContent() {
             let answerIndicator = UIImageView.answerIndicator(usesAutolayout: true)
-            answerIndicator.heightAnchor.constraint(greaterThanOrEqualToConstant: 15.0).isActive = true
-            answerIndicator.heightAnchor.constraint(lessThanOrEqualToConstant: 20.0).isActive = true
+            answerIndicator.heightAnchor.constraint(equalToConstant: 17.0).isActive = true
             answerIndicator.widthAnchor.constraint(equalTo: answerIndicator.heightAnchor, multiplier: 1.1).isActive = true
-            if !task.isActive {answerIndicator.tintColor = UIColor.archivedGray().body}
+            answerIndicator.tintColor = UIColor.archivedGray().body
             
             let indicatorContainer = UIView()
             indicatorContainer.addSubview(answerIndicator)

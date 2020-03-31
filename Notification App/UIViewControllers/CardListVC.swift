@@ -11,7 +11,7 @@ import CoreData
 
 class CardListVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate {
     
-    private let segments = ["Upcoming", "Alphabetical", "Creation Date"]
+    private let segments = ["Due Date", "Alphabetical", "Creation Date"]
     private var segControl = UISegmentedControl()
     
     private let searchTextField: UITextField = {

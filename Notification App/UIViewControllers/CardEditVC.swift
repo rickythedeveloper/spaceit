@@ -310,14 +310,14 @@ extension CardEditVC: ReviewAccessible {
         }) { (_) in
             self.reviewView.removeFromSuperview()
         }
-//        self.reviewView.removeFromSuperview()
     }
     
     private func reviewWithEase(_ ease: Int) {
         self.task.reviewed(ease: ease)
-        self.managedObjectContext.saveContext()
-        self.registerNotification(task: self.task)
-        self.navigationController?.popViewController(animated: true)
+        saveCardInfo(completion: {
+            self.registerNotification(task: self.task)
+            self.navigationController?.popViewController(animated: true)
+        })
     }
     
     private func registerNotification(task: TaskSaved) {
