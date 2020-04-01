@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
-    <device id="ipad10_5" orientation="portrait" layout="fullscreen" appearance="light"/>
+    <device id="retina3_5" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16086"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -12,20 +12,9 @@
             <objects>
                 <viewController id="01J-lp-oVM" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Ze5-6b-2t3">
-                        <rect key="frame" x="0.0" y="0.0" width="834" height="1112"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="iPad LaunchScreen" translatesAutoresizingMaskIntoConstraints="NO" id="kSc-fp-7Fa">
-                                <rect key="frame" x="0.0" y="0.0" width="834" height="1112"/>
-                            </imageView>
-                        </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                        <constraints>
-                            <constraint firstItem="kSc-fp-7Fa" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="1Aw-as-AyD"/>
-                            <constraint firstAttribute="bottom" secondItem="kSc-fp-7Fa" secondAttribute="bottom" id="A9M-rU-tZx"/>
-                            <constraint firstItem="kSc-fp-7Fa" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" id="S4V-xQ-dRe"/>
-                            <constraint firstItem="kSc-fp-7Fa" firstAttribute="trailing" secondItem="Ze5-6b-2t3" secondAttribute="trailing" id="o9E-Y1-dS3"/>
-                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                 </viewController>
@@ -34,7 +23,4 @@
             <point key="canvasLocation" x="52.173913043478265" y="375"/>
         </scene>
     </scenes>
-    <resources>
-        <image name="iPad LaunchScreen" width="4608" height="6147"/>
-    </resources>
 </document>

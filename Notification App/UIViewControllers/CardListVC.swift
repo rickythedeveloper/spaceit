@@ -228,9 +228,9 @@ extension CardListVC {
     override var keyCommands: [UIKeyCommand]? {
         return [
             UIKeyCommand(title: "New Card", action: #selector(addCardPressed), input: "n", modifierFlags: [.command], discoverabilityTitle: "New Card"),
-            UIKeyCommand(title: "Creation Date", action: #selector(switchToCreationDate), input: "3", modifierFlags: [.command], discoverabilityTitle: "Creation Date"),
-            UIKeyCommand(title: "Alphabetical", action: #selector(switchToAlphabetical), input: "2", modifierFlags: [.command], discoverabilityTitle: "Alphabetical"),
-            UIKeyCommand(title: "Upcoming", action: #selector(switchToUpcoming), input: "1", modifierFlags: [.command], discoverabilityTitle: "Upcoming"),
+            UIKeyCommand(title: segments[0], action: #selector(switchToUpcoming), input: "1", modifierFlags: [.command], discoverabilityTitle: "Upcoming"),
+            UIKeyCommand(title: segments[1], action: #selector(switchToAlphabetical), input: "2", modifierFlags: [.command], discoverabilityTitle: "Alphabetical"),
+            UIKeyCommand(title: segments[2], action: #selector(switchToCreationDate), input: "3", modifierFlags: [.command], discoverabilityTitle: "Creation Date"),
             UIKeyCommand(title: "Scroll to Top", action: #selector(scrollToTop), input: UIKeyCommand.inputUpArrow, modifierFlags: [.command], discoverabilityTitle: "Scroll to Top"),
             UIKeyCommand(title: "Search", action: #selector(search), input: "f", modifierFlags: [.command], discoverabilityTitle: "Search"),
             UIKeyCommand(title: "Workspace", action: #selector(goToWorkspace), input: UIKeyCommand.inputRightArrow, modifierFlags: [.command, .shift], discoverabilityTitle: "Workspace"),

@@ -19,7 +19,10 @@
 		9C3B271023CF11C400CC5A13 /* TaskSaved+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C3B270C23CF11C400CC5A13 /* TaskSaved+CoreDataProperties.swift */; };
 		9C3B271123CF11C400CC5A13 /* Page+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C3B270D23CF11C400CC5A13 /* Page+CoreDataClass.swift */; };
 		9C3B271223CF11C400CC5A13 /* TaskSaved+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C3B270E23CF11C400CC5A13 /* TaskSaved+CoreDataClass.swift */; };
+		9C5AE61524342F6B0044D8B8 /* IntroEachPageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C5AE61424342F6B0044D8B8 /* IntroEachPageVC.swift */; };
 		9C5EF44A2416DD4200FEBE51 /* UIFont+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C5EF4492416DD4200FEBE51 /* UIFont+.swift */; };
+		9C73108124333A66008E9820 /* IntroVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C73108024333A66008E9820 /* IntroVC.swift */; };
+		9C731083243347C3008E9820 /* IntroPageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C731082243347C3008E9820 /* IntroPageVC.swift */; };
 		9C7C893223D9103800930E99 /* NewCardVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C7C893123D9103800930E99 /* NewCardVC.swift */; };
 		9C7C893423D910DD00930E99 /* UITextView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C7C893323D910DD00930E99 /* UITextView+.swift */; };
 		9C9168DF24319E3500AD31A9 /* UIImageView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C9168DE24319E3500AD31A9 /* UIImageView+.swift */; };
@@ -109,7 +112,10 @@
 		9C3B270C23CF11C400CC5A13 /* TaskSaved+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "TaskSaved+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		9C3B270D23CF11C400CC5A13 /* Page+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Page+CoreDataClass.swift"; sourceTree = "<group>"; };
 		9C3B270E23CF11C400CC5A13 /* TaskSaved+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "TaskSaved+CoreDataClass.swift"; sourceTree = "<group>"; };
+		9C5AE61424342F6B0044D8B8 /* IntroEachPageVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroEachPageVC.swift; sourceTree = "<group>"; };
 		9C5EF4492416DD4200FEBE51 /* UIFont+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+.swift"; sourceTree = "<group>"; };
+		9C73108024333A66008E9820 /* IntroVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroVC.swift; sourceTree = "<group>"; };
+		9C731082243347C3008E9820 /* IntroPageVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroPageVC.swift; sourceTree = "<group>"; };
 		9C7C893123D9103800930E99 /* NewCardVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewCardVC.swift; sourceTree = "<group>"; };
 		9C7C893323D910DD00930E99 /* UITextView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextView+.swift"; sourceTree = "<group>"; };
 		9C9168DE24319E3500AD31A9 /* UIImageView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+.swift"; sourceTree = "<group>"; };
@@ -223,6 +229,16 @@
 				9CC51AF123EB8C8800636842 /* NSManagedObjectContext+.swift */,
 			);
 			path = "Swift+";
+			sourceTree = "<group>";
+		};
+		9C7310842433503C008E9820 /* Introduction */ = {
+			isa = PBXGroup;
+			children = (
+				9C73108024333A66008E9820 /* IntroVC.swift */,
+				9C731082243347C3008E9820 /* IntroPageVC.swift */,
+				9C5AE61424342F6B0044D8B8 /* IntroEachPageVC.swift */,
+			);
+			path = Introduction;
 			sourceTree = "<group>";
 		};
 		9C7C893023D9100100930E99 /* UIViews */ = {
@@ -447,6 +463,7 @@
 				9C7C893123D9103800930E99 /* NewCardVC.swift */,
 				9C148EB823E4ECC800901930 /* WorkspaceVC.swift */,
 				9CCB588023F2C590002C3B36 /* MainTabBarC.swift */,
+				9C7310842433503C008E9820 /* Introduction */,
 			);
 			path = UIViewControllers;
 			sourceTree = "<group>";
@@ -577,10 +594,12 @@
 				B8845804232BADFB00B5CC3C /* Color+.swift in Sources */,
 				9CF34024242F269C00897B40 /* WorkspaceAccessible.swift in Sources */,
 				B8D9505A2326C58C001236AE /* UserSettings.swift in Sources */,
+				9C73108124333A66008E9820 /* IntroVC.swift in Sources */,
 				B8AB581C232E80B100AD2012 /* CardEditView.swift in Sources */,
 				9C3B271223CF11C400CC5A13 /* TaskSaved+CoreDataClass.swift in Sources */,
 				9C35CD5023DF61240099F55D /* UpcomingCardListCell.swift in Sources */,
 				B88457F7232A589C00B5CC3C /* UIApplication+.swift in Sources */,
+				9C5AE61524342F6B0044D8B8 /* IntroEachPageVC.swift in Sources */,
 				9C3164EC23E32DF90095DF46 /* CreationDateCardListCell.swift in Sources */,
 				B88457FD232BA27800B5CC3C /* ReviewSR.swift in Sources */,
 				B85C07D823365E3200200B07 /* PageInsideView.swift in Sources */,
@@ -613,6 +632,7 @@
 				B844EDB023C3471C0033D657 /* UIButton+.swift in Sources */,
 				9CC51AF223EB8C8800636842 /* NSManagedObjectContext+.swift in Sources */,
 				B8845807232BCEDE00B5CC3C /* Array+.swift in Sources */,
+				9C731083243347C3008E9820 /* IntroPageVC.swift in Sources */,
 				B801F1342339312C003218BF /* Angle+.swift in Sources */,
 				9C9168DF24319E3500AD31A9 /* UIImageView+.swift in Sources */,
 				B8AB5822232E8F7A00AD2012 /* CardListView.swift in Sources */,

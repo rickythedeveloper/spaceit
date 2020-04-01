@@ -1,0 +1,30 @@
+{
+  "images" : [
+    {
+      "idiom" : "iphone",
+      "scale" : "1x"
+    },
+    {
+      "idiom" : "iphone",
+      "scale" : "2x"
+    },
+    {
+      "filename" : "Intro Workspace iPhone.pdf",
+      "idiom" : "iphone",
+      "scale" : "3x"
+    },
+    {
+      "idiom" : "ipad",
+      "scale" : "1x"
+    },
+    {
+      "filename" : "Intro Workspace iPad.pdf",
+      "idiom" : "ipad",
+      "scale" : "2x"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}
