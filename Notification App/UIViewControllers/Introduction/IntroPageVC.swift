@@ -24,6 +24,10 @@ private extension IntroPageVC {
         delegate = self
         dataSource = self
         
+        let proxy = UIPageControl.appearance()
+        proxy.pageIndicatorTintColor = (UIColor.myTextColor()).withAlphaComponent(0.3)
+        proxy.currentPageIndicatorTintColor = (UIColor.myTextColor()).withAlphaComponent(0.7)
+        
         let vc = IntroEachPageVC.cards()
         pages.append(vc)
         

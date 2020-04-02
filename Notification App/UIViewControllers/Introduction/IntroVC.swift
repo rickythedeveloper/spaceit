@@ -67,8 +67,8 @@ extension IntroVC {
     private func afterLogoConstraints() -> [NSLayoutConstraint] {
         [logo.centerXAnchor.constraint(equalTo: view.centerXAnchor),
          logo.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 15.0),
-        logo.widthAnchor.constraint(lessThanOrEqualTo: view.widthAnchor, multiplier: 0.3),
-        logo.heightAnchor.constraint(lessThanOrEqualTo: logo.widthAnchor, multiplier: 428/1931)]
+         logo.heightAnchor.constraint(lessThanOrEqualTo: view.heightAnchor, multiplier: 0.05),
+         logo.widthAnchor.constraint(equalTo: logo.heightAnchor, multiplier: 1931/428)]
     }
 }
 

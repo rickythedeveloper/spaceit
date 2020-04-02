@@ -26,7 +26,6 @@ class IntroEachPageVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setup()
-        view.backgroundColor = .brown
     }
 }
 
@@ -104,7 +103,7 @@ extension IntroEachPageVC {
     static func subscription() -> IntroEachPageVC {
         let text =
         """
-        We are always working to make this app better for our users. We offer this app as a very affordable subscription service with a free trial. The subscription will enable us to keep this project going.
+        We are always working to make this app better for our users and we offer this app as a very affordable subscription service with a free trial. You can cancel any time.
         """
         
         let picName = "intro_sub"

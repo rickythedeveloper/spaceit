@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		9C148EB923E4ECC800901930 /* WorkspaceVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C148EB823E4ECC800901930 /* WorkspaceVC.swift */; };
+		9C29806D2435FD2100176A7A /* SubscribeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C29806C2435FD2100176A7A /* SubscribeVC.swift */; };
 		9C3164EC23E32DF90095DF46 /* CreationDateCardListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C3164EB23E32DF90095DF46 /* CreationDateCardListCell.swift */; };
 		9C3164EE23E32F530095DF46 /* NSAttributedString+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C3164ED23E32F530095DF46 /* NSAttributedString+.swift */; };
 		9C331CB124303B0B003934D6 /* ReviewAlgorithmTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C331CB024303B0B003934D6 /* ReviewAlgorithmTest.swift */; };
@@ -20,6 +21,7 @@
 		9C3B271123CF11C400CC5A13 /* Page+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C3B270D23CF11C400CC5A13 /* Page+CoreDataClass.swift */; };
 		9C3B271223CF11C400CC5A13 /* TaskSaved+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C3B270E23CF11C400CC5A13 /* TaskSaved+CoreDataClass.swift */; };
 		9C5AE61524342F6B0044D8B8 /* IntroEachPageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C5AE61424342F6B0044D8B8 /* IntroEachPageVC.swift */; };
+		9C5AE6172434385B0044D8B8 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C5AE6162434385B0044D8B8 /* StoreKit.framework */; };
 		9C5EF44A2416DD4200FEBE51 /* UIFont+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C5EF4492416DD4200FEBE51 /* UIFont+.swift */; };
 		9C73108124333A66008E9820 /* IntroVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C73108024333A66008E9820 /* IntroVC.swift */; };
 		9C731083243347C3008E9820 /* IntroPageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C731082243347C3008E9820 /* IntroPageVC.swift */; };
@@ -99,6 +101,7 @@
 
 /* Begin PBXFileReference section */
 		9C148EB823E4ECC800901930 /* WorkspaceVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkspaceVC.swift; sourceTree = "<group>"; };
+		9C29806C2435FD2100176A7A /* SubscribeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscribeVC.swift; sourceTree = "<group>"; };
 		9C3164EB23E32DF90095DF46 /* CreationDateCardListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreationDateCardListCell.swift; sourceTree = "<group>"; };
 		9C3164ED23E32F530095DF46 /* NSAttributedString+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSAttributedString+.swift"; sourceTree = "<group>"; };
 		9C331CAE24303B0B003934D6 /* ReviewAlgorithmTest.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ReviewAlgorithmTest.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -113,6 +116,7 @@
 		9C3B270D23CF11C400CC5A13 /* Page+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Page+CoreDataClass.swift"; sourceTree = "<group>"; };
 		9C3B270E23CF11C400CC5A13 /* TaskSaved+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "TaskSaved+CoreDataClass.swift"; sourceTree = "<group>"; };
 		9C5AE61424342F6B0044D8B8 /* IntroEachPageVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroEachPageVC.swift; sourceTree = "<group>"; };
+		9C5AE6162434385B0044D8B8 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		9C5EF4492416DD4200FEBE51 /* UIFont+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+.swift"; sourceTree = "<group>"; };
 		9C73108024333A66008E9820 /* IntroVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroVC.swift; sourceTree = "<group>"; };
 		9C731082243347C3008E9820 /* IntroPageVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroPageVC.swift; sourceTree = "<group>"; };
@@ -196,6 +200,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B8419633233AA00A00E6558C /* CloudKit.framework in Frameworks */,
+				9C5AE6172434385B0044D8B8 /* StoreKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -231,12 +236,20 @@
 			path = "Swift+";
 			sourceTree = "<group>";
 		};
+		9C5AE618243439820044D8B8 /* In-App Purchases */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "In-App Purchases";
+			sourceTree = "<group>";
+		};
 		9C7310842433503C008E9820 /* Introduction */ = {
 			isa = PBXGroup;
 			children = (
 				9C73108024333A66008E9820 /* IntroVC.swift */,
 				9C731082243347C3008E9820 /* IntroPageVC.swift */,
 				9C5AE61424342F6B0044D8B8 /* IntroEachPageVC.swift */,
+				9C29806C2435FD2100176A7A /* SubscribeVC.swift */,
 			);
 			path = Introduction;
 			sourceTree = "<group>";
@@ -390,6 +403,7 @@
 		B8D9503B2326C48F001236AE /* Notification App */ = {
 			isa = PBXGroup;
 			children = (
+				9C5AE618243439820044D8B8 /* In-App Purchases */,
 				9CF34022242F268600897B40 /* Protocols */,
 				9C35CD5123DF724C0099F55D /* Swift+ */,
 				B8099DEA23C0BEBD00A56471 /* UIKit+ */,
@@ -471,6 +485,7 @@
 		E13778E240410AA0E96101A8 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				9C5AE6162434385B0044D8B8 /* StoreKit.framework */,
 				B8419632233AA00A00E6558C /* CloudKit.framework */,
 			);
 			name = Frameworks;
@@ -590,6 +605,7 @@
 				B8D53A8E232D924D006887FE /* DeveloperPage.swift in Sources */,
 				9C331CB924304550003934D6 /* ReviewButtonContainerV.swift in Sources */,
 				9C3B271023CF11C400CC5A13 /* TaskSaved+CoreDataProperties.swift in Sources */,
+				9C29806D2435FD2100176A7A /* SubscribeVC.swift in Sources */,
 				9C331CBB2430470C003934D6 /* ReviewAccessible.swift in Sources */,
 				B8845804232BADFB00B5CC3C /* Color+.swift in Sources */,
 				9CF34024242F269C00897B40 /* WorkspaceAccessible.swift in Sources */,
