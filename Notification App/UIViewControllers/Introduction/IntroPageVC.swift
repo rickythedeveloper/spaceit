@@ -37,6 +37,9 @@ private extension IntroPageVC {
         let vc3 = IntroEachPageVC.subscription()
         pages.append(vc3)
         
+        let vc4 = SubscribeVC()
+        pages.append(vc4)
+        
         setViewControllers([pages[index]], direction: .forward, animated: true, completion: nil)
     }
 }

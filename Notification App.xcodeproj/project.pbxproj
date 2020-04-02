@@ -3,13 +3,14 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		2BC6072A92E85EFA48BE9707 /* Pods_Notification_App.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8BD7AE1E0EAB4411F114AE4D /* Pods_Notification_App.framework */; };
 		9C148EB923E4ECC800901930 /* WorkspaceVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C148EB823E4ECC800901930 /* WorkspaceVC.swift */; };
 		9C29806D2435FD2100176A7A /* SubscribeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C29806C2435FD2100176A7A /* SubscribeVC.swift */; };
+		9C29806F243613F200176A7A /* SwiftyStoreKitWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C29806E243613F200176A7A /* SwiftyStoreKitWrapper.swift */; };
 		9C3164EC23E32DF90095DF46 /* CreationDateCardListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C3164EB23E32DF90095DF46 /* CreationDateCardListCell.swift */; };
 		9C3164EE23E32F530095DF46 /* NSAttributedString+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C3164ED23E32F530095DF46 /* NSAttributedString+.swift */; };
 		9C331CB124303B0B003934D6 /* ReviewAlgorithmTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C331CB024303B0B003934D6 /* ReviewAlgorithmTest.swift */; };
@@ -106,6 +107,7 @@
 		8BD7AE1E0EAB4411F114AE4D /* Pods_Notification_App.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Notification_App.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9C148EB823E4ECC800901930 /* WorkspaceVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkspaceVC.swift; sourceTree = "<group>"; };
 		9C29806C2435FD2100176A7A /* SubscribeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscribeVC.swift; sourceTree = "<group>"; };
+		9C29806E243613F200176A7A /* SwiftyStoreKitWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftyStoreKitWrapper.swift; sourceTree = "<group>"; };
 		9C3164EB23E32DF90095DF46 /* CreationDateCardListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreationDateCardListCell.swift; sourceTree = "<group>"; };
 		9C3164ED23E32F530095DF46 /* NSAttributedString+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSAttributedString+.swift"; sourceTree = "<group>"; };
 		9C331CAE24303B0B003934D6 /* ReviewAlgorithmTest.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ReviewAlgorithmTest.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -449,6 +451,7 @@
 				9C3B270B23CF11C400CC5A13 /* Page+CoreDataProperties.swift */,
 				9C3B270E23CF11C400CC5A13 /* TaskSaved+CoreDataClass.swift */,
 				9C3B270C23CF11C400CC5A13 /* TaskSaved+CoreDataProperties.swift */,
+				9C29806E243613F200176A7A /* SwiftyStoreKitWrapper.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -664,6 +667,7 @@
 				B8D9505A2326C58C001236AE /* UserSettings.swift in Sources */,
 				9C73108124333A66008E9820 /* IntroVC.swift in Sources */,
 				B8AB581C232E80B100AD2012 /* CardEditView.swift in Sources */,
+				9C29806F243613F200176A7A /* SwiftyStoreKitWrapper.swift in Sources */,
 				9C3B271223CF11C400CC5A13 /* TaskSaved+CoreDataClass.swift in Sources */,
 				9C35CD5023DF61240099F55D /* UpcomingCardListCell.swift in Sources */,
 				B88457F7232A589C00B5CC3C /* UIApplication+.swift in Sources */,
