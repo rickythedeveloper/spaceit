@@ -7,11 +7,29 @@
 //
 
 import UIKit
+import CoreData
 
 class MainTabBarC: UITabBarController {
+    
+    static let shared = MainTabBarC()
+    var allowsAccessToContent: Bool = false {
+        willSet {
+            if newValue {
+                dismissIntro()
+            } else {
+                presentIntro()
+            }
+        }
+    }
+    
+    private let introVC = IntroVC()
+    private let sskw = SwiftyStoreKitWrapper.shared
+    private let managedObjectContext = NSManagedObjectContext.defaultContext()
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        setup()
+        updateUserInfo()
 
         // Do any additional setup after loading the view.
         let listTabBarItem = UITabBarItem(title: "Cards", image: UIImage(systemName: "square.stack.3d.up"), tag: 0)
@@ -24,15 +42,46 @@ class MainTabBarC: UITabBarController {
         self.viewControllers = [cardListNavC, workspaceNavC]
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    override func viewDidAppear(_ animated: Bool) {
+        if !allowsAccessToContent {
+            presentIntro()
+        }
     }
-    */
+}
 
+// MARK: Dealing with intro VC
+private extension MainTabBarC {
+    func setup() {
+        introVC.isModalInPresentation = true
+    }
+    
+    func presentIntro() {
+        self.present(introVC, animated: true, completion: nil)
+    }
+    
+    func dismissIntro() {
+        introVC.dismiss(animated: true, completion: nil)
+    }
+}
+
+// MARK: Update User info
+extension MainTabBarC {
+    /// Update the User object from the info received from the IAP receipt. Then set the value for allowsAccessToContent.
+    func updateUserInfo() {
+        sskw.checkExpiryDate(productIDs: [sskw.monthlySub, sskw.yearlySub]) { (expiryDate) in
+            guard let expiry = expiryDate else {return}
+            if let user = User.latestUserInfo(managedObjectContext: self.managedObjectContext) {
+                user.updateInfo(lastUpdated: Date(), subscriptionExpiryDate: expiry, subscriptionLastVerified: Date())
+            } else { // no valid user info is in the device
+                _ = User.createNewUser(lastUpdated: Date(), subscriptionExpiryDate: expiry, subscriptionLastVerified: Date(), managedObjectContext: self.managedObjectContext)
+                self.managedObjectContext.saveContext()
+            }
+            
+            if User.userShouldProceedToContent(managedObjectContext: self.managedObjectContext) {
+                self.allowsAccessToContent = true
+            } else {
+                self.allowsAccessToContent = false
+            }
+        }
+    }
 }

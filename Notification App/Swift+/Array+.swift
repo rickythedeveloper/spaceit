@@ -192,3 +192,20 @@ extension Array where Element: TaskSaved {
         return tasks
     }
 }
+
+// MARK: [Date]
+extension Array where Element == Date {
+    func latest() -> Date? {
+        var latest: Date?
+        for date in self {
+            if latest == nil {
+                latest = date
+            } else {
+                if date > latest! {
+                    latest = date
+                }
+            }
+        }
+        return latest
+    }
+}

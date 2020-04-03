@@ -8,6 +8,7 @@
 
 import UIKit
 import SwiftUI
+import CoreData
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
@@ -26,9 +27,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // Use a UIHostingController as window root view controller.
         if let windowScene = scene as? UIWindowScene {
             let window = UIWindow(windowScene: windowScene)
-//            window.rootViewController = UIHostingController(rootView: mainTab)
-//            window.rootViewController = UINavigationController(rootViewController: WorkspaceVC())
-            window.rootViewController = MainTabBarC()
+            let mainTab = MainTabBarC.shared
+            mainTab.allowsAccessToContent = User.userShouldProceedToContent(managedObjectContext: NSManagedObjectContext.defaultContext())
+            window.rootViewController = mainTab
             self.window = window
             window.makeKeyAndVisible()
         }

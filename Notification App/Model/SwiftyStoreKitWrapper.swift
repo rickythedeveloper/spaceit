@@ -243,4 +243,36 @@ extension SwiftyStoreKitWrapper {
         
         fetchReceiptAndValidate(successHandler: verifySubscriptionUponReceiptValidation(receipt:), failureHandler: receiptValidationFailed(error:))
     }
+    
+    /// Access receipt or fetch it if necessary, validate the receipt. If validated, the completion will give out the latest expiry date found in the data. The completion block will give nil (1) if the validation fails (2) if there are no expiry dates found.
+    func checkExpiryDate(productIDs: [String], completion: @escaping (Date?) -> Void) {
+        
+        func FindLatestExpiryDateUponReceiptValidation(receipt: ReceiptInfo) {
+            var expiryDates = [Date]()
+            for productId in productIDs {
+                // Verify the purchase of a Subscription
+                let purchaseResult = SwiftyStoreKit.verifySubscription(ofType: .autoRenewable, productId: productId, inReceipt: receipt)
+                    
+                switch purchaseResult {
+                case .purchased(let expiryDate, let items):
+                    print("\(productId) is valid until \(expiryDate)\n\(items)\n")
+                    expiryDates.append(expiryDate)
+                case .expired(let expiryDate, let items):
+                    print("\(productId) is expired since \(expiryDate)\n\(items)\n")
+                    expiryDates.append(expiryDate)
+                case .notPurchased:
+                    print("The user has never purchased \(productId)")
+                }
+            }
+            
+            completion(expiryDates.latest())
+        }
+        
+        func receiptValidationFailed(error: ReceiptError) {
+            print("Receipt validation failed during subscription vefirication: \(error.localizedDescription)")
+            completion(nil)
+        }
+        
+        fetchReceiptAndValidate(successHandler: FindLatestExpiryDateUponReceiptValidation(receipt:), failureHandler: receiptValidationFailed(error:))
+    }
 }

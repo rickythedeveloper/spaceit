@@ -159,6 +159,7 @@ private extension SubscribeVC {
     
     func purchase(product: SKProduct) {
         sskr.purchaseProduct(product) { (result) in
+            print("Purchase results came back!")
             switch result {
             case .success(let purchase):
                 print("Purchase Success: \(purchase.productId)")
@@ -180,8 +181,11 @@ private extension SubscribeVC {
         }
     }
     
+    /// Set allowsAccessToContent to true in the main tab, which will hide the intro view. Then update the User object too.
     func proceedToContent() {
-//        TODO
+        let mainTab = MainTabBarC.shared
+        mainTab.allowsAccessToContent = true
+        mainTab.updateUserInfo()
     }
 }
 
