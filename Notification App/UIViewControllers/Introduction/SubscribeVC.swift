@@ -72,11 +72,6 @@ private extension SubscribeVC {
         label2.constrainToSideSafeAreasOf(view, padding: padding)
 //        label2.constrainToBottomSafeAreaOf(view, padding: padding)
         label2.bottomAnchor.constraint(lessThanOrEqualTo: view.bottomAnchor).isActive = true
-        
-//        button2.isBelow(button1, padding: padding)
-//        button2.constrainToSideSafeAreasOf(view, padding: padding)
-//        button2.constrainToBottomSafeAreaOf(view, padding: padding)
-//        button2.heightAnchor.constraint(equalTo: button1.heightAnchor).isActive = true
     }
 }
 

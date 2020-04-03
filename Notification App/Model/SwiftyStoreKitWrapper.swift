@@ -182,7 +182,7 @@ extension SwiftyStoreKitWrapper {
 extension SwiftyStoreKitWrapper {
     /// Access receipt or fetch it if necessary, validate the receipt.
     func fetchReceiptAndValidate(successHandler: @escaping (ReceiptInfo) -> Void, failureHandler: @escaping (ReceiptError) -> Void) {
-        let appleValidator = AppleReceiptValidator(service: .sandbox, sharedSecret: sharedSecret)
+        let appleValidator = AppleReceiptValidator(service: .production, sharedSecret: sharedSecret)
         SwiftyStoreKit.verifyReceipt(using: appleValidator, forceRefresh: false) { result in
             switch result {
             case .success(let receipt):

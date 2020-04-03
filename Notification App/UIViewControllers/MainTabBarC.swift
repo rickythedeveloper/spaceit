@@ -56,10 +56,12 @@ private extension MainTabBarC {
     }
     
     func presentIntro() {
+        guard self.presentedViewController == nil else {return}
         self.present(introVC, animated: true, completion: nil)
     }
     
     func dismissIntro() {
+        guard self.presentedViewController != nil else {return}
         introVC.dismiss(animated: true, completion: nil)
     }
 }
@@ -70,18 +72,17 @@ extension MainTabBarC {
     func updateUserInfo() {
         sskw.checkExpiryDate(productIDs: [sskw.monthlySub, sskw.yearlySub]) { (expiryDate) in
             guard let expiry = expiryDate else {return}
+            let now = Date()
+            let expired = (expiry < now)
+            
             if let user = User.latestUserInfo(managedObjectContext: self.managedObjectContext) {
-                user.updateInfo(lastUpdated: Date(), subscriptionExpiryDate: expiry, subscriptionLastVerified: Date())
+                user.updateInfo(lastUpdated: now, subscriptionExpiryDate: expiry, subscriptionLastVerified: (expired ? nil : now))
             } else { // no valid user info is in the device
-                _ = User.createNewUser(lastUpdated: Date(), subscriptionExpiryDate: expiry, subscriptionLastVerified: Date(), managedObjectContext: self.managedObjectContext)
+                _ = User.createNewUser(lastUpdated: now, subscriptionExpiryDate: expiry, subscriptionLastVerified: (expired ? nil : now), managedObjectContext: self.managedObjectContext)
                 self.managedObjectContext.saveContext()
             }
             
-            if User.userShouldProceedToContent(managedObjectContext: self.managedObjectContext) {
-                self.allowsAccessToContent = true
-            } else {
-                self.allowsAccessToContent = false
-            }
+            self.allowsAccessToContent = User.userShouldProceedToContent(managedObjectContext: self.managedObjectContext)
         }
     }
 }

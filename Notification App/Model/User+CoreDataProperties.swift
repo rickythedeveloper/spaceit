@@ -80,9 +80,9 @@ extension User {
         guard let expiryDate = userChecked.subscriptionExpiryDate, let subLastVerified = userChecked.subscriptionLastVerified else {return false}
         
         if expiryDate < Date() { // the subscription seems to have expired
-            if subLastVerified < Date(timeIntervalSinceNow: -60*60*24*30) { // the subscription was not verified in the last 30 days
+            if subLastVerified < Date(timeIntervalSinceNow: -60*60*24*20) { // the subscription was not verified in the last 20 days
                 return false
-            } else { // the subscription might have expired but the subscription was verified in the last 30 days
+            } else { // the subscription might have expired but the subscription was verified in the last 20 days
                 return true
             }
         } else { // the subscription seems to be still active
@@ -91,18 +91,30 @@ extension User {
     }
     
     /// Create a new User object. Save context after this function.
-    static func createNewUser(lastUpdated: Date, subscriptionExpiryDate: Date, subscriptionLastVerified: Date, managedObjectContext: NSManagedObjectContext) -> User {
+    static func createNewUser(lastUpdated: Date?, subscriptionExpiryDate: Date?, subscriptionLastVerified: Date?, managedObjectContext: NSManagedObjectContext) -> User {
         let user = User(context: managedObjectContext)
-        user.lastUpdated = lastUpdated
-        user.subscriptionExpiryDate = subscriptionExpiryDate
-        user.subscriptionLastVerified = subscriptionLastVerified
+        if let lu = lastUpdated {
+            user.lastUpdated = lu
+        }
+        if let subEx = subscriptionExpiryDate {
+            user.subscriptionExpiryDate = subEx
+        }
+        if let subVer = subscriptionLastVerified {
+            user.subscriptionLastVerified = subVer
+        }
         return user
     }
     
     /// Overwrite the user info. Save context after this function.
-    func updateInfo(lastUpdated: Date, subscriptionExpiryDate: Date, subscriptionLastVerified: Date) {
-        self.lastUpdated = lastUpdated
-        self.subscriptionExpiryDate = subscriptionExpiryDate
-        self.subscriptionLastVerified = subscriptionLastVerified
+    func updateInfo(lastUpdated: Date?, subscriptionExpiryDate: Date?, subscriptionLastVerified: Date?) {
+        if let lu = lastUpdated {
+            self.lastUpdated = lu
+        }
+        if let subEx = subscriptionExpiryDate {
+            self.subscriptionExpiryDate = subEx
+        }
+        if let subVer = subscriptionLastVerified {
+            self.subscriptionLastVerified = subVer
+        }
     }
 }
