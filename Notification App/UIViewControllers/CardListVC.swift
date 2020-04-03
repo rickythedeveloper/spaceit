@@ -63,7 +63,6 @@ extension CardListVC {
     
     @objc private func clearPressed() {
         searchTextField.text = ""
-        view.endEditing(true)
         updateCustomTaskArrays()
     }
     
@@ -216,10 +215,6 @@ extension CardListVC {
             self.update()
         }), animated: true)
         tableView.deselectRow(at: indexPath, animated: true)
-    }
-    
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        view.endEditing(true)
     }
 }
 
