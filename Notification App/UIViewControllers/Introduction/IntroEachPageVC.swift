@@ -103,7 +103,7 @@ extension IntroEachPageVC {
     static func subscription() -> IntroEachPageVC {
         let text =
         """
-        We are always working to make this app better for our users and we offer this app as a very affordable subscription service with a free trial. You can cancel any time.
+        We are always working to make this app better for our users. We offer this app as a very affordable subscription service with a free trial because we believe that our users should be given some time to decide whether it is a good value for money.You can cancel any time. We thank you for considering using our app and hope you enjoy it!
         """
         
         let picName = "intro_sub"
