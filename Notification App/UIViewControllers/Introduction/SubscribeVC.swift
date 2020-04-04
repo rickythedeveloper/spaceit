@@ -14,16 +14,22 @@ class SubscribeVC: UIViewController {
     var products = [SKProduct]()
     let sskr = SwiftyStoreKitWrapper.shared
     
-    var errorFlag = false
-    
+    var priceLabel1 = UILabel()
+    var priceLabel2 = UILabel()
     var button1 = UIButton()
     var button2 = UIButton()
     var label1 = UILabel()
     var label2 = UILabel()
+    
+    var retrieveErrorCount = 0
 
     override func viewDidLoad() {
         super.viewDidLoad()
         setupButtons()
+        load()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
         load()
     }
 }
@@ -31,6 +37,7 @@ class SubscribeVC: UIViewController {
 private extension SubscribeVC {
     func load() {
         sskr.retrieveProductsInfo(productIDs: [sskr.monthlySub, sskr.yearlySub], retrieved: { (products) in
+            print("Retrieved IAP")
             self.products = Array(products)
             self.setTexts()
         }, invalidIDs: { (invalidIDs) in
@@ -38,20 +45,30 @@ private extension SubscribeVC {
                 print("Invalid product id upon IAP retrieval: \(invalidID)")
             }
         }, errorHandler: { (error) in
-            self.errorFlag = true
-            self.showAlertWithText("Unknown error occured. Please restard the app.")
+            print("Retrieve error")
+            self.retrieveErrorCount += 1
+            if self.retrieveErrorCount == 2 {
+                self.showAlertWithText("Unknown error occured. Please restard the app.")
+            }
         })
     }
     
     func setupButtons() {
         let padding: CGFloat = 20.0
         
+        priceLabel1 = priceLabel()
+        view.addSubview(priceLabel1)
+        priceLabel1.constrainToTopSafeAreaOf(view, padding: padding)
+        priceLabel1.constrainToSideSafeAreasOf(view, padding: padding)
+        priceLabel1.heightAnchor.constraint(greaterThanOrEqualTo: view.heightAnchor, multiplier: 0.1).isActive = true
+        priceLabel1.heightAnchor.constraint(lessThanOrEqualTo: view.heightAnchor, multiplier: 0.2).isActive = true
+        
         button1 = subscribeButton()
         button1.addTarget(self, action: #selector(button1Pressed), for: .touchUpInside)
         view.addSubview(button1)
-        button1.constrainToTopSafeAreaOf(view, padding: padding)
+        button1.isBelow(priceLabel1, padding: padding)
         button1.constrainToSideSafeAreasOf(view, padding: padding)
-        button1.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.2).isActive = true
+        button1.heightAnchor.constraint(equalToConstant: 60.0).isActive = true
         
         label1 = descLabel()
         view.addSubview(label1)
@@ -59,12 +76,19 @@ private extension SubscribeVC {
         label1.constrainToSideSafeAreasOf(view, padding: padding)
         label1.bottomAnchor.constraint(lessThanOrEqualTo: view.centerYAnchor).isActive = true
         
+        priceLabel2 = priceLabel()
+        view.addSubview(priceLabel2)
+        priceLabel2.topAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
+        priceLabel2.constrainToSideSafeAreasOf(view, padding: padding)
+        priceLabel2.heightAnchor.constraint(greaterThanOrEqualTo: view.heightAnchor, multiplier: 0.1).isActive = true
+        priceLabel2.heightAnchor.constraint(lessThanOrEqualTo: view.heightAnchor, multiplier: 0.2).isActive = true
+        
         button2 = subscribeButton()
         button2.addTarget(self, action: #selector(button2Pressed), for: .touchUpInside)
         view.addSubview(button2)
-        button2.topAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
+        button2.isBelow(priceLabel2, padding: padding)
         button2.constrainToSideSafeAreasOf(view, padding: padding)
-        button2.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.2).isActive = true
+        button2.heightAnchor.constraint(equalToConstant: 60.0).isActive = true
         
         label2 = descLabel()
         view.addSubview(label2)
@@ -79,6 +103,10 @@ private extension SubscribeVC {
 private extension SubscribeVC {
     private func titleFor(_ product: SKProduct) -> String {
         return product.localizedTitle
+    }
+    
+    private func priceFor(_ product: SKProduct) -> String {
+        return product.localizedPrice ?? "N/A"
     }
 
     private func descriptionFor(_ product: SKProduct) -> String {
@@ -186,13 +214,22 @@ private extension SubscribeVC {
 
 // MARK: Views
 private extension SubscribeVC {
+    
+    func priceLabel() -> UILabel {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.font = .preferredFont(forTextStyle: .largeTitle)
+        label.textAlignment = .center
+        return label
+    }
     func subscribeButton() -> UIButton {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
         button.layer.cornerRadius = 10.0
-        button.backgroundColor = UIColor(red: 0.6, green: 0.6, blue: 0.6, alpha: 0.2)
+        button.backgroundColor = UIColor(red: 0.4, green: 0.9, blue: 0.7, alpha: 0.8)
         button.setTitleColor(UIColor.myTextColor(), for: .normal)
         button.titleLabel?.font = .preferredFont(forTextStyle: .title1)
+        button.titleLabel?.adjustsFontSizeToFitWidth = true
         return button
     }
     
@@ -206,8 +243,11 @@ private extension SubscribeVC {
     
     func setTexts() {
         guard products.count == 2 else {return}
-        button1.setTitle(titleFor(products[0]), for: .normal)
-        button2.setTitle(titleFor(products[1]), for: .normal)
+        priceLabel1.text = priceFor(products[0])
+        priceLabel2.text = priceFor(products[1])
+        
+        button1.setTitle("Start " + titleFor(products[0]), for: .normal)
+        button2.setTitle("Start " + titleFor(products[1]), for: .normal)
         
         label1.text = descriptionFor(products[0])
         label2.text = descriptionFor(products[1])

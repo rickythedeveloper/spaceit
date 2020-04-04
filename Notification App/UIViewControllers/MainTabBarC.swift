@@ -79,9 +79,9 @@ extension MainTabBarC {
                 user.updateInfo(lastUpdated: now, subscriptionExpiryDate: expiry, subscriptionLastVerified: (expired ? nil : now))
             } else { // no valid user info is in the device
                 _ = User.createNewUser(lastUpdated: now, subscriptionExpiryDate: expiry, subscriptionLastVerified: (expired ? nil : now), managedObjectContext: self.managedObjectContext)
-                self.managedObjectContext.saveContext()
             }
             
+            self.managedObjectContext.saveContext()
             self.allowsAccessToContent = User.userShouldProceedToContent(managedObjectContext: self.managedObjectContext)
         }
     }
