@@ -14,19 +14,15 @@ class SubscribeVC: UIViewController {
     var products = [SKProduct]()
     let sskr = SwiftyStoreKitWrapper.shared
     
-    var priceLabel1 = UILabel()
-    var priceLabel2 = UILabel()
-    var button1 = UIButton()
-    var button2 = UIButton()
-    var label1 = UILabel()
-    var label2 = UILabel()
+    let sub1 = SubscribeButton(price: "Price", startButtonText: "Start Subscription", description: "Description")
+    let sub2 = SubscribeButton(price: "Price", startButtonText: "Start Subscription", description: "Description")
     
     var retrieveErrorCount = 0
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupButtons()
         load()
+        setupViews()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -39,7 +35,7 @@ private extension SubscribeVC {
         sskr.retrieveProductsInfo(productIDs: [sskr.monthlySub, sskr.yearlySub], retrieved: { (products) in
             print("Retrieved IAP")
             self.products = Array(products)
-            self.setTexts()
+            self.setInfo()
         }, invalidIDs: { (invalidIDs) in
             for invalidID in invalidIDs {
                 print("Invalid product id upon IAP retrieval: \(invalidID)")
@@ -53,49 +49,17 @@ private extension SubscribeVC {
         })
     }
     
-    func setupButtons() {
-        let padding: CGFloat = 20.0
+    func setupViews() {
+        let padding: CGFloat = 10.0
+        view.addSubview(sub1)
+        view.addSubview(sub2)
         
-        priceLabel1 = priceLabel()
-        view.addSubview(priceLabel1)
-        priceLabel1.constrainToTopSafeAreaOf(view, padding: padding)
-        priceLabel1.constrainToSideSafeAreasOf(view, padding: padding)
-        priceLabel1.heightAnchor.constraint(greaterThanOrEqualTo: view.heightAnchor, multiplier: 0.1).isActive = true
-        priceLabel1.heightAnchor.constraint(lessThanOrEqualTo: view.heightAnchor, multiplier: 0.2).isActive = true
+        sub1.constrainToTopSafeAreaOf(view, padding: padding)
+        sub1.constrainToSideSafeAreasOf(view, padding: padding)
         
-        button1 = subscribeButton()
-        button1.addTarget(self, action: #selector(button1Pressed), for: .touchUpInside)
-        view.addSubview(button1)
-        button1.isBelow(priceLabel1, padding: padding)
-        button1.constrainToSideSafeAreasOf(view, padding: padding)
-        button1.heightAnchor.constraint(equalToConstant: 60.0).isActive = true
-        
-        label1 = descLabel()
-        view.addSubview(label1)
-        label1.isBelow(button1, padding: padding)
-        label1.constrainToSideSafeAreasOf(view, padding: padding)
-        label1.bottomAnchor.constraint(lessThanOrEqualTo: view.centerYAnchor).isActive = true
-        
-        priceLabel2 = priceLabel()
-        view.addSubview(priceLabel2)
-        priceLabel2.topAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
-        priceLabel2.constrainToSideSafeAreasOf(view, padding: padding)
-        priceLabel2.heightAnchor.constraint(greaterThanOrEqualTo: view.heightAnchor, multiplier: 0.1).isActive = true
-        priceLabel2.heightAnchor.constraint(lessThanOrEqualTo: view.heightAnchor, multiplier: 0.2).isActive = true
-        
-        button2 = subscribeButton()
-        button2.addTarget(self, action: #selector(button2Pressed), for: .touchUpInside)
-        view.addSubview(button2)
-        button2.isBelow(priceLabel2, padding: padding)
-        button2.constrainToSideSafeAreasOf(view, padding: padding)
-        button2.heightAnchor.constraint(equalToConstant: 60.0).isActive = true
-        
-        label2 = descLabel()
-        view.addSubview(label2)
-        label2.isBelow(button2, padding: padding)
-        label2.constrainToSideSafeAreasOf(view, padding: padding)
-//        label2.constrainToBottomSafeAreaOf(view, padding: padding)
-        label2.bottomAnchor.constraint(lessThanOrEqualTo: view.bottomAnchor).isActive = true
+        sub2.isBelow(sub1, padding: padding)
+        sub2.constrainToSideSafeAreasOf(view, padding: padding)
+        sub2.heightAnchor.constraint(equalTo: sub1.heightAnchor).isActive = true
     }
 }
 
@@ -214,43 +178,10 @@ private extension SubscribeVC {
 
 // MARK: Views
 private extension SubscribeVC {
-    
-    func priceLabel() -> UILabel {
-        let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = .preferredFont(forTextStyle: .largeTitle)
-        label.textAlignment = .center
-        return label
-    }
-    func subscribeButton() -> UIButton {
-        let button = UIButton()
-        button.translatesAutoresizingMaskIntoConstraints = false
-        button.layer.cornerRadius = 10.0
-        button.backgroundColor = UIColor(red: 0.4, green: 0.9, blue: 0.7, alpha: 0.8)
-        button.setTitleColor(UIColor.myTextColor(), for: .normal)
-        button.titleLabel?.font = .preferredFont(forTextStyle: .title1)
-        button.titleLabel?.adjustsFontSizeToFitWidth = true
-        return button
-    }
-    
-    func descLabel() -> UILabel {
-        let lable = UILabel()
-        lable.translatesAutoresizingMaskIntoConstraints = false
-        lable.numberOfLines = 0
-        lable.sizeToFit()
-        return lable
-    }
-    
-    func setTexts() {
+    func setInfo() {
         guard products.count == 2 else {return}
-        priceLabel1.text = priceFor(products[0])
-        priceLabel2.text = priceFor(products[1])
-        
-        button1.setTitle("Start " + titleFor(products[0]), for: .normal)
-        button2.setTitle("Start " + titleFor(products[1]), for: .normal)
-        
-        label1.text = descriptionFor(products[0])
-        label2.text = descriptionFor(products[1])
+        sub1.setInfo(price: priceFor(products[0]), startButtonText: "Start " + titleFor(products[0]), description: descriptionFor(products[0]), action: #selector(button1Pressed))
+        sub2.setInfo(price: priceFor(products[1]), startButtonText: "Start " + titleFor(products[1]), description: descriptionFor(products[1]), action: #selector(button2Pressed))
     }
     
     func alert(text: String) -> UIAlertController {
