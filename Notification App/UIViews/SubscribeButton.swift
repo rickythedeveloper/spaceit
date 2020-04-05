@@ -50,10 +50,8 @@ private extension SubscribeButton {
     func setup(price: String?, startButtonText: String?, description: String?, action: Selector?) {
         // View itself
         translatesAutoresizingMaskIntoConstraints = false
-//        backgroundColor = UIColor(red: 0.4, green: 0.9, blue: 0.7, alpha: 0.8)
-        translatesAutoresizingMaskIntoConstraints = false
         layer.cornerRadius = 10.0
-        layer.borderColor = UIColor.myTextColor().cgColor
+        layer.borderColor = UIColor.systemGray.cgColor
         layer.borderWidth = 1.0
         
         addSubview(priceTag)
@@ -82,7 +80,7 @@ private extension SubscribeButton {
     }
     
     func addConstraints() {
-        let padding: CGFloat = 10.0
+        let padding: CGFloat = 20.0
         
         priceTag.constrainToTopSafeAreaOf(self, padding: padding)
         priceTag.constrainToSideSafeAreasOf(self, padding: padding)

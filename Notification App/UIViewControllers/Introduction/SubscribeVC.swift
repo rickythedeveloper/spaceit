@@ -16,6 +16,12 @@ class SubscribeVC: UIViewController {
     
     let sub1 = SubscribeButton(price: "Price", startButtonText: "Start Subscription", description: "Description")
     let sub2 = SubscribeButton(price: "Price", startButtonText: "Start Subscription", description: "Description")
+    var explanationLabel = UILabel()
+    
+    let consentText = "By continuing, you agree to our Terms and Conditions, and our Privacy Policy"
+    let linkRanges = [NSRange(location: 32, length: 20), NSRange(location: 62, length: 14)]
+    let termsAndConditionsLink = "https://docs.google.com/document/d/1nCQsl8NFpXrd2BSs6cUN7VpGX_iK3U0qw6Qmw1v2SQM/edit?usp=sharing"
+    let privacyPolicyLink = "https://docs.google.com/document/d/1nCQsl8NFpXrd2BSs6cUN7VpGX_iK3U0qw6Qmw1v2SQM/edit?usp=sharing"
     
     var retrieveErrorCount = 0
 
@@ -51,8 +57,11 @@ private extension SubscribeVC {
     
     func setupViews() {
         let padding: CGFloat = 10.0
+        explanationLabel = LabelWithLinks(text: consentText, rangesForLinks: linkRanges, links: [termsAndConditionsLink, privacyPolicyLink], textColor: .systemGray, font: .preferredFont(forTextStyle: .caption1), usesAutolayout: true)
+        
         view.addSubview(sub1)
         view.addSubview(sub2)
+        view.addSubview(explanationLabel)
         
         sub1.constrainToTopSafeAreaOf(view, padding: padding)
         sub1.constrainToSideSafeAreasOf(view, padding: padding)
@@ -60,6 +69,10 @@ private extension SubscribeVC {
         sub2.isBelow(sub1, padding: padding)
         sub2.constrainToSideSafeAreasOf(view, padding: padding)
         sub2.heightAnchor.constraint(equalTo: sub1.heightAnchor).isActive = true
+        
+        explanationLabel.isBelow(sub2, padding: padding)
+        explanationLabel.constrainToBottomSafeAreaOf(view, padding: padding)
+        explanationLabel.constrainToSideSafeAreasOf(view, padding: padding)
     }
 }
 
