@@ -6,6 +6,8 @@
 //  Copyright © 2020 Rintaro Kawagishi. All rights reserved.
 //
 
+
+/*
 import UIKit
 import SwiftyStoreKit
 import StoreKit
@@ -276,3 +278,5 @@ extension SwiftyStoreKitWrapper {
         fetchReceiptAndValidate(successHandler: FindLatestExpiryDateUponReceiptValidation(receipt:), failureHandler: receiptValidationFailed(error:))
     }
 }
+
+ */

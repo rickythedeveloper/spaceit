@@ -9,6 +9,7 @@
 import UIKit
 import StoreKit
 
+/*
 class SubscribeVC: UIViewController {
     
     var products = [SKProduct]()
@@ -207,3 +208,4 @@ private extension SubscribeVC {
         self.present(alert(text: text), animated: true, completion: nil)
     }
 }
+*/

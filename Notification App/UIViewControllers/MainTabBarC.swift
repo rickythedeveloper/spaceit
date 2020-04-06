@@ -14,7 +14,6 @@ class MainTabBarC: UITabBarController {
     static let shared = MainTabBarC()
     
     private var introVC = IntroVC()
-    private let sskw = SwiftyStoreKitWrapper.shared
     private let managedObjectContext = NSManagedObjectContext.defaultContext()
 
     override func viewDidLoad() {
