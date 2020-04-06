@@ -40,60 +40,25 @@
 		9CF34024242F269C00897B40 /* WorkspaceAccessible.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CF34023242F269C00897B40 /* WorkspaceAccessible.swift */; };
 		9CF8388424399A3400A4CE59 /* UITapGestureRecognizer+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CF8388324399A3400A4CE59 /* UITapGestureRecognizer+.swift */; };
 		9CF8388624399C3F00A4CE59 /* LabelWithLinks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CF8388524399C3F00A4CE59 /* LabelWithLinks.swift */; };
-		B801F1342339312C003218BF /* Angle+.swift in Sources */ = {isa = PBXBuildFile; fileRef = B801F1332339312C003218BF /* Angle+.swift */; };
 		B8099DE923C0BE4300A56471 /* CardEditVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8099DE823C0BE4300A56471 /* CardEditVC.swift */; };
 		B8099DEC23C0C59700A56471 /* UIVIew+.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8099DEB23C0C59700A56471 /* UIVIew+.swift */; };
 		B80FF85123C5913C005F3AA7 /* UILabel+.swift in Sources */ = {isa = PBXBuildFile; fileRef = B80FF85023C5913C005F3AA7 /* UILabel+.swift */; };
-		B81428C7232EB41B0085AA1F /* MultiLineTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = B81428C6232EB41B0085AA1F /* MultiLineTextField.swift */; };
-		B828BC0F23786DBF00F2D959 /* ClearButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B828BC0E23786DBF00F2D959 /* ClearButton.swift */; };
-		B82D2F24235C87D60055A506 /* UpcomingRIghtView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B82D2F23235C87D60055A506 /* UpcomingRIghtView.swift */; };
 		B83C305F23C5B7C3008A24D4 /* UIColor+.swift in Sources */ = {isa = PBXBuildFile; fileRef = B83C305E23C5B7C3008A24D4 /* UIColor+.swift */; };
 		B8419633233AA00A00E6558C /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B8419632233AA00A00E6558C /* CloudKit.framework */; };
 		B844EDB023C3471C0033D657 /* UIButton+.swift in Sources */ = {isa = PBXBuildFile; fileRef = B844EDAF23C3471C0033D657 /* UIButton+.swift */; };
-		B846750A23536797006FC44F /* CardCellViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = B846750923536797006FC44F /* CardCellViews.swift */; };
-		B85C07D623365CCB00200B07 /* PageStructureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B85C07D523365CCB00200B07 /* PageStructureView.swift */; };
-		B85C07D823365E3200200B07 /* PageInsideView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B85C07D723365E3200200B07 /* PageInsideView.swift */; };
-		B85C07DA23379DBB00200B07 /* PageNameEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B85C07D923379DBB00200B07 /* PageNameEditView.swift */; };
 		B85C07DC23379E6400200B07 /* FetchedResults+.swift in Sources */ = {isa = PBXBuildFile; fileRef = B85C07DB23379E6400200B07 /* FetchedResults+.swift */; };
-		B871756E2343F55A00BB9E6F /* ActionSheet+.swift in Sources */ = {isa = PBXBuildFile; fileRef = B871756D2343F55A00BB9E6F /* ActionSheet+.swift */; };
 		B87BF76123C59358006D372F /* CardListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B87BF76023C59358006D372F /* CardListVC.swift */; };
-		B88457F5232A4E3200B5CC3C /* KeyboardGuardian.swift in Sources */ = {isa = PBXBuildFile; fileRef = B88457F4232A4E3200B5CC3C /* KeyboardGuardian.swift */; };
-		B88457F7232A589C00B5CC3C /* UIApplication+.swift in Sources */ = {isa = PBXBuildFile; fileRef = B88457F6232A589C00B5CC3C /* UIApplication+.swift */; };
-		B88457F9232A8FB500B5CC3C /* PrivacyPolicy.swift in Sources */ = {isa = PBXBuildFile; fileRef = B88457F8232A8FB500B5CC3C /* PrivacyPolicy.swift */; };
-		B88457FB232BA0BA00B5CC3C /* MainTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = B88457FA232BA0BA00B5CC3C /* MainTab.swift */; };
-		B88457FD232BA27800B5CC3C /* ReviewSR.swift in Sources */ = {isa = PBXBuildFile; fileRef = B88457FC232BA27800B5CC3C /* ReviewSR.swift */; };
-		B88457FF232BA2A100B5CC3C /* Spaced Repetition.swift in Sources */ = {isa = PBXBuildFile; fileRef = B88457FE232BA2A100B5CC3C /* Spaced Repetition.swift */; };
-		B8845801232BA8EC00B5CC3C /* TaskCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8845800232BA8EC00B5CC3C /* TaskCard.swift */; };
-		B8845804232BADFB00B5CC3C /* Color+.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8845803232BADFB00B5CC3C /* Color+.swift */; };
 		B8845807232BCEDE00B5CC3C /* Array+.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8845806232BCEDE00B5CC3C /* Array+.swift */; };
-		B886E726232D333C00BD76BD /* AddSR.swift in Sources */ = {isa = PBXBuildFile; fileRef = B886E725232D333C00BD76BD /* AddSR.swift */; };
-		B886E729232D8ABF00BD76BD /* MoreTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = B886E728232D8ABF00BD76BD /* MoreTab.swift */; };
-		B88CD833238B0FF400901DF6 /* PageNameCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B88CD832238B0FF400901DF6 /* PageNameCell.swift */; };
-		B88CD835238B1D1D00901DF6 /* WorkspaceBackButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B88CD834238B1D1D00901DF6 /* WorkspaceBackButton.swift */; };
-		B8916D9C2367B8A5003A5758 /* View+.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8916D9B2367B8A5003A5758 /* View+.swift */; };
 		B895D2DE233159CC00767C4E /* String+.swift in Sources */ = {isa = PBXBuildFile; fileRef = B895D2DD233159CC00767C4E /* String+.swift */; };
-		B895D2E023315AC600767C4E /* Alert+.swift in Sources */ = {isa = PBXBuildFile; fileRef = B895D2DF23315AC600767C4E /* Alert+.swift */; };
-		B8AB581C232E80B100AD2012 /* CardEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8AB581B232E80B100AD2012 /* CardEditView.swift */; };
-		B8AB5822232E8F7A00AD2012 /* CardListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8AB5821232E8F7A00AD2012 /* CardListView.swift */; };
-		B8B8023C2326EDB60041098F /* SetTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8B8023B2326EDB60041098F /* SetTime.swift */; };
 		B8CF591023C474E600F83DDB /* UIAlertController+.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8CF590F23C474E600F83DDB /* UIAlertController+.swift */; };
-		B8D53A8E232D924D006887FE /* DeveloperPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8D53A8D232D924D006887FE /* DeveloperPage.swift */; };
 		B8D9503D2326C48F001236AE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8D9503C2326C48F001236AE /* AppDelegate.swift */; };
 		B8D9503F2326C48F001236AE /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8D9503E2326C48F001236AE /* SceneDelegate.swift */; };
 		B8D950422326C48F001236AE /* Notification_App.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B8D950402326C48F001236AE /* Notification_App.xcdatamodeld */; };
 		B8D950462326C491001236AE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B8D950452326C491001236AE /* Assets.xcassets */; };
 		B8D950492326C491001236AE /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B8D950482326C491001236AE /* Preview Assets.xcassets */; };
 		B8D9504C2326C491001236AE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B8D9504A2326C491001236AE /* LaunchScreen.storyboard */; };
-		B8D950562326C4E5001236AE /* AddNewReminder.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8D950552326C4E5001236AE /* AddNewReminder.swift */; };
-		B8D950582326C56D001236AE /* RemindTimeSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8D950572326C56D001236AE /* RemindTimeSettings.swift */; };
-		B8D9505A2326C58C001236AE /* UserSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8D950592326C58C001236AE /* UserSettings.swift */; };
 		B8D9505E2326C85C001236AE /* UNUserNotificationCenter+.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8D9505C2326C85C001236AE /* UNUserNotificationCenter+.swift */; };
-		B8D9505F2326C85C001236AE /* NotificationDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8D9505D2326C85C001236AE /* NotificationDelegate.swift */; };
-		B8D950612326C8E7001236AE /* TimeSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8D950602326C8E7001236AE /* TimeSettings.swift */; };
-		B8D950632326CA98001236AE /* TimeSetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8D950622326CA98001236AE /* TimeSetting.swift */; };
 		B8D9B2D42329A97100348987 /* GADBannerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8D9B2D32329A97100348987 /* GADBannerViewController.swift */; };
-		B8EA1694235C90BA00845F04 /* CreationHistoryLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8EA1693235C90BA00845F04 /* CreationHistoryLabel.swift */; };
-		B8F3794623537EC800CA9976 /* NewPageTF.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8F3794523537EC800CA9976 /* NewPageTF.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -144,45 +109,18 @@
 		9CF34023242F269C00897B40 /* WorkspaceAccessible.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkspaceAccessible.swift; sourceTree = "<group>"; };
 		9CF8388324399A3400A4CE59 /* UITapGestureRecognizer+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITapGestureRecognizer+.swift"; sourceTree = "<group>"; };
 		9CF8388524399C3F00A4CE59 /* LabelWithLinks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelWithLinks.swift; sourceTree = "<group>"; };
-		B801F1332339312C003218BF /* Angle+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Angle+.swift"; sourceTree = "<group>"; };
 		B8099DE823C0BE4300A56471 /* CardEditVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardEditVC.swift; sourceTree = "<group>"; };
 		B8099DEB23C0C59700A56471 /* UIVIew+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIVIew+.swift"; sourceTree = "<group>"; };
 		B80FF85023C5913C005F3AA7 /* UILabel+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+.swift"; sourceTree = "<group>"; };
-		B81428C6232EB41B0085AA1F /* MultiLineTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiLineTextField.swift; sourceTree = "<group>"; };
-		B828BC0E23786DBF00F2D959 /* ClearButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClearButton.swift; sourceTree = "<group>"; };
-		B82D2F23235C87D60055A506 /* UpcomingRIghtView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpcomingRIghtView.swift; sourceTree = "<group>"; };
 		B83C305E23C5B7C3008A24D4 /* UIColor+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+.swift"; sourceTree = "<group>"; };
 		B8419631233AA00800E6558C /* Notification App.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Notification App.entitlements"; sourceTree = "<group>"; };
 		B8419632233AA00A00E6558C /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		B844EDAF23C3471C0033D657 /* UIButton+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+.swift"; sourceTree = "<group>"; };
-		B846750923536797006FC44F /* CardCellViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardCellViews.swift; sourceTree = "<group>"; };
-		B85C07D523365CCB00200B07 /* PageStructureView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageStructureView.swift; sourceTree = "<group>"; };
-		B85C07D723365E3200200B07 /* PageInsideView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageInsideView.swift; sourceTree = "<group>"; };
-		B85C07D923379DBB00200B07 /* PageNameEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageNameEditView.swift; sourceTree = "<group>"; };
 		B85C07DB23379E6400200B07 /* FetchedResults+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FetchedResults+.swift"; sourceTree = "<group>"; };
-		B871756D2343F55A00BB9E6F /* ActionSheet+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ActionSheet+.swift"; sourceTree = "<group>"; };
 		B87BF76023C59358006D372F /* CardListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardListVC.swift; sourceTree = "<group>"; };
-		B88457F4232A4E3200B5CC3C /* KeyboardGuardian.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardGuardian.swift; sourceTree = "<group>"; };
-		B88457F6232A589C00B5CC3C /* UIApplication+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIApplication+.swift"; sourceTree = "<group>"; };
-		B88457F8232A8FB500B5CC3C /* PrivacyPolicy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivacyPolicy.swift; sourceTree = "<group>"; };
-		B88457FA232BA0BA00B5CC3C /* MainTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTab.swift; sourceTree = "<group>"; };
-		B88457FC232BA27800B5CC3C /* ReviewSR.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewSR.swift; sourceTree = "<group>"; };
-		B88457FE232BA2A100B5CC3C /* Spaced Repetition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Spaced Repetition.swift"; sourceTree = "<group>"; };
-		B8845800232BA8EC00B5CC3C /* TaskCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskCard.swift; sourceTree = "<group>"; };
-		B8845803232BADFB00B5CC3C /* Color+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+.swift"; sourceTree = "<group>"; };
 		B8845806232BCEDE00B5CC3C /* Array+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+.swift"; sourceTree = "<group>"; };
-		B886E725232D333C00BD76BD /* AddSR.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddSR.swift; sourceTree = "<group>"; };
-		B886E728232D8ABF00BD76BD /* MoreTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreTab.swift; sourceTree = "<group>"; };
-		B88CD832238B0FF400901DF6 /* PageNameCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageNameCell.swift; sourceTree = "<group>"; };
-		B88CD834238B1D1D00901DF6 /* WorkspaceBackButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkspaceBackButton.swift; sourceTree = "<group>"; };
-		B8916D9B2367B8A5003A5758 /* View+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+.swift"; sourceTree = "<group>"; };
 		B895D2DD233159CC00767C4E /* String+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+.swift"; sourceTree = "<group>"; };
-		B895D2DF23315AC600767C4E /* Alert+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Alert+.swift"; sourceTree = "<group>"; };
-		B8AB581B232E80B100AD2012 /* CardEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardEditView.swift; sourceTree = "<group>"; };
-		B8AB5821232E8F7A00AD2012 /* CardListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardListView.swift; sourceTree = "<group>"; };
-		B8B8023B2326EDB60041098F /* SetTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetTime.swift; sourceTree = "<group>"; };
 		B8CF590F23C474E600F83DDB /* UIAlertController+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIAlertController+.swift"; sourceTree = "<group>"; };
-		B8D53A8D232D924D006887FE /* DeveloperPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeveloperPage.swift; sourceTree = "<group>"; };
 		B8D950392326C48F001236AE /* Space It.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Space It.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B8D9503C2326C48F001236AE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B8D9503E2326C48F001236AE /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -191,16 +129,8 @@
 		B8D950482326C491001236AE /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		B8D9504B2326C491001236AE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B8D9504D2326C491001236AE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		B8D950552326C4E5001236AE /* AddNewReminder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewReminder.swift; sourceTree = "<group>"; };
-		B8D950572326C56D001236AE /* RemindTimeSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemindTimeSettings.swift; sourceTree = "<group>"; };
-		B8D950592326C58C001236AE /* UserSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSettings.swift; sourceTree = "<group>"; };
 		B8D9505C2326C85C001236AE /* UNUserNotificationCenter+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UNUserNotificationCenter+.swift"; sourceTree = "<group>"; };
-		B8D9505D2326C85C001236AE /* NotificationDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationDelegate.swift; sourceTree = "<group>"; };
-		B8D950602326C8E7001236AE /* TimeSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeSettings.swift; sourceTree = "<group>"; };
-		B8D950622326CA98001236AE /* TimeSetting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeSetting.swift; sourceTree = "<group>"; };
 		B8D9B2D32329A97100348987 /* GADBannerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GADBannerViewController.swift; sourceTree = "<group>"; };
-		B8EA1693235C90BA00845F04 /* CreationHistoryLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreationHistoryLabel.swift; sourceTree = "<group>"; };
-		B8F3794523537EC800CA9976 /* NewPageTF.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewPageTF.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -251,15 +181,9 @@
 				B895D2DD233159CC00767C4E /* String+.swift */,
 				9C3164ED23E32F530095DF46 /* NSAttributedString+.swift */,
 				9CC51AF123EB8C8800636842 /* NSManagedObjectContext+.swift */,
+				B8D9505C2326C85C001236AE /* UNUserNotificationCenter+.swift */,
 			);
 			path = "Swift+";
-			sourceTree = "<group>";
-		};
-		9C5AE618243439820044D8B8 /* In-App Purchases */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = "In-App Purchases";
 			sourceTree = "<group>";
 		};
 		9C7310842433503C008E9820 /* Introduction */ = {
@@ -312,96 +236,6 @@
 			path = "UIKit+";
 			sourceTree = "<group>";
 		};
-		B84EA8532327AE9C00FAF4A1 /* Settings */ = {
-			isa = PBXGroup;
-			children = (
-				B8D950602326C8E7001236AE /* TimeSettings.swift */,
-				B8D950622326CA98001236AE /* TimeSetting.swift */,
-				B8B8023B2326EDB60041098F /* SetTime.swift */,
-			);
-			name = Settings;
-			path = "New Group";
-			sourceTree = "<group>";
-		};
-		B85C07DD2338158500200B07 /* Workspace */ = {
-			isa = PBXGroup;
-			children = (
-				B85C07D523365CCB00200B07 /* PageStructureView.swift */,
-				B85C07D723365E3200200B07 /* PageInsideView.swift */,
-				B85C07D923379DBB00200B07 /* PageNameEditView.swift */,
-				B8F3794523537EC800CA9976 /* NewPageTF.swift */,
-				B88CD832238B0FF400901DF6 /* PageNameCell.swift */,
-				B88CD834238B1D1D00901DF6 /* WorkspaceBackButton.swift */,
-			);
-			path = Workspace;
-			sourceTree = "<group>";
-		};
-		B88457F3232A4E0E00B5CC3C /* Keyboard Guardian */ = {
-			isa = PBXGroup;
-			children = (
-				B88457F4232A4E3200B5CC3C /* KeyboardGuardian.swift */,
-				B88457F6232A589C00B5CC3C /* UIApplication+.swift */,
-			);
-			path = "Keyboard Guardian";
-			sourceTree = "<group>";
-		};
-		B8845808232BE4B300B5CC3C /* Reminder Tab */ = {
-			isa = PBXGroup;
-			children = (
-				B8D950552326C4E5001236AE /* AddNewReminder.swift */,
-				B84EA8532327AE9C00FAF4A1 /* Settings */,
-			);
-			path = "Reminder Tab";
-			sourceTree = "<group>";
-		};
-		B8845809232BE4D400B5CC3C /* SR Tab */ = {
-			isa = PBXGroup;
-			children = (
-				B88457FC232BA27800B5CC3C /* ReviewSR.swift */,
-				B8845800232BA8EC00B5CC3C /* TaskCard.swift */,
-				B886E725232D333C00BD76BD /* AddSR.swift */,
-				B8AB581B232E80B100AD2012 /* CardEditView.swift */,
-			);
-			path = "SR Tab";
-			sourceTree = "<group>";
-		};
-		B886E727232D8A9900BD76BD /* More Tab */ = {
-			isa = PBXGroup;
-			children = (
-				B886E728232D8ABF00BD76BD /* MoreTab.swift */,
-				B88457F8232A8FB500B5CC3C /* PrivacyPolicy.swift */,
-				B8D53A8D232D924D006887FE /* DeveloperPage.swift */,
-			);
-			path = "More Tab";
-			sourceTree = "<group>";
-		};
-		B8AB5820232E8F3300AD2012 /* Cards Tab */ = {
-			isa = PBXGroup;
-			children = (
-				B8AB5821232E8F7A00AD2012 /* CardListView.swift */,
-				B846750923536797006FC44F /* CardCellViews.swift */,
-				B82D2F23235C87D60055A506 /* UpcomingRIghtView.swift */,
-				B8EA1693235C90BA00845F04 /* CreationHistoryLabel.swift */,
-			);
-			path = "Cards Tab";
-			sourceTree = "<group>";
-		};
-		B8C723D12336464F00455480 /* Services */ = {
-			isa = PBXGroup;
-			children = (
-				B81428C6232EB41B0085AA1F /* MultiLineTextField.swift */,
-				B8845803232BADFB00B5CC3C /* Color+.swift */,
-				B895D2DF23315AC600767C4E /* Alert+.swift */,
-				B8D9505B2326C82D001236AE /* Notification */,
-				B88457F3232A4E0E00B5CC3C /* Keyboard Guardian */,
-				B801F1332339312C003218BF /* Angle+.swift */,
-				B871756D2343F55A00BB9E6F /* ActionSheet+.swift */,
-				B8916D9B2367B8A5003A5758 /* View+.swift */,
-				B828BC0E23786DBF00F2D959 /* ClearButton.swift */,
-			);
-			path = Services;
-			sourceTree = "<group>";
-		};
 		B8D950302326C48F001236AE = {
 			isa = PBXGroup;
 			children = (
@@ -425,13 +259,10 @@
 		B8D9503B2326C48F001236AE /* Notification App */ = {
 			isa = PBXGroup;
 			children = (
-				9C5AE618243439820044D8B8 /* In-App Purchases */,
 				9CF34022242F268600897B40 /* Protocols */,
 				9C35CD5123DF724C0099F55D /* Swift+ */,
 				B8099DEA23C0BEBD00A56471 /* UIKit+ */,
 				B8419631233AA00800E6558C /* Notification App.entitlements */,
-				B8C723D12336464F00455480 /* Services */,
-				B8D950542326C4AB001236AE /* View */,
 				9C7C893023D9100100930E99 /* UIViews */,
 				B8D9B2D22329A94B00348987 /* UIViewControllers */,
 				B8D950532326C4A4001236AE /* Model */,
@@ -457,9 +288,6 @@
 		B8D950532326C4A4001236AE /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				B8D950572326C56D001236AE /* RemindTimeSettings.swift */,
-				B8D950592326C58C001236AE /* UserSettings.swift */,
-				B88457FE232BA2A100B5CC3C /* Spaced Repetition.swift */,
 				9C3B270D23CF11C400CC5A13 /* Page+CoreDataClass.swift */,
 				9C3B270B23CF11C400CC5A13 /* Page+CoreDataProperties.swift */,
 				9C3B270E23CF11C400CC5A13 /* TaskSaved+CoreDataClass.swift */,
@@ -469,28 +297,6 @@
 				9C29806E243613F200176A7A /* SwiftyStoreKitWrapper.swift */,
 			);
 			path = Model;
-			sourceTree = "<group>";
-		};
-		B8D950542326C4AB001236AE /* View */ = {
-			isa = PBXGroup;
-			children = (
-				B88457FA232BA0BA00B5CC3C /* MainTab.swift */,
-				B8845809232BE4D400B5CC3C /* SR Tab */,
-				B8AB5820232E8F3300AD2012 /* Cards Tab */,
-				B85C07DD2338158500200B07 /* Workspace */,
-				B886E727232D8A9900BD76BD /* More Tab */,
-				B8845808232BE4B300B5CC3C /* Reminder Tab */,
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
-		B8D9505B2326C82D001236AE /* Notification */ = {
-			isa = PBXGroup;
-			children = (
-				B8D9505D2326C85C001236AE /* NotificationDelegate.swift */,
-				B8D9505C2326C85C001236AE /* UNUserNotificationCenter+.swift */,
-			);
-			path = Notification;
 			sourceTree = "<group>";
 		};
 		B8D9B2D22329A94B00348987 /* UIViewControllers */ = {
@@ -671,85 +477,50 @@
 			buildActionMask = 2147483647;
 			files = (
 				9C97674B23E24D81004F4E90 /* AlphabeticalCardListCell.swift in Sources */,
-				B8D950562326C4E5001236AE /* AddNewReminder.swift in Sources */,
-				B8D53A8E232D924D006887FE /* DeveloperPage.swift in Sources */,
 				9C331CB924304550003934D6 /* ReviewButtonContainerV.swift in Sources */,
 				9CF8388424399A3400A4CE59 /* UITapGestureRecognizer+.swift in Sources */,
 				9C3B271023CF11C400CC5A13 /* TaskSaved+CoreDataProperties.swift in Sources */,
 				9C29806D2435FD2100176A7A /* SubscribeVC.swift in Sources */,
 				9C331CBB2430470C003934D6 /* ReviewAccessible.swift in Sources */,
-				B8845804232BADFB00B5CC3C /* Color+.swift in Sources */,
 				9CF34024242F269C00897B40 /* WorkspaceAccessible.swift in Sources */,
-				B8D9505A2326C58C001236AE /* UserSettings.swift in Sources */,
 				9C73108124333A66008E9820 /* IntroVC.swift in Sources */,
-				B8AB581C232E80B100AD2012 /* CardEditView.swift in Sources */,
 				9C8FEF9C24397E0300283192 /* SubscribeButton.swift in Sources */,
 				9C29806F243613F200176A7A /* SwiftyStoreKitWrapper.swift in Sources */,
 				9C3B271223CF11C400CC5A13 /* TaskSaved+CoreDataClass.swift in Sources */,
 				9C35CD5023DF61240099F55D /* UpcomingCardListCell.swift in Sources */,
-				B88457F7232A589C00B5CC3C /* UIApplication+.swift in Sources */,
 				9C5AE61524342F6B0044D8B8 /* IntroEachPageVC.swift in Sources */,
 				9C3164EC23E32DF90095DF46 /* CreationDateCardListCell.swift in Sources */,
-				B88457FD232BA27800B5CC3C /* ReviewSR.swift in Sources */,
-				B85C07D823365E3200200B07 /* PageInsideView.swift in Sources */,
 				B8D9503D2326C48F001236AE /* AppDelegate.swift in Sources */,
-				B8EA1694235C90BA00845F04 /* CreationHistoryLabel.swift in Sources */,
 				9C29807A2436D2B800176A7A /* User+CoreDataClass.swift in Sources */,
-				B846750A23536797006FC44F /* CardCellViews.swift in Sources */,
-				B828BC0F23786DBF00F2D959 /* ClearButton.swift in Sources */,
 				B8099DEC23C0C59700A56471 /* UIVIew+.swift in Sources */,
 				B87BF76123C59358006D372F /* CardListVC.swift in Sources */,
-				B85C07DA23379DBB00200B07 /* PageNameEditView.swift in Sources */,
-				B88457FB232BA0BA00B5CC3C /* MainTab.swift in Sources */,
 				9C7C893223D9103800930E99 /* NewCardVC.swift in Sources */,
 				B8099DE923C0BE4300A56471 /* CardEditVC.swift in Sources */,
 				9CCB588123F2C590002C3B36 /* MainTabBarC.swift in Sources */,
-				B8916D9C2367B8A5003A5758 /* View+.swift in Sources */,
 				9C3164EE23E32F530095DF46 /* NSAttributedString+.swift in Sources */,
 				9C9168E12431A24200AD31A9 /* CardListCellStyle.swift in Sources */,
 				B80FF85123C5913C005F3AA7 /* UILabel+.swift in Sources */,
-				B8D950632326CA98001236AE /* TimeSetting.swift in Sources */,
 				B8D9503F2326C48F001236AE /* SceneDelegate.swift in Sources */,
 				B8D9505E2326C85C001236AE /* UNUserNotificationCenter+.swift in Sources */,
 				9C35CD5323DF725B0099F55D /* Date+.swift in Sources */,
-				B8D950582326C56D001236AE /* RemindTimeSettings.swift in Sources */,
-				B88457F5232A4E3200B5CC3C /* KeyboardGuardian.swift in Sources */,
-				B8F3794623537EC800CA9976 /* NewPageTF.swift in Sources */,
-				B88457FF232BA2A100B5CC3C /* Spaced Repetition.swift in Sources */,
-				B81428C7232EB41B0085AA1F /* MultiLineTextField.swift in Sources */,
-				B895D2E023315AC600767C4E /* Alert+.swift in Sources */,
 				9C3B271123CF11C400CC5A13 /* Page+CoreDataClass.swift in Sources */,
 				B844EDB023C3471C0033D657 /* UIButton+.swift in Sources */,
 				9CC51AF223EB8C8800636842 /* NSManagedObjectContext+.swift in Sources */,
 				B8845807232BCEDE00B5CC3C /* Array+.swift in Sources */,
 				9C731083243347C3008E9820 /* IntroPageVC.swift in Sources */,
-				B801F1342339312C003218BF /* Angle+.swift in Sources */,
 				9C9168DF24319E3500AD31A9 /* UIImageView+.swift in Sources */,
-				B8AB5822232E8F7A00AD2012 /* CardListView.swift in Sources */,
 				B85C07DC23379E6400200B07 /* FetchedResults+.swift in Sources */,
-				B8845801232BA8EC00B5CC3C /* TaskCard.swift in Sources */,
-				B82D2F24235C87D60055A506 /* UpcomingRIghtView.swift in Sources */,
-				B88CD835238B1D1D00901DF6 /* WorkspaceBackButton.swift in Sources */,
 				9CF8388624399C3F00A4CE59 /* LabelWithLinks.swift in Sources */,
-				B8D950612326C8E7001236AE /* TimeSettings.swift in Sources */,
-				B88457F9232A8FB500B5CC3C /* PrivacyPolicy.swift in Sources */,
 				9C7C893423D910DD00930E99 /* UITextView+.swift in Sources */,
 				B8D950422326C48F001236AE /* Notification_App.xcdatamodeld in Sources */,
-				B871756E2343F55A00BB9E6F /* ActionSheet+.swift in Sources */,
 				9C5EF44A2416DD4200FEBE51 /* UIFont+.swift in Sources */,
 				9C148EB923E4ECC800901930 /* WorkspaceVC.swift in Sources */,
-				B886E726232D333C00BD76BD /* AddSR.swift in Sources */,
-				B85C07D623365CCB00200B07 /* PageStructureView.swift in Sources */,
 				B8D9B2D42329A97100348987 /* GADBannerViewController.swift in Sources */,
 				B895D2DE233159CC00767C4E /* String+.swift in Sources */,
-				B8B8023C2326EDB60041098F /* SetTime.swift in Sources */,
-				B886E729232D8ABF00BD76BD /* MoreTab.swift in Sources */,
 				B8CF591023C474E600F83DDB /* UIAlertController+.swift in Sources */,
 				B83C305F23C5B7C3008A24D4 /* UIColor+.swift in Sources */,
 				9C29807B2436D2B800176A7A /* User+CoreDataProperties.swift in Sources */,
 				9C3B270F23CF11C400CC5A13 /* Page+CoreDataProperties.swift in Sources */,
-				B8D9505F2326C85C001236AE /* NotificationDelegate.swift in Sources */,
-				B88CD833238B0FF400901DF6 /* PageNameCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

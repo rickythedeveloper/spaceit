@@ -12,6 +12,5 @@ import SwiftUI
 
 
 public class TaskSaved: NSManagedObject {
-    public var colour: Color = Color.randomVibrantColour()
-    public var angle: Angle = Angle.randomSmallAngle()
+    
 }

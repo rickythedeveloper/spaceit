@@ -14,12 +14,4 @@ class NotificationDelegate: NSObject, UNUserNotificationCenterDelegate {
     func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
         completionHandler(UNNotificationPresentationOptions.alert)
     }
-    
-    func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
-        let title = response.notification.request.content.title
-        let body = response.notification.request.content.body
-        let id = response.notification.request.identifier
-        center.sendNotification(requestID: id, title: title, body: body, remindTimeSetting: nil)
-        completionHandler()
-    }
 }
