@@ -13,7 +13,7 @@ class MainTabBarC: UITabBarController {
     
     static let shared = MainTabBarC()
     
-    private let introVC = IntroVC()
+    private var introVC = IntroVC()
     private let sskw = SwiftyStoreKitWrapper.shared
     private let managedObjectContext = NSManagedObjectContext.defaultContext()
 
@@ -34,7 +34,7 @@ class MainTabBarC: UITabBarController {
     override func viewDidAppear(_ animated: Bool) {
         let defaults = UserDefaults.standard
         if defaults.value(forKey: "isFirstTime") == nil {
-            self.presentIntro()
+            self.presentIntro(startActionForButton: #selector(dismissIntro))
             defaults.set(true, forKey: "isFirstTime")
         }
     }
@@ -42,12 +42,14 @@ class MainTabBarC: UITabBarController {
 
 // MARK: Dealing with intro VC
 private extension MainTabBarC {
-    func presentIntro() {
+    /// startActionForButton should be non-nil only if you want to show the start button on the last page of the intro VC
+    func presentIntro(startActionForButton: Selector? = nil) {
         guard self.presentedViewController == nil else {return}
+        introVC = IntroVC(startAction: startActionForButton)
         self.present(introVC, animated: true, completion: nil)
     }
     
-    func dismissIntro() {
+    @objc func dismissIntro() {
         guard self.presentedViewController != nil else {return}
         introVC.dismiss(animated: true, completion: nil)
     }

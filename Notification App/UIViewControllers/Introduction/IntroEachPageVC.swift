@@ -10,12 +10,15 @@ import UIKit
 
 class IntroEachPageVC: UIViewController {
     
-    private let text: String?
-    private let picName: String?
+    private let text: String
+    private let picName: String
+    private let startButton: UIButton?
     
-    init(text: String?, picName: String?) {
+    /// startButton should be non-nil only if you want to show the start button
+    init(text: String, picName: String, startButton: UIButton? = nil) {
         self.text = text
         self.picName = picName
+        self.startButton = startButton
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -35,45 +38,36 @@ private extension IntroEachPageVC {
     func setup() {
         let padding: CGFloat = 10.0
         
-        var pic: UIImageView?
-        if let picname = picName {
-            pic = UIImageView(image: UIImage(named: picname))
-            pic!.translatesAutoresizingMaskIntoConstraints = false
-            pic!.contentMode = .scaleAspectFit
-            view.addSubview(pic!)
-        }
+        let pic = UIImageView(image: UIImage(named: picName))
+        pic.translatesAutoresizingMaskIntoConstraints = false
+        pic.contentMode = .scaleAspectFit
+        view.addSubview(pic)
         
-        var label: UILabel?
-        if let text = text {
-            label = UILabel()
-            label!.text = text
-            label!.font = UIFont.preferredFont(forTextStyle: .body)
-            label!.numberOfLines = 0
-            label!.translatesAutoresizingMaskIntoConstraints = false
-            view.addSubview(label!)
-        }
+        let label = UILabel()
+        label.text = text
+        label.font = UIFont.preferredFont(forTextStyle: .body)
+        label.numberOfLines = 0
+        label.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(label)
         
-        if let picture = pic, let textLabel = label {
-            picture.constrainToTopSafeAreaOf(view, padding: padding)
-            picture.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.6).isActive = true
-            picture.widthAnchor.constraint(lessThanOrEqualTo: view.widthAnchor, multiplier: 0.9).isActive = true
-            picture.alignToCenterXOf(view)
-            
-            textLabel.isBelow(picture, padding: padding)
-            textLabel.alignToCenterXOf(view)
-            textLabel.widthAnchor.constraint(lessThanOrEqualToConstant: 400.0).isActive = true
-            textLabel.widthAnchor.constraint(lessThanOrEqualTo: view.widthAnchor, constant: -padding*2).isActive = true
-            textLabel.constrainToBottomSafeAreaOf(view)
-        } else if let picture = pic {
-            picture.heightAnchor.constraint(lessThanOrEqualTo: view.heightAnchor, multiplier: 0.9).isActive = true
-            picture.widthAnchor.constraint(lessThanOrEqualTo: view.widthAnchor, multiplier: 0.9).isActive = true
-            picture.alignToCenterXOf(view)
-            picture.alignToCenterYOf(view)
-        } else if let textLabel = label {
-            textLabel.heightAnchor.constraint(lessThanOrEqualTo: view.heightAnchor, multiplier: 0.9).isActive = true
-            textLabel.widthAnchor.constraint(lessThanOrEqualTo: view.widthAnchor, multiplier: 0.9).isActive = true
-            textLabel.alignToCenterXOf(view)
-            textLabel.alignToCenterYOf(view)
+        
+        pic.constrainToTopSafeAreaOf(view, padding: padding)
+        pic.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.6).isActive = true
+        pic.widthAnchor.constraint(lessThanOrEqualTo: view.widthAnchor, multiplier: 0.9).isActive = true
+        pic.alignToCenterXOf(view)
+        
+        label.isBelow(pic, padding: padding)
+        label.alignToCenterXOf(view)
+        label.widthAnchor.constraint(lessThanOrEqualToConstant: 400.0).isActive = true
+        label.widthAnchor.constraint(lessThanOrEqualTo: view.widthAnchor, constant: -padding*2).isActive = true
+        
+        if let startButton = startButton {
+            view.addSubview(startButton)
+            startButton.isBelow(label, padding: padding)
+            startButton.constrainToSideSafeAreasOf(view, padding: padding)
+            startButton.constrainToBottomSafeAreaOf(view, padding: padding)
+        } else {
+            label.constrainToBottomSafeAreaOf(view)
         }
     }
 }
@@ -100,13 +94,35 @@ extension IntroEachPageVC {
         return IntroEachPageVC(text: text, picName: picName)
     }
     
-    static func subscription() -> IntroEachPageVC {
+    /// startAction should be non-nil only if you want to show the start button on this page
+    static func addingCard(startAction: Selector? = nil) -> IntroEachPageVC {
         let text =
         """
-        We are always working to make this app better for our users. We offer this app as a very affordable subscription service with a free trial because we believe that our users should be given some time to decide whether it is a good value for money.You can cancel any time. We thank you for considering using our app and hope you enjoy it!
+        You can add a card from either Cards or Workspace tab. A new card will be due in 24 hours and you will get a notification if you allow it.
         """
+        let picName = "intro_add_card"
         
-        let picName = "intro_sub"
+        
+        if let action = startAction {
+            let startButton = UIButton()
+            startButton.setTitle("Start", for: .normal)
+            startButton.addTarget(nil, action: action, for: .touchUpInside)
+            startButton.layer.cornerRadius = 10.0
+            startButton.backgroundColor = .systemGray
+            startButton.translatesAutoresizingMaskIntoConstraints = false
+            return IntroEachPageVC(text: text, picName: picName, startButton: startButton)
+        }
+        
         return IntroEachPageVC(text: text, picName: picName)
     }
+    
+//    static func subscription() -> IntroEachPageVC {
+//        let text =
+//        """
+//        We are always working to make this app better for our users. We offer this app as a very affordable subscription service with a free trial because we believe that our users should be given some time to decide whether it is a good value for money.You can cancel any time. We thank you for considering using our app and hope you enjoy it!
+//        """
+//
+//        let picName = "intro_sub"
+//        return IntroEachPageVC(text: text, picName: picName)
+//    }
 }

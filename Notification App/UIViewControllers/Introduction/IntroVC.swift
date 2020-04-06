@@ -11,12 +11,15 @@ import UIKit
 class IntroVC: UIViewController {
     
     var onDismiss: Selector?
+    var startAction: Selector?
     
     let logo = UIImageView(image: UIImage(named: "logo_2.0"))
     var pageVC = UIPageViewController()
     
-    init(onDismiss: Selector? = nil) {
+    /// startAction should be non-nil only if you want to show the start button on the last page of the intro VC
+    init(onDismiss: Selector? = nil, startAction: Selector? = nil) {
         self.onDismiss = onDismiss
+        self.startAction = startAction
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -86,7 +89,7 @@ private extension IntroVC {
     }
     
     func setupPageVC() {
-        let pageVC = IntroPageVC(transitionStyle: .scroll, navigationOrientation: .horizontal, options: nil)
+        let pageVC = IntroPageVC(transitionStyle: .scroll, navigationOrientation: .horizontal, options: nil, startActionForButton: startAction)
         pageVC.view.translatesAutoresizingMaskIntoConstraints = false
         pageVC.view.alpha = 0
         self.addChild(pageVC)

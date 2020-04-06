@@ -12,7 +12,23 @@ class IntroPageVC: UIPageViewController {
     
     var pages = [UIViewController]()
     var index = 0
-
+    
+    var startAction: Selector?
+    
+    override init(transitionStyle style: UIPageViewController.TransitionStyle, navigationOrientation: UIPageViewController.NavigationOrientation, options: [UIPageViewController.OptionsKey : Any]? = nil) {
+        super.init(transitionStyle: style, navigationOrientation: navigationOrientation, options: options)
+    }
+    
+    /// startActionForButton should be non-nil only if you want to show the start button on the last page of the intro VC
+    convenience init(transitionStyle style: UIPageViewController.TransitionStyle, navigationOrientation: UIPageViewController.NavigationOrientation, options: [UIPageViewController.OptionsKey : Any]? = nil, startActionForButton action: Selector? = nil) {
+        self.init(transitionStyle: style, navigationOrientation: navigationOrientation, options: options)
+        self.startAction = action
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupPageController()
@@ -34,7 +50,7 @@ private extension IntroPageVC {
         let vc2 = IntroEachPageVC.workspace()
         pages.append(vc2)
         
-        let vc3 = IntroEachPageVC.subscription()
+        let vc3 = IntroEachPageVC.addingCard(startAction: startAction)
         pages.append(vc3)
         
         

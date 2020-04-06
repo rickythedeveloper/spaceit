@@ -1,22 +1,27 @@
 {
   "images" : [
     {
+      "filename" : "iPhone Add Card-2.pdf",
       "idiom" : "iphone",
       "scale" : "1x"
     },
     {
+      "filename" : "iPhone Add Card-1.pdf",
       "idiom" : "iphone",
       "scale" : "2x"
     },
     {
+      "filename" : "iPhone Add Card.pdf",
       "idiom" : "iphone",
       "scale" : "3x"
     },
     {
+      "filename" : "iPad Add Card-1.pdf",
       "idiom" : "ipad",
       "scale" : "1x"
     },
     {
+      "filename" : "iPad Add Card.pdf",
       "idiom" : "ipad",
       "scale" : "2x"
     }
