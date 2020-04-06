@@ -17,14 +17,8 @@
         <attribute name="waitTime" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
         <relationship name="page" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Page" inverseName="concepts" inverseEntity="Page"/>
     </entity>
-    <entity name="User" representedClassName="User" syncable="YES">
-        <attribute name="lastUpdated" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
-        <attribute name="subscriptionExpiryDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
-        <attribute name="subscriptionLastVerified" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
-    </entity>
     <elements>
         <element name="Page" positionX="105.33984375" positionY="-3.2421875" width="128" height="118"/>
         <element name="TaskSaved" positionX="-63" positionY="-18" width="128" height="163"/>
-        <element name="User" positionX="36" positionY="54" width="128" height="88"/>
     </elements>
 </model>

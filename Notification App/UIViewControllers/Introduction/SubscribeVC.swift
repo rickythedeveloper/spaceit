@@ -14,8 +14,8 @@ class SubscribeVC: UIViewController {
     var products = [SKProduct]()
     let sskr = SwiftyStoreKitWrapper.shared
     
-    let sub1 = SubscribeButton(price: "Price", startButtonText: "Start Subscription", description: "Description")
-    let sub2 = SubscribeButton(price: "Price", startButtonText: "Start Subscription", description: "Description")
+    let sub1 = SubscribeFrame(price: "Price", startButtonText: "Start Subscription", description: "Description")
+    let sub2 = SubscribeFrame(price: "Price", startButtonText: "Start Subscription", description: "Description")
     var explanationLabel = UILabel()
     
     let consentText = "By continuing, you agree to our Terms and Conditions, and our Privacy Policy"
@@ -183,9 +183,9 @@ private extension SubscribeVC {
     
     /// Set allowsAccessToContent to true in the main tab, which will hide the intro view. Then update the User object too.
     func proceedToContent() {
-        let mainTab = MainTabBarC.shared
-        mainTab.allowsAccessToContent = true
-        mainTab.updateUserInfo()
+//        let mainTab = MainTabBarC.shared
+//        mainTab.allowsAccessToContent = true
+//        mainTab.updateUserInfo()
     }
 }
 

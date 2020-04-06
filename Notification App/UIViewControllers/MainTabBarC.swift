@@ -12,15 +12,6 @@ import CoreData
 class MainTabBarC: UITabBarController {
     
     static let shared = MainTabBarC()
-    var allowsAccessToContent: Bool = false {
-        willSet {
-            if newValue {
-                dismissIntro()
-            } else {
-                presentIntro()
-            }
-        }
-    }
     
     private let introVC = IntroVC()
     private let sskw = SwiftyStoreKitWrapper.shared
@@ -28,9 +19,7 @@ class MainTabBarC: UITabBarController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        setup()
-        updateUserInfo()
-
+        
         // Do any additional setup after loading the view.
         let listTabBarItem = UITabBarItem(title: "Cards", image: UIImage(systemName: "square.stack.3d.up"), tag: 0)
         let cardListNavC = UINavigationController(rootViewController: CardListVC())
@@ -43,18 +32,16 @@ class MainTabBarC: UITabBarController {
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        if !allowsAccessToContent {
-            presentIntro()
+        let defaults = UserDefaults.standard
+        if defaults.value(forKey: "isFirstTime") == nil {
+            self.presentIntro()
+            defaults.set(true, forKey: "isFirstTime")
         }
     }
 }
 
 // MARK: Dealing with intro VC
 private extension MainTabBarC {
-    func setup() {
-        introVC.isModalInPresentation = true
-    }
-    
     func presentIntro() {
         guard self.presentedViewController == nil else {return}
         self.present(introVC, animated: true, completion: nil)
@@ -66,6 +53,7 @@ private extension MainTabBarC {
     }
 }
 
+/*
 // MARK: Update User info
 extension MainTabBarC {
     /// Update the User object from the info received from the IAP receipt. Then set the value for allowsAccessToContent.
@@ -86,3 +74,4 @@ extension MainTabBarC {
         }
     }
 }
+*/

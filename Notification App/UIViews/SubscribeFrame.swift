@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SubscribeButton: UIView {
+class SubscribeFrame: UIView {
     
     var priceTag = UILabel()
     var startButton = UIButton()
@@ -29,7 +29,7 @@ class SubscribeButton: UIView {
     }
 }
 
-extension SubscribeButton {
+extension SubscribeFrame {
     func setInfo(price: String?, startButtonText: String?, description: String?, action: Selector?) {
         if let price = price {
             priceTag.text = price
@@ -46,7 +46,7 @@ extension SubscribeButton {
     }
 }
 
-private extension SubscribeButton {
+private extension SubscribeFrame {
     func setup(price: String?, startButtonText: String?, description: String?, action: Selector?) {
         // View itself
         translatesAutoresizingMaskIntoConstraints = false
