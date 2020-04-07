@@ -77,6 +77,10 @@ class CardEditVC: UIViewController, UIScrollViewDelegate, WorkspaceAccessible {
         setupViews()
         putCardInfo()
     }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        self.saveCardInfo()
+    }
 }
 
 // MARK: Core Data
@@ -121,7 +125,6 @@ extension CardEditVC {
         let deleteAlert = UIAlertController.deleteAlert {
             self.managedObjectContext.delete(self.task)
             self.dismissView()
-            self.managedObjectContext.saveContext()
         }
         
         self.present(deleteAlert, animated: true, completion: nil)
@@ -131,7 +134,6 @@ extension CardEditVC {
         let action = {
             self.task.isActive.toggle()
             self.dismissView()
-            self.managedObjectContext.saveContext()
         }
         let alert = self.task.isActive ? UIAlertController.archiveAlert(action: action) : UIAlertController.recoverAlert(action: action)
         self.present(alert, animated: true, completion: nil)
@@ -143,10 +145,15 @@ extension CardEditVC {
                 self.frontTextView.becomeFirstResponder()
             }
         } else {
-            saveCardInfo(completion: {
-                self.dismissView()
-            })
+            self.dismissView()
         }
+    }
+    
+    @objc  private func discardChangesPressed() {
+        let discardAlert = UIAlertController.discardChangesAlert {
+            self.putCardInfo()
+        }
+        self.present(discardAlert, animated: true, completion:  nil)
     }
     
     @objc private func goToNextTextView() {
@@ -199,17 +206,13 @@ extension CardEditVC {
         view.backgroundColor = UIColor.myBackGroundColor()
         view.addSubview(scrollView)
         
-        navigationItem.rightBarButtonItems = [saveButtonItem(), archiveButtonItem(), deleteButtonItem()]
+        navigationItem.rightBarButtonItems = [discardChangesButtonItem(), archiveButtonItem(), deleteButtonItem()]
         
         scrollView.constrainToTopSafeAreaOf(view)
         scrollView.constrainToSideSafeAreasOf(view)
         scrollView.constrainToBottomSafeAreaOf(view)
         scrollView.translatesAutoresizingMaskIntoConstraints = false
         scrollView.delegate = self
-        
-        if self.task.page != nil {
-            pageButton.setTitle(self.task.page!.breadCrumb(), for: .normal)
-        }
         
         actionButtonContainer = reviewButtonStack(spacing: padding)
         
@@ -266,6 +269,7 @@ extension CardEditVC {
     }
     
     private func putCardInfo() {
+        self.chosenPage = self.task.page
         frontTextView.text = self.task.question
         backTextView.text = self.task.answer
         dueDateLabel.text = "Due on " + self.task.dueDateStringShort()
@@ -301,10 +305,8 @@ extension CardEditVC: ReviewAccessible {
     
     private func reviewWithEase(_ ease: Int) {
         self.task.reviewed(ease: ease)
-        saveCardInfo(completion: {
-            self.registerNotification(task: self.task)
-            self.navigationController?.popViewController(animated: true)
-        })
+        self.registerNotification(task: self.task)
+        self.dismissView()
     }
     
     private func registerNotification(task: TaskSaved) {
@@ -354,8 +356,8 @@ extension CardEditVC {
         return UIBarButtonItem(image: UIImage(systemName: "archivebox"), style: .plain, target: self, action: #selector(archivePressed))
     }
     
-    private func saveButtonItem() -> UIBarButtonItem {
-        return UIBarButtonItem(image: UIImage(systemName: "rectangle.fill.badge.checkmark"), style: .plain, target: self, action: #selector(okPressed))
+    private func discardChangesButtonItem() -> UIBarButtonItem {
+        return UIBarButtonItem(image: UIImage(systemName: "rectangle.fill.badge.xmark"), style: .plain, target: self, action: #selector(discardChangesPressed))
     }
 }
 

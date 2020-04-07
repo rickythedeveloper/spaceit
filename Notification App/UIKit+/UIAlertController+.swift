@@ -49,6 +49,15 @@ extension UIAlertController {
         return ac
     }
     
+    static func discardChangesAlert(action: @escaping ()->Void) -> UIAlertController {
+        let ac = UIAlertController(title: "Discard changes?", message: "This card will be reverted back to its saved state", preferredStyle: .alert)
+        ac.addAction(UIAlertAction(title: "Discard", style: .destructive, handler: { _ in
+            action()
+        }))
+        ac.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        return ac
+    }
+    
     static func workspaceActionSheet(title: String, actions: [(title: String, style: UIAlertAction.Style, action: ()->Void)]) -> UIAlertController {
         let ac = UIAlertController(title: title, message: nil, preferredStyle: .actionSheet)
         for each in actions {
