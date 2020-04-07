@@ -77,11 +77,13 @@ extension UIButton {
         descLabel.text = description
         descLabel.font = UIFont.preferredFont(forTextStyle: .body)
         descLabel.textAlignment = .center
+        descLabel.adjustsFontSizeToFitWidth = true
         
         let waitLabel = UILabel()
         waitLabel.text = nextWaitTime
         waitLabel.font = UIFont.preferredFont(forTextStyle: .caption1)
         waitLabel.textAlignment = .center
+        waitLabel.adjustsFontSizeToFitWidth = true
         
         let stack = UIStackView(arrangedSubviews: [descLabel, waitLabel])
         stack.translatesAutoresizingMaskIntoConstraints = false
