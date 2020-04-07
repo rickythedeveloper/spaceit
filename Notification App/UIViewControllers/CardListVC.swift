@@ -43,6 +43,8 @@ class CardListVC: UIViewController, UITableViewDelegate, UITableViewDataSource, 
     private var searchTimer: Timer?
     
     private var coredataUpdateTimer: Timer?
+    
+    private var highlightedRow: Int = -1
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -175,6 +177,55 @@ extension CardListVC {
 
 // Table View
 extension CardListVC {
+    
+    @objc private func highlightCellBelow() {
+        self.highlightedRow += 1
+        self.highlight()
+    }
+    
+    @objc private func highlightCellAbove() {
+        self.highlightedRow -= 1
+        self.highlight()
+    }
+    
+    private func highlight(row: Int? = nil) {
+        if let row = row {
+            self.highlightedRow = row
+        }
+        if self.highlightedRow >= self.cardListTV.numberOfRows(inSection: 0) {
+            self.highlightedRow = self.cardListTV.numberOfRows(inSection: 0) - 1
+        } else if self.highlightedRow < 0 {
+            self.highlightedRow = 0
+        }
+        
+        DispatchQueue.main.async {
+            self.cardListTV.selectRow(at: IndexPath(row: self.highlightedRow, section: 0), animated: false, scrollPosition: .none)
+            self.cardListTV.scrollToRow(at: IndexPath(row: self.highlightedRow, section: 0), at: .none, animated: false)
+        }
+    }
+    
+    @objc private func editHighlightedCard() {
+        editCard(tableView: self.cardListTV, didSelectRowAt: IndexPath(row: self.highlightedRow, section: 0))
+    }
+    
+    private func editCard(tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        var selectedTask: TaskSaved
+        let segment = segControl.selectedSegmentIndex
+        if segment == 0 {
+            selectedTask = upcomingTasks[indexPath.row]
+        } else if segment == 1 {
+            selectedTask = alphabeticalTasks[indexPath.row]
+        } else {
+            selectedTask = creationDateTasks[indexPath.row]
+        }
+        
+        self.navigationController?.pushViewController(CardEditVC(task: selectedTask, managedObjectContext: managedObjectContext, onDismiss: {
+            self.update()
+        }), animated: true)
+        tableView.deselectRow(at: indexPath, animated: true)
+        self.highlightedRow = indexPath.row
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if segControl.selectedSegmentIndex == 0 {
             return upcomingTasks.count
@@ -201,20 +252,7 @@ extension CardListVC {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        var selectedTask: TaskSaved
-        let segment = segControl.selectedSegmentIndex
-        if segment == 0 {
-            selectedTask = upcomingTasks[indexPath.row]
-        } else if segment == 1 {
-            selectedTask = alphabeticalTasks[indexPath.row]
-        } else {
-            selectedTask = creationDateTasks[indexPath.row]
-        }
-        
-        self.navigationController?.pushViewController(CardEditVC(task: selectedTask, managedObjectContext: managedObjectContext, onDismiss: {
-            self.update()
-        }), animated: true)
-        tableView.deselectRow(at: indexPath, animated: true)
+        self.editCard(tableView: tableView, didSelectRowAt: indexPath)
     }
 }
 
@@ -227,8 +265,13 @@ extension CardListVC {
             UIKeyCommand(title: segments[1], action: #selector(switchToAlphabetical), input: "2", modifierFlags: [.command], discoverabilityTitle: "Alphabetical"),
             UIKeyCommand(title: segments[2], action: #selector(switchToCreationDate), input: "3", modifierFlags: [.command], discoverabilityTitle: "Creation Date"),
             UIKeyCommand(title: "Scroll to Top", action: #selector(scrollToTop), input: UIKeyCommand.inputUpArrow, modifierFlags: [.command], discoverabilityTitle: "Scroll to Top"),
+            UIKeyCommand(title: "Scroll to Bottom", action: #selector(scrollToBottom), input: UIKeyCommand.inputDownArrow, modifierFlags: [.command], discoverabilityTitle: "Scroll to Bottom"),
+            UIKeyCommand(title: "Highlight Cell Above", action: #selector(highlightCellAbove), input: UIKeyCommand.inputUpArrow, modifierFlags: [], discoverabilityTitle: "Highlight Cell Above"),
+            UIKeyCommand(title: "Highlight Cell Below", action: #selector(highlightCellBelow), input: UIKeyCommand.inputDownArrow, modifierFlags: [], discoverabilityTitle: "Highlight Cell Below"),
+            UIKeyCommand(title: "Edit Highlighted Card", action: #selector(editHighlightedCard), input: UIKeyCommand.inputRightArrow, modifierFlags: [], discoverabilityTitle: "Edit Highlighted Card"),
             UIKeyCommand(title: "Search", action: #selector(search), input: "f", modifierFlags: [.command], discoverabilityTitle: "Search"),
             UIKeyCommand(title: "Workspace", action: #selector(goToWorkspace), input: UIKeyCommand.inputRightArrow, modifierFlags: [.command, .shift], discoverabilityTitle: "Workspace"),
+            
         ]
     }
     
@@ -248,8 +291,13 @@ extension CardListVC {
     }
     
     @objc private func scrollToTop() {
-        let desiredOffset = CGPoint(x: 0, y: -self.cardListTV.contentInset.top)
-        self.cardListTV.setContentOffset(desiredOffset, animated: true)
+//        let desiredOffset = CGPoint(x: 0, y: -self.cardListTV.contentInset.top)
+//        self.cardListTV.setContentOffset(desiredOffset, animated: true)
+        self.cardListTV.scrollToRow(at: IndexPath(row: 0, section: 0), at: .none, animated: true)
+    }
+    
+    @objc private func scrollToBottom() {
+        self.cardListTV.scrollToRow(at: IndexPath(row: self.cardListTV.numberOfRows(inSection: 0) - 1, section: 0), at: .none, animated: true)
     }
     
     @objc private func search() {
