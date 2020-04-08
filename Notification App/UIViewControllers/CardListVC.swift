@@ -88,6 +88,7 @@ extension CardListVC {
         self.managedObjectContext = NSManagedObjectContext.defaultContext()
         
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "plus"), style: .plain, target: self, action: #selector(addCardPressed))
+        navigationItem.titleView = UIImageView.logoIV()
         
         NotificationCenter.default.addObserver(self, selector: #selector(coreDataObjectsDidChange), name: Notification.Name.NSManagedObjectContextObjectsDidChange, object: nil)
         
