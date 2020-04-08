@@ -43,11 +43,11 @@ private extension NewVersionInfoV {
         
         messageLabel.text =
         """
-        - We now support auto save when editing a card. Whenever leacing the editing page, the card information will automatically be saved.
+        - We now support auto-save when editing a card. Whenever leaving the editing page, the card information will automatically be saved.
         
-        - We have replaced the "Save" button with a "Discard Changes" button for when you want to scratch your changes.
+        - We have replaced the "Save" button with a "Discard Changes" button in the editing page.
         
-        - Keyboard shortcuts for selecting a card as well as other shortcuts that were introduced in version 2.0! Long-press command to check teh shortcuts you can use in that view.
+        - Keyboard shortcuts for selecting a card as well as other shortcuts that were introduced in version 2.0! Long-press command to check the shortcuts you can use in that view.
         
         - Minor bug fixes on UI
         """
