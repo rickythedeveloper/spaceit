@@ -18,6 +18,7 @@
 		9C35CD5023DF61240099F55D /* UpcomingCardListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C35CD4F23DF61240099F55D /* UpcomingCardListCell.swift */; };
 		9C35CD5323DF725B0099F55D /* Date+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C35CD5223DF725B0099F55D /* Date+.swift */; };
 		9C38E6D3243D87680012FC59 /* NewVersionInfoV.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C38E6D2243D87680012FC59 /* NewVersionInfoV.swift */; };
+		9C38E6D5243DBC7B0012FC59 /* UITableView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C38E6D4243DBC7B0012FC59 /* UITableView+.swift */; };
 		9C3B270F23CF11C400CC5A13 /* Page+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C3B270B23CF11C400CC5A13 /* Page+CoreDataProperties.swift */; };
 		9C3B271023CF11C400CC5A13 /* TaskSaved+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C3B270C23CF11C400CC5A13 /* TaskSaved+CoreDataProperties.swift */; };
 		9C3B271123CF11C400CC5A13 /* Page+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C3B270D23CF11C400CC5A13 /* Page+CoreDataClass.swift */; };
@@ -81,6 +82,7 @@
 		9C35CD4F23DF61240099F55D /* UpcomingCardListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpcomingCardListCell.swift; sourceTree = "<group>"; };
 		9C35CD5223DF725B0099F55D /* Date+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+.swift"; sourceTree = "<group>"; };
 		9C38E6D2243D87680012FC59 /* NewVersionInfoV.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewVersionInfoV.swift; sourceTree = "<group>"; };
+		9C38E6D4243DBC7B0012FC59 /* UITableView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+.swift"; sourceTree = "<group>"; };
 		9C3B270B23CF11C400CC5A13 /* Page+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Page+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		9C3B270C23CF11C400CC5A13 /* TaskSaved+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "TaskSaved+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		9C3B270D23CF11C400CC5A13 /* Page+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Page+CoreDataClass.swift"; sourceTree = "<group>"; };
@@ -203,6 +205,7 @@
 			isa = PBXGroup;
 			children = (
 				B8099DEB23C0C59700A56471 /* UIVIew+.swift */,
+				9C38E6D4243DBC7B0012FC59 /* UITableView+.swift */,
 				B844EDAF23C3471C0033D657 /* UIButton+.swift */,
 				B8CF590F23C474E600F83DDB /* UIAlertController+.swift */,
 				B80FF85023C5913C005F3AA7 /* UILabel+.swift */,
@@ -400,6 +403,7 @@
 				9C97674B23E24D81004F4E90 /* AlphabeticalCardListCell.swift in Sources */,
 				9C331CB924304550003934D6 /* ReviewButtonContainerV.swift in Sources */,
 				9CF8388424399A3400A4CE59 /* UITapGestureRecognizer+.swift in Sources */,
+				9C38E6D5243DBC7B0012FC59 /* UITableView+.swift in Sources */,
 				9C3B271023CF11C400CC5A13 /* TaskSaved+CoreDataProperties.swift in Sources */,
 				9C29806D2435FD2100176A7A /* SubscribeVC.swift in Sources */,
 				9C331CBB2430470C003934D6 /* ReviewAccessible.swift in Sources */,
@@ -628,7 +632,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon_2.0;
 				CODE_SIGN_ENTITLEMENTS = "Notification App/Notification App.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 58;
+				CURRENT_PROJECT_VERSION = 59;
 				DERIVE_MACCATALYST_PRODUCT_BUNDLE_IDENTIFIER = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"Notification App/Preview Content\"";
 				DEVELOPMENT_TEAM = G763XN7D9Q;
@@ -653,7 +657,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon_2.0;
 				CODE_SIGN_ENTITLEMENTS = "Notification App/Notification App.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 58;
+				CURRENT_PROJECT_VERSION = 59;
 				DERIVE_MACCATALYST_PRODUCT_BUNDLE_IDENTIFIER = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"Notification App/Preview Content\"";
 				DEVELOPMENT_TEAM = G763XN7D9Q;

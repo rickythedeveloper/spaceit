@@ -181,39 +181,15 @@ extension CardListVC {
 
 // Table View
 extension CardListVC {
-    
-    private func firstVisibleRow() -> Int {
-        var lowest: Int?
-        if let indexPaths = self.cardListTV.indexPathsForVisibleRows {
-            for indexPath in indexPaths {
-                if let _lowest = lowest {
-                    if indexPath.row < _lowest {
-                        lowest = indexPath.row
-                    }
-                } else {
-                    lowest = indexPath.row
-                }
-            }
-        }
-        return lowest ?? 0
-    }
-    
     private func highlightIsVisible() -> Bool {
-        if let indexPaths = self.cardListTV.indexPathsForVisibleRows {
-            for indexPath in indexPaths {
-                if indexPath.row == self.highlightedRow {
-                    return true
-                }
-            }
-        }
-        return false
+        return self.cardListTV.shows(indexPath: IndexPath(row: self.highlightedRow, section: 0))
     }
     
     @objc private func highlightCellBelow() {
         if self.highlightIsVisible() {
             self.highlightedRow += 1
         } else {
-            self.highlightedRow = self.firstVisibleRow()
+            self.highlightedRow = self.cardListTV.firstVisibleRow()
         }
         self.highlight()
     }
@@ -222,7 +198,7 @@ extension CardListVC {
         if self.highlightIsVisible() {
             self.highlightedRow -= 1
         } else {
-            self.highlightedRow = self.firstVisibleRow()
+            self.highlightedRow = self.cardListTV.firstVisibleRow()
         }
         self.highlight()
     }
