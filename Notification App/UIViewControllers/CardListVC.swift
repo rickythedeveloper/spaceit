@@ -285,7 +285,7 @@ extension CardListVC {
             UIKeyCommand(title: "Scroll to Bottom", action: #selector(scrollToBottom), input: UIKeyCommand.inputDownArrow, modifierFlags: [.command], discoverabilityTitle: "Scroll to Bottom"),
             UIKeyCommand(title: "Highlight Cell Above", action: #selector(highlightCellAbove), input: UIKeyCommand.inputUpArrow, modifierFlags: [], discoverabilityTitle: "Highlight Cell Above"),
             UIKeyCommand(title: "Highlight Cell Below", action: #selector(highlightCellBelow), input: UIKeyCommand.inputDownArrow, modifierFlags: [], discoverabilityTitle: "Highlight Cell Below"),
-            UIKeyCommand(title: "Edit Highlighted Card", action: #selector(editHighlightedCard), input: UIKeyCommand.inputRightArrow, modifierFlags: [], discoverabilityTitle: "Edit Highlighted Card"),
+            UIKeyCommand(title: "Edit Highlighted Card", action: #selector(editHighlightedCard), input: UIKeyCommand.inputRightArrow, modifierFlags: [.command], discoverabilityTitle: "Edit Highlighted Card"),
             UIKeyCommand(title: "Search", action: #selector(search), input: "f", modifierFlags: [.command], discoverabilityTitle: "Search"),
             UIKeyCommand(title: "Workspace", action: #selector(goToWorkspace), input: UIKeyCommand.inputRightArrow, modifierFlags: [.command, .shift], discoverabilityTitle: "Workspace"),
             
