@@ -45,6 +45,7 @@ class CardListVC: UIViewController, UITableViewDelegate, UITableViewDataSource, 
     private var coredataUpdateTimer: Timer?
     
     private var highlightedRow: Int = -1
+    private var keepHighlighted: Bool = false
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -150,6 +151,9 @@ extension CardListVC {
         
         DispatchQueue.main.async {
             self.cardListTV.reloadData()
+            if self.keepHighlighted {
+                self.highlight()
+            }
         }
     }
     
@@ -178,17 +182,54 @@ extension CardListVC {
 // Table View
 extension CardListVC {
     
+    private func firstVisibleRow() -> Int {
+        var lowest: Int?
+        if let indexPaths = self.cardListTV.indexPathsForVisibleRows {
+            for indexPath in indexPaths {
+                if let _lowest = lowest {
+                    if indexPath.row < _lowest {
+                        lowest = indexPath.row
+                    }
+                } else {
+                    lowest = indexPath.row
+                }
+            }
+        }
+        return lowest ?? 0
+    }
+    
+    private func highlightIsVisible() -> Bool {
+        if let indexPaths = self.cardListTV.indexPathsForVisibleRows {
+            for indexPath in indexPaths {
+                if indexPath.row == self.highlightedRow {
+                    return true
+                }
+            }
+        }
+        return false
+    }
+    
     @objc private func highlightCellBelow() {
-        self.highlightedRow += 1
+        if self.highlightIsVisible() {
+            self.highlightedRow += 1
+        } else {
+            self.highlightedRow = self.firstVisibleRow()
+        }
         self.highlight()
     }
     
     @objc private func highlightCellAbove() {
-        self.highlightedRow -= 1
+        if self.highlightIsVisible() {
+            self.highlightedRow -= 1
+        } else {
+            self.highlightedRow = self.firstVisibleRow()
+        }
         self.highlight()
     }
     
     private func highlight(row: Int? = nil) {
+        if self.keepHighlighted == false {self.keepHighlighted = true}
+        guard self.cardListTV.numberOfRows(inSection: 0) > 0 else {return}
         if let row = row {
             self.highlightedRow = row
         }
@@ -261,9 +302,9 @@ extension CardListVC {
     override var keyCommands: [UIKeyCommand]? {
         return [
             UIKeyCommand(title: "New Card", action: #selector(addCardPressed), input: "n", modifierFlags: [.command], discoverabilityTitle: "New Card"),
-            UIKeyCommand(title: segments[0], action: #selector(switchToUpcoming), input: "1", modifierFlags: [.command], discoverabilityTitle: "Upcoming"),
-            UIKeyCommand(title: segments[1], action: #selector(switchToAlphabetical), input: "2", modifierFlags: [.command], discoverabilityTitle: "Alphabetical"),
-            UIKeyCommand(title: segments[2], action: #selector(switchToCreationDate), input: "3", modifierFlags: [.command], discoverabilityTitle: "Creation Date"),
+            UIKeyCommand(title: segments[0], action: #selector(switchToUpcoming), input: "1", modifierFlags: [.command], discoverabilityTitle: segments[0]),
+            UIKeyCommand(title: segments[1], action: #selector(switchToAlphabetical), input: "2", modifierFlags: [.command], discoverabilityTitle: segments[1]),
+            UIKeyCommand(title: segments[2], action: #selector(switchToCreationDate), input: "3", modifierFlags: [.command], discoverabilityTitle: segments[2]),
             UIKeyCommand(title: "Scroll to Top", action: #selector(scrollToTop), input: UIKeyCommand.inputUpArrow, modifierFlags: [.command], discoverabilityTitle: "Scroll to Top"),
             UIKeyCommand(title: "Scroll to Bottom", action: #selector(scrollToBottom), input: UIKeyCommand.inputDownArrow, modifierFlags: [.command], discoverabilityTitle: "Scroll to Bottom"),
             UIKeyCommand(title: "Highlight Cell Above", action: #selector(highlightCellAbove), input: UIKeyCommand.inputUpArrow, modifierFlags: [], discoverabilityTitle: "Highlight Cell Above"),
@@ -291,8 +332,6 @@ extension CardListVC {
     }
     
     @objc private func scrollToTop() {
-//        let desiredOffset = CGPoint(x: 0, y: -self.cardListTV.contentInset.top)
-//        self.cardListTV.setContentOffset(desiredOffset, animated: true)
         self.cardListTV.scrollToRow(at: IndexPath(row: 0, section: 0), at: .none, animated: true)
     }
     
