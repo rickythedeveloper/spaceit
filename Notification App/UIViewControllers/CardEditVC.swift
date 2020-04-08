@@ -272,7 +272,7 @@ extension CardEditVC {
         self.chosenPage = self.task.page
         frontTextView.text = self.task.question
         backTextView.text = self.task.answer
-        dueDateLabel.text = "Due on " + self.task.dueDateStringShort()
+        dueDateLabel.text = "Due on " + self.task.dueDate().dateString()
         intervalLabel.text = "Review interval: " + self.task.waitTimeString()
     }
 }

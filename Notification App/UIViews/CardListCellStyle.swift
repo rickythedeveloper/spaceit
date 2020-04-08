@@ -80,7 +80,7 @@ class CardListStyle {
     }
     
     static func creationDateStack(task: TaskSaved, isFirst: Bool, usesAutolayout: Bool) -> UILabel {
-        guard let creationDate = task.creationDateString() else {return UILabel()}
+        guard let creationDate = task.createdAt?.dateString() else {return UILabel()}
         
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = !usesAutolayout

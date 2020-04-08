@@ -11,7 +11,8 @@ import Foundation
 extension Date {
     func dateString() -> String {
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "dd MMM"
+        let template = "ddMMM"
+        dateFormatter.dateFormat = DateFormatter.dateFormat(fromTemplate: template, options: 0, locale: .current)!
         return dateFormatter.string(from: self)
     }
 }

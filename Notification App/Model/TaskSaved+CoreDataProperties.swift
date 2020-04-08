@@ -44,12 +44,6 @@ extension TaskSaved {
         return self.lastChecked.addingTimeInterval(self.waitTime)
     }
     
-    func dueDateStringShort() -> String {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "dd MMM"
-        return dateFormatter.string(from: self.dueDate())
-    }
-    
     func isDue() -> Bool {
         if self.dueDate() < Date() {return true} else {return false}
     }
@@ -101,16 +95,6 @@ extension TaskSaved {
         
         let nextWaitTime = nextWaitDays * (60*60*24)
         return nextWaitTime
-    }
-    
-    func creationDateString() -> String? {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "dd MMM"
-        if let createdAt = self.createdAt {
-            return dateFormatter.string(from: createdAt)
-        } else {
-            return nil
-        }
     }
     
     /// Returns the current wait time in a convenient string format.
