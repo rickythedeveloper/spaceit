@@ -112,22 +112,22 @@ extension CardListVC {
         
         let clearButton = UIButton()
         clearButton.setImage(UIImage(systemName: "multiply.circle.fill"), for: .normal)
-        clearButton.tintColor = (UIColor.white).withAlphaComponent(0.5)
+        clearButton.tintColor = (UIColor.myTextColor()).withAlphaComponent(0.3)
         clearButton.addTarget(nil, action: #selector(clearPressed), for: .touchUpInside)
         searchTextField.rightView = clearButton
         searchTextField.rightViewMode = .whileEditing
         
-        let padding: CGFloat = 10.0
+        let padding: CGFloat = 10
         
         segControl.constrainToTopSafeAreaOf(view, padding: padding)
         segControl.constrainToSideSafeAreasOf(view, padding: padding)
-        segControl.heightAnchor.constraint(greaterThanOrEqualToConstant: 30).isActive = true
-        segControl.heightAnchor.constraint(lessThanOrEqualToConstant: 50).isActive = true
+        segControl.heightAnchor.constraint(greaterThanOrEqualToConstant: segControl.intrinsicContentSize.height * 0.8).isActive = true
+        segControl.heightAnchor.constraint(lessThanOrEqualToConstant: segControl.intrinsicContentSize.height * 0.8).isActive = true
         
         searchTextField.isBelow(segControl, padding: padding)
         searchTextField.constrainToSideSafeAreasOf(view, padding: padding)
-        searchTextField.heightAnchor.constraint(greaterThanOrEqualToConstant: 20).isActive = true
-        searchTextField.heightAnchor.constraint(lessThanOrEqualToConstant: 30).isActive = true
+        searchTextField.heightAnchor.constraint(greaterThanOrEqualToConstant: searchTextField.intrinsicContentSize.height + 10).isActive = true
+        searchTextField.heightAnchor.constraint(lessThanOrEqualToConstant: searchTextField.intrinsicContentSize.height + 10).isActive = true
         
         cardListTV.isBelow(searchTextField, padding: padding)
         cardListTV.constrainToSideSafeAreasOf(view)

@@ -23,7 +23,7 @@ extension UIImageView {
         
         iv.translatesAutoresizingMaskIntoConstraints = false
         iv.widthAnchor.constraint(greaterThanOrEqualToConstant: 70.0).isActive = true
-        iv.widthAnchor.constraint(lessThanOrEqualToConstant: 120.0).isActive = true
+        iv.widthAnchor.constraint(lessThanOrEqualToConstant: 100.0).isActive = true
         return iv
     }
 }

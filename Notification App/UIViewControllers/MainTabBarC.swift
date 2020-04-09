@@ -15,9 +15,16 @@ class MainTabBarC: UITabBarController {
     
     private var introVC = IntroVC()
     private let managedObjectContext = NSManagedObjectContext.defaultContext()
+    
+    override var selectedIndex: Int {
+        willSet {
+            self.transition(tabBarController: self, to: self.viewControllers?[newValue])
+        }
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.delegate = self
         
         // Do any additional setup after loading the view.
         let listTabBarItem = UITabBarItem(title: "Cards", image: UIImage(systemName: "square.stack.3d.up"), tag: 0)
@@ -58,6 +65,25 @@ private extension MainTabBarC {
     @objc func dismissIntro() {
         guard self.presentedViewController != nil else {return}
         introVC.dismiss(animated: true, completion: nil)
+    }
+}
+
+// MARK: Switching views
+extension MainTabBarC: UITabBarControllerDelegate {
+    func tabBarController(_ tabBarController: UITabBarController, shouldSelect viewController: UIViewController) -> Bool {
+        guard let _ = selectedViewController?.view, let _ = viewController.view else {
+          return false // Make sure you want this as false
+        }
+        transition(tabBarController: tabBarController, to: viewController)
+        return true
+    }
+    
+    func transition(tabBarController: UITabBarController, to viewController: UIViewController?) {
+        guard let currentView = tabBarController.selectedViewController?.view, let nextView = viewController?.view else {return}
+        
+        if currentView != nextView {
+            UIView.transition(from: currentView, to: nextView, duration: 0.3, options: [.transitionFlipFromRight], completion: nil)
+        }
     }
 }
 
