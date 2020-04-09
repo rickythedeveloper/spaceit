@@ -10,6 +10,6 @@ import UIKit
 
 extension UIImage {
     static func logo() -> UIImage? {
-        return UIImage(named: "logo_2.0")
+        return UIImage(named: "logo_2.2")
     }
 }

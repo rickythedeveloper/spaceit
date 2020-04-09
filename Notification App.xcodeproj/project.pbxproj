@@ -633,7 +633,7 @@
 		B8D950512326C491001236AE /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon_2.0;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon_2.2;
 				CODE_SIGN_ENTITLEMENTS = "Notification App/Notification App.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 60;
@@ -658,7 +658,7 @@
 		B8D950522326C491001236AE /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon_2.0;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon_2.2;
 				CODE_SIGN_ENTITLEMENTS = "Notification App/Notification App.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 60;
