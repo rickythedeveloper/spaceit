@@ -246,6 +246,7 @@ extension WorkspaceVC {
     private func noPageSetup() {
         self.page = Page.createPageInContext(name: "My Workspace", id: UUID(), context: self.managedObjectContext)
         self.managedObjectContext.saveContext()
+        self.standardReloadProcedure()
     }
     
 //    MARK: View set up
