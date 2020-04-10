@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "B8D950382326C48F001236AE"
-               BuildableName = "Space It.app"
+               BuildableName = "space it.app"
                BlueprintName = "Notification App"
                ReferencedContainer = "container:Notification App.xcodeproj">
             </BuildableReference>
@@ -55,7 +55,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "B8D950382326C48F001236AE"
-            BuildableName = "Space It.app"
+            BuildableName = "space it.app"
             BlueprintName = "Notification App"
             ReferencedContainer = "container:Notification App.xcodeproj">
          </BuildableReference>
@@ -72,7 +72,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "B8D950382326C48F001236AE"
-            BuildableName = "Space It.app"
+            BuildableName = "space it.app"
             BlueprintName = "Notification App"
             ReferencedContainer = "container:Notification App.xcodeproj">
          </BuildableReference>

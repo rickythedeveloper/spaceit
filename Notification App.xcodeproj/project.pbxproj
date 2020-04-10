@@ -115,7 +115,7 @@
 		B8845806232BCEDE00B5CC3C /* Array+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+.swift"; sourceTree = "<group>"; };
 		B895D2DD233159CC00767C4E /* String+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+.swift"; sourceTree = "<group>"; };
 		B8CF590F23C474E600F83DDB /* UIAlertController+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIAlertController+.swift"; sourceTree = "<group>"; };
-		B8D950392326C48F001236AE /* Space It.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Space It.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		B8D950392326C48F001236AE /* space it.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "space it.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B8D9503C2326C48F001236AE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B8D9503E2326C48F001236AE /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		B8D950412326C48F001236AE /* Notification_App.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Notification_App.xcdatamodel; sourceTree = "<group>"; };
@@ -233,7 +233,7 @@
 		B8D9503A2326C48F001236AE /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				B8D950392326C48F001236AE /* Space It.app */,
+				B8D950392326C48F001236AE /* space it.app */,
 				9C331CAE24303B0B003934D6 /* ReviewAlgorithmTest.xctest */,
 			);
 			name = Products;
@@ -329,7 +329,7 @@
 			);
 			name = "Notification App";
 			productName = "Notification App";
-			productReference = B8D950392326C48F001236AE /* Space It.app */;
+			productReference = B8D950392326C48F001236AE /* space it.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -648,7 +648,7 @@
 				);
 				MARKETING_VERSION = 2.1;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.rickythedeveloper.Notification-App";
-				PRODUCT_NAME = "Space It";
+				PRODUCT_NAME = "space it";
 				SUPPORTS_MACCATALYST = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -673,7 +673,7 @@
 				);
 				MARKETING_VERSION = 2.1;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.rickythedeveloper.Notification-App";
-				PRODUCT_NAME = "Space It";
+				PRODUCT_NAME = "space it";
 				SUPPORTS_MACCATALYST = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
