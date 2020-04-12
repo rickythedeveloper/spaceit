@@ -92,16 +92,9 @@ extension WorkspaceVC {
         thisPage.addToChildren(newPage)
         self.managedObjectContext.saveContext()
         self.managedObjectContext.saveContext(completion: {
-            self.reloadTableView()
+            self.standardReloadProcedure()
         })
         self.newPageTF.text = ""
-    }
-    
-    /// Reloat table view asynchronously
-    private func reloadTableView() {
-        DispatchQueue.main.async {
-            self.tableV.reloadData()
-        }
     }
     
     /// Offset the content if needed based on  the keyboard frame.

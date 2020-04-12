@@ -77,7 +77,7 @@ extension IntroEachPageVC {
     static func cards() -> IntroEachPageVC {
         let text =
         """
-        All the cards can be seen in the Cards tab. Due cards are showin in red, and you can tap on any card to edit its details.
+        All the cards can be seen in the Cards tab. Due cards are shown in red, and you can tap on any card to edit its details.
         """
         
         let picName = "Intro_cards"

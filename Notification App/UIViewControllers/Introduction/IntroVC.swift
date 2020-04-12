@@ -13,7 +13,7 @@ class IntroVC: UIViewController {
     var onDismiss: Selector?
     var startAction: Selector?
     
-    let logo = UIImageView(image: UIImage(named: "logo_2.0"))
+    let logo = UIImageView(image: UIImage.logo())
     var pageVC = UIPageViewController()
     
     /// startAction should be non-nil only if you want to show the start button on the last page of the intro VC
