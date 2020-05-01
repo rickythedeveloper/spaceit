@@ -84,10 +84,10 @@ extension TaskSaved {
             nextWaitDays = 30 - 28 * exp(-actualWaitDays/28.0)
             break
         case 3:
-            nextWaitDays = actualWaitDays * (1.1 + 3.9 * exp(-actualWaitDays/9.0)) + 2
+            nextWaitDays = actualWaitDays * (1.1 + 3.9 * exp(-actualWaitDays/9.0)) + 3
             break
         case 4:
-            nextWaitDays = actualWaitDays * (1.5 + 8.5 * exp(-actualWaitDays/10.0)) + 2
+            nextWaitDays = actualWaitDays * (1.5 + 8.5 * exp(-actualWaitDays/10.0)) + 4
             break
         default:
             fatalError("The ease is out of the valid range")

@@ -153,7 +153,7 @@ extension CardListVC {
         DispatchQueue.main.async {
             self.cardListTV.reloadData()
             if self.keepHighlighted {
-                self.highlight()
+                self.highlight(scrolls: false)
             }
         }
     }
@@ -204,7 +204,7 @@ extension CardListVC {
         self.highlight()
     }
     
-    private func highlight(row: Int? = nil) {
+    private func highlight(row: Int? = nil, scrolls: Bool = true) {
         if self.keepHighlighted == false {self.keepHighlighted = true}
         guard self.cardListTV.numberOfRows(inSection: 0) > 0 else {return}
         if let row = row {
@@ -218,7 +218,9 @@ extension CardListVC {
         
         DispatchQueue.main.async {
             self.cardListTV.selectRow(at: IndexPath(row: self.highlightedRow, section: 0), animated: false, scrollPosition: .none)
-            self.cardListTV.scrollToRow(at: IndexPath(row: self.highlightedRow, section: 0), at: .none, animated: false)
+            if scrolls {
+                self.cardListTV.scrollToRow(at: IndexPath(row: self.highlightedRow, section: 0), at: .none, animated: false)
+            }
         }
     }
     
