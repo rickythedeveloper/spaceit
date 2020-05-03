@@ -6,6 +6,6 @@ target 'Notification App' do
   use_frameworks!
 
   # Pods for Notification App
-  pod 'SwiftyStoreKit'
+  pod 'RickyFramework', :path => '~/desktop/Xcode 11/rickyframework'
 
 end

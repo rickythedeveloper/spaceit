@@ -41,6 +41,7 @@ class WorkspaceVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
         button.setImage(UIImage(systemName: "plus"), for: .normal)
         button.setPreferredSymbolConfiguration(UIImage.SymbolConfiguration(textStyle: .title1), forImageIn: .normal)
         button.translatesAutoresizingMaskIntoConstraints = false
+        button.isUserInteractionEnabled = false
         return button
     }()
     

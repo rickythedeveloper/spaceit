@@ -1,16 +1,16 @@
 PODS:
-  - SwiftyStoreKit (0.15.0)
+  - RickyFramework (1.0.0)
 
 DEPENDENCIES:
-  - SwiftyStoreKit
+  - RickyFramework (from `~/desktop/Xcode 11/rickyframework`)
 
-SPEC REPOS:
-  trunk:
-    - SwiftyStoreKit
+EXTERNAL SOURCES:
+  RickyFramework:
+    :path: "~/desktop/Xcode 11/rickyframework"
 
 SPEC CHECKSUMS:
-  SwiftyStoreKit: 033d06b6f87955405d3f844a18a7687c2438592a
+  RickyFramework: 0826a8c11d0157f64f3c15100de13577852ddafa
 
-PODFILE CHECKSUM: 96ae292c1cdfb93364577d368286131ac725256f
+PODFILE CHECKSUM: 3a1776d58c82a037798393868ddef0fe7301600c
 
 COCOAPODS: 1.9.1

@@ -7,140 +7,125 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		15A29D5C6FEA9379BBC61F17614DDB15 /* SwiftyStoreKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8153C44B77A3F4754FD929E711AD3623 /* SwiftyStoreKit.swift */; };
-		17695C42661E6DA8419E9C68F1BCD333 /* InAppReceipt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44C81206673193BBE009779E8F3D5CDF /* InAppReceipt.swift */; };
-		2832AC0AEA1EF2268C8E46C0BF8E4EFF /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3212113385A8FBBDB272BD23C409FF61 /* Foundation.framework */; };
-		2C0D498C7785ECEC234D4EB9EA5FF458 /* InAppProductQueryRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3EB0828365558620FD42B6FC1BA8E77 /* InAppProductQueryRequest.swift */; };
-		2C8498AF2573866DF00271149F660EE4 /* InAppReceiptVerificator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 367467B4A9899D44B813D05D340A44EF /* InAppReceiptVerificator.swift */; };
-		3B95F6D7813F2794DD6CF0BEAE2853DC /* PaymentQueueController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C88716F735519A224AF72E3A07A8E9D /* PaymentQueueController.swift */; };
-		4A9D3546B0620D133520B14470BF5A2F /* Pods-Notification App-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 8B3C4F0D07621ACFEF0BF45FD4FCCD4C /* Pods-Notification App-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		4BEC56EB2A2FBCEF4A32EE6EE1F48E22 /* SKProduct+LocalizedPrice.swift in Sources */ = {isa = PBXBuildFile; fileRef = B71645A0C1DBB2A8D5BCDB3F03A3BD83 /* SKProduct+LocalizedPrice.swift */; };
-		8B6EC57B99EF7733C02DA7BC47D3C827 /* SwiftyStoreKit-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = DDC3AC765A2950A272A6302D3E43AF13 /* SwiftyStoreKit-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		94C4D411154B20E95D71F0A540BEFA9E /* AppleReceiptValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77F5ABB29039659CE00B9D70DB75426E /* AppleReceiptValidator.swift */; };
-		96C050D6E6CE50C2BD3AF12853F2B6A8 /* PaymentsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A4E0D5ADEFA9297317A70853F3BE996 /* PaymentsController.swift */; };
-		A7DBA339330BD160180BEAFDAE87C20E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3212113385A8FBBDB272BD23C409FF61 /* Foundation.framework */; };
-		B0F6DB3499903B3F58E262223E4B5A94 /* InAppReceiptRefreshRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B6AE5E628955670B41C41CCCF4206F6 /* InAppReceiptRefreshRequest.swift */; };
-		B281D8A8ECC3FAF6633C0B14AA073F25 /* ProductsInfoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C8BDE1964349CD57734C90D4387BFD7 /* ProductsInfoController.swift */; };
-		B33068F24A37B5C3D7980AF7CE1E76DB /* SwiftyStoreKit-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B50DA29BABF2F4EB0CF0E86ADBF640C /* SwiftyStoreKit-dummy.m */; };
-		BEE5E687476F78551779EE92D5C568B1 /* Pods-Notification App-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C1F29FC0290D10765C56CEE63B47F3F /* Pods-Notification App-dummy.m */; };
-		C78E0AA446C0068A7BEFBCFE0756F45C /* RestorePurchasesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C14FC0A63E1A110F84AAD2FEA6DB2E3 /* RestorePurchasesController.swift */; };
-		D14B54215BC9EE0D8E75A9B9F6657F91 /* CompleteTransactionsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FE4DF76641AB67DA9FF00DA53BD0DC1 /* CompleteTransactionsController.swift */; };
-		DC5DD7164355AA955CE35C172C6CC8B8 /* OS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18145EF8A3137DA5AFAD11BCE27635A1 /* OS.swift */; };
-		F4E817F44A73CB188A81A97D3F504E76 /* SwiftyStoreKit+Types.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92FCEC3F7A103F16D2E48FA30369CA0C /* SwiftyStoreKit+Types.swift */; };
+		08C3953107D242096DE3CB58DABED8FD /* UIColor+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29B5560478DEF326AF36926239CA47E5 /* UIColor+.swift */; };
+		23266E4855DC4AEE2826B5824F1358DA /* RickyFramework-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 3D664BF175FF79A88D2D400222444AEA /* RickyFramework-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		24037E6301204807D2F9CD0B9CABD7D9 /* Pods-Notification App-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C1F29FC0290D10765C56CEE63B47F3F /* Pods-Notification App-dummy.m */; };
+		2461E8C8196CE21D4C4956E473CEF07A /* FinderStyleVC+TableViewDelegateDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5AF18F25006DC43BFBFBC3C5124CA9E /* FinderStyleVC+TableViewDelegateDataSource.swift */; };
+		48DF3D2C63E4A833CC7087666B19597C /* FinderStyleVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 786448C500ACABD5724FB86FFD65B189 /* FinderStyleVC.swift */; };
+		5F61C5F42CDAAFDE71BE5B9A6CF2A0D9 /* FinderStyleVC+KeyboardShortcuts.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC762A472536E2C8A1688C6845764628 /* FinderStyleVC+KeyboardShortcuts.swift */; };
+		61F1BD8D0650E8682FEBAADE0798F24C /* FinderStyleContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 202781D877BF2CAC9AF13EDBBEBFFA83 /* FinderStyleContainerView.swift */; };
+		77CB74F577132EFC6205513EA7845F09 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3212113385A8FBBDB272BD23C409FF61 /* Foundation.framework */; };
+		801062AEEA775C962EC7674B37E26AE4 /* UITableView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13E6A38424FBF124DF4058F962EF7A09 /* UITableView+.swift */; };
+		8E18EC1B6D18D9B460349415130B1147 /* IndexPath+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F7C490F7DAC5D40EFE1B94856B953CD /* IndexPath+.swift */; };
+		937C068D7050667192E1FC8308ABE2D2 /* FinderStyleVCDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CF2E9B554AE51E44DD3A04B188EF098 /* FinderStyleVCDelegate.swift */; };
+		AC5ACC7DE4BDC05257AEE2A0F5083E47 /* RickyFramework-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = BB32376B31BAE0F362F107E8CE4A9C05 /* RickyFramework-dummy.m */; };
+		CAE207F6C58357E33FC987E8A56BB8A2 /* FinderStyleVC+Navigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = B785D09CB78D027EDA1B1B43579FA6CA /* FinderStyleVC+Navigation.swift */; };
+		D2024A8BA92D71E5DB02DA4EFAD78C99 /* RickyFramework.h in Headers */ = {isa = PBXBuildFile; fileRef = 237525EAB86CE1C57D6611F52B2CC0FE /* RickyFramework.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D274D8CA34109C61998AF2100F59FDAB /* FinderStyleTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85915E8F5FE8FE465C92F691F1150F4A /* FinderStyleTableView.swift */; };
+		DF729C085ADBB13463AD62B9FD484A95 /* Pods-Notification App-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 8B3C4F0D07621ACFEF0BF45FD4FCCD4C /* Pods-Notification App-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E1DC512DBF9BE61EEEF8FF3E253A422E /* UIVIew+Autolayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 367FEEEEBD7448056FB8FAAE5538E4F9 /* UIVIew+Autolayout.swift */; };
+		E47E912F7D0BFA7A84E0BB9A874E81E7 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3212113385A8FBBDB272BD23C409FF61 /* Foundation.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		E08AA29403BCDAE12AAB38EF58DB429F /* PBXContainerItemProxy */ = {
+		50B27CF69C0C6419F430540F7A360F47 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = FCD4F1901DD86FEB184BFDD6673F4A7B;
-			remoteInfo = SwiftyStoreKit;
+			remoteGlobalIDString = 486239929115BEF4FF1D021A21A33225;
+			remoteInfo = RickyFramework;
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		0032DAA394A767D8B112EBCE6E0AA90D /* Pods-Notification App-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Notification App-acknowledgements.plist"; sourceTree = "<group>"; };
-		1166224B656B56DBB36D21F069C97171 /* SwiftyStoreKit-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "SwiftyStoreKit-Info.plist"; sourceTree = "<group>"; };
-		18145EF8A3137DA5AFAD11BCE27635A1 /* OS.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = OS.swift; path = SwiftyStoreKit/OS.swift; sourceTree = "<group>"; };
-		1B50DA29BABF2F4EB0CF0E86ADBF640C /* SwiftyStoreKit-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "SwiftyStoreKit-dummy.m"; sourceTree = "<group>"; };
-		1FD4F293C43EF1C4E7E1E952D9B62D4C /* SwiftyStoreKit.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SwiftyStoreKit.release.xcconfig; sourceTree = "<group>"; };
+		13E6A38424FBF124DF4058F962EF7A09 /* UITableView+.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "UITableView+.swift"; sourceTree = "<group>"; };
+		1737CF09BD90B936042F2060F640745D /* RickyFramework.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = RickyFramework.framework; path = RickyFramework.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		202781D877BF2CAC9AF13EDBBEBFFA83 /* FinderStyleContainerView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = FinderStyleContainerView.swift; sourceTree = "<group>"; };
 		22783949F4A466173DFBA6319D68EF3A /* Pods_Notification_App.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_Notification_App.framework; path = "Pods-Notification App.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		237525EAB86CE1C57D6611F52B2CC0FE /* RickyFramework.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RickyFramework.h; path = RickyFramework/RickyFramework.h; sourceTree = "<group>"; };
+		29B5560478DEF326AF36926239CA47E5 /* UIColor+.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "UIColor+.swift"; sourceTree = "<group>"; };
+		2F7C490F7DAC5D40EFE1B94856B953CD /* IndexPath+.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "IndexPath+.swift"; sourceTree = "<group>"; };
+		31759DEC145AA7BDB66B7EC115B6FD96 /* RickyFramework-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "RickyFramework-prefix.pch"; sourceTree = "<group>"; };
 		3212113385A8FBBDB272BD23C409FF61 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS12.2.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
-		32B68D5B8C0127052BE81786F59B46F6 /* SwiftyStoreKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = SwiftyStoreKit.framework; path = SwiftyStoreKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		367467B4A9899D44B813D05D340A44EF /* InAppReceiptVerificator.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = InAppReceiptVerificator.swift; path = SwiftyStoreKit/InAppReceiptVerificator.swift; sourceTree = "<group>"; };
-		3B6AE5E628955670B41C41CCCF4206F6 /* InAppReceiptRefreshRequest.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = InAppReceiptRefreshRequest.swift; path = SwiftyStoreKit/InAppReceiptRefreshRequest.swift; sourceTree = "<group>"; };
-		3C8BDE1964349CD57734C90D4387BFD7 /* ProductsInfoController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ProductsInfoController.swift; path = SwiftyStoreKit/ProductsInfoController.swift; sourceTree = "<group>"; };
+		367FEEEEBD7448056FB8FAAE5538E4F9 /* UIVIew+Autolayout.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "UIVIew+Autolayout.swift"; sourceTree = "<group>"; };
+		3D664BF175FF79A88D2D400222444AEA /* RickyFramework-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "RickyFramework-umbrella.h"; sourceTree = "<group>"; };
 		3E0F82F41F0D0B8319CA9717623A1114 /* Pods-Notification App.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-Notification App.modulemap"; sourceTree = "<group>"; };
-		44C81206673193BBE009779E8F3D5CDF /* InAppReceipt.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = InAppReceipt.swift; path = SwiftyStoreKit/InAppReceipt.swift; sourceTree = "<group>"; };
-		5C88716F735519A224AF72E3A07A8E9D /* PaymentQueueController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PaymentQueueController.swift; path = SwiftyStoreKit/PaymentQueueController.swift; sourceTree = "<group>"; };
+		491573BC6D8501A299282317E9982B96 /* RickyFramework.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; path = RickyFramework.podspec; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		5C4F04690C863D26CA924CF88DF92969 /* RickyFramework.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = RickyFramework.debug.xcconfig; sourceTree = "<group>"; };
+		5C7B6699DA3E4E5CDEC478845F083494 /* RickyFramework.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = RickyFramework.modulemap; sourceTree = "<group>"; };
 		6598C90C69797D3085AACDA90C4AD04D /* Pods-Notification App.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Notification App.debug.xcconfig"; sourceTree = "<group>"; };
-		6A4E0D5ADEFA9297317A70853F3BE996 /* PaymentsController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PaymentsController.swift; path = SwiftyStoreKit/PaymentsController.swift; sourceTree = "<group>"; };
-		77CD935F830357BEDC726EEE900758DD /* SwiftyStoreKit.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SwiftyStoreKit.debug.xcconfig; sourceTree = "<group>"; };
-		77F5ABB29039659CE00B9D70DB75426E /* AppleReceiptValidator.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AppleReceiptValidator.swift; path = SwiftyStoreKit/AppleReceiptValidator.swift; sourceTree = "<group>"; };
+		786448C500ACABD5724FB86FFD65B189 /* FinderStyleVC.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = FinderStyleVC.swift; sourceTree = "<group>"; };
 		7C1F29FC0290D10765C56CEE63B47F3F /* Pods-Notification App-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-Notification App-dummy.m"; sourceTree = "<group>"; };
-		8153C44B77A3F4754FD929E711AD3623 /* SwiftyStoreKit.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SwiftyStoreKit.swift; path = SwiftyStoreKit/SwiftyStoreKit.swift; sourceTree = "<group>"; };
+		7CF2E9B554AE51E44DD3A04B188EF098 /* FinderStyleVCDelegate.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = FinderStyleVCDelegate.swift; sourceTree = "<group>"; };
+		85915E8F5FE8FE465C92F691F1150F4A /* FinderStyleTableView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = FinderStyleTableView.swift; sourceTree = "<group>"; };
 		87641B7138456E4AC308C6FD17DCE78A /* Pods-Notification App-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Notification App-Info.plist"; sourceTree = "<group>"; };
 		8B3C4F0D07621ACFEF0BF45FD4FCCD4C /* Pods-Notification App-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-Notification App-umbrella.h"; sourceTree = "<group>"; };
-		8FE4DF76641AB67DA9FF00DA53BD0DC1 /* CompleteTransactionsController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CompleteTransactionsController.swift; path = SwiftyStoreKit/CompleteTransactionsController.swift; sourceTree = "<group>"; };
-		92FCEC3F7A103F16D2E48FA30369CA0C /* SwiftyStoreKit+Types.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "SwiftyStoreKit+Types.swift"; path = "SwiftyStoreKit/SwiftyStoreKit+Types.swift"; sourceTree = "<group>"; };
-		968B93138920B1F6078DE15FF3B7F019 /* SwiftyStoreKit.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = SwiftyStoreKit.modulemap; sourceTree = "<group>"; };
-		9C14FC0A63E1A110F84AAD2FEA6DB2E3 /* RestorePurchasesController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = RestorePurchasesController.swift; path = SwiftyStoreKit/RestorePurchasesController.swift; sourceTree = "<group>"; };
 		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		B3EB0828365558620FD42B6FC1BA8E77 /* InAppProductQueryRequest.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = InAppProductQueryRequest.swift; path = SwiftyStoreKit/InAppProductQueryRequest.swift; sourceTree = "<group>"; };
-		B71645A0C1DBB2A8D5BCDB3F03A3BD83 /* SKProduct+LocalizedPrice.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "SKProduct+LocalizedPrice.swift"; path = "SwiftyStoreKit/SKProduct+LocalizedPrice.swift"; sourceTree = "<group>"; };
+		AC762A472536E2C8A1688C6845764628 /* FinderStyleVC+KeyboardShortcuts.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "FinderStyleVC+KeyboardShortcuts.swift"; sourceTree = "<group>"; };
+		B785D09CB78D027EDA1B1B43579FA6CA /* FinderStyleVC+Navigation.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "FinderStyleVC+Navigation.swift"; sourceTree = "<group>"; };
+		BB32376B31BAE0F362F107E8CE4A9C05 /* RickyFramework-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "RickyFramework-dummy.m"; sourceTree = "<group>"; };
+		C0A2A77E3340A6970F48758D81282164 /* RickyFramework.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = RickyFramework.release.xcconfig; sourceTree = "<group>"; };
+		C4421C09D3171CD260ABA60D2163360B /* RickyFramework-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "RickyFramework-Info.plist"; sourceTree = "<group>"; };
 		C565C8ACADD46CCEFEEBB5FD7BC78C0D /* Pods-Notification App-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Notification App-frameworks.sh"; sourceTree = "<group>"; };
-		D1567FB30941DE9B21C2F6ED66D3DE33 /* SwiftyStoreKit-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SwiftyStoreKit-prefix.pch"; sourceTree = "<group>"; };
-		DDC3AC765A2950A272A6302D3E43AF13 /* SwiftyStoreKit-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SwiftyStoreKit-umbrella.h"; sourceTree = "<group>"; };
+		C5AF18F25006DC43BFBFBC3C5124CA9E /* FinderStyleVC+TableViewDelegateDataSource.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "FinderStyleVC+TableViewDelegateDataSource.swift"; sourceTree = "<group>"; };
 		DFC1F845468C01DB3E4364D34D5900C6 /* Pods-Notification App-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-Notification App-acknowledgements.markdown"; sourceTree = "<group>"; };
 		E3CD635BD0A6AABEA36B18CCCAB64194 /* Pods-Notification App.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Notification App.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		776C45BBA8DC5CFFD3CE3FC5B45F0304 /* Frameworks */ = {
+		29FF66B3A9498F93008B8D30CE3277E1 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2832AC0AEA1EF2268C8E46C0BF8E4EFF /* Foundation.framework in Frameworks */,
+				77CB74F577132EFC6205513EA7845F09 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		A8ED95761CCC1CD3494A5105B5B1CD0A /* Frameworks */ = {
+		2F838E22227A19314537887402E05128 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A7DBA339330BD160180BEAFDAE87C20E /* Foundation.framework in Frameworks */,
+				E47E912F7D0BFA7A84E0BB9A874E81E7 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		23DF1B19A893974DD6C6F1CC299F3FBA /* Products */ = {
+		0CF91938276874F60C673380D1A81E21 /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
-				22783949F4A466173DFBA6319D68EF3A /* Pods_Notification_App.framework */,
-				32B68D5B8C0127052BE81786F59B46F6 /* SwiftyStoreKit.framework */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
-		2428EA0F6C5FFDEEAD15C222CA8DD709 /* Support Files */ = {
-			isa = PBXGroup;
-			children = (
-				968B93138920B1F6078DE15FF3B7F019 /* SwiftyStoreKit.modulemap */,
-				1B50DA29BABF2F4EB0CF0E86ADBF640C /* SwiftyStoreKit-dummy.m */,
-				1166224B656B56DBB36D21F069C97171 /* SwiftyStoreKit-Info.plist */,
-				D1567FB30941DE9B21C2F6ED66D3DE33 /* SwiftyStoreKit-prefix.pch */,
-				DDC3AC765A2950A272A6302D3E43AF13 /* SwiftyStoreKit-umbrella.h */,
-				77CD935F830357BEDC726EEE900758DD /* SwiftyStoreKit.debug.xcconfig */,
-				1FD4F293C43EF1C4E7E1E952D9B62D4C /* SwiftyStoreKit.release.xcconfig */,
+				5C7B6699DA3E4E5CDEC478845F083494 /* RickyFramework.modulemap */,
+				BB32376B31BAE0F362F107E8CE4A9C05 /* RickyFramework-dummy.m */,
+				C4421C09D3171CD260ABA60D2163360B /* RickyFramework-Info.plist */,
+				31759DEC145AA7BDB66B7EC115B6FD96 /* RickyFramework-prefix.pch */,
+				3D664BF175FF79A88D2D400222444AEA /* RickyFramework-umbrella.h */,
+				5C4F04690C863D26CA924CF88DF92969 /* RickyFramework.debug.xcconfig */,
+				C0A2A77E3340A6970F48758D81282164 /* RickyFramework.release.xcconfig */,
 			);
 			name = "Support Files";
-			path = "../Target Support Files/SwiftyStoreKit";
+			path = "../../../Desktop/Xcode 11/Notification App/Pods/Target Support Files/RickyFramework";
 			sourceTree = "<group>";
 		};
-		5913D8974428946862133783B4F71539 /* SwiftyStoreKit */ = {
+		159144583C4359C6E7E21B01B5D174BB /* UIKit+ */ = {
 			isa = PBXGroup;
 			children = (
-				77F5ABB29039659CE00B9D70DB75426E /* AppleReceiptValidator.swift */,
-				8FE4DF76641AB67DA9FF00DA53BD0DC1 /* CompleteTransactionsController.swift */,
-				B3EB0828365558620FD42B6FC1BA8E77 /* InAppProductQueryRequest.swift */,
-				44C81206673193BBE009779E8F3D5CDF /* InAppReceipt.swift */,
-				3B6AE5E628955670B41C41CCCF4206F6 /* InAppReceiptRefreshRequest.swift */,
-				367467B4A9899D44B813D05D340A44EF /* InAppReceiptVerificator.swift */,
-				18145EF8A3137DA5AFAD11BCE27635A1 /* OS.swift */,
-				5C88716F735519A224AF72E3A07A8E9D /* PaymentQueueController.swift */,
-				6A4E0D5ADEFA9297317A70853F3BE996 /* PaymentsController.swift */,
-				3C8BDE1964349CD57734C90D4387BFD7 /* ProductsInfoController.swift */,
-				9C14FC0A63E1A110F84AAD2FEA6DB2E3 /* RestorePurchasesController.swift */,
-				B71645A0C1DBB2A8D5BCDB3F03A3BD83 /* SKProduct+LocalizedPrice.swift */,
-				8153C44B77A3F4754FD929E711AD3623 /* SwiftyStoreKit.swift */,
-				92FCEC3F7A103F16D2E48FA30369CA0C /* SwiftyStoreKit+Types.swift */,
-				2428EA0F6C5FFDEEAD15C222CA8DD709 /* Support Files */,
+				2F7C490F7DAC5D40EFE1B94856B953CD /* IndexPath+.swift */,
+				29B5560478DEF326AF36926239CA47E5 /* UIColor+.swift */,
+				13E6A38424FBF124DF4058F962EF7A09 /* UITableView+.swift */,
+				367FEEEEBD7448056FB8FAAE5538E4F9 /* UIVIew+Autolayout.swift */,
 			);
-			name = SwiftyStoreKit;
-			path = SwiftyStoreKit;
+			name = "UIKit+";
+			path = "RickyFramework/UIKit+";
+			sourceTree = "<group>";
+		};
+		54613B66F1ED12979246A385BB010734 /* Pod */ = {
+			isa = PBXGroup;
+			children = (
+				491573BC6D8501A299282317E9982B96 /* RickyFramework.podspec */,
+			);
+			name = Pod;
 			sourceTree = "<group>";
 		};
 		5CB2E146B121E7B5323080EFE42B7407 /* Pods-Notification App */ = {
@@ -160,13 +145,50 @@
 			path = "Target Support Files/Pods-Notification App";
 			sourceTree = "<group>";
 		};
-		B67F51A3F1A2221F9AEA8BD1C3563605 /* Pods */ = {
+		618FFC15A9449680153B46AE50635957 /* FinderStyleVC */ = {
 			isa = PBXGroup;
 			children = (
-				5913D8974428946862133783B4F71539 /* SwiftyStoreKit */,
+				202781D877BF2CAC9AF13EDBBEBFFA83 /* FinderStyleContainerView.swift */,
+				85915E8F5FE8FE465C92F691F1150F4A /* FinderStyleTableView.swift */,
+				786448C500ACABD5724FB86FFD65B189 /* FinderStyleVC.swift */,
+				AC762A472536E2C8A1688C6845764628 /* FinderStyleVC+KeyboardShortcuts.swift */,
+				B785D09CB78D027EDA1B1B43579FA6CA /* FinderStyleVC+Navigation.swift */,
+				C5AF18F25006DC43BFBFBC3C5124CA9E /* FinderStyleVC+TableViewDelegateDataSource.swift */,
+				7CF2E9B554AE51E44DD3A04B188EF098 /* FinderStyleVCDelegate.swift */,
 			);
-			name = Pods;
+			name = FinderStyleVC;
+			path = RickyFramework/FinderStyleVC;
 			sourceTree = "<group>";
+		};
+		801B89882B62473BB7FCF9F9D69844EE /* Development Pods */ = {
+			isa = PBXGroup;
+			children = (
+				A1A1E5DD580808A22A4B13AC4BAD6218 /* RickyFramework */,
+			);
+			name = "Development Pods";
+			sourceTree = "<group>";
+		};
+		837CD45584638CBE18A60A012B97E8E1 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				22783949F4A466173DFBA6319D68EF3A /* Pods_Notification_App.framework */,
+				1737CF09BD90B936042F2060F640745D /* RickyFramework.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		A1A1E5DD580808A22A4B13AC4BAD6218 /* RickyFramework */ = {
+			isa = PBXGroup;
+			children = (
+				237525EAB86CE1C57D6611F52B2CC0FE /* RickyFramework.h */,
+				618FFC15A9449680153B46AE50635957 /* FinderStyleVC */,
+				54613B66F1ED12979246A385BB010734 /* Pod */,
+				0CF91938276874F60C673380D1A81E21 /* Support Files */,
+				159144583C4359C6E7E21B01B5D174BB /* UIKit+ */,
+			);
+			name = RickyFramework;
+			path = "/Users/ricky/desktop/Xcode 11/rickyframework";
+			sourceTree = "<absolute>";
 		};
 		C0834CEBB1379A84116EF29F93051C60 /* iOS */ = {
 			isa = PBXGroup;
@@ -180,9 +202,9 @@
 			isa = PBXGroup;
 			children = (
 				9D940727FF8FB9C785EB98E56350EF41 /* Podfile */,
+				801B89882B62473BB7FCF9F9D69844EE /* Development Pods */,
 				D210D550F4EA176C3123ED886F8F87F5 /* Frameworks */,
-				B67F51A3F1A2221F9AEA8BD1C3563605 /* Pods */,
-				23DF1B19A893974DD6C6F1CC299F3FBA /* Products */,
+				837CD45584638CBE18A60A012B97E8E1 /* Products */,
 				F1763D3FBFE86974AD07BA80FCD54FED /* Targets Support Files */,
 			);
 			sourceTree = "<group>";
@@ -206,19 +228,20 @@
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
-		7858D37D2CE761259E3D0471D808DBB5 /* Headers */ = {
+		3ED9A24C3848D10FC97657E00F99FBC4 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8B6EC57B99EF7733C02DA7BC47D3C827 /* SwiftyStoreKit-umbrella.h in Headers */,
+				23266E4855DC4AEE2826B5824F1358DA /* RickyFramework-umbrella.h in Headers */,
+				D2024A8BA92D71E5DB02DA4EFAD78C99 /* RickyFramework.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		CF8AE886E05DB1D66293266AAC5E7EC4 /* Headers */ = {
+		68463882A00448F6D0C5A48A5F8A9B9A /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4A9D3546B0620D133520B14470BF5A2F /* Pods-Notification App-umbrella.h in Headers */,
+				DF729C085ADBB13463AD62B9FD484A95 /* Pods-Notification App-umbrella.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -227,39 +250,39 @@
 /* Begin PBXNativeTarget section */
 		2B87D658635C774506ABCAF34E4EFF7E /* Pods-Notification App */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = C40AD462DCE984CC472783EF67406C63 /* Build configuration list for PBXNativeTarget "Pods-Notification App" */;
+			buildConfigurationList = 7F3FF93DB6D9FC21EC790B93E9078C0B /* Build configuration list for PBXNativeTarget "Pods-Notification App" */;
 			buildPhases = (
-				CF8AE886E05DB1D66293266AAC5E7EC4 /* Headers */,
-				62FA19B84AAEA504E2D9B5D191CC4DCA /* Sources */,
-				A8ED95761CCC1CD3494A5105B5B1CD0A /* Frameworks */,
-				C02235D0287528803E967D3F0A25E10F /* Resources */,
+				68463882A00448F6D0C5A48A5F8A9B9A /* Headers */,
+				D0A5286B0E1E9440861C41795DD55FBE /* Sources */,
+				2F838E22227A19314537887402E05128 /* Frameworks */,
+				7047B4ACBBE289C1517354470C83E15A /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				75FAA4D14E36616978C12A9310B5432C /* PBXTargetDependency */,
+				B4C85355A257E33A5BF145135689E70E /* PBXTargetDependency */,
 			);
 			name = "Pods-Notification App";
 			productName = "Pods-Notification App";
 			productReference = 22783949F4A466173DFBA6319D68EF3A /* Pods_Notification_App.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		FCD4F1901DD86FEB184BFDD6673F4A7B /* SwiftyStoreKit */ = {
+		486239929115BEF4FF1D021A21A33225 /* RickyFramework */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = A45D5FBF1D06497D58BEF5F14D6D1E24 /* Build configuration list for PBXNativeTarget "SwiftyStoreKit" */;
+			buildConfigurationList = B2DA1D0D4668204B54D11CC6C51CBC56 /* Build configuration list for PBXNativeTarget "RickyFramework" */;
 			buildPhases = (
-				7858D37D2CE761259E3D0471D808DBB5 /* Headers */,
-				81E9DC2A0AF40F48DD50D710685BD835 /* Sources */,
-				776C45BBA8DC5CFFD3CE3FC5B45F0304 /* Frameworks */,
-				AA2B5CCA9C2619F9851C104B32239041 /* Resources */,
+				3ED9A24C3848D10FC97657E00F99FBC4 /* Headers */,
+				82D118976CCB649C7CAAD63AB23E60CC /* Sources */,
+				29FF66B3A9498F93008B8D30CE3277E1 /* Frameworks */,
+				F9647B629FB76FBBECE45468587227D5 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
-			name = SwiftyStoreKit;
-			productName = SwiftyStoreKit;
-			productReference = 32B68D5B8C0127052BE81786F59B46F6 /* SwiftyStoreKit.framework */;
+			name = RickyFramework;
+			productName = RickyFramework;
+			productReference = 1737CF09BD90B936042F2060F640745D /* RickyFramework.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 /* End PBXNativeTarget section */
@@ -280,25 +303,25 @@
 				Base,
 			);
 			mainGroup = CF1408CF629C7361332E53B88F7BD30C;
-			productRefGroup = 23DF1B19A893974DD6C6F1CC299F3FBA /* Products */;
+			productRefGroup = 837CD45584638CBE18A60A012B97E8E1 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
 				2B87D658635C774506ABCAF34E4EFF7E /* Pods-Notification App */,
-				FCD4F1901DD86FEB184BFDD6673F4A7B /* SwiftyStoreKit */,
+				486239929115BEF4FF1D021A21A33225 /* RickyFramework */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		AA2B5CCA9C2619F9851C104B32239041 /* Resources */ = {
+		7047B4ACBBE289C1517354470C83E15A /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		C02235D0287528803E967D3F0A25E10F /* Resources */ = {
+		F9647B629FB76FBBECE45468587227D5 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -308,44 +331,41 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		62FA19B84AAEA504E2D9B5D191CC4DCA /* Sources */ = {
+		82D118976CCB649C7CAAD63AB23E60CC /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BEE5E687476F78551779EE92D5C568B1 /* Pods-Notification App-dummy.m in Sources */,
+				61F1BD8D0650E8682FEBAADE0798F24C /* FinderStyleContainerView.swift in Sources */,
+				D274D8CA34109C61998AF2100F59FDAB /* FinderStyleTableView.swift in Sources */,
+				5F61C5F42CDAAFDE71BE5B9A6CF2A0D9 /* FinderStyleVC+KeyboardShortcuts.swift in Sources */,
+				CAE207F6C58357E33FC987E8A56BB8A2 /* FinderStyleVC+Navigation.swift in Sources */,
+				2461E8C8196CE21D4C4956E473CEF07A /* FinderStyleVC+TableViewDelegateDataSource.swift in Sources */,
+				48DF3D2C63E4A833CC7087666B19597C /* FinderStyleVC.swift in Sources */,
+				937C068D7050667192E1FC8308ABE2D2 /* FinderStyleVCDelegate.swift in Sources */,
+				8E18EC1B6D18D9B460349415130B1147 /* IndexPath+.swift in Sources */,
+				AC5ACC7DE4BDC05257AEE2A0F5083E47 /* RickyFramework-dummy.m in Sources */,
+				08C3953107D242096DE3CB58DABED8FD /* UIColor+.swift in Sources */,
+				801062AEEA775C962EC7674B37E26AE4 /* UITableView+.swift in Sources */,
+				E1DC512DBF9BE61EEEF8FF3E253A422E /* UIVIew+Autolayout.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		81E9DC2A0AF40F48DD50D710685BD835 /* Sources */ = {
+		D0A5286B0E1E9440861C41795DD55FBE /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				94C4D411154B20E95D71F0A540BEFA9E /* AppleReceiptValidator.swift in Sources */,
-				D14B54215BC9EE0D8E75A9B9F6657F91 /* CompleteTransactionsController.swift in Sources */,
-				2C0D498C7785ECEC234D4EB9EA5FF458 /* InAppProductQueryRequest.swift in Sources */,
-				17695C42661E6DA8419E9C68F1BCD333 /* InAppReceipt.swift in Sources */,
-				B0F6DB3499903B3F58E262223E4B5A94 /* InAppReceiptRefreshRequest.swift in Sources */,
-				2C8498AF2573866DF00271149F660EE4 /* InAppReceiptVerificator.swift in Sources */,
-				DC5DD7164355AA955CE35C172C6CC8B8 /* OS.swift in Sources */,
-				3B95F6D7813F2794DD6CF0BEAE2853DC /* PaymentQueueController.swift in Sources */,
-				96C050D6E6CE50C2BD3AF12853F2B6A8 /* PaymentsController.swift in Sources */,
-				B281D8A8ECC3FAF6633C0B14AA073F25 /* ProductsInfoController.swift in Sources */,
-				C78E0AA446C0068A7BEFBCFE0756F45C /* RestorePurchasesController.swift in Sources */,
-				4BEC56EB2A2FBCEF4A32EE6EE1F48E22 /* SKProduct+LocalizedPrice.swift in Sources */,
-				F4E817F44A73CB188A81A97D3F504E76 /* SwiftyStoreKit+Types.swift in Sources */,
-				B33068F24A37B5C3D7980AF7CE1E76DB /* SwiftyStoreKit-dummy.m in Sources */,
-				15A29D5C6FEA9379BBC61F17614DDB15 /* SwiftyStoreKit.swift in Sources */,
+				24037E6301204807D2F9CD0B9CABD7D9 /* Pods-Notification App-dummy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		75FAA4D14E36616978C12A9310B5432C /* PBXTargetDependency */ = {
+		B4C85355A257E33A5BF145135689E70E /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			name = SwiftyStoreKit;
-			target = FCD4F1901DD86FEB184BFDD6673F4A7B /* SwiftyStoreKit */;
-			targetProxy = E08AA29403BCDAE12AAB38EF58DB429F /* PBXContainerItemProxy */;
+			name = RickyFramework;
+			target = 486239929115BEF4FF1D021A21A33225 /* RickyFramework */;
+			targetProxy = 50B27CF69C0C6419F430540F7A360F47 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -410,45 +430,7 @@
 			};
 			name = Release;
 		};
-		6FD9A19C4A00B192AEDC6FB4D8464043 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 6598C90C69797D3085AACDA90C4AD04D /* Pods-Notification App.debug.xcconfig */;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
-				CLANG_ENABLE_OBJC_WEAK = NO;
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = "Target Support Files/Pods-Notification App/Pods-Notification App-Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-Notification App/Pods-Notification App.modulemap";
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
-		};
-		7D9AAB0292FEC3EBB35F564F09D1790D /* Release */ = {
+		6AC193DD8E4BC81D0F613F60BE32086B /* Release */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = E3CD635BD0A6AABEA36B18CCCAB64194 /* Pods-Notification App.release.xcconfig */;
 			buildSettings = {
@@ -487,10 +469,11 @@
 			};
 			name = Release;
 		};
-		8B237D5CF5EE5F3A2D5F2DA454FFA45B /* Release */ = {
+		6C816296B0A9783F448F340385DF34B7 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 1FD4F293C43EF1C4E7E1E952D9B62D4C /* SwiftyStoreKit.release.xcconfig */;
+			baseConfigurationReference = C0A2A77E3340A6970F48758D81282164 /* RickyFramework.release.xcconfig */;
 			buildSettings = {
+				CLANG_ENABLE_OBJC_WEAK = NO;
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
@@ -500,28 +483,102 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				GCC_PREFIX_HEADER = "Target Support Files/SwiftyStoreKit/SwiftyStoreKit-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/SwiftyStoreKit/SwiftyStoreKit-Info.plist";
+				GCC_PREFIX_HEADER = "Target Support Files/RickyFramework/RickyFramework-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/RickyFramework/RickyFramework-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				MODULEMAP_FILE = "Target Support Files/SwiftyStoreKit/SwiftyStoreKit.modulemap";
-				PRODUCT_MODULE_NAME = SwiftyStoreKit;
-				PRODUCT_NAME = SwiftyStoreKit;
+				MODULEMAP_FILE = "Target Support Files/RickyFramework/RickyFramework.modulemap";
+				PRODUCT_MODULE_NAME = RickyFramework;
+				PRODUCT_NAME = RickyFramework;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_VERSION = 5.0;
+				SWIFT_VERSION = 5;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
 			name = Release;
+		};
+		9BFB379054E1D63C0A8EA0A26ECD6A43 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6598C90C69797D3085AACDA90C4AD04D /* Pods-Notification App.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-Notification App/Pods-Notification App-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-Notification App/Pods-Notification App.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		CBC5B20FC31BA1F7A77B0242E9E94789 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5C4F04690C863D26CA924CF88DF92969 /* RickyFramework.debug.xcconfig */;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/RickyFramework/RickyFramework-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/RickyFramework/RickyFramework-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MODULEMAP_FILE = "Target Support Files/RickyFramework/RickyFramework.modulemap";
+				PRODUCT_MODULE_NAME = RickyFramework;
+				PRODUCT_NAME = RickyFramework;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 5;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
 		};
 		ED7888FA6713EABBF66D26A8003AD1CA /* Debug */ = {
 			isa = XCBuildConfiguration;
@@ -587,41 +644,6 @@
 			};
 			name = Debug;
 		};
-		F77873C50060007140299C23D87897DC /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 77CD935F830357BEDC726EEE900758DD /* SwiftyStoreKit.debug.xcconfig */;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				GCC_PREFIX_HEADER = "Target Support Files/SwiftyStoreKit/SwiftyStoreKit-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/SwiftyStoreKit/SwiftyStoreKit-Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				MODULEMAP_FILE = "Target Support Files/SwiftyStoreKit/SwiftyStoreKit.modulemap";
-				PRODUCT_MODULE_NAME = SwiftyStoreKit;
-				PRODUCT_NAME = SwiftyStoreKit;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -634,20 +656,20 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		A45D5FBF1D06497D58BEF5F14D6D1E24 /* Build configuration list for PBXNativeTarget "SwiftyStoreKit" */ = {
+		7F3FF93DB6D9FC21EC790B93E9078C0B /* Build configuration list for PBXNativeTarget "Pods-Notification App" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				F77873C50060007140299C23D87897DC /* Debug */,
-				8B237D5CF5EE5F3A2D5F2DA454FFA45B /* Release */,
+				9BFB379054E1D63C0A8EA0A26ECD6A43 /* Debug */,
+				6AC193DD8E4BC81D0F613F60BE32086B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		C40AD462DCE984CC472783EF67406C63 /* Build configuration list for PBXNativeTarget "Pods-Notification App" */ = {
+		B2DA1D0D4668204B54D11CC6C51CBC56 /* Build configuration list for PBXNativeTarget "RickyFramework" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				6FD9A19C4A00B192AEDC6FB4D8464043 /* Debug */,
-				7D9AAB0292FEC3EBB35F564F09D1790D /* Release */,
+				CBC5B20FC31BA1F7A77B0242E9E94789 /* Debug */,
+				6C816296B0A9783F448F340385DF34B7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

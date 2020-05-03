@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import RickyFramework
 
 class CardListStyle {
     static func basicElements(task: TaskSaved, padding: CGFloat, usesAutolayout: Bool) -> UIStackView {
