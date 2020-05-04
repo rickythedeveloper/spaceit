@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -32,6 +32,7 @@
 		9C8FEF9C24397E0300283192 /* SubscribeFrame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C8FEF9B24397E0300283192 /* SubscribeFrame.swift */; };
 		9C9168DF24319E3500AD31A9 /* UIImageView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C9168DE24319E3500AD31A9 /* UIImageView+.swift */; };
 		9C9168E12431A24200AD31A9 /* CardListCellStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C9168E02431A24200AD31A9 /* CardListCellStyle.swift */; };
+		9C9707C0245EB9220044E819 /* FinderWorkspaceVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C9707BF245EB9220044E819 /* FinderWorkspaceVC.swift */; };
 		9C97674B23E24D81004F4E90 /* AlphabeticalCardListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C97674A23E24D81004F4E90 /* AlphabeticalCardListCell.swift */; };
 		9CA3BCED243DD4D70062591D /* UIImage+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CA3BCEC243DD4D70062591D /* UIImage+.swift */; };
 		9CC51AF223EB8C8800636842 /* NSManagedObjectContext+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CC51AF123EB8C8800636842 /* NSManagedObjectContext+.swift */; };
@@ -100,6 +101,7 @@
 		9C8FEF9B24397E0300283192 /* SubscribeFrame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscribeFrame.swift; sourceTree = "<group>"; };
 		9C9168DE24319E3500AD31A9 /* UIImageView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+.swift"; sourceTree = "<group>"; };
 		9C9168E02431A24200AD31A9 /* CardListCellStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardListCellStyle.swift; sourceTree = "<group>"; };
+		9C9707BF245EB9220044E819 /* FinderWorkspaceVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinderWorkspaceVC.swift; sourceTree = "<group>"; };
 		9C97674A23E24D81004F4E90 /* AlphabeticalCardListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlphabeticalCardListCell.swift; sourceTree = "<group>"; };
 		9CA3BCEC243DD4D70062591D /* UIImage+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+.swift"; sourceTree = "<group>"; };
 		9CC51AF123EB8C8800636842 /* NSManagedObjectContext+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSManagedObjectContext+.swift"; sourceTree = "<group>"; };
@@ -295,6 +297,7 @@
 				B8D9B2D32329A97100348987 /* GADBannerViewController.swift */,
 				9C7C893123D9103800930E99 /* NewCardVC.swift */,
 				9C148EB823E4ECC800901930 /* WorkspaceVC.swift */,
+				9C9707BF245EB9220044E819 /* FinderWorkspaceVC.swift */,
 				9CCB588023F2C590002C3B36 /* MainTabBarC.swift */,
 				9C7310842433503C008E9820 /* Introduction */,
 			);
@@ -315,7 +318,6 @@
 				400F8CFFE2A8363BF8311EBC /* Pods-Notification App.debug.xcconfig */,
 				888FEDAF84C7F11728D04CC7 /* Pods-Notification App.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -472,6 +474,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9C9707C0245EB9220044E819 /* FinderWorkspaceVC.swift in Sources */,
 				9C97674B23E24D81004F4E90 /* AlphabeticalCardListCell.swift in Sources */,
 				9C331CB924304550003934D6 /* ReviewButtonContainerV.swift in Sources */,
 				9CF8388424399A3400A4CE59 /* UITapGestureRecognizer+.swift in Sources */,
