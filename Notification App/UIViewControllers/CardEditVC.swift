@@ -9,8 +9,11 @@
 import UIKit
 import SwiftUI
 import CoreData
+import RickyFramework
 
 class CardEditVC: UIViewController, UIScrollViewDelegate, WorkspaceAccessible {
+    var finderStyleContainerView: FinderStyleContainerView?
+    
     internal var chosenPage: Page? {
         willSet(newPage) {
             if newPage == nil {
@@ -165,7 +168,11 @@ extension CardEditVC {
     }
     
     @objc private func dismissView() {
-        self.navigationController?.popViewController(animated: true)
+        if let containerView = finderStyleContainerView {
+            containerView.dismiss()
+        } else {
+            self.navigationController?.popViewController(animated: true)
+        }
         self.onDismiss()
     }
     
@@ -348,15 +355,15 @@ extension CardEditVC {
 
 // MARK: Navigation Bar Items
 extension CardEditVC {
-    private func deleteButtonItem() -> UIBarButtonItem {
+    func deleteButtonItem() -> UIBarButtonItem {
         return UIBarButtonItem(image: UIImage(systemName: "trash"), style: .plain, target: self, action: #selector(deletePressed))
         
     }
-    private func archiveButtonItem() -> UIBarButtonItem {
+    func archiveButtonItem() -> UIBarButtonItem {
         return UIBarButtonItem(image: UIImage(systemName: "archivebox"), style: .plain, target: self, action: #selector(archivePressed))
     }
     
-    private func discardChangesButtonItem() -> UIBarButtonItem {
+    func discardChangesButtonItem() -> UIBarButtonItem {
         return UIBarButtonItem(image: UIImage(systemName: "rectangle.fill.badge.xmark"), style: .plain, target: self, action: #selector(discardChangesPressed))
     }
 }

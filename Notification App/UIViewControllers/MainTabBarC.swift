@@ -34,7 +34,10 @@ class MainTabBarC: UITabBarController {
         let workspaceItem = UITabBarItem(title: "Workspace", image: UIImage(systemName: "folder"), tag: 1)
         let workspaceNavC = UINavigationController(rootViewController: WorkspaceVC())
         workspaceNavC.tabBarItem = workspaceItem
-        self.viewControllers = [cardListNavC, workspaceNavC]
+        
+        let finderWorkspaceVC = FinderWorkspaceVC(topPage: nil)
+        finderWorkspaceVC.tabBarItem = workspaceItem
+        self.viewControllers = [cardListNavC, finderWorkspaceVC]
     }
     
     override func viewDidAppear(_ animated: Bool) {
