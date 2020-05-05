@@ -11,31 +11,7 @@ import RickyFramework
 
 extension FinderWorkspaceVC: FinderStyleVCDelegate {
     func finderStyleFirstContainer() -> FinderStyleContainerView {
-//        let tableView = newFinderStyleTableView(information: topPage)
         return workspaceContainerView(for: topPage)
-//        let containerView = FinderStyleContainerView(finderStyleTableView: tableView, navigationBar: nil, finderStyleVC: self)
-//        containerView.navigationBar = navigationBar(for: containerView)
-//        containerView.layout()
-//        return containerView
-    }
-    
-    func finderStyleNextView(for containerView: FinderStyleContainerView, didSelectRowAt indexPath: IndexPath) -> FinderStyleContainerView? {
-        guard let tableView = containerView.tableView, let currentPage = tableView.information as? Page else {return nil}
-        guard let cellType = cellType(for: indexPath, page: currentPage) else {return nil}
-        
-        switch cellType {
-        case .childPage:
-            let shownPage = currentPage.childrenArray().sortedByName()[indexPath.row]
-            return workspaceContainerView(for: shownPage)
-        case .newPage:
-            tableView.deselectRow(at: indexPath, animated: false)
-            return nil
-        case .childCard:
-            let shownCard = currentPage.cardsArray().sortedByCreationDate(oldFirst: true)[indexPath.row]
-            return cardEditContainer(task: shownCard)
-        case .newCard:
-            return nil
-        }
     }
     
     func numberOfSections(in finderStyleTableView: FinderStyleTableView) -> Int {
@@ -62,22 +38,6 @@ extension FinderWorkspaceVC: FinderStyleVCDelegate {
         }
     }
     
-    func finderStyleTableView(_ tableView: FinderStyleTableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
-        guard let page = tableView.information as? Page, let cellType = cellType(for: indexPath, page: page) else {return indexPath}
-        if cellType == .newPage {
-            return nil
-        }
-        return indexPath
-    }
-    
-    func finderStyleTableView(_ tableView: FinderStyleTableView, shouldHighlightRowAt indexPath: IndexPath) -> Bool {
-        guard let page = tableView.information as? Page, let cellType = cellType(for: indexPath, page: page) else {return true}
-        if cellType == .newPage {
-            return false
-        }
-        return true
-    }
-    
     func finderStyleTableView(_ tableView: FinderStyleTableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let defaultCell = UITableViewCell()
         guard let info = tableView.information as? Page else {return defaultCell}
@@ -100,6 +60,41 @@ extension FinderWorkspaceVC: FinderStyleVCDelegate {
             return cell
         case .newCard:
             return defaultCell
+        }
+    }
+    
+    func finderStyleTableView(_ tableView: FinderStyleTableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
+        guard let page = tableView.information as? Page, let cellType = cellType(for: indexPath, page: page) else {return indexPath}
+        if cellType == .newPage {
+            return nil
+        }
+        return indexPath
+    }
+    
+    func finderStyleTableView(_ tableView: FinderStyleTableView, shouldHighlightRowAt indexPath: IndexPath) -> Bool {
+        guard let page = tableView.information as? Page, let cellType = cellType(for: indexPath, page: page) else {return true}
+        if cellType == .newPage {
+            return false
+        }
+        return true
+    }
+    
+    func finderStyleNextView(for containerView: FinderStyleContainerView, didSelectRowAt indexPath: IndexPath) -> FinderStyleContainerView? {
+        guard let tableView = containerView.tableView, let currentPage = tableView.information as? Page else {return nil}
+        guard let cellType = cellType(for: indexPath, page: currentPage) else {return nil}
+        
+        switch cellType {
+        case .childPage:
+            let shownPage = currentPage.childrenArray().sortedByName()[indexPath.row]
+            return workspaceContainerView(for: shownPage)
+        case .newPage:
+            tableView.deselectRow(at: indexPath, animated: false)
+            return nil
+        case .childCard:
+            let shownCard = currentPage.cardsArray().sortedByCreationDate(oldFirst: true)[indexPath.row]
+            return cardEditContainer(task: shownCard)
+        case .newCard:
+            return nil
         }
     }
     

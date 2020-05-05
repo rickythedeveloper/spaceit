@@ -45,13 +45,6 @@ extension NewPageTableViewCell {
         textField.containerView = containerView
     }
     
-//    private func cleanCell() {
-//        for subView in contentView.subviews {
-//            subView.removeFromSuperview()
-//        }
-//        textLabel?.text = nil
-//    }
-    
     private func textFieldSetup() {
         let padding: CGFloat = 10
         textField.backgroundColor = .tvBackground()
