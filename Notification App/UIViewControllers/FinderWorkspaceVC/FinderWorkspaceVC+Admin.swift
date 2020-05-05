@@ -49,4 +49,13 @@ extension FinderWorkspaceVC {
         self.managedObjectContext.saveContext()
         self.standardReloadProcedure()
     }
+    
+    func addChildPage(for page: Page, name: String, completion: @escaping () -> Void = {}) {
+        guard name.hasContent() else {return}
+        let newPage = Page.createPageInContext(name: name, context: self.managedObjectContext)
+        page.addToChildren(newPage)
+        self.managedObjectContext.saveContext(completion: {
+            completion()
+        })
+    }
 }

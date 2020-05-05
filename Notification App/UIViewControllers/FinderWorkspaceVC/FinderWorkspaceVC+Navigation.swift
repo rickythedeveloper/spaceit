@@ -37,7 +37,8 @@ extension FinderWorkspaceVC {
         return nil
     }
     
-    func workspaceContainerView(for tableView: FinderStyleTableView) -> FinderStyleContainerView {
+    func workspaceContainerView(for page: Page?) -> FinderStyleContainerView {
+        let tableView = newFinderStyleTableView(information: page)
         let containerView = FinderStyleContainerView(finderStyleTableView: tableView, navigationBar: nil, finderStyleVC: self)
         containerView.navigationBar = navigationBar(for: containerView)
         containerView.layout()
