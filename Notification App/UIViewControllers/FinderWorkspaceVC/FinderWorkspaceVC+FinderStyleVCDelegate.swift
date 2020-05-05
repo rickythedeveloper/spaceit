@@ -25,7 +25,7 @@ extension FinderWorkspaceVC: FinderStyleVCDelegate {
                 return nil
             } else { // existing page
                 let tableView = newFinderStyleTableView(information: currentPage.childrenArray().sortedByName()[indexPath.row])
-                return self.containerView(for: tableView)
+                return self.workspaceContainerView(for: tableView)
             }
         } else if indexPath.section == cardSection { // if card section is selected
             if indexPath.row == tableView.numberOfRows(inSection: cardSection) { // if new card is selected
@@ -55,7 +55,7 @@ extension FinderWorkspaceVC: FinderStyleVCDelegate {
     func finderStyleTableView(_ tableView: FinderStyleTableView, numberOfRowsInSection section: Int) -> Int {
         guard let info = tableView.information as? Page else {return 0}
         if section == pageSection {
-            return info.numberOfChildren()
+            return info.numberOfChildren() + 1
         } else if section == cardSection {
             return info.numberOfCards()
         } else {
@@ -64,19 +64,28 @@ extension FinderWorkspaceVC: FinderStyleVCDelegate {
     }
     
     func finderStyleTableView(_ tableView: FinderStyleTableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let info = tableView.information as? Page else {return UITableViewCell()}
-        if indexPath.section == pageSection {
+        let defaultCell = UITableViewCell()
+        guard let info = tableView.information as? Page else {return defaultCell}
+        guard let cellType = cellType(for: indexPath, page: info) else {return defaultCell}
+        guard let containerView = self.containerViewFor(tableView) else {return defaultCell}
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier: tableView.cellID, for: indexPath)
+        cell.cleanCell()
+
+        switch cellType {
+        case .childPage:
             let shownPage = info.childrenArray().sortedByName()[indexPath.row]
-            let cell = tableView.dequeueReusableCell(withIdentifier: tableView.cellID, for: indexPath)
             cell.textLabel?.text = shownPage.name
             return cell
-        } else if indexPath.section == cardSection {
+        case .newPage:
+            return NewPageTableViewCell(reuseIdentifier: tableView.cellID, TFdelegate: self, containerView: containerView)
+        case .childCard:
             let shownCard = info.cardsArray().sortedByCreationDate(oldFirst: true)[indexPath.row]
-            let cell = tableView.dequeueReusableCell(withIdentifier: tableView.cellID, for: indexPath)
             cell.textLabel?.text = shownCard.question
             return cell
+        case .newCard:
+            return defaultCell
         }
-        return UITableViewCell()
     }
     
     func widthFor(_ containerView: FinderStyleContainerView) -> CGFloat {
@@ -95,5 +104,38 @@ extension FinderWorkspaceVC: FinderStyleVCDelegate {
             return self.view.widthAnchor
         }
         return nil
+    }
+}
+
+extension FinderWorkspaceVC {
+    private func cellType(for indexPath: IndexPath, page: Page) -> WorkspaceCellType? {
+        if indexPath.section == pageSection {
+            if indexPath.row == page.numberOfChildren() {
+                return .newPage
+            } else if indexPath.row < page.numberOfChildren() {
+                return .childPage
+            }
+        } else if indexPath.section == cardSection {
+            if indexPath.row == page.numberOfCards() {
+                return .newCard
+            } else if indexPath.row < page.numberOfCards() {
+                return .childCard
+            }
+        }
+        return nil
+    }
+}
+
+private enum WorkspaceCellType {
+    case childPage
+    case newPage
+    case childCard
+    case newCard
+}
+
+extension FinderWorkspaceVC: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        print("should return")
+        return true
     }
 }

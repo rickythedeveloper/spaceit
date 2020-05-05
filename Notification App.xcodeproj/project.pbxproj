@@ -40,6 +40,7 @@
 		9CCA02752460414B007F6BEC /* FinderWorkspaceVC+FinderStyleVCDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CCA02742460414B007F6BEC /* FinderWorkspaceVC+FinderStyleVCDelegate.swift */; };
 		9CCA0277246041DF007F6BEC /* FinderWorkspaceVC+Admin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CCA0276246041DF007F6BEC /* FinderWorkspaceVC+Admin.swift */; };
 		9CCB588123F2C590002C3B36 /* MainTabBarC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CCB588023F2C590002C3B36 /* MainTabBarC.swift */; };
+		9CF0F908246171B600765E65 /* NewPageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CF0F907246171B600765E65 /* NewPageTableViewCell.swift */; };
 		9CF34024242F269C00897B40 /* WorkspaceAccessible.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CF34023242F269C00897B40 /* WorkspaceAccessible.swift */; };
 		9CF8388424399A3400A4CE59 /* UITapGestureRecognizer+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CF8388324399A3400A4CE59 /* UITapGestureRecognizer+.swift */; };
 		9CF8388624399C3F00A4CE59 /* LabelWithLinks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CF8388524399C3F00A4CE59 /* LabelWithLinks.swift */; };
@@ -112,6 +113,7 @@
 		9CCA02742460414B007F6BEC /* FinderWorkspaceVC+FinderStyleVCDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FinderWorkspaceVC+FinderStyleVCDelegate.swift"; sourceTree = "<group>"; };
 		9CCA0276246041DF007F6BEC /* FinderWorkspaceVC+Admin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FinderWorkspaceVC+Admin.swift"; sourceTree = "<group>"; };
 		9CCB588023F2C590002C3B36 /* MainTabBarC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarC.swift; sourceTree = "<group>"; };
+		9CF0F907246171B600765E65 /* NewPageTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewPageTableViewCell.swift; sourceTree = "<group>"; };
 		9CF34023242F269C00897B40 /* WorkspaceAccessible.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkspaceAccessible.swift; sourceTree = "<group>"; };
 		9CF8388324399A3400A4CE59 /* UITapGestureRecognizer+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITapGestureRecognizer+.swift"; sourceTree = "<group>"; };
 		9CF8388524399C3F00A4CE59 /* LabelWithLinks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelWithLinks.swift; sourceTree = "<group>"; };
@@ -205,6 +207,18 @@
 				9C38E6D2243D87680012FC59 /* NewVersionInfoV.swift */,
 			);
 			path = UIViews;
+			sourceTree = "<group>";
+		};
+		9CF0F90B2461773700765E65 /* FinderWorkspaceVC */ = {
+			isa = PBXGroup;
+			children = (
+				9C9707BF245EB9220044E819 /* FinderWorkspaceVC.swift */,
+				9CCA027224603FDE007F6BEC /* FinderWorkspaceVC+Navigation.swift */,
+				9CCA02742460414B007F6BEC /* FinderWorkspaceVC+FinderStyleVCDelegate.swift */,
+				9CCA0276246041DF007F6BEC /* FinderWorkspaceVC+Admin.swift */,
+				9CF0F907246171B600765E65 /* NewPageTableViewCell.swift */,
+			);
+			path = FinderWorkspaceVC;
 			sourceTree = "<group>";
 		};
 		9CF34022242F268600897B40 /* Protocols */ = {
@@ -303,10 +317,7 @@
 				B8D9B2D32329A97100348987 /* GADBannerViewController.swift */,
 				9C7C893123D9103800930E99 /* NewCardVC.swift */,
 				9C148EB823E4ECC800901930 /* WorkspaceVC.swift */,
-				9C9707BF245EB9220044E819 /* FinderWorkspaceVC.swift */,
-				9CCA027224603FDE007F6BEC /* FinderWorkspaceVC+Navigation.swift */,
-				9CCA02742460414B007F6BEC /* FinderWorkspaceVC+FinderStyleVCDelegate.swift */,
-				9CCA0276246041DF007F6BEC /* FinderWorkspaceVC+Admin.swift */,
+				9CF0F90B2461773700765E65 /* FinderWorkspaceVC */,
 				9CCB588023F2C590002C3B36 /* MainTabBarC.swift */,
 				9C7310842433503C008E9820 /* Introduction */,
 			);
@@ -529,6 +540,7 @@
 				9C5EF44A2416DD4200FEBE51 /* UIFont+.swift in Sources */,
 				9C148EB923E4ECC800901930 /* WorkspaceVC.swift in Sources */,
 				B8D9B2D42329A97100348987 /* GADBannerViewController.swift in Sources */,
+				9CF0F908246171B600765E65 /* NewPageTableViewCell.swift in Sources */,
 				B895D2DE233159CC00767C4E /* String+.swift in Sources */,
 				B8CF591023C474E600F83DDB /* UIAlertController+.swift in Sources */,
 				B83C305F23C5B7C3008A24D4 /* UIColor+.swift in Sources */,
