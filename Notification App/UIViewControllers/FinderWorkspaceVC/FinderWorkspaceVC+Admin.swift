@@ -17,10 +17,17 @@ extension FinderWorkspaceVC {
         } else {
             if topPage == nil {
                 findTopPageAndAssignToThisPage(pages: pages)
+                setFirstContainer()
             }
-            reloadViews(reloadsTableViews: true)
-            self.noWorkspaceAlert?.dismiss(animated: true, completion: nil)
+            reloadViews(reloadsTableViews: true, completion: {
+                self.noWorkspaceAlert?.dismiss(animated: true, completion: nil)
+            })
         }
+    }
+    
+    @objc func coreDataObjectsDidChange() {
+        print("Core data objects did change...")
+        standardReloadProcedure()
     }
     
     /// Fetch all the pages in the core data

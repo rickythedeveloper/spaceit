@@ -35,7 +35,7 @@ class MainTabBarC: UITabBarController {
         let workspaceNavC = UINavigationController(rootViewController: WorkspaceVC())
         workspaceNavC.tabBarItem = workspaceItem
         
-        let finderWorkspaceVC = FinderWorkspaceVC(topPage: nil)
+        let finderWorkspaceVC = FinderWorkspaceVC(workspaceAccessible: nil)
         finderWorkspaceVC.tabBarItem = workspaceItem
         self.viewControllers = [cardListNavC, finderWorkspaceVC]
     }

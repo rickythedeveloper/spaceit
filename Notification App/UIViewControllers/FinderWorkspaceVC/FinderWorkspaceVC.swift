@@ -11,6 +11,8 @@ import CoreData
 import RickyFramework
 
 class FinderWorkspaceVC: FinderStyleVC {
+    var workspaceAccessible: WorkspaceAccessible?
+    
     let pageSection = 0
     let cardSection = 1
     
@@ -18,9 +20,10 @@ class FinderWorkspaceVC: FinderStyleVC {
     let managedObjectContext = NSManagedObjectContext.defaultContext()
     var noWorkspaceAlert: UIAlertController?
     
-    init(topPage: Page?) {
+    init(topPage: Page? = nil, workspaceAccessible: WorkspaceAccessible?) {
         super.init()
         self.topPage = topPage
+        self.workspaceAccessible = workspaceAccessible
     }
     
     required init?(coder: NSCoder) {
@@ -36,6 +39,8 @@ class FinderWorkspaceVC: FinderStyleVC {
             self.alwaysShowDetail = true
         }
         
+        NotificationCenter.default.addObserver(self, selector: #selector(coreDataObjectsDidChange), name: Notification.Name.NSManagedObjectContextObjectsDidChange, object: nil)
+        
         super.viewDidLoad()
     }
     
@@ -43,5 +48,3 @@ class FinderWorkspaceVC: FinderStyleVC {
         standardReloadProcedure()
     }
 }
-
-

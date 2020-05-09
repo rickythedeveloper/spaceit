@@ -40,6 +40,7 @@
 		9CCA02752460414B007F6BEC /* FinderWorkspaceVC+FinderStyleVCDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CCA02742460414B007F6BEC /* FinderWorkspaceVC+FinderStyleVCDelegate.swift */; };
 		9CCA0277246041DF007F6BEC /* FinderWorkspaceVC+Admin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CCA0276246041DF007F6BEC /* FinderWorkspaceVC+Admin.swift */; };
 		9CCB588123F2C590002C3B36 /* MainTabBarC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CCB588023F2C590002C3B36 /* MainTabBarC.swift */; };
+		9CE0BD7924669ADF001FBFB6 /* FinderWorkspaceNavBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CE0BD7824669ADF001FBFB6 /* FinderWorkspaceNavBar.swift */; };
 		9CF0F908246171B600765E65 /* NewPageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CF0F907246171B600765E65 /* NewPageTableViewCell.swift */; };
 		9CF34024242F269C00897B40 /* WorkspaceAccessible.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CF34023242F269C00897B40 /* WorkspaceAccessible.swift */; };
 		9CF8388424399A3400A4CE59 /* UITapGestureRecognizer+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CF8388324399A3400A4CE59 /* UITapGestureRecognizer+.swift */; };
@@ -113,6 +114,7 @@
 		9CCA02742460414B007F6BEC /* FinderWorkspaceVC+FinderStyleVCDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FinderWorkspaceVC+FinderStyleVCDelegate.swift"; sourceTree = "<group>"; };
 		9CCA0276246041DF007F6BEC /* FinderWorkspaceVC+Admin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FinderWorkspaceVC+Admin.swift"; sourceTree = "<group>"; };
 		9CCB588023F2C590002C3B36 /* MainTabBarC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarC.swift; sourceTree = "<group>"; };
+		9CE0BD7824669ADF001FBFB6 /* FinderWorkspaceNavBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinderWorkspaceNavBar.swift; sourceTree = "<group>"; };
 		9CF0F907246171B600765E65 /* NewPageTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewPageTableViewCell.swift; sourceTree = "<group>"; };
 		9CF34023242F269C00897B40 /* WorkspaceAccessible.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkspaceAccessible.swift; sourceTree = "<group>"; };
 		9CF8388324399A3400A4CE59 /* UITapGestureRecognizer+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITapGestureRecognizer+.swift"; sourceTree = "<group>"; };
@@ -217,6 +219,7 @@
 				9CCA02742460414B007F6BEC /* FinderWorkspaceVC+FinderStyleVCDelegate.swift */,
 				9CCA0276246041DF007F6BEC /* FinderWorkspaceVC+Admin.swift */,
 				9CF0F907246171B600765E65 /* NewPageTableViewCell.swift */,
+				9CE0BD7824669ADF001FBFB6 /* FinderWorkspaceNavBar.swift */,
 			);
 			path = FinderWorkspaceVC;
 			sourceTree = "<group>";
@@ -517,6 +520,7 @@
 				B87BF76123C59358006D372F /* CardListVC.swift in Sources */,
 				9CA3BCED243DD4D70062591D /* UIImage+.swift in Sources */,
 				9C7C893223D9103800930E99 /* NewCardVC.swift in Sources */,
+				9CE0BD7924669ADF001FBFB6 /* FinderWorkspaceNavBar.swift in Sources */,
 				B8099DE923C0BE4300A56471 /* CardEditVC.swift in Sources */,
 				9CCB588123F2C590002C3B36 /* MainTabBarC.swift in Sources */,
 				9CCA027324603FDE007F6BEC /* FinderWorkspaceVC+Navigation.swift in Sources */,
