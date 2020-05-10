@@ -81,39 +81,20 @@ class CardEditVC: UIViewController, UIScrollViewDelegate, WorkspaceAccessible {
         putCardInfo()
     }
     
-    override func viewWillDisappear(_ animated: Bool) {
-        self.saveCardInfo()
+    override func viewDidDisappear(_ animated: Bool) {
+        updateCardInfo()
     }
 }
 
 // MARK: Core Data
 extension CardEditVC {
-    private func saveCardInfo(completion: @escaping () -> Void = {}) {
+    private func updateCardInfo() {
         self.task.question = self.frontTextView.text
         self.task.answer = self.backTextView.text
         if chosenPage != nil {
             self.task.page = chosenPage!
         }
-        
-        self.managedObjectContext.saveContext(completion: {
-            let sv = self.savedView()
-            self.view.addSubview(sv)
-            sv.alignToCenterYOf(self.view)
-            sv.alignToCenterXOf(self.view)
-            sv.heightAnchor.constraint(equalToConstant: 100.0).isActive = true
-            sv.alpha = 0.0
-            UIView.animate(withDuration: 0.2, animations: {
-                sv.alpha = 1.0
-            }, completion: { _ in
-                DispatchQueue.main.async {
-                    Timer.scheduledTimer(withTimeInterval: 0.2, repeats: false) { (timer) in
-                        completion()
-                    }
-                }
-            })
-        }, errorHandler: {
-            self.present(UIAlertController.saveFailedAlert(), animated: true, completion: nil)
-        })
+        self.managedObjectContext.saveContext()
     }
 }
 
@@ -365,44 +346,6 @@ extension CardEditVC {
     
     func discardChangesButtonItem() -> UIBarButtonItem {
         return UIBarButtonItem(image: UIImage(systemName: "rectangle.fill.badge.xmark"), style: .plain, target: self, action: #selector(discardChangesPressed))
-    }
-}
-
-// MARK: Saved View
-extension CardEditVC {
-    private func savedView() -> UIView {
-        let view = UIView()
-        view.translatesAutoresizingMaskIntoConstraints = false
-        view.backgroundColor = (UIColor.systemGray3).withAlphaComponent(0.7)
-        view.layer.cornerRadius = 10.0
-        
-        let image = UIImage(systemName: "checkmark")
-        let iv = UIImageView(image: image)
-        iv.translatesAutoresizingMaskIntoConstraints = false
-        iv.contentMode = .scaleAspectFit
-        
-        let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "Saved"
-        label.textAlignment = .center
-        
-        let stack = UIStackView(arrangedSubviews: [iv, label])
-        stack.translatesAutoresizingMaskIntoConstraints = false
-        stack.axis = .vertical
-        stack.spacing = 5.0
-        
-        view.addSubview(stack)
-        
-        view.heightAnchor.constraint(equalTo: view.widthAnchor).isActive = true
-        
-        iv.widthAnchor.constraint(equalTo: label.widthAnchor).isActive = true
-        
-        stack.alignToCenterXOf(view)
-        stack.alignToCenterYOf(view)
-        stack.heightAnchor.constraint(equalTo: stack.widthAnchor).isActive = true
-        stack.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.9).isActive = true
-        
-        return view
     }
 }
 
