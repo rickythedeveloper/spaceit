@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		9C148EB923E4ECC800901930 /* WorkspaceVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C148EB823E4ECC800901930 /* WorkspaceVC.swift */; };
+		9C212B05246D2AB4008E56DF /* WorkspaceNewPageTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C212B04246D2AB4008E56DF /* WorkspaceNewPageTextField.swift */; };
 		9C29806D2435FD2100176A7A /* SubscribeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C29806C2435FD2100176A7A /* SubscribeVC.swift */; };
 		9C29806F243613F200176A7A /* SwiftyStoreKitWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C29806E243613F200176A7A /* SwiftyStoreKitWrapper.swift */; };
 		9C3164EC23E32DF90095DF46 /* CreationDateCardListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C3164EB23E32DF90095DF46 /* CreationDateCardListCell.swift */; };
@@ -86,6 +87,7 @@
 		400F8CFFE2A8363BF8311EBC /* Pods-Notification App.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Notification App.debug.xcconfig"; path = "Target Support Files/Pods-Notification App/Pods-Notification App.debug.xcconfig"; sourceTree = "<group>"; };
 		888FEDAF84C7F11728D04CC7 /* Pods-Notification App.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Notification App.release.xcconfig"; path = "Target Support Files/Pods-Notification App/Pods-Notification App.release.xcconfig"; sourceTree = "<group>"; };
 		9C148EB823E4ECC800901930 /* WorkspaceVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkspaceVC.swift; sourceTree = "<group>"; };
+		9C212B04246D2AB4008E56DF /* WorkspaceNewPageTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkspaceNewPageTextField.swift; sourceTree = "<group>"; };
 		9C29806C2435FD2100176A7A /* SubscribeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscribeVC.swift; sourceTree = "<group>"; };
 		9C29806E243613F200176A7A /* SwiftyStoreKitWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftyStoreKitWrapper.swift; sourceTree = "<group>"; };
 		9C3164EB23E32DF90095DF46 /* CreationDateCardListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreationDateCardListCell.swift; sourceTree = "<group>"; };
@@ -232,6 +234,7 @@
 				9C9E92D9246C00B200DB018E /* WorkspaceFinderVC+Factory.swift */,
 				9C9E92DD246C0B4300DB018E /* WorkspaceFinderVC+Admin.swift */,
 				9C9E92DB246C022300DB018E /* WorkspaceNavBar.swift */,
+				9C212B04246D2AB4008E56DF /* WorkspaceNewPageTextField.swift */,
 			);
 			path = WorkspaceFinderVC;
 			sourceTree = "<group>";
@@ -562,6 +565,7 @@
 				B80FF85123C5913C005F3AA7 /* UILabel+.swift in Sources */,
 				B8D9503F2326C48F001236AE /* SceneDelegate.swift in Sources */,
 				B8D9505E2326C85C001236AE /* UNUserNotificationCenter+.swift in Sources */,
+				9C212B05246D2AB4008E56DF /* WorkspaceNewPageTextField.swift in Sources */,
 				9C35CD5323DF725B0099F55D /* Date+.swift in Sources */,
 				9C3B271123CF11C400CC5A13 /* Page+CoreDataClass.swift in Sources */,
 				B844EDB023C3471C0033D657 /* UIButton+.swift in Sources */,

@@ -52,8 +52,14 @@ extension WorkspaceFinderVC: FinderVCDataSource {
                 cell.textLabel?.text = page.childrenArray().sortedByName()[indexPath.row].name
             } else { // new page text field
                 cell = tableView.dequeueReusableCell(withIdentifier: newPageCellID, for: indexPath)
-//                TODO (new page cell)
-                cell.textLabel?.text = "new page cell here"
+                for subview in cell.contentView.subviews {
+                    subview.removeFromSuperview()
+                }
+                
+                let textField = WorkspaceNewPageTextField(finderTableView: tableView)
+                cell.contentView.addSubview(textField)
+                let padding: CGFloat = 5.0
+                NSLayoutConstraint.activate(textField.constraintsToFit(cell.contentView, withInsets: UIEdgeInsets(top: padding, left: padding, bottom: padding, right: padding), topSafe: true, bottomSafe: true, leadingSafe: true, trailingSafe: true))
             }
         } else {
             if indexPath.row < page.numberOfCards() { // child card cell
