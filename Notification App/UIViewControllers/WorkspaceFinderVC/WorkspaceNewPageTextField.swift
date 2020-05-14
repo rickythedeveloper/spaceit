@@ -54,10 +54,15 @@ extension WorkspaceNewPageTextField: UITextFieldDelegate {
         return true
     }
     
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        addHorizontalKeyCommands()
+    }
+    
     /// Updates the information required for the keyboard guardian in workspace to work before the keyboard shows.
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
         guard let workspaceFinderVC = finderTableView.containerView?.finderVC as? WorkspaceFinderVC else {return true}
         workspaceFinderVC.updateKeyboardGuardianInformation(self, inside: self.finderTableView)
+        self.removeHorizontalKeyCommands()
         return true
     }
     
@@ -74,5 +79,15 @@ extension WorkspaceNewPageTextField: UITextFieldDelegate {
                 })
             }
         })
+    }
+    
+    private func addHorizontalKeyCommands() {
+        guard let workspaceFinderVC = finderTableView.containerView?.finderVC as? WorkspaceFinderVC else {return}
+        workspaceFinderVC.horizontalKeyCommandsEnabled = true
+    }
+    
+    private func removeHorizontalKeyCommands() {
+        guard let workspaceFinderVC = finderTableView.containerView?.finderVC as? WorkspaceFinderVC else {return}
+        workspaceFinderVC.horizontalKeyCommandsEnabled = false
     }
 }
