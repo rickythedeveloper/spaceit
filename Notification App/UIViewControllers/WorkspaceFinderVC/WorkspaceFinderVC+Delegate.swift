@@ -44,6 +44,24 @@ extension WorkspaceFinderVC: FinderVCDelegate {
         return true
     }
     
-    func finderViewController(highlightDidMoveTo containerView: FinderContainerView, forward: Bool) {
+    func finderViewController(highlightDidMoveTo containerView: FinderContainerView?) {
+        // Enable/disable shortcuts for FinderVC
+        if let containerView = containerView {
+            if let cardEditVC = containerView.customViewController as? CardEditVC {
+                cardEditVC.frontTextView.becomeFirstResponder()
+                self.horizontalKeyCommandsEnabled = false
+                self.verticalKeyCommandsEnabled = false
+            } else if let newCardVC = containerView.customViewController as? NewCardVC {
+                newCardVC.frontTV.becomeFirstResponder()
+                self.horizontalKeyCommandsEnabled = false
+                self.verticalKeyCommandsEnabled = false
+            } else {
+                self.horizontalKeyCommandsEnabled = true
+                self.verticalKeyCommandsEnabled = true
+            }
+        } else {
+            self.horizontalKeyCommandsEnabled = true
+            self.verticalKeyCommandsEnabled = true
+        }
     }
 }

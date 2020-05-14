@@ -32,7 +32,7 @@ class NewCardVC: UIViewController, UITextViewDelegate, WorkspaceAccessible {
     }
     
     private let frontLabel = UILabel.front()
-    private let frontTV = UITextView.cardSIdeTV()
+    let frontTV = UITextView.cardSIdeTV()
     private let frontPlaceholder = "Front text"
     private let backLabel = UILabel.back()
     private let backTV = UITextView.cardSIdeTV()
@@ -55,7 +55,7 @@ class NewCardVC: UIViewController, UITextViewDelegate, WorkspaceAccessible {
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        self.frontTV.becomeFirstResponder()
+//        self.frontTV.becomeFirstResponder()
     }
 }
 
