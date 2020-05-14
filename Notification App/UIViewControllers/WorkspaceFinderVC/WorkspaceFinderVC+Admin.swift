@@ -78,13 +78,17 @@ extension WorkspaceFinderVC {
     
     func setContainerWidth(viewWidth: CGFloat) {
         if viewWidth < 500 {
-            containerWidthMultiplier = 1
+            containerTableWidthMultiplier = 1
+            customViewWidthMultiplier = 1
         } else if viewWidth < 800 {
-            containerWidthMultiplier = 1/2
+            containerTableWidthMultiplier = 1/2
+            customViewWidthMultiplier = 1/2
         } else if viewWidth < 1200{
-            containerWidthMultiplier = 1/3
+            containerTableWidthMultiplier = 1/3
+            customViewWidthMultiplier = 2/3
         } else {
-            containerWidthMultiplier = 1/4
+            containerTableWidthMultiplier = 1/4
+            customViewWidthMultiplier = 2/4
         }
     }
 }

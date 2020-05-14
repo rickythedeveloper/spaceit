@@ -24,7 +24,8 @@ class WorkspaceFinderVC: FinderVC, KeyboardGuardian {
     var topPage: Page?
     var workspaceAccessible: WorkspaceAccessible?
     var noWorkspaceAlert: UIAlertController?
-    var containerWidthMultiplier: CGFloat = 1.0
+    var containerTableWidthMultiplier: CGFloat = 1.0
+    var customViewWidthMultiplier: CGFloat = 1.0
     
     // Keyboard guardian
     var finderTableViewForTappedNewPageTextField: FinderTableView?

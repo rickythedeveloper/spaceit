@@ -11,7 +11,12 @@ import RickyFramework
 extension WorkspaceFinderVC: FinderVCDataSource {
 //    TODO
     func widthConstraint(for containerView: FinderContainerView) -> NSLayoutConstraint {
-        return containerView.widthAnchor.constraint(equalTo: self.scrollView.widthAnchor, multiplier: containerWidthMultiplier)
+        if containerView.finderTableView != nil {
+            return containerView.widthAnchor.constraint(equalTo: self.scrollView.widthAnchor, multiplier: containerTableWidthMultiplier)
+        } else if containerView.customView != nil {
+            return containerView.widthAnchor.constraint(equalTo: self.scrollView.widthAnchor, multiplier: customViewWidthMultiplier)
+        }
+        fatalError()
     }
     
     func numberOfSections(in finderStyleTableView: FinderTableView) -> Int {
