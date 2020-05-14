@@ -10,7 +10,8 @@
 import RickyFramework
 import CoreData
 
-class WorkspaceFinderVC: FinderVC {
+class WorkspaceFinderVC: FinderVC, KeyboardGuardian {
+    
     let pageSection = 0
     let cardSection = 1
     let managedObjectContext = NSManagedObjectContext.defaultContext()
@@ -23,6 +24,11 @@ class WorkspaceFinderVC: FinderVC {
     var topPage: Page?
     var workspaceAccessible: WorkspaceAccessible?
     var noWorkspaceAlert: UIAlertController?
+    
+    // Keyboard guardian
+    var finderTableViewForTappedNewPageTextField: FinderTableView?
+    var viewsToGuard = [UIView]()
+    var paddingForKeyboardGuardian: CGFloat  = 10.0
     
     init(topPage: Page? = nil, workspaceAccessible: WorkspaceAccessible?) {
         super.init()
@@ -40,6 +46,7 @@ class WorkspaceFinderVC: FinderVC {
         self.start()
         self.reloadAllViews(completion: {})
         NotificationCenter.default.addObserver(self, selector: #selector(coreDataObjectsDidChange), name: Notification.Name.NSManagedObjectContextObjectsDidChange, object: nil)
+        self.addKeyboardObserver()
         
         if UIDevice.current.model == "iPhone" {
             self.scrollView.isPagingEnabled = true

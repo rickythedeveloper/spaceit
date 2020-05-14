@@ -56,4 +56,18 @@ extension WorkspaceFinderVC {
         self.managedObjectContext.saveContext()
         self.reloadAllViews(completion: {})
     }
+    
+    /// Updates the information required for the keyboard guardian to work. Call this just before the keyboard shows.
+    func updateKeyboardGuardianInformation(_ textField: WorkspaceNewPageTextField, inside finderTableView: FinderTableView) {
+        viewsToGuard = [textField]
+        finderTableViewForTappedNewPageTextField = finderTableView
+    }
+    
+    /// Will be called when the keyboard is about to show.
+    @objc func keyboardWillChangeFrame(notification: NSNotification) {
+        if let changeInOffset = offsetDueToKeyboard(keyboardNotification: notification), let finderTableView = finderTableViewForTappedNewPageTextField {
+            let finalOffset = CGPoint(x: 0, y: max(finderTableView.contentOffset.y + changeInOffset.y, 0))
+            finderTableView.setContentOffset(finalOffset, animated: true)
+        }
+    }
 }

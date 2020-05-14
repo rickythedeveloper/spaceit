@@ -45,11 +45,19 @@ class WorkspaceNewPageTextField: UITextField {
 }
 
 extension WorkspaceNewPageTextField: UITextFieldDelegate {
+    /// If the text has some content, add a child page.
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         guard let page = finderTableView.information as? Page else {return true}
         guard let text = textField.text, text.hasContent() else {return true}
         addChildPage(to: page, text: text)
         self.endEditing(true)
+        return true
+    }
+    
+    /// Updates the information required for the keyboard guardian in workspace to work before the keyboard shows.
+    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
+        guard let workspaceFinderVC = finderTableView.containerView?.finderVC as? WorkspaceFinderVC else {return true}
+        workspaceFinderVC.updateKeyboardGuardianInformation(self, inside: self.finderTableView)
         return true
     }
     
