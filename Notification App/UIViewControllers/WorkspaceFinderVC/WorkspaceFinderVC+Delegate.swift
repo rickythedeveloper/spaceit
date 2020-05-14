@@ -18,10 +18,9 @@ extension WorkspaceFinderVC: FinderVCDelegate {
             self.showNewContainerViewForPage(after: tableView, didSelectAt: indexPath)
         } else if indexPath.section == 1 {
             if indexPath.row < page.numberOfCards() {
-//                TODO (edit card)
                 self.showNewContainerForCard(after: tableView, didSelectAt: indexPath)
             } else {
-//                TODO (new card)
+                self.shoeContainerForNewCard(after: tableView)
             }
         }
     }

@@ -43,22 +43,26 @@ extension WorkspaceFinderVC: FinderVCDataSource {
         
         var cell: UITableViewCell
         if indexPath.section == 0 {
-            if indexPath.row < page.numberOfChildren() {
+            if indexPath.row < page.numberOfChildren() { // child page cell
                 cell = tableView.dequeueReusableCell(withIdentifier: childPageCellID, for: indexPath)
                 cell.textLabel?.text = page.childrenArray().sortedByName()[indexPath.row].name
-            } else {
+            } else { // new page text field
                 cell = tableView.dequeueReusableCell(withIdentifier: newPageCellID, for: indexPath)
 //                TODO (new page cell)
                 cell.textLabel?.text = "new page cell here"
             }
         } else {
-            if indexPath.row < page.numberOfCards() {
+            if indexPath.row < page.numberOfCards() { // child card cell
                 cell = tableView.dequeueReusableCell(withIdentifier: childCardCellID, for: indexPath)
                 cell.textLabel?.text = page.cardsArray().sortedByCreationDate(oldFirst: true)[indexPath.row].question
-            } else {
+            } else { // New card cell
                 cell = tableView.dequeueReusableCell(withIdentifier: newCardCellID, for: indexPath)
-//                TODO (new card cell)
-                cell.textLabel?.text = "new card cell here"
+                if let imageView = cell.imageView {
+                    imageView.image = UIImage(systemName: "plus")
+                    imageView.usesAutolaoyut()
+                    NSLayoutConstraint.activate(imageView.constraintsToFit(cell, withInsets: .zero, topSafe: true, bottomSafe: true, leadingSafe: true, trailingSafe: true))
+                    imageView.contentMode = .center
+                }
             }
         }
         return cell

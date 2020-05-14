@@ -52,4 +52,28 @@ extension WorkspaceFinderVC {
             self.showContainerView(nextContainer, on: .trailingSide, completion: {})
         })
     }
+    
+    func newContainerViewForNewCard(page: Page) -> FinderContainerView {
+        let newCardVC = NewCardVC(prechosenPage: page)
+        let navItem = UINavigationItem()
+        let title = UILabel()
+        title.text = "New Card"
+        navItem.titleView = title
+        let navBar = UINavigationBar()
+        navBar.setItems([navItem], animated: true)
+        let container = FinderContainerView(customViewController: newCardVC, navigationBar: navBar, finderVC: self)
+        container.layout()
+        return container
+    }
+    
+    func shoeContainerForNewCard(after tableView: FinderTableView) {
+        guard let page = tableView.information as? Page else {return}
+        let containerIndex = tableView.containerIndex()
+        let nextContainer = self.newContainerViewForNewCard(page: page)
+        hideContainerView(at: containerIndex + 2, completion: {
+            self.removeContainerViews(under: containerIndex + 1)
+            self.addContainerView(nextContainer)
+            self.showContainerView(nextContainer, on: .trailingSide, completion: {})
+        })
+    }
 }

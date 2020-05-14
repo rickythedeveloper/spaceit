@@ -66,7 +66,7 @@ class WorkspaceNavBar: UINavigationBar, WorkspaceAccessible {
             let title = UILabel()
             title.text = "Edit Card"
             navItem.titleView = title
-            navItem.rightBarButtonItems = [cardEditVC.deleteButtonItem(), cardEditVC.archiveButtonItem(), cardEditVC.discardChangesButtonItem()]
+            navItem.rightBarButtonItems = [cardEditVC.deleteButtonItem(), cardEditVC.archiveButtonItem()]
             self.setItems([navItem], animated: true)
         }
     }

@@ -9,7 +9,14 @@
 import RickyFramework
 
 extension WorkspaceFinderVC {
-    func standardReloadProcedure() {
+    
+    /// Called when core data objects have changed.
+    @objc func coreDataObjectsDidChange() {
+        reloadAllViews(completion: {})
+    }
+    
+    /// Reloads tabe view data and container width.
+    func reloadAllViews(completion: () -> Void) {
         let pages = Array.pagesFetched(managedObjectContext: managedObjectContext)
         if pages.count == 0 {
             showNoPageAlert()
@@ -20,8 +27,10 @@ extension WorkspaceFinderVC {
                 self.addContainerView(self.newContainerView(for: topPage))
             }
             
-            updateContainerWidth()
-            reloadAllContainerTableViews()
+            DispatchQueue.main.async {
+                self.updateContainerWidth()
+                self.reloadAllContainerTableViews()
+            }
             self.noWorkspaceAlert?.dismiss(animated: true, completion: nil)
         }
     }
@@ -45,6 +54,6 @@ extension WorkspaceFinderVC {
     private func noPageSetup() {
         self.topPage = Page.createPageInContext(name: "My Workspace", id: UUID(), context: self.managedObjectContext)
         self.managedObjectContext.saveContext()
-        self.standardReloadProcedure()
+        self.reloadAllViews(completion: {})
     }
 }

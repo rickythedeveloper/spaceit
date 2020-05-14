@@ -38,6 +38,7 @@ class WorkspaceFinderVC: FinderVC {
         self.delegate = self
         self.dataSource = self
         self.start()
-        self.standardReloadProcedure()
+        self.reloadAllViews(completion: {})
+        NotificationCenter.default.addObserver(self, selector: #selector(coreDataObjectsDidChange), name: Notification.Name.NSManagedObjectContextObjectsDidChange, object: nil)
     }
 }

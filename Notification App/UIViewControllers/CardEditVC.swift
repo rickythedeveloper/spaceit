@@ -209,6 +209,9 @@ extension CardEditVC {
         scrollView.translatesAutoresizingMaskIntoConstraints = false
         scrollView.delegate = self
         
+        frontTextView.delegate = self
+        backTextView.delegate = self
+        
         actionButtonContainer = reviewButtonStack(spacing: padding)
         
         dueDateLabel.font = UIFont.preferredFont(forTextStyle: .body)
@@ -371,5 +374,11 @@ extension CardEditVC {
         stack.spacing = spacing
         
         return stack
+    }
+}
+
+extension CardEditVC: UITextViewDelegate {
+    func textViewDidChange(_ textView: UITextView) {
+        self.updateCardInfo()
     }
 }
