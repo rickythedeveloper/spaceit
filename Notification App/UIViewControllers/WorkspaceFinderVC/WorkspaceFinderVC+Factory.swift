@@ -16,7 +16,7 @@ extension WorkspaceFinderVC {
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: childCardCellID)
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: newCardCellID)
         let container = FinderContainerView(finderTableView: tableView, navigationBar: nil, finderVC: self)
-        let navigationBar = WorkspaceNavBar(finderWorkspaceVC: self, containerView: container, workspaceAccessible: self.workspaceAccessible)
+        let navigationBar = WorkspaceNavBar(workspaceFinderVC: self, containerView: container, workspaceAccessible: self.workspaceAccessible)
         container.navigationBar = navigationBar
         container.layout()
         return container
@@ -37,7 +37,7 @@ extension WorkspaceFinderVC {
         let cardEditVC = CardEditVC(task: card, managedObjectContext: self.managedObjectContext, onDismiss: {})
         let container = FinderContainerView(customViewController: cardEditVC, navigationBar: nil, finderVC: self)
         cardEditVC.finderContainerView = container
-        container.navigationBar = WorkspaceNavBar(finderWorkspaceVC: self, containerView: container, workspaceAccessible: self.workspaceAccessible)
+        container.navigationBar = WorkspaceNavBar(workspaceFinderVC: self, containerView: container, workspaceAccessible: self.workspaceAccessible)
         container.layout()
         return container
     }

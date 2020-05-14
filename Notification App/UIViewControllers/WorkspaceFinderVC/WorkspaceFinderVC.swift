@@ -40,5 +40,9 @@ class WorkspaceFinderVC: FinderVC {
         self.start()
         self.reloadAllViews(completion: {})
         NotificationCenter.default.addObserver(self, selector: #selector(coreDataObjectsDidChange), name: Notification.Name.NSManagedObjectContextObjectsDidChange, object: nil)
+        
+        if UIDevice.current.model == "iPhone" {
+            self.scrollView.isPagingEnabled = true
+        }
     }
 }

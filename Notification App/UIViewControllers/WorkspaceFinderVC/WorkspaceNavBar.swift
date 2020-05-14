@@ -16,13 +16,13 @@ class WorkspaceNavBar: UINavigationBar, WorkspaceAccessible {
             }
         }
     }
-    var finderWorkspaceVC: WorkspaceFinderVC
+    var workspaceFinderVC: WorkspaceFinderVC
     unowned var containerView: FinderContainerView
     var pageForTableView: Page?
     var workspaceAccessible: WorkspaceAccessible?
     
-    init(finderWorkspaceVC: WorkspaceFinderVC, containerView: FinderContainerView, workspaceAccessible: WorkspaceAccessible?) {
-        self.finderWorkspaceVC = finderWorkspaceVC
+    init(workspaceFinderVC: WorkspaceFinderVC, containerView: FinderContainerView, workspaceAccessible: WorkspaceAccessible?) {
+        self.workspaceFinderVC = workspaceFinderVC
         self.containerView = containerView
         self.workspaceAccessible = workspaceAccessible
         super.init(frame: .zero)
@@ -56,7 +56,7 @@ class WorkspaceNavBar: UINavigationBar, WorkspaceAccessible {
             navItem.rightBarButtonItem = rightButton
             
             if !page.isTopPage() {
-                let backButton = UIBarButtonItem(image: UIImage(systemName: "arrow.left"), style: .plain, target: self, action: #selector(dismissContainerView))
+                let backButton = UIBarButtonItem(image: UIImage(systemName: "chevron.left"), style: .plain, target: self, action: #selector(dismissContainerView))
                 navItem.leftBarButtonItem = backButton
             }
             
@@ -107,7 +107,7 @@ extension WorkspaceNavBar {
         if let popoverController = ac.popoverPresentationController {
             popoverController.barButtonItem = self.items?.first?.rightBarButtonItem
         }
-        self.finderWorkspaceVC.present(ac, animated: true, completion: nil)
+        self.workspaceFinderVC.present(ac, animated: true, completion: nil)
     }
     
     @objc func navBarTouched() {
@@ -120,18 +120,18 @@ extension WorkspaceNavBar {
     private func editPageName(page: Page) {
         let ac = UIAlertController.editPageNameAlert(textFieldDelegate: self, pageName: page.name, doneAction: { (newName) in
             page.name = newName
-            self.finderWorkspaceVC.managedObjectContext.saveContext()
+            self.workspaceFinderVC.managedObjectContext.saveContext()
             self.setTitle(page.name)
         }, cancelAction: {
             self.setTitle(page.name)
         })
         
-        self.finderWorkspaceVC.present(ac, animated: true, completion: nil)
+        self.workspaceFinderVC.present(ac, animated: true, completion: nil)
     }
     
     
     private func choosePageToMoveTo() {
-        self.finderWorkspaceVC.present(FinderWorkspaceVC(workspaceAccessible: self), animated: true, completion: nil)
+        self.workspaceFinderVC.present(WorkspaceFinderVC(workspaceAccessible: self), animated: true, completion: nil)
     }
     
     /// If this page is not the top page, delete this page and save the core data context.
@@ -139,8 +139,8 @@ extension WorkspaceNavBar {
         guard let thisPage = self.pageForTableView, !thisPage.isTopPage() else {fatalError()}
         
         self.containerView.dismiss(completion: {
-            self.finderWorkspaceVC.managedObjectContext.delete(thisPage)
-            self.finderWorkspaceVC.managedObjectContext.saveContext()
+            self.workspaceFinderVC.managedObjectContext.delete(thisPage)
+            self.workspaceFinderVC.managedObjectContext.saveContext()
         })
     }
 }
@@ -159,10 +159,10 @@ extension WorkspaceNavBar {
         
         thisPage.moveTo(under: newParent, cannotMoveAction: {
             DispatchQueue.main.async {
-                self.finderWorkspaceVC.present(UIAlertController.cannotMovePage(), animated: true, completion: nil)
+                self.workspaceFinderVC.present(UIAlertController.cannotMovePage(), animated: true, completion: nil)
             }
         })
-        self.finderWorkspaceVC.managedObjectContext.saveContext()
+        self.workspaceFinderVC.managedObjectContext.saveContext()
     }
     
     @objc private func dismissContainerView() {
@@ -175,6 +175,6 @@ extension WorkspaceNavBar {
     @objc private func selectThisPage() {
         guard let thisPage = self.pageForTableView, self.workspaceAccessible != nil else {return}
         self.workspaceAccessible?.chosenPage = thisPage
-        self.finderWorkspaceVC.dismiss(animated: true, completion: nil)
+        self.workspaceFinderVC.dismiss(animated: true, completion: nil)
     }
 }
