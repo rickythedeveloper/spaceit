@@ -35,7 +35,7 @@ class WorkspaceNavBar: UINavigationBar, WorkspaceAccessible {
     }
     
     deinit {
-        print("Workspace Nav Bar is being destroyed")
+//        print("Workspace Nav Bar is being destroyed")
     }
     
     func setup() {
@@ -61,6 +61,8 @@ class WorkspaceNavBar: UINavigationBar, WorkspaceAccessible {
             }
             
             self.setItems([navItem], animated: true)
+            
+            self.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(navBarTouched)))
         } else if let cardEditVC = containerView.customViewController as? CardEditVC {
             let navItem = UINavigationItem()
             let title = UILabel()
@@ -106,6 +108,12 @@ extension WorkspaceNavBar {
             popoverController.barButtonItem = self.items?.first?.rightBarButtonItem
         }
         self.finderWorkspaceVC.present(ac, animated: true, completion: nil)
+    }
+    
+    @objc func navBarTouched() {
+        if let page = pageForTableView {
+            editPageName(page: page)
+        }
     }
     
     /// Shows an alert with a textfield so that the user can edit the page name.
