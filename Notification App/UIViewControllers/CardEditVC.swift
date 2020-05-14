@@ -13,6 +13,7 @@ import RickyFramework
 
 class CardEditVC: UIViewController, UIScrollViewDelegate, WorkspaceAccessible {
     var finderStyleContainerView: FinderStyleContainerView?
+    unowned var finderContainerView: FinderContainerView?
     
     internal var chosenPage: Page? {
         willSet(newPage) {
@@ -73,6 +74,10 @@ class CardEditVC: UIViewController, UIScrollViewDelegate, WorkspaceAccessible {
 
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    deinit {
+        print("Card Edit VC is being destroyed")
     }
     
     override func viewDidLoad() {
@@ -151,6 +156,8 @@ extension CardEditVC {
     @objc private func dismissView() {
         if let containerView = finderStyleContainerView {
             containerView.dismiss()
+        } else if let containerView = finderContainerView {
+            containerView.dismiss(completion: {})
         } else {
             self.navigationController?.popViewController(animated: true)
         }

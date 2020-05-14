@@ -35,9 +35,11 @@ class MainTabBarC: UITabBarController {
         let workspaceNavC = UINavigationController(rootViewController: WorkspaceVC())
         workspaceNavC.tabBarItem = workspaceItem
         
-        let finderWorkspaceVC = FinderWorkspaceVC(workspaceAccessible: nil)
-        finderWorkspaceVC.tabBarItem = workspaceItem
-        self.viewControllers = [cardListNavC, finderWorkspaceVC]
+//        let finderWorkspaceVC = FinderWorkspaceVC(workspaceAccessible: nil)
+//        finderWorkspaceVC.tabBarItem = workspaceItem
+        let workspaceFinderVC = WorkspaceFinderVC(workspaceAccessible: nil)
+        workspaceFinderVC.tabBarItem = workspaceItem
+        self.viewControllers = [cardListNavC, workspaceFinderVC]
     }
     
     override func viewDidAppear(_ animated: Bool) {

@@ -111,6 +111,27 @@ extension UIAlertController {
         return ac
     }
     
+    static func editPageNameAlert(textFieldDelegate: WorkspaceNavBar, pageName: String, doneAction: @escaping (_ text: String)->Void, cancelAction: @escaping ()->Void) -> UIAlertController {
+        let ac = UIAlertController(title: "Edit name", message: nil, preferredStyle: .alert)
+        ac.addTextField { (textField) in
+            textField.placeholder = pageName
+            textField.text = pageName
+            textField.addTarget(textFieldDelegate, action: #selector(textFieldDelegate.nameEditingChanged(_:)), for: .editingChanged)
+        }
+        ac.addAction(UIAlertAction(title: "Done", style: .default, handler: { (_) in
+            if let newName = ac.textFields?.first!.text, newName.hasContent() {
+                doneAction(newName)
+            } else {
+                cancelAction()
+            }
+        }))
+        ac.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { (_) in
+            cancelAction()
+        }))
+
+        return ac
+    }
+    
     static func noWorkspaceAlert(createPage: @escaping ()->Void) -> UIAlertController {
         let title = "Are you new here?"
         let message = "If you are a new customer, go ahead and tap Yes to create a new workspace! If you are an existing customer and you have your workspace on another device, please tap No and wait up to a few minutes to load."
