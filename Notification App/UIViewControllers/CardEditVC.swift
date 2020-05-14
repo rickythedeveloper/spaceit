@@ -11,7 +11,10 @@ import SwiftUI
 import CoreData
 import RickyFramework
 
-class CardEditVC: UIViewController, UIScrollViewDelegate, WorkspaceAccessible {
+class CardEditVC: UIViewController, UIScrollViewDelegate, WorkspaceAccessible, KeyboardGuardian {
+    var viewsToGuard = [UIView]()
+    var paddingForKeyboardGuardian: CGFloat = 10.0
+    
     var finderStyleContainerView: FinderStyleContainerView?
     unowned var finderContainerView: FinderContainerView?
     
@@ -196,7 +199,7 @@ extension CardEditVC {
         let minButtonHeight: CGFloat = 50.0
         let maxButtonHeight: CGFloat = 70.0
         
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+        self.addKeyboardObserver()
         
         view.backgroundColor = UIColor.myBackGroundColor()
         view.addSubview(scrollView)
@@ -211,6 +214,9 @@ extension CardEditVC {
         
         frontTextView.delegate = self
         backTextView.delegate = self
+        
+        viewsToGuard.append(contentsOf: [frontTextView, backTextView])
+        paddingForKeyboardGuardian = padding
         
         actionButtonContainer = reviewButtonStack(spacing: padding)
         
@@ -329,18 +335,15 @@ extension CardEditVC: ReviewAccessible {
 // MARK: Keyboard guardian
 extension CardEditVC {
     /// Offset the content if needed based on  the keyboard frame.
-    @objc private func keyboardWillShow(notification: NSNotification) {
-        guard let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue else {return}
-        
-        var textFieldMaxY: CGFloat = 0.0
-        
-        if self.frontTextView.isFirstResponder {
-            textFieldMaxY = (self.frontTextView.superview!.convert(frontTextView.frame, to: nil)).maxY
-        } else if self.backTextView.isFirstResponder {
-            textFieldMaxY = (self.backTextView.superview!.convert(backTextView.frame, to: nil)).maxY
+    func keyboardWillChangeFrame(notification: NSNotification) {
+        updateScrollViewOffset(keyboardNotification: notification)
+    }
+    /// Updates the scroll view content offset depending on the keyboard notification
+    func updateScrollViewOffset(keyboardNotification: NSNotification) {
+        if let offset = self.offsetDueToKeyboard(keyboardNotification: keyboardNotification) {
+            let finalOffset = CGPoint(x: 0, y: max(self.scrollView.contentOffset.y + offset.y, 0))
+            self.scrollView.setContentOffset(finalOffset, animated: true)
         }
-        
-        self.scrollView.setContentOffset(CGPoint(x: 0, y: max(-self.scrollView.contentInset.top, 10 + textFieldMaxY - keyboardSize.minY)), animated: true)
     }
 }
 
