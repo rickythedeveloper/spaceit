@@ -24,6 +24,7 @@ class WorkspaceFinderVC: FinderVC, KeyboardGuardian {
     var topPage: Page?
     var workspaceAccessible: WorkspaceAccessible?
     var noWorkspaceAlert: UIAlertController?
+    var containerWidthMultiplier: CGFloat = 1.0
     
     // Keyboard guardian
     var finderTableViewForTappedNewPageTextField: FinderTableView?
@@ -44,6 +45,7 @@ class WorkspaceFinderVC: FinderVC, KeyboardGuardian {
         self.delegate = self
         self.dataSource = self
         self.start()
+        self.setContainerWidth(viewWidth: self.view.frame.width)
         self.reloadAllViews(completion: {})
         NotificationCenter.default.addObserver(self, selector: #selector(coreDataObjectsDidChange), name: Notification.Name.NSManagedObjectContextObjectsDidChange, object: nil)
         self.addKeyboardObserver()

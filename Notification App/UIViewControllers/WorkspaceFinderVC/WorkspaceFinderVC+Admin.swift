@@ -70,4 +70,21 @@ extension WorkspaceFinderVC {
             finderTableView.setContentOffset(finalOffset, animated: true)
         }
     }
+    
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        setContainerWidth(viewWidth: size.width)
+        updateContainerWidth()
+    }
+    
+    func setContainerWidth(viewWidth: CGFloat) {
+        if viewWidth < 500 {
+            containerWidthMultiplier = 1
+        } else if viewWidth < 800 {
+            containerWidthMultiplier = 1/2
+        } else if viewWidth < 1200{
+            containerWidthMultiplier = 1/3
+        } else {
+            containerWidthMultiplier = 1/4
+        }
+    }
 }

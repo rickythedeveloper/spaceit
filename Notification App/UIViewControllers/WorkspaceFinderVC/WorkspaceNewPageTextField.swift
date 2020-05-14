@@ -47,10 +47,10 @@ class WorkspaceNewPageTextField: UITextField {
 extension WorkspaceNewPageTextField: UITextFieldDelegate {
     /// If the text has some content, add a child page.
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        self.endEditing(true)
         guard let page = finderTableView.information as? Page else {return true}
         guard let text = textField.text, text.hasContent() else {return true}
         addChildPage(to: page, text: text)
-        self.endEditing(true)
         return true
     }
     
