@@ -80,7 +80,7 @@ extension WorkspaceFinderVC {
         if viewWidth < 500 {
             containerTableWidthMultiplier = 1
             customViewWidthMultiplier = 1
-        } else if viewWidth < 800 {
+        } else if viewWidth < 900 {
             containerTableWidthMultiplier = 1/2
             customViewWidthMultiplier = 1/2
         } else if viewWidth < 1200{

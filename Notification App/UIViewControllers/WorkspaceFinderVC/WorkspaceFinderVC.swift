@@ -51,8 +51,6 @@ class WorkspaceFinderVC: FinderVC, KeyboardGuardian {
         NotificationCenter.default.addObserver(self, selector: #selector(coreDataObjectsDidChange), name: Notification.Name.NSManagedObjectContextObjectsDidChange, object: nil)
         self.addKeyboardObserver()
         
-        if UIDevice.current.model == "iPhone" {
-            self.scrollView.isPagingEnabled = true
-        }
+        self.view.backgroundColor = .myBackGroundColor()
     }
 }
