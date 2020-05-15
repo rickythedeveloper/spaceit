@@ -91,4 +91,31 @@ extension WorkspaceFinderVC {
             customViewWidthMultiplier = 2/4
         }
     }
+    
+    /// Returns the new page text field for a specified contaier view if there is one. Returns nil if we can't find one.
+    func newPageTextField(for containerView: FinderContainerView) -> WorkspaceNewPageTextField? {
+        guard let tableView = containerView.finderTableView, let _ = tableView.information as? Page else {return nil}
+        let newPageIndexPath = IndexPath(row: tableView.numberOfRows(inSection: 0) - 1, section: 0)
+        guard let cell = tableView.cellForRow(at: newPageIndexPath) else {return nil}
+        
+        for subView in cell.contentView.subviews {
+            if let tf = subView as? WorkspaceNewPageTextField  {
+                return tf
+            }
+        }
+        return nil
+    }
+    
+    /// The specified finder table view will select the new card cell
+    func selectNewCardCell(of tableView: FinderTableView) {
+        let indexPath = IndexPath(row: tableView.numberOfRows(inSection: 1) - 1, section: 1)
+        selectFinderTableViewCell(of: tableView, indexPath: indexPath)
+    }
+    
+    /// The specified finder table view will select a new specified cell.
+    func selectFinderTableViewCell(of tableView: FinderTableView, indexPath: IndexPath) {
+        tableView.selectRow(at: indexPath, animated: false, scrollPosition: .none)
+        tableView.scrollToRow(at: indexPath, at: .none, animated: true)
+        tableView.delegate?.tableView?(tableView, didSelectRowAt: indexPath)
+    }
 }

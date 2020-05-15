@@ -36,6 +36,8 @@ class WorkspaceFinderVC: FinderVC, KeyboardGuardian {
         super.init()
         self.topPage = topPage
         self.workspaceAccessible = workspaceAccessible
+        self.delegate = self
+        self.dataSource = self
     }
     
     required init?(coder: NSCoder) {
@@ -43,8 +45,6 @@ class WorkspaceFinderVC: FinderVC, KeyboardGuardian {
     }
     
     override func viewDidLoad() {
-        self.delegate = self
-        self.dataSource = self
         self.start()
         self.setContainerWidth(viewWidth: self.view.frame.width)
         self.reloadAllViews(completion: {})
