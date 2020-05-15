@@ -22,17 +22,6 @@ extension WorkspaceFinderVC {
         return container
     }
     
-    func showNewContainerViewForPage(after tableView: FinderTableView, didSelectAt indexPath: IndexPath) {
-        guard let page = tableView.information as? Page, page.childrenArray().count > indexPath.row else {return}
-        let containerIndex = tableView.containerIndex()
-        let nextContainer = self.newContainerView(for: page.childrenArray().sortedByName()[indexPath.row])
-        hideContainerView(at: containerIndex + 2, completion: {
-            self.removeContainerViews(under: containerIndex + 1)
-            self.addContainerView(nextContainer)
-            self.showContainerView(nextContainer, on: .trailingSide, completion: {})
-        })
-    }
-    
     func newContainerView(for card: TaskSaved) -> FinderContainerView {
         let cardEditVC = CardEditVC(task: card, managedObjectContext: self.managedObjectContext, onDismiss: {})
         let container = FinderContainerView(customViewController: cardEditVC, navigationBar: nil, finderVC: self)
@@ -42,18 +31,7 @@ extension WorkspaceFinderVC {
         return container
     }
     
-    func showNewContainerForCard(after tableView: FinderTableView, didSelectAt indexPath: IndexPath) {
-        guard let page = tableView.information as? Page, page.cardsArray().count > indexPath.row else {return}
-        let containerIndex = tableView.containerIndex()
-        let nextContainer = self.newContainerView(for: page.cardsArray().sortedByCreationDate(oldFirst: true)[indexPath.row])
-        hideContainerView(at: containerIndex + 2, completion: {
-            self.removeContainerViews(under: containerIndex + 1)
-            self.addContainerView(nextContainer)
-            self.showContainerView(nextContainer, on: .trailingSide, completion: {})
-        })
-    }
-    
-    func newContainerViewForNewCard(page: Page) -> FinderContainerView {
+    func newContainerViewForNewCard(under page: Page) -> FinderContainerView {
         let newCardVC = NewCardVC(prechosenPage: page)
         let navItem = UINavigationItem()
         let title = UILabel()
@@ -65,16 +43,5 @@ extension WorkspaceFinderVC {
         newCardVC.finderContainerView = container
         container.layout()
         return container
-    }
-    
-    func shoeContainerForNewCard(after tableView: FinderTableView) {
-        guard let page = tableView.information as? Page else {return}
-        let containerIndex = tableView.containerIndex()
-        let nextContainer = self.newContainerViewForNewCard(page: page)
-        hideContainerView(at: containerIndex + 2, completion: {
-            self.removeContainerViews(under: containerIndex + 1)
-            self.addContainerView(nextContainer)
-            self.showContainerView(nextContainer, on: .trailingSide, completion: {})
-        })
     }
 }

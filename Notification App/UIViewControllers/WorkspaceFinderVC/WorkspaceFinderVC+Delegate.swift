@@ -10,18 +10,18 @@ import RickyFramework
 
 extension WorkspaceFinderVC: FinderVCDelegate {
 //    TODO
-    func finderTableView(_ tableView: FinderTableView, didSelectRowAt indexPath: IndexPath) {
+    func finderTableView(_ tableView: FinderTableView, didSelectRowAt indexPath: IndexPath, isTouchInitiated: Bool) {
 //        print("did select")
-        guard let page = tableView.information as? Page else {return}
-        
-        if indexPath.section == 0 && indexPath.row < page.numberOfChildren() {
-            self.showNewContainerViewForPage(after: tableView, didSelectAt: indexPath)
-        } else if indexPath.section == 1 {
-            if indexPath.row < page.numberOfCards() {
-                self.showNewContainerForCard(after: tableView, didSelectAt: indexPath)
-            } else {
-                self.shoeContainerForNewCard(after: tableView)
-            }
+        self.highlightedContainerIndex = tableView.containerIndex()
+        if containerTableWidthMultiplier < 1 && customViewWidthMultiplier < 1 {
+            self.didSelect(on: tableView, at: indexPath, isFullWidth: false)
+        } else {
+            self.didSelect(on: tableView, at: indexPath, isFullWidth: true, completion: {(nextContainerIndex) in
+                guard let index = nextContainerIndex else {return}
+                if isTouchInitiated {
+                    self.highlightedContainerIndex = index
+                }
+            })
         }
     }
     
@@ -46,6 +46,12 @@ extension WorkspaceFinderVC: FinderVCDelegate {
     
     func finderViewController(highlightDidMoveTo containerView: FinderContainerView?) {
         // Enable/disable shortcuts for FinderVC
+        guard let container = containerView else {return}
+        if containerTableWidthMultiplier == 1 && customViewWidthMultiplier == 1 {
+            self.showContainerView(container, on: .trailingSide, completion: {})
+        }
+        
+        
         if let containerView = containerView {
             if let cardEditVC = containerView.customViewController as? CardEditVC {
                 cardEditVC.frontTextView.becomeFirstResponder()
@@ -63,5 +69,58 @@ extension WorkspaceFinderVC: FinderVCDelegate {
             self.horizontalKeyCommandsEnabled = true
             self.verticalKeyCommandsEnabled = true
         }
+    }
+}
+
+// MARK: Did select functions
+extension WorkspaceFinderVC {
+    /// Adds a next container view right next to the current container view. Depending on the isFullWidth value, decides whether to show the new container or not.
+    private func didSelect(on tableView: FinderTableView, at indexPath: IndexPath, isFullWidth: Bool, completion: @escaping (_ nextContainerIndex: Int?) -> Void = {_ in}) {
+        guard let page = tableView.information as? Page else {return}
+        let containerIndex = tableView.containerIndex()
+        var nextContainer: FinderContainerView?
+        
+        if indexPath.section == 0 && indexPath.row < page.numberOfChildren() {
+            nextContainer = newChildPageContainerView(for: page, index: indexPath.row)
+        } else if indexPath.section == 1 {
+            if indexPath.row < page.numberOfCards() {
+                nextContainer = newChildCardContainerView(for: page, index: indexPath.row)
+            } else {
+                nextContainer = self.newContainerViewForNewCard(under: page)
+            }
+        }
+        
+        if let nextContainer = nextContainer {
+            isFullWidth ? addContainerViewAndStay(newContainerView: nextContainer, after: containerIndex) : addAndScrollTo(containerView: nextContainer, after: containerIndex)
+            completion(containerIndex + 1)
+        }
+        completion(nil)
+    }
+    
+    private func newChildPageContainerView(for page: Page, index: Int) -> FinderContainerView? {
+        guard page.childrenArray().count > index else {return nil}
+        let childPage = page.childrenArray()[index]
+        return newContainerView(for: childPage)
+    }
+    
+    private func newChildCardContainerView(for page: Page, index: Int) -> FinderContainerView? {
+        guard page.cardsArray().count > index else {return nil}
+        let childCard = page.cardsArray().sortedByCreationDate(oldFirst: true)[index]
+        return newContainerView(for: childCard)
+    }
+    
+    private func addContainerViewAndStay(newContainerView: FinderContainerView, after currentContainerIndex: Int) {
+        hideContainerView(at: currentContainerIndex + 1, completion: {
+            self.removeContainerViews(under: currentContainerIndex + 1)
+            self.addContainerView(newContainerView)
+        })
+    }
+    
+    private func addAndScrollTo(containerView: FinderContainerView, after currentContainerIndex: Int) {
+        hideContainerView(at: currentContainerIndex + 2, completion: {
+            self.removeContainerViews(under: currentContainerIndex + 1)
+            self.addContainerView(containerView)
+            self.showContainerView(containerView, on: .trailingSide, completion: {})
+        })
     }
 }

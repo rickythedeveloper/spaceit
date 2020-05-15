@@ -12,7 +12,10 @@ extension WorkspaceFinderVC {
     
     /// Called when core data objects have changed.
     @objc func coreDataObjectsDidChange() {
-        reloadAllViews(completion: {})
+        coreDataTimer?.invalidate()
+        coreDataTimer = Timer.scheduledTimer(withTimeInterval: 0.5, repeats: false, block: { (timer) in
+            self.reloadAllViews(completion: {})
+        })
     }
     
     /// Reloads tabe view data and container width.
@@ -74,6 +77,8 @@ extension WorkspaceFinderVC {
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         setContainerWidth(viewWidth: size.width)
         updateContainerWidth()
+        
+        scrollView.isPagingEnabled = (customViewWidthMultiplier == 1 && containerTableWidthMultiplier == 1) // paging should be enabled if the container width multiplier is one
     }
     
     func setContainerWidth(viewWidth: CGFloat) {

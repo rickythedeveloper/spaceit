@@ -26,6 +26,7 @@ class WorkspaceFinderVC: FinderVC, KeyboardGuardian {
     var noWorkspaceAlert: UIAlertController?
     var containerTableWidthMultiplier: CGFloat = 1.0
     var customViewWidthMultiplier: CGFloat = 1.0
+    var coreDataTimer: Timer?
     
     // Keyboard guardian
     var finderTableViewForTappedNewPageTextField: FinderTableView?
@@ -52,5 +53,6 @@ class WorkspaceFinderVC: FinderVC, KeyboardGuardian {
         self.addKeyboardObserver()
         
         self.view.backgroundColor = .myBackGroundColor()
+        scrollView.isPagingEnabled = (customViewWidthMultiplier == 1 && containerTableWidthMultiplier == 1) // paging should be enabled if the container width multiplier is one
     }
 }
