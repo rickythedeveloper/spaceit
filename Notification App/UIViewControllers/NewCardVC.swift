@@ -57,7 +57,7 @@ class NewCardVC: UIViewController, UITextViewDelegate, WorkspaceAccessible {
     }
     
     override func viewDidAppear(_ animated: Bool) {
-//        self.frontTV.becomeFirstResponder()
+        self.frontTV.becomeFirstResponder()
     }
 }
 
@@ -262,6 +262,7 @@ extension NewCardVC {
         
         addButton.isBelow(backTV, padding: padding*2)
         addButton.alignToCenterXOf(scrollView)
+        addButton.alignBottomAnchorWith(scrollView, offset: -padding)
     }
     
     private func setupTextView(textView: UITextView) {

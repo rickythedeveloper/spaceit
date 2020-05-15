@@ -53,12 +53,10 @@ extension WorkspaceFinderVC: FinderVCDelegate {
         
         
         if let containerView = containerView {
-            if let cardEditVC = containerView.customViewController as? CardEditVC {
-                cardEditVC.frontTextView.becomeFirstResponder()
+            if let _ = containerView.customViewController as? CardEditVC {
                 self.horizontalKeyCommandsEnabled = false
                 self.verticalKeyCommandsEnabled = false
-            } else if let newCardVC = containerView.customViewController as? NewCardVC {
-                newCardVC.frontTV.becomeFirstResponder()
+            } else if let _ = containerView.customViewController as? NewCardVC {
                 self.horizontalKeyCommandsEnabled = false
                 self.verticalKeyCommandsEnabled = false
             } else {

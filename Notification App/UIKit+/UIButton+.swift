@@ -38,7 +38,7 @@ extension UIButton {
     }
     
     func layoutPageSelectButton(parentView: UIView, padding: CGFloat) {
-        self.isBelow(parentView.topAnchor, padding: padding)
+        self.isBelow(parentView.topAnchor, padding: padding*2)
         self.alignToCenterXOf(parentView)
         self.widthAnchor.constraint(lessThanOrEqualTo: parentView.widthAnchor, constant: -padding*2.0).isActive = true
         if self.titleLabel != nil {

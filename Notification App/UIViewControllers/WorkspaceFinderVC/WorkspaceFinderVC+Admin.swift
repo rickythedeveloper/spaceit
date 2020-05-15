@@ -132,3 +132,10 @@ extension WorkspaceFinderVC {
         tableView.delegate?.tableView?(tableView, didSelectRowAt: indexPath)
     }
 }
+
+extension WorkspaceFinderVC {
+    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+        // If the user starts dragging whilst editing card or making a new card, hide the keyboard.
+        view.endEditing(true)
+    }
+}
