@@ -8,9 +8,10 @@
 
 import UIKit
 import CoreData
+import RickyFramework
 
 class NewCardVC: UIViewController, UITextViewDelegate, WorkspaceAccessible {
-    
+    unowned var finderContainerView: FinderContainerView?
     private var managedObjectContext: NSManagedObjectContext?
     
     private var scrollView: UIScrollView = {
@@ -44,9 +45,10 @@ class NewCardVC: UIViewController, UITextViewDelegate, WorkspaceAccessible {
     
     private let addButton = UIButton.actionButton(text: "Add Card", action: #selector(addButtonPressed), backgroundColor: UIColor.pageButtonBackground(), usesAutoLayout: true)
     
-    convenience init(prechosenPage: Page? = nil) {
+    convenience init(prechosenPage: Page? = nil, finderContainerView: FinderContainerView? = nil) {
         self.init()
         self.chosenPage = prechosenPage
+        self.finderContainerView = finderContainerView
     }
 
     override func viewDidLoad() {
@@ -116,7 +118,15 @@ extension NewCardVC {
         self.registerNotification(id: task.id, question: task.question, waitTime: task.waitTime)
         
         self.clearTextsForTVs()
-        self.navigationController?.popViewController(animated: true)
+        dismiss()
+    }
+    
+    private func dismiss() {
+        if let containerView = finderContainerView {
+            containerView.dismiss(completion: {})
+        } else {
+            self.navigationController?.popViewController(animated: true)
+        }
     }
     
     private func registerNotification(id: UUID, question: String, waitTime: TimeInterval) {

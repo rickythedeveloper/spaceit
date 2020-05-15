@@ -35,10 +35,7 @@ extension WorkspaceFinderVC {
     }
     
     @objc func newCardShortcutPressed() {
-        let containerIndex = self.highlightedContainerIndex ?? 0
-        guard containerIndex >= 0 && containerIndex < containerViews.count else {return}
-        guard let tableView = containerViews[containerIndex].finderTableView else {return}
-        self.selectNewCardCell(of: tableView)
+        self.selectNewCardCellOfHighlightedContainer()
     }
     
     @objc func goToCardsListShortcutPressed() {

@@ -62,6 +62,7 @@ extension WorkspaceFinderVC {
         let navBar = UINavigationBar()
         navBar.setItems([navItem], animated: true)
         let container = FinderContainerView(customViewController: newCardVC, navigationBar: navBar, finderVC: self)
+        newCardVC.finderContainerView = container
         container.layout()
         return container
     }

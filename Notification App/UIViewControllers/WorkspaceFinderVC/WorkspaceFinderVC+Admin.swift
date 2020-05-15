@@ -106,6 +106,14 @@ extension WorkspaceFinderVC {
         return nil
     }
     
+    /// Selects the new card cell in the table view that is highlighted
+    func selectNewCardCellOfHighlightedContainer() {
+        let containerIndex = self.highlightedContainerIndex ?? 0
+        guard containerIndex >= 0 && containerIndex < containerViews.count else {return}
+        guard let tableView = containerViews[containerIndex].finderTableView else {return}
+        self.selectNewCardCell(of: tableView)
+    }
+    
     /// The specified finder table view will select the new card cell
     func selectNewCardCell(of tableView: FinderTableView) {
         let indexPath = IndexPath(row: tableView.numberOfRows(inSection: 1) - 1, section: 1)
