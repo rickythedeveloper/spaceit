@@ -405,3 +405,25 @@ extension CardEditVC: UITextViewDelegate {
         self.updateCardInfo()
     }
 }
+
+extension CardEditVC {
+    func newContainerView(finderVC: FinderVC) -> FinderContainerView {
+        let container = FinderContainerView(customViewController: self, navigationBar: nil, finderVC: finderVC)
+        self.finderContainerView = container
+        container.navigationBar = navigationBar()
+        container.layout()
+        return container
+    }
+    
+    func navigationBar() -> UINavigationBar {
+        let navItem = UINavigationItem()
+        let title = UILabel()
+        title.text = "Edit Card"
+        navItem.titleView = title
+        navItem.rightBarButtonItems = [self.deleteButtonItem(), self.archiveButtonItem()]
+        
+        let navBar = UINavigationBar()
+        navBar.setItems([navItem], animated: true)
+        return navBar
+    }
+}

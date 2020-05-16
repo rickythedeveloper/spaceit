@@ -9,15 +9,26 @@
 import UIKit
 
 class CreationDateCardListCell: UITableViewCell {
-    private var isFirst: Bool
-    private var task: TaskSaved
+    var isFirst: Bool? {
+        didSet {
+            viewSetup()
+        }
+    }
+    var task: TaskSaved? {
+        didSet {
+            viewSetup()
+        }
+    }
     
-    init(style: UITableViewCell.CellStyle, reuseIdentifier: String?, task: TaskSaved, isFirst: Bool) {
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
+    }
+    
+    convenience init(style: UITableViewCell.CellStyle, reuseIdentifier: String?, task: TaskSaved, isFirst: Bool) {
+        self.init(style: style, reuseIdentifier: reuseIdentifier)
+        
         self.isFirst = isFirst
         self.task = task
-        super.init(style: style, reuseIdentifier: reuseIdentifier)
-        
-        viewSetup()
     }
     
     required init?(coder: NSCoder) {
@@ -36,13 +47,16 @@ class CreationDateCardListCell: UITableViewCell {
     }
     
     private func viewSetup() {
+        guard let isFirst = isFirst, let task = task else {return}
+        self.cleanCell()
+        
         let padding: CGFloat = 5.0
         self.backgroundColor = .clear
 
-        let vstack = CardListStyle.basicElements(task: self.task, padding: padding, usesAutolayout: true)
+        let vstack = CardListStyle.basicElements(task: task, padding: padding, usesAutolayout: true)
         self.contentView.addSubview(vstack)
         
-        let creationDateLabel = CardListStyle.creationDateStack(task: self.task, isFirst: isFirst, usesAutolayout: true)
+        let creationDateLabel = CardListStyle.creationDateStack(task: task, isFirst: isFirst, usesAutolayout: true)
         self.contentView.addSubview(creationDateLabel)
         
         let labelWidth = creationDateLabel.intrinsicContentSize.width

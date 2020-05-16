@@ -28,18 +28,18 @@ class MainTabBarC: UITabBarController {
         
         // Do any additional setup after loading the view.
         let listTabBarItem = UITabBarItem(title: "Cards", image: UIImage(systemName: "square.stack.3d.up"), tag: 0)
-        let cardListNavC = UINavigationController(rootViewController: CardListVC())
-        cardListNavC.tabBarItem = listTabBarItem
-        
+//        let cardListNavC = UINavigationController(rootViewController: CardListVC())
+//        cardListNavC.tabBarItem = listTabBarItem
+        let cardFinderVC = CardFinderVC()
+        cardFinderVC.tabBarItem = listTabBarItem
         let workspaceItem = UITabBarItem(title: "Workspace", image: UIImage(systemName: "folder"), tag: 1)
-        let workspaceNavC = UINavigationController(rootViewController: WorkspaceVC())
-        workspaceNavC.tabBarItem = workspaceItem
+//        let workspaceNavC = UINavigationController(rootViewController: WorkspaceVC())
+//        workspaceNavC.tabBarItem = workspaceItem
         
-//        let finderWorkspaceVC = FinderWorkspaceVC(workspaceAccessible: nil)
-//        finderWorkspaceVC.tabBarItem = workspaceItem
+        
         let workspaceFinderVC = WorkspaceFinderVC(workspaceAccessible: nil)
         workspaceFinderVC.tabBarItem = workspaceItem
-        self.viewControllers = [cardListNavC, workspaceFinderVC]
+        self.viewControllers = [cardFinderVC, workspaceFinderVC]
     }
     
     override func viewDidAppear(_ animated: Bool) {

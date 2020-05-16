@@ -9,13 +9,20 @@
 import UIKit
 
 class AlphabeticalCardListCell: UITableViewCell {
-    private var task: TaskSaved
+    var task: TaskSaved? {
+        didSet {
+            viewSetup()
+        }
+    }
     
-    init(style: UITableViewCell.CellStyle, reuseIdentifier: String?, task: TaskSaved) {
-        self.task = task
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
+    }
+    
+    convenience init(style: UITableViewCell.CellStyle, reuseIdentifier: String?, task: TaskSaved) {
+        self.init(style: style, reuseIdentifier: reuseIdentifier)
         
-        viewSetup()
+        self.task = task
     }
     
     required init?(coder: NSCoder) {
@@ -34,10 +41,13 @@ class AlphabeticalCardListCell: UITableViewCell {
     }
     
     private func viewSetup() {
+        guard let task = task else {return}
+        self.cleanCell()
+        
         let padding: CGFloat = 5
         self.backgroundColor = .clear
         
-        let stack = CardListStyle.basicElements(task: self.task, padding: padding, usesAutolayout: true)
+        let stack = CardListStyle.basicElements(task: task, padding: padding, usesAutolayout: true)
         self.contentView.addSubview(stack)
 
         stack.alignToCenterYOf(self.contentView)

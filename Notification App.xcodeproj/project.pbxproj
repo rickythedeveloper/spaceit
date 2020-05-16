@@ -48,6 +48,12 @@
 		9CCA02752460414B007F6BEC /* FinderWorkspaceVC+FinderStyleVCDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CCA02742460414B007F6BEC /* FinderWorkspaceVC+FinderStyleVCDelegate.swift */; };
 		9CCA0277246041DF007F6BEC /* FinderWorkspaceVC+Admin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CCA0276246041DF007F6BEC /* FinderWorkspaceVC+Admin.swift */; };
 		9CCB588123F2C590002C3B36 /* MainTabBarC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CCB588023F2C590002C3B36 /* MainTabBarC.swift */; };
+		9CD805E0246FD7FA006A6718 /* CardFinderVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CD805DF246FD7FA006A6718 /* CardFinderVC.swift */; };
+		9CD805E2246FDA36006A6718 /* CardFinderVC+delegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CD805E1246FDA36006A6718 /* CardFinderVC+delegate.swift */; };
+		9CD805E4246FDA4A006A6718 /* CardFinderVC+dataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CD805E3246FDA4A006A6718 /* CardFinderVC+dataSource.swift */; };
+		9CD805E6246FDB30006A6718 /* CardFinderVC+Factory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CD805E5246FDB30006A6718 /* CardFinderVC+Factory.swift */; };
+		9CD805E8246FEC60006A6718 /* CardFinderVC+Admin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CD805E7246FEC60006A6718 /* CardFinderVC+Admin.swift */; };
+		9CD805EA246FEF44006A6718 /* CardSortingSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CD805E9246FEF44006A6718 /* CardSortingSystem.swift */; };
 		9CE0BD7924669ADF001FBFB6 /* FinderWorkspaceNavBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CE0BD7824669ADF001FBFB6 /* FinderWorkspaceNavBar.swift */; };
 		9CF0F908246171B600765E65 /* NewPageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CF0F907246171B600765E65 /* NewPageTableViewCell.swift */; };
 		9CF34024242F269C00897B40 /* WorkspaceAccessible.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CF34023242F269C00897B40 /* WorkspaceAccessible.swift */; };
@@ -130,6 +136,12 @@
 		9CCA02742460414B007F6BEC /* FinderWorkspaceVC+FinderStyleVCDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FinderWorkspaceVC+FinderStyleVCDelegate.swift"; sourceTree = "<group>"; };
 		9CCA0276246041DF007F6BEC /* FinderWorkspaceVC+Admin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FinderWorkspaceVC+Admin.swift"; sourceTree = "<group>"; };
 		9CCB588023F2C590002C3B36 /* MainTabBarC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarC.swift; sourceTree = "<group>"; };
+		9CD805DF246FD7FA006A6718 /* CardFinderVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardFinderVC.swift; sourceTree = "<group>"; };
+		9CD805E1246FDA36006A6718 /* CardFinderVC+delegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CardFinderVC+delegate.swift"; sourceTree = "<group>"; };
+		9CD805E3246FDA4A006A6718 /* CardFinderVC+dataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CardFinderVC+dataSource.swift"; sourceTree = "<group>"; };
+		9CD805E5246FDB30006A6718 /* CardFinderVC+Factory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CardFinderVC+Factory.swift"; sourceTree = "<group>"; };
+		9CD805E7246FEC60006A6718 /* CardFinderVC+Admin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CardFinderVC+Admin.swift"; sourceTree = "<group>"; };
+		9CD805E9246FEF44006A6718 /* CardSortingSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardSortingSystem.swift; sourceTree = "<group>"; };
 		9CE0BD7824669ADF001FBFB6 /* FinderWorkspaceNavBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinderWorkspaceNavBar.swift; sourceTree = "<group>"; };
 		9CF0F907246171B600765E65 /* NewPageTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewPageTableViewCell.swift; sourceTree = "<group>"; };
 		9CF34023242F269C00897B40 /* WorkspaceAccessible.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkspaceAccessible.swift; sourceTree = "<group>"; };
@@ -242,6 +254,19 @@
 			path = WorkspaceFinderVC;
 			sourceTree = "<group>";
 		};
+		9CD805DC246FD7BA006A6718 /* CardFinderVC */ = {
+			isa = PBXGroup;
+			children = (
+				9CD805E9246FEF44006A6718 /* CardSortingSystem.swift */,
+				9CD805DF246FD7FA006A6718 /* CardFinderVC.swift */,
+				9CD805E1246FDA36006A6718 /* CardFinderVC+delegate.swift */,
+				9CD805E3246FDA4A006A6718 /* CardFinderVC+dataSource.swift */,
+				9CD805E5246FDB30006A6718 /* CardFinderVC+Factory.swift */,
+				9CD805E7246FEC60006A6718 /* CardFinderVC+Admin.swift */,
+			);
+			path = CardFinderVC;
+			sourceTree = "<group>";
+		};
 		9CF0F90B2461773700765E65 /* FinderWorkspaceVC */ = {
 			isa = PBXGroup;
 			children = (
@@ -352,6 +377,7 @@
 				9C7C893123D9103800930E99 /* NewCardVC.swift */,
 				9C148EB823E4ECC800901930 /* WorkspaceVC.swift */,
 				9CF0F90B2461773700765E65 /* FinderWorkspaceVC */,
+				9CD805DC246FD7BA006A6718 /* CardFinderVC */,
 				9C9E92D4246BFC5D00DB018E /* WorkspaceFinderVC */,
 				9CCB588023F2C590002C3B36 /* MainTabBarC.swift */,
 				9C7310842433503C008E9820 /* Introduction */,
@@ -536,6 +562,7 @@
 				9C38E6D5243DBC7B0012FC59 /* UITableView+.swift in Sources */,
 				9C3B271023CF11C400CC5A13 /* TaskSaved+CoreDataProperties.swift in Sources */,
 				9C29806D2435FD2100176A7A /* SubscribeVC.swift in Sources */,
+				9CD805E4246FDA4A006A6718 /* CardFinderVC+dataSource.swift in Sources */,
 				9C9E92D8246BFE5D00DB018E /* WorkspaceFinderVC+DataSource.swift in Sources */,
 				9C331CBB2430470C003934D6 /* ReviewAccessible.swift in Sources */,
 				9C38E6D3243D87680012FC59 /* NewVersionInfoV.swift in Sources */,
@@ -549,18 +576,22 @@
 				9C3B271223CF11C400CC5A13 /* TaskSaved+CoreDataClass.swift in Sources */,
 				9C9E92D3246BFC5700DB018E /* WorkspaceFinderVC.swift in Sources */,
 				9C35CD5023DF61240099F55D /* UpcomingCardListCell.swift in Sources */,
+				9CD805EA246FEF44006A6718 /* CardSortingSystem.swift in Sources */,
 				9C5AE61524342F6B0044D8B8 /* IntroEachPageVC.swift in Sources */,
 				9C3164EC23E32DF90095DF46 /* CreationDateCardListCell.swift in Sources */,
 				B8D9503D2326C48F001236AE /* AppDelegate.swift in Sources */,
 				9CCA0277246041DF007F6BEC /* FinderWorkspaceVC+Admin.swift in Sources */,
+				9CD805E0246FD7FA006A6718 /* CardFinderVC.swift in Sources */,
 				B8099DEC23C0C59700A56471 /* UIVIew+.swift in Sources */,
 				B87BF76123C59358006D372F /* CardListVC.swift in Sources */,
 				9C9E92DC246C022300DB018E /* WorkspaceNavBar.swift in Sources */,
 				9C9E92DE246C0B4300DB018E /* WorkspaceFinderVC+Admin.swift in Sources */,
+				9CD805E2246FDA36006A6718 /* CardFinderVC+delegate.swift in Sources */,
 				9CA3BCED243DD4D70062591D /* UIImage+.swift in Sources */,
 				9C7C893223D9103800930E99 /* NewCardVC.swift in Sources */,
 				9CE0BD7924669ADF001FBFB6 /* FinderWorkspaceNavBar.swift in Sources */,
 				B8099DE923C0BE4300A56471 /* CardEditVC.swift in Sources */,
+				9CD805E6246FDB30006A6718 /* CardFinderVC+Factory.swift in Sources */,
 				9CCB588123F2C590002C3B36 /* MainTabBarC.swift in Sources */,
 				9CCA027324603FDE007F6BEC /* FinderWorkspaceVC+Navigation.swift in Sources */,
 				9CCA02752460414B007F6BEC /* FinderWorkspaceVC+FinderStyleVCDelegate.swift in Sources */,
@@ -576,6 +607,7 @@
 				9CC51AF223EB8C8800636842 /* NSManagedObjectContext+.swift in Sources */,
 				B8845807232BCEDE00B5CC3C /* Array+.swift in Sources */,
 				9C731083243347C3008E9820 /* IntroPageVC.swift in Sources */,
+				9CD805E8246FEC60006A6718 /* CardFinderVC+Admin.swift in Sources */,
 				9C9168DF24319E3500AD31A9 /* UIImageView+.swift in Sources */,
 				B85C07DC23379E6400200B07 /* FetchedResults+.swift in Sources */,
 				9CF8388624399C3F00A4CE59 /* LabelWithLinks.swift in Sources */,

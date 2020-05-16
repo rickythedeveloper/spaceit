@@ -9,15 +9,25 @@
 import UIKit
 
 class UpcomingCardListCell: UITableViewCell {
-    private var isFirst: Bool
-    private var task: TaskSaved
+    var isFirst: Bool? {
+        didSet {
+            viewSetup()
+        }
+    }
+    var task: TaskSaved? {
+        didSet {
+            viewSetup()
+        }
+    }
     
-    init(style: UITableViewCell.CellStyle, reuseIdentifier: String?, task: TaskSaved, isFirst: Bool) {
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
+    }
+    
+    convenience init(style: UITableViewCell.CellStyle, reuseIdentifier: String?, task: TaskSaved, isFirst: Bool) {
+        self.init(style: style, reuseIdentifier: reuseIdentifier)
         self.isFirst = isFirst
         self.task = task
-        super.init(style: style, reuseIdentifier: reuseIdentifier)
-        
-        viewSetup()
     }
     
     required init?(coder: NSCoder) {
@@ -25,15 +35,18 @@ class UpcomingCardListCell: UITableViewCell {
     }
     
     private func viewSetup() {
+        guard let task = task, let isFirst = isFirst else {return}
+        self.cleanCell()
+        
         let padding: CGFloat = 5.0
         let minRowHeight: CGFloat = 50.0
         
         self.backgroundColor = .clear
         
-        let mainInfoVStack = CardListStyle.basicElements(task: self.task, padding: padding, usesAutolayout: true)
+        let mainInfoVStack = CardListStyle.basicElements(task: task, padding: padding, usesAutolayout: true)
         self.contentView.addSubview(mainInfoVStack)
         
-        let (subInfoVStack, duelabelWidth, intervalLabelWidth) = CardListStyle.dueAndIntervalStack(task: self.task, isFirst: isFirst, padding: padding, usesAutolayout: true)
+        let (subInfoVStack, duelabelWidth, intervalLabelWidth) = CardListStyle.dueAndIntervalStack(task: task, isFirst: isFirst, padding: padding, usesAutolayout: true)
         self.contentView.addSubview(subInfoVStack)
         
         let minSubInfoWidth = max(duelabelWidth, intervalLabelWidth)
