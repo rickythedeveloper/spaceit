@@ -46,27 +46,11 @@ extension WorkspaceFinderVC: FinderVCDelegate {
     
     func finderViewController(highlightDidMoveTo containerView: FinderContainerView?) {
         // Enable/disable shortcuts for FinderVC
-        guard let container = containerView else {return}
-        if containerTableWidthMultiplier == 1 && customViewWidthMultiplier == 1 {
+        if containerTableWidthMultiplier == 1 && customViewWidthMultiplier == 1, let container = containerView {
             self.showContainerView(container, on: .trailingSide, completion: {})
         }
         
-        
-        if let containerView = containerView {
-            if let _ = containerView.customViewController as? CardEditVC {
-                self.horizontalKeyCommandsEnabled = false
-                self.verticalKeyCommandsEnabled = false
-            } else if let _ = containerView.customViewController as? NewCardVC {
-                self.horizontalKeyCommandsEnabled = false
-                self.verticalKeyCommandsEnabled = false
-            } else {
-                self.horizontalKeyCommandsEnabled = true
-                self.verticalKeyCommandsEnabled = true
-            }
-        } else {
-            self.horizontalKeyCommandsEnabled = true
-            self.verticalKeyCommandsEnabled = true
-        }
+        updateShortcutPermission(newContainerView: containerView)
     }
 }
 
@@ -91,6 +75,7 @@ extension WorkspaceFinderVC {
         if let nextContainer = nextContainer {
             isFullWidth ? addContainerViewAndStay(newContainerView: nextContainer, after: containerIndex) : addAndScrollTo(containerView: nextContainer, after: containerIndex)
             completion(containerIndex + 1)
+            return
         }
         completion(nil)
     }
@@ -120,5 +105,36 @@ extension WorkspaceFinderVC {
             self.addContainerView(containerView)
             self.showContainerView(containerView, on: .trailingSide, completion: {})
         })
+    }
+}
+
+// MARK: highlight did move
+extension WorkspaceFinderVC {
+    private func updateShortcutPermission(newContainerView: FinderContainerView?) {
+        for container in containerViews {
+            if let cardEditVC = container.customViewController as? CardEditVC {
+                cardEditVC.allowsKeyCommands = false
+            } else if let newCardVC = container.customViewController as? NewCardVC {
+                newCardVC.allowsKeyCommands = false
+            }
+        }
+        
+        if let containerView = newContainerView {
+            if let cardEditVC = containerView.customViewController as? CardEditVC {
+                self.horizontalKeyCommandsEnabled = false
+                self.verticalKeyCommandsEnabled = false
+                cardEditVC.allowsKeyCommands = true
+            } else if let newCardVC = containerView.customViewController as? NewCardVC {
+                self.horizontalKeyCommandsEnabled = false
+                self.verticalKeyCommandsEnabled = false
+                newCardVC.allowsKeyCommands = true
+            } else {
+                self.horizontalKeyCommandsEnabled = true
+                self.verticalKeyCommandsEnabled = true
+            }
+        } else {
+            self.horizontalKeyCommandsEnabled = true
+            self.verticalKeyCommandsEnabled = true
+        }
     }
 }

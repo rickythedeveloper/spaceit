@@ -13,6 +13,11 @@ import RickyFramework
 class NewCardVC: UIViewController, UITextViewDelegate, WorkspaceAccessible {
     unowned var finderContainerView: FinderContainerView?
     private var managedObjectContext: NSManagedObjectContext?
+    var allowsKeyCommands: Bool = false {
+        willSet {
+            if newValue == true {frontTV.becomeFirstResponder()}
+        }
+    }
     
     private var scrollView: UIScrollView = {
         let sv = UIScrollView()
@@ -55,10 +60,6 @@ class NewCardVC: UIViewController, UITextViewDelegate, WorkspaceAccessible {
         super.viewDidLoad()
         setup()
     }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        self.frontTV.becomeFirstResponder()
-    }
 }
 
 extension NewCardVC {
@@ -72,7 +73,7 @@ extension NewCardVC {
         } else if self.backTV.isFirstResponder {
             self.addButtonPressed()
         } else {
-            self.addButtonPressed()
+            self.frontTV.becomeFirstResponder()
         }
     }
     
@@ -80,14 +81,10 @@ extension NewCardVC {
         if self.backTV.isFirstResponder {
             self.frontTV.becomeFirstResponder()
         } else if self.frontTV.isFirstResponder {
-            self.view.endEditing(true)
+            self.frontTV.resignFirstResponder()
         } else {
             self.backTV.becomeFirstResponder()
         }
-    }
-    
-    @objc private func dismissView() {
-        self.navigationController?.popViewController(animated: true)
     }
     
     @objc private func addButtonPressed() {
@@ -118,10 +115,10 @@ extension NewCardVC {
         self.registerNotification(id: task.id, question: task.question, waitTime: task.waitTime)
         
         self.clearTextsForTVs()
-        dismiss()
+        dismissView()
     }
     
-    private func dismiss() {
+    @objc private func dismissView() {
         if let containerView = finderContainerView {
             containerView.dismiss(completion: {})
         } else {
@@ -282,11 +279,15 @@ extension NewCardVC: UIScrollViewDelegate {
 // MARK: Keyboard Shortcuts
 extension NewCardVC {
     override var keyCommands: [UIKeyCommand]? {
-        return [
-            UIKeyCommand(title: "Cancel", action: #selector(dismissView), input: UIKeyCommand.inputLeftArrow, modifierFlags: [.command], discoverabilityTitle: "Cancel"),
-            UIKeyCommand(title: "Select page", action: #selector(addPagePressed), input: "p", modifierFlags: [.command], discoverabilityTitle: "Select page"),
-            UIKeyCommand(title: "Next Text Field / Add Card", action: #selector(goToNextTextView), input: "\r", modifierFlags: [.command], discoverabilityTitle: "Next Text Field / Add Card"),
-            UIKeyCommand(title: "Previous Text Field", action: #selector(previousTF), input: "\r", modifierFlags: [.command, .shift], discoverabilityTitle: "Previous Text Field"),
-        ]
+        if allowsKeyCommands {
+            return [
+                UIKeyCommand(title: "Cancel", action: #selector(dismissView), input: "b", modifierFlags: [.command, .alternate], discoverabilityTitle: "Cancel"),
+                UIKeyCommand(title: "Select Page For New Card", action: #selector(addPagePressed), input: "p", modifierFlags: [.command, .alternate], discoverabilityTitle: "Select Page For New Card"),
+                
+                UIKeyCommand(title: "Next Field / Save", action: #selector(goToNextTextView), input: "\r", modifierFlags: [.command], discoverabilityTitle: "Next Field / Save"),
+                UIKeyCommand(title: "Previous Field", action: #selector(previousTF), input: "\r", modifierFlags: [.command, .shift], discoverabilityTitle: "Previous Field"),
+            ]
+        }
+        return nil
     }
 }

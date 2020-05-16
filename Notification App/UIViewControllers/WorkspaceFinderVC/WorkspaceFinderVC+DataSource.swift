@@ -76,6 +76,8 @@ extension WorkspaceFinderVC: FinderVCDataSource {
                 }
             }
         }
+        
+        cell.textLabel?.numberOfLines = 0
         return cell
     }
 }
