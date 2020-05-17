@@ -14,6 +14,8 @@ extension CardFinderVC: FinderVCDataSource {
             return containerView.widthAnchor.constraint(equalTo: view.safeAreaLayoutGuide.widthAnchor, multiplier: containerTableWidthMultiplier)
         } else if let _ = containerView.customViewController as? CardEditVC {
             return containerView.widthAnchor.constraint(equalTo: view.safeAreaLayoutGuide.widthAnchor, multiplier: customViewWidthMultiplier)
+        } else if let _ = containerView.customViewController as? NewCardVC {
+            return containerView.widthAnchor.constraint(equalTo: view.safeAreaLayoutGuide.widthAnchor, multiplier: customViewWidthMultiplier)
         }
         fatalError()
     }

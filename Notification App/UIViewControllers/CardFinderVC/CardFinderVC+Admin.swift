@@ -67,4 +67,12 @@ extension CardFinderVC {
         sortSystem = sortSystem.next()
         button.setTitle(self.sortSystem.text(), for: .normal)
     }
+    
+    @objc func newCardButtonTapped() {
+        let newCardVC = NewCardVC()
+        let container = newCardVC.newContainerView(finderVC: self)
+        removeContainerViews(under: 1)
+        addContainerView(container)
+        self.highlightedContainerIndex = 1
+    }
 }

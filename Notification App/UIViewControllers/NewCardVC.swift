@@ -291,3 +291,15 @@ extension NewCardVC {
         return nil
     }
 }
+
+extension NewCardVC {
+    func newContainerView(finderVC: FinderVC) -> FinderContainerView {
+        let navbar = UINavigationBar()
+        let navItem = UINavigationItem(title: "Add Flashcard")
+        navbar.setItems([navItem], animated: true)
+        let container = FinderContainerView(customViewController: self, navigationBar: navbar, finderVC: finderVC)
+        container.layout()
+        self.finderContainerView = container
+        return container
+    }
+}
