@@ -28,7 +28,7 @@ extension CardFinderVC: FinderVCDelegate {
     }
     
     func finderTableView(_ tableView: FinderTableView, shouldHighlightRowAt indexPath: IndexPath) -> Bool {
-        return indexPath.row == 0 ? false : true
+        return true
     }
     
     func finderViewController(highlightDidMoveTo containerView: FinderContainerView?) {

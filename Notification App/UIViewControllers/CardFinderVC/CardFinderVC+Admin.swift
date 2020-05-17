@@ -10,7 +10,7 @@ import UIKit
 
 extension CardFinderVC {
     func setContainerWidth(viewWidth: CGFloat) {
-        if viewWidth < 500 {
+        if viewWidth < 600 {
             containerTableWidthMultiplier = 1
             customViewWidthMultiplier = 1
         } else if viewWidth < 900 {
@@ -46,6 +46,7 @@ extension CardFinderVC {
     
     func reloadTableView(completion: @escaping () -> Void = {}) {
         allTasks = sortSystem.taskArray(managedObjectContext: managedObjectContext)
+        updateShownTasks(searchText: self.searchController.searchBar.text ?? "", byPhrase: false)
         DispatchQueue.main.async {
             self.reloadAllContainerTableViews()
             completion()
@@ -60,5 +61,10 @@ extension CardFinderVC {
         
         let keywords = searchText.seperatedWords()
         shownTasks = byPhrase ? allTasks.filterByWord(searchPhrase: searchText) : allTasks.filterByKeywords(keywords)
+    }
+    
+    @objc func switchSortSystem(button: UIButton) {
+        sortSystem = sortSystem.next()
+        button.setTitle(self.sortSystem.text(), for: .normal)
     }
 }

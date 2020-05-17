@@ -7,41 +7,42 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		031027D685E788CA6213A03FE41A308E /* FinderVC+ViewManagement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 452423CAB050A01E916A9A7A5CD29526 /* FinderVC+ViewManagement.swift */; };
-		1B971ACDC9300CA7B9D031DF5AFCC053 /* FinderContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D0AB9BED4F9F75A79B66F8B2009741 /* FinderContainerView.swift */; };
-		1C044ED4A82B63BA459FA47C17687322 /* RickyFramework-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 6CE0EB0D090759DCAA55DC3448701DA3 /* RickyFramework-dummy.m */; };
-		1EE0A3B5BB1627F6FF0771F2D5D84700 /* KeyboardGuardian.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6B71C580FB57155ED10934A26503055 /* KeyboardGuardian.swift */; };
-		2001FA50838DCD44498424D6DADEE677 /* FinderVC+TableViewDelegateDatasource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BE59A2664E27F8DBE61FC76114A125D /* FinderVC+TableViewDelegateDatasource.swift */; };
+		01A8E904304BE74420557B3F0279655A /* UITableViewCell+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A8679E97091C82ADC89FEB5F880A069 /* UITableViewCell+.swift */; };
+		0BEC0A34823E9F8468BF775DC52560D7 /* UIView+NSLayoutConstraint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87BE54103D9990A7257428EF9697E4A9 /* UIView+NSLayoutConstraint.swift */; };
+		0F2E8E605DB8FE3B5273FF096830AE68 /* FinderStyleVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABC5F1D6D9335A447E37763716902491 /* FinderStyleVC.swift */; };
+		1306F5481BB6418D202E8E388EC658F1 /* RickyFramework-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = EE3B6CC9A6191A9E6B77983E6C5DD114 /* RickyFramework-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		13644318A2188F8C714410AC5FAE9D54 /* UITextField+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0364151E08C9D6B340195717091DA865 /* UITextField+.swift */; };
+		181D9C5A88004DF1C62C6C14EA5BE26C /* FinderStyleVC+TableViewDelegateDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33A7B7967A47645A747D799174ABF046 /* FinderStyleVC+TableViewDelegateDataSource.swift */; };
+		18923C6C0F30967276278CE643A915D0 /* UITableView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 555FD0FA535E2D5220299BDBFA0DB086 /* UITableView+.swift */; };
+		1FD99BDCE70308DDA85637B2B8259747 /* FinderStyleVC+KeyboardShortcuts.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3B5DC13F3726296A2871360BD487449 /* FinderStyleVC+KeyboardShortcuts.swift */; };
+		22D3165ED0008D392D017BFAFA54AB21 /* UIButton+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 547D9805CB3F4BF71461E0396F66C605 /* UIButton+.swift */; };
 		24037E6301204807D2F9CD0B9CABD7D9 /* Pods-Notification App-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C1F29FC0290D10765C56CEE63B47F3F /* Pods-Notification App-dummy.m */; };
-		3452759B238C1F0F678A039F9CB0146F /* FinderVC+KeyboardShortcuts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22318465F348A56D393E5244DB3F3575 /* FinderVC+KeyboardShortcuts.swift */; };
-		34860A9237439C4766A91AF1A51FDE17 /* FinderStyleVCDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0FBF4CAAB47284F82290389C627F327 /* FinderStyleVCDelegate.swift */; };
-		35202D3C58FEB4E695C82452917E1DDF /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3212113385A8FBBDB272BD23C409FF61 /* Foundation.framework */; };
-		3A282567E7302965713DA1AC963D5A5B /* RickyFramework.h in Headers */ = {isa = PBXBuildFile; fileRef = F7B37069503CB58470103CBB347C4072 /* RickyFramework.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		427F7033C4F554861F48A7F6161FCFB3 /* FinderVCDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 912198707B7C458A57D0429714C049B1 /* FinderVCDelegate.swift */; };
-		4872B76FD70A4A9866FE9A4B2E0363B7 /* IndexPath+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03A8C74F4F0F0D7D4158E40E5ABD515D /* IndexPath+.swift */; };
-		54085E8BCA5D55A4AD71074EF484172D /* FinderStyleContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85F29FDD3C5F18FB62B62BF448B25DE0 /* FinderStyleContainerView.swift */; };
-		62B313EBB8BAB3E4C81DA08C1349BEBD /* Array+Equatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97F83E75217E0342493D31A1CC9DBBA3 /* Array+Equatable.swift */; };
-		7DB775022FA41D458F46E78EC154CD15 /* UITableView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 243121497BA8C959778C5A5CE4C2F81D /* UITableView+.swift */; };
-		842FB2C777FF8706092060C6FF209121 /* UITextField+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FC1D3055AC7DA2B32303797C0224836 /* UITextField+.swift */; };
-		85A3434F0C1F9E8DA07916933B1796E6 /* String+.swift in Sources */ = {isa = PBXBuildFile; fileRef = B802C91A0E9C1FA027D5C24ED1A196AB /* String+.swift */; };
-		85B2049D2752A69F472B6408994659F9 /* FinderTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2959D1193C1CD4D85097EF210D6B2995 /* FinderTableView.swift */; };
-		8D3472CF885290796127A2E7737B21DF /* UIView+NSLayoutConstraint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C30890A564FF10DF66D183B0C82DB3F /* UIView+NSLayoutConstraint.swift */; };
-		9424BCD91BA01FFED65BC8DC9C32EB70 /* FinderVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D79AFDD961AB1B6722C9DECBEC87C26 /* FinderVC.swift */; };
-		9EA608A342135424A9BFB7AD6813FFB8 /* FinderStyleVC+TableViewDelegateDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = D62CB4491AEA712ACC8DD96A135B7B29 /* FinderStyleVC+TableViewDelegateDataSource.swift */; };
-		A11256374525E84393E0C32E3E18EBC8 /* FinderVC+Navigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38FE2CCB3DE359DEF6DAE45005BAA08D /* FinderVC+Navigation.swift */; };
-		A13DD3BCE491A13C9BF1C9652ADCC9F6 /* FinderStyleVC+KeyboardShortcuts.swift in Sources */ = {isa = PBXBuildFile; fileRef = A704A075DA0B2151068354FA55A98073 /* FinderStyleVC+KeyboardShortcuts.swift */; };
-		A7B7819542A785DDD233294505C96D41 /* UIColor+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F2F543CC95CC84E65CE3AEC1796382A /* UIColor+.swift */; };
-		B5330D3D96C84D95523E11CEFBD7CFC0 /* ViewSide.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECDF4B0BAE64D9C040F455944CEF7491 /* ViewSide.swift */; };
-		D560DCE22A213721CF1456137B254407 /* UITableViewCell+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 698291D2278C9FC9F161706082D747FD /* UITableViewCell+.swift */; };
-		D5D332AFF5B1EB8511E4D48394FADA67 /* UIVIew+Autolayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 700D909301845164F48B89CDA976C26C /* UIVIew+Autolayout.swift */; };
-		DC8E376ED2785DDC502B8413905E4D8A /* RickyFramework-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 0FC42403615E2094E57554C6BE11F55C /* RickyFramework-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		DE57A35BE8C78800D474AA35B6C04A03 /* FinderStyleVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D2A0AE717A2E1D49BE675E9FEB22E70 /* FinderStyleVC.swift */; };
+		3CC6F548625549DF67B3E38BA5B604AA /* FinderStyleVCDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F88AC62304B5AE92D5AF44225395D970 /* FinderStyleVCDelegate.swift */; };
+		3D6D17E0897C47CA555CA1F5A3F1CA7E /* FinderContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74EC19DB5CBFC76962E4D0FD4F7E1642 /* FinderContainerView.swift */; };
+		3DFB048B3C0DBF3BBB01C202A1912D19 /* FinderVC+Public.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DDC38C7D63F7C3744889D9FD2C5972 /* FinderVC+Public.swift */; };
+		48B7D1BC1C63B033DB791A4DC3AFEEB7 /* UIVIew+Autolayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32C16EB2154BFAB00C28E63C7F305C7E /* UIVIew+Autolayout.swift */; };
+		4DDF334CC252EC8803ECA1E20D8198B5 /* FinderVC+TableViewDelegateDatasource.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA49AFB7E73C529E31D922170B167739 /* FinderVC+TableViewDelegateDatasource.swift */; };
+		501E7B7C30623A3B9B2147120C7C79EF /* IndexPath+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B82769CD34724D0519623592A3E8045 /* IndexPath+.swift */; };
+		508749DCFA0E292A5B0C41FD783A6C33 /* KeyboardGuardian.swift in Sources */ = {isa = PBXBuildFile; fileRef = 946DA6A2422AEB9B1F2D4BAD86CE1345 /* KeyboardGuardian.swift */; };
+		6924CE9921FA76FD9661DFB18CC0C101 /* String+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A5D644AACBE6286CB444888D5BA1DCD /* String+.swift */; };
+		6D7BFBA125BD11F7450FBE8B716A7870 /* FinderStyleVC+Navigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4514606E93430B0B458CE072EDC9E0 /* FinderStyleVC+Navigation.swift */; };
+		71AC1DB57CAB095F1F6079630FE3364B /* FinderVCDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C0B656C98ED0AAEB9449CF95B06FC2E /* FinderVCDataSource.swift */; };
+		8EDF1272A6940503778E2DFD8285B76E /* ViewSide.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8451CBFFF55DBB3EA11F309602AFC08D /* ViewSide.swift */; };
+		910DCF87C6B836DFA739D74D12BECB5B /* RickyFramework-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 29517CE4A88427BE0DE6E087655CC584 /* RickyFramework-dummy.m */; };
+		93DC6B17293E29F71A3E150F1896A666 /* FinderVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93DB4ADA92A5FEA8CEC3EF1828D354D3 /* FinderVC.swift */; };
+		9C3F189C07361004A66FAC8E139589A8 /* RickyFramework.h in Headers */ = {isa = PBXBuildFile; fileRef = DBE1E88BC0263E32B006C5679A63772B /* RickyFramework.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		A608A139E37D6C4C481E7DA3EC36B57B /* FinderStyleContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7405994367B828CA1E811F5EDB52599E /* FinderStyleContainerView.swift */; };
+		AB25CEEFA4EA0873439FCC3FF9D7E7AD /* FinderVC+ViewManagement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FFEC6C477E90A3D67F3D790005F8A7A /* FinderVC+ViewManagement.swift */; };
+		ABC85BE46D1ED7152523385E70A57C64 /* FinderVCDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 424ECFEB1E020288D5A84CA3346E3C5D /* FinderVCDelegate.swift */; };
+		AC0C45B6035AFBDCD42D0CDD160225F9 /* FinderTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 268F015D699CA8765E38B74B923038B7 /* FinderTableView.swift */; };
+		B004D3ED1CCC816B37A978CABA7233F5 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3212113385A8FBBDB272BD23C409FF61 /* Foundation.framework */; };
+		B6ACDFDAB642E62ACB2538F842C2E1D6 /* UIColor+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51967311034B698152B35AA8C81D4C05 /* UIColor+.swift */; };
+		CED7F3741B3FBFB76781C057405EB504 /* FinderVC+Navigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C96FD3B987374D76C3BEB3469EECC3A /* FinderVC+Navigation.swift */; };
+		D2641EBD33653FF71CE068C9610A95FD /* FinderStyleTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95A73D5587AE6FDA746EBFF495456580 /* FinderStyleTableView.swift */; };
 		DF729C085ADBB13463AD62B9FD484A95 /* Pods-Notification App-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 8B3C4F0D07621ACFEF0BF45FD4FCCD4C /* Pods-Notification App-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		DFFFEC9776FE952CE3B2961E0532EDA7 /* Array+Equatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 794CE2D1680A7B47BEF4D0F4C182AA75 /* Array+Equatable.swift */; };
 		E47E912F7D0BFA7A84E0BB9A874E81E7 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3212113385A8FBBDB272BD23C409FF61 /* Foundation.framework */; };
-		F387EBA8248868A13E0C24F0F4E67DD9 /* FinderVC+Public.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4683B08A0B4621E984A08CF3D5D61CC9 /* FinderVC+Public.swift */; };
-		F74D36E54031D9D2ADF2EAB491D721EC /* FinderStyleVC+Navigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6778D48FBF20E1DB0D88D4ED685B7A73 /* FinderStyleVC+Navigation.swift */; };
-		F92BA07FAD2C4A363E9AD85E84ADE84D /* FinderStyleTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F0B4F88784328FDA4A30FD0791D7BCE /* FinderStyleTableView.swift */; };
-		FB924F54CBCD817F7B195B549C289BCC /* FinderVCDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8B62A7AFCEFCBF2FCE171548337DDE2 /* FinderVCDataSource.swift */; };
+		E7A09D486AF72D286EC96BF3A5314EC9 /* FinderVC+KeyboardShortcuts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 601326AAC270C4CFA3F177B4800B47E2 /* FinderVC+KeyboardShortcuts.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,55 +57,56 @@
 
 /* Begin PBXFileReference section */
 		0032DAA394A767D8B112EBCE6E0AA90D /* Pods-Notification App-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Notification App-acknowledgements.plist"; sourceTree = "<group>"; };
-		03A8C74F4F0F0D7D4158E40E5ABD515D /* IndexPath+.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "IndexPath+.swift"; sourceTree = "<group>"; };
-		04D0AB9BED4F9F75A79B66F8B2009741 /* FinderContainerView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = FinderContainerView.swift; sourceTree = "<group>"; };
-		0FC42403615E2094E57554C6BE11F55C /* RickyFramework-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "RickyFramework-umbrella.h"; sourceTree = "<group>"; };
+		0364151E08C9D6B340195717091DA865 /* UITextField+.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "UITextField+.swift"; sourceTree = "<group>"; };
 		1737CF09BD90B936042F2060F640745D /* RickyFramework.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = RickyFramework.framework; path = RickyFramework.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		22318465F348A56D393E5244DB3F3575 /* FinderVC+KeyboardShortcuts.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "FinderVC+KeyboardShortcuts.swift"; sourceTree = "<group>"; };
 		22783949F4A466173DFBA6319D68EF3A /* Pods_Notification_App.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_Notification_App.framework; path = "Pods-Notification App.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
-		243121497BA8C959778C5A5CE4C2F81D /* UITableView+.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "UITableView+.swift"; sourceTree = "<group>"; };
-		2959D1193C1CD4D85097EF210D6B2995 /* FinderTableView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = FinderTableView.swift; sourceTree = "<group>"; };
-		2BE59A2664E27F8DBE61FC76114A125D /* FinderVC+TableViewDelegateDatasource.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "FinderVC+TableViewDelegateDatasource.swift"; sourceTree = "<group>"; };
-		2D79AFDD961AB1B6722C9DECBEC87C26 /* FinderVC.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = FinderVC.swift; sourceTree = "<group>"; };
-		2F2F543CC95CC84E65CE3AEC1796382A /* UIColor+.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "UIColor+.swift"; sourceTree = "<group>"; };
+		268F015D699CA8765E38B74B923038B7 /* FinderTableView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = FinderTableView.swift; sourceTree = "<group>"; };
+		29517CE4A88427BE0DE6E087655CC584 /* RickyFramework-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "RickyFramework-dummy.m"; sourceTree = "<group>"; };
+		2C96FD3B987374D76C3BEB3469EECC3A /* FinderVC+Navigation.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "FinderVC+Navigation.swift"; sourceTree = "<group>"; };
 		3212113385A8FBBDB272BD23C409FF61 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS12.2.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
-		32EC15D1327F2C02F3EECC603DE96733 /* RickyFramework.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = RickyFramework.debug.xcconfig; sourceTree = "<group>"; };
-		386058C3E515D074AC5C8757187879C0 /* RickyFramework.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; path = RickyFramework.podspec; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		38FE2CCB3DE359DEF6DAE45005BAA08D /* FinderVC+Navigation.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "FinderVC+Navigation.swift"; sourceTree = "<group>"; };
+		32C16EB2154BFAB00C28E63C7F305C7E /* UIVIew+Autolayout.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "UIVIew+Autolayout.swift"; sourceTree = "<group>"; };
+		33A7B7967A47645A747D799174ABF046 /* FinderStyleVC+TableViewDelegateDataSource.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "FinderStyleVC+TableViewDelegateDataSource.swift"; sourceTree = "<group>"; };
 		3E0F82F41F0D0B8319CA9717623A1114 /* Pods-Notification App.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-Notification App.modulemap"; sourceTree = "<group>"; };
-		452423CAB050A01E916A9A7A5CD29526 /* FinderVC+ViewManagement.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "FinderVC+ViewManagement.swift"; sourceTree = "<group>"; };
-		4683B08A0B4621E984A08CF3D5D61CC9 /* FinderVC+Public.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "FinderVC+Public.swift"; sourceTree = "<group>"; };
-		4A5D504177B4242F83FED36C96D6D8C1 /* RickyFramework-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "RickyFramework-Info.plist"; sourceTree = "<group>"; };
-		4C30890A564FF10DF66D183B0C82DB3F /* UIView+NSLayoutConstraint.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "UIView+NSLayoutConstraint.swift"; sourceTree = "<group>"; };
+		3FFEC6C477E90A3D67F3D790005F8A7A /* FinderVC+ViewManagement.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "FinderVC+ViewManagement.swift"; sourceTree = "<group>"; };
+		424ECFEB1E020288D5A84CA3346E3C5D /* FinderVCDelegate.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = FinderVCDelegate.swift; sourceTree = "<group>"; };
+		51967311034B698152B35AA8C81D4C05 /* UIColor+.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "UIColor+.swift"; sourceTree = "<group>"; };
+		547D9805CB3F4BF71461E0396F66C605 /* UIButton+.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "UIButton+.swift"; sourceTree = "<group>"; };
+		555FD0FA535E2D5220299BDBFA0DB086 /* UITableView+.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "UITableView+.swift"; sourceTree = "<group>"; };
+		601326AAC270C4CFA3F177B4800B47E2 /* FinderVC+KeyboardShortcuts.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "FinderVC+KeyboardShortcuts.swift"; sourceTree = "<group>"; };
 		6598C90C69797D3085AACDA90C4AD04D /* Pods-Notification App.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Notification App.debug.xcconfig"; sourceTree = "<group>"; };
-		6778D48FBF20E1DB0D88D4ED685B7A73 /* FinderStyleVC+Navigation.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "FinderStyleVC+Navigation.swift"; sourceTree = "<group>"; };
-		698291D2278C9FC9F161706082D747FD /* UITableViewCell+.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "UITableViewCell+.swift"; sourceTree = "<group>"; };
-		6CE0EB0D090759DCAA55DC3448701DA3 /* RickyFramework-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "RickyFramework-dummy.m"; sourceTree = "<group>"; };
-		6D2A0AE717A2E1D49BE675E9FEB22E70 /* FinderStyleVC.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = FinderStyleVC.swift; sourceTree = "<group>"; };
-		700D909301845164F48B89CDA976C26C /* UIVIew+Autolayout.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "UIVIew+Autolayout.swift"; sourceTree = "<group>"; };
-		74A98A0E6386BB6184382EC81CDAFA4E /* RickyFramework-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "RickyFramework-prefix.pch"; sourceTree = "<group>"; };
+		6A8679E97091C82ADC89FEB5F880A069 /* UITableViewCell+.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "UITableViewCell+.swift"; sourceTree = "<group>"; };
+		7405994367B828CA1E811F5EDB52599E /* FinderStyleContainerView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = FinderStyleContainerView.swift; sourceTree = "<group>"; };
+		74EC19DB5CBFC76962E4D0FD4F7E1642 /* FinderContainerView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = FinderContainerView.swift; sourceTree = "<group>"; };
+		757B20BFAAEEA27A677C9745EE260D51 /* RickyFramework-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "RickyFramework-prefix.pch"; sourceTree = "<group>"; };
+		794CE2D1680A7B47BEF4D0F4C182AA75 /* Array+Equatable.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "Array+Equatable.swift"; sourceTree = "<group>"; };
+		7C0B656C98ED0AAEB9449CF95B06FC2E /* FinderVCDataSource.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = FinderVCDataSource.swift; sourceTree = "<group>"; };
 		7C1F29FC0290D10765C56CEE63B47F3F /* Pods-Notification App-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-Notification App-dummy.m"; sourceTree = "<group>"; };
-		7F0B4F88784328FDA4A30FD0791D7BCE /* FinderStyleTableView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = FinderStyleTableView.swift; sourceTree = "<group>"; };
-		7FC1D3055AC7DA2B32303797C0224836 /* UITextField+.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "UITextField+.swift"; sourceTree = "<group>"; };
-		85F29FDD3C5F18FB62B62BF448B25DE0 /* FinderStyleContainerView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = FinderStyleContainerView.swift; sourceTree = "<group>"; };
+		8451CBFFF55DBB3EA11F309602AFC08D /* ViewSide.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ViewSide.swift; sourceTree = "<group>"; };
 		87641B7138456E4AC308C6FD17DCE78A /* Pods-Notification App-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Notification App-Info.plist"; sourceTree = "<group>"; };
+		87BE54103D9990A7257428EF9697E4A9 /* UIView+NSLayoutConstraint.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "UIView+NSLayoutConstraint.swift"; sourceTree = "<group>"; };
 		8B3C4F0D07621ACFEF0BF45FD4FCCD4C /* Pods-Notification App-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-Notification App-umbrella.h"; sourceTree = "<group>"; };
-		912198707B7C458A57D0429714C049B1 /* FinderVCDelegate.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = FinderVCDelegate.swift; sourceTree = "<group>"; };
-		97F83E75217E0342493D31A1CC9DBBA3 /* Array+Equatable.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "Array+Equatable.swift"; sourceTree = "<group>"; };
+		8B82769CD34724D0519623592A3E8045 /* IndexPath+.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "IndexPath+.swift"; sourceTree = "<group>"; };
+		93DB4ADA92A5FEA8CEC3EF1828D354D3 /* FinderVC.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = FinderVC.swift; sourceTree = "<group>"; };
+		946DA6A2422AEB9B1F2D4BAD86CE1345 /* KeyboardGuardian.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = KeyboardGuardian.swift; sourceTree = "<group>"; };
+		95A73D5587AE6FDA746EBFF495456580 /* FinderStyleTableView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = FinderStyleTableView.swift; sourceTree = "<group>"; };
+		9A5D644AACBE6286CB444888D5BA1DCD /* String+.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "String+.swift"; sourceTree = "<group>"; };
 		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		A4F68AD23CEA2F58421C9031F68B6145 /* RickyFramework.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = RickyFramework.modulemap; sourceTree = "<group>"; };
-		A704A075DA0B2151068354FA55A98073 /* FinderStyleVC+KeyboardShortcuts.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "FinderStyleVC+KeyboardShortcuts.swift"; sourceTree = "<group>"; };
-		B802C91A0E9C1FA027D5C24ED1A196AB /* String+.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "String+.swift"; sourceTree = "<group>"; };
-		C0FBF4CAAB47284F82290389C627F327 /* FinderStyleVCDelegate.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = FinderStyleVCDelegate.swift; sourceTree = "<group>"; };
+		A0EFBCD188F7C1914378C0335A96938F /* RickyFramework.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; path = RickyFramework.podspec; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		ABC5F1D6D9335A447E37763716902491 /* FinderStyleVC.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = FinderStyleVC.swift; sourceTree = "<group>"; };
+		ACCB8C372DCFB1E732E4ED624432CA5B /* RickyFramework.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = RickyFramework.modulemap; sourceTree = "<group>"; };
+		C0DDC38C7D63F7C3744889D9FD2C5972 /* FinderVC+Public.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "FinderVC+Public.swift"; sourceTree = "<group>"; };
+		C3B5DC13F3726296A2871360BD487449 /* FinderStyleVC+KeyboardShortcuts.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "FinderStyleVC+KeyboardShortcuts.swift"; sourceTree = "<group>"; };
 		C565C8ACADD46CCEFEEBB5FD7BC78C0D /* Pods-Notification App-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Notification App-frameworks.sh"; sourceTree = "<group>"; };
-		C6B71C580FB57155ED10934A26503055 /* KeyboardGuardian.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = KeyboardGuardian.swift; sourceTree = "<group>"; };
-		C8B62A7AFCEFCBF2FCE171548337DDE2 /* FinderVCDataSource.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = FinderVCDataSource.swift; sourceTree = "<group>"; };
-		D62CB4491AEA712ACC8DD96A135B7B29 /* FinderStyleVC+TableViewDelegateDataSource.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "FinderStyleVC+TableViewDelegateDataSource.swift"; sourceTree = "<group>"; };
+		CA49AFB7E73C529E31D922170B167739 /* FinderVC+TableViewDelegateDatasource.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "FinderVC+TableViewDelegateDatasource.swift"; sourceTree = "<group>"; };
+		CE4514606E93430B0B458CE072EDC9E0 /* FinderStyleVC+Navigation.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "FinderStyleVC+Navigation.swift"; sourceTree = "<group>"; };
+		DBE1E88BC0263E32B006C5679A63772B /* RickyFramework.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RickyFramework.h; path = RickyFramework/RickyFramework.h; sourceTree = "<group>"; };
 		DFC1F845468C01DB3E4364D34D5900C6 /* Pods-Notification App-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-Notification App-acknowledgements.markdown"; sourceTree = "<group>"; };
+		E08C903BA7CFB8098551A187C3D6B89C /* RickyFramework.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = RickyFramework.release.xcconfig; sourceTree = "<group>"; };
 		E3CD635BD0A6AABEA36B18CCCAB64194 /* Pods-Notification App.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Notification App.release.xcconfig"; sourceTree = "<group>"; };
-		E9AF206245051E8E81A44410BA0F3372 /* RickyFramework.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = RickyFramework.release.xcconfig; sourceTree = "<group>"; };
-		ECDF4B0BAE64D9C040F455944CEF7491 /* ViewSide.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ViewSide.swift; sourceTree = "<group>"; };
-		F7B37069503CB58470103CBB347C4072 /* RickyFramework.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RickyFramework.h; path = RickyFramework/RickyFramework.h; sourceTree = "<group>"; };
+		E95C6BB2DBAF7E329B79A7EC7354E52B /* RickyFramework.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = RickyFramework.debug.xcconfig; sourceTree = "<group>"; };
+		EE3B6CC9A6191A9E6B77983E6C5DD114 /* RickyFramework-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "RickyFramework-umbrella.h"; sourceTree = "<group>"; };
+		F88AC62304B5AE92D5AF44225395D970 /* FinderStyleVCDelegate.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = FinderStyleVCDelegate.swift; sourceTree = "<group>"; };
+		FF205131C767652E8120D20CE25A55BD /* RickyFramework-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "RickyFramework-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -116,35 +118,27 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		84B87B73EBE8FA87FA899EFD50A53764 /* Frameworks */ = {
+		A1A3463A9C5A88F1129F394FEBF51A1A /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				35202D3C58FEB4E695C82452917E1DDF /* Foundation.framework in Frameworks */,
+				B004D3ED1CCC816B37A978CABA7233F5 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		07BAB188BCBDD3896DF1A78463D1C84A /* Pod */ = {
+		12EF950B73A27C285FC4DDFC58767325 /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
-				386058C3E515D074AC5C8757187879C0 /* RickyFramework.podspec */,
-			);
-			name = Pod;
-			sourceTree = "<group>";
-		};
-		3359E93FE4A8450728882DE269993E86 /* Support Files */ = {
-			isa = PBXGroup;
-			children = (
-				A4F68AD23CEA2F58421C9031F68B6145 /* RickyFramework.modulemap */,
-				6CE0EB0D090759DCAA55DC3448701DA3 /* RickyFramework-dummy.m */,
-				4A5D504177B4242F83FED36C96D6D8C1 /* RickyFramework-Info.plist */,
-				74A98A0E6386BB6184382EC81CDAFA4E /* RickyFramework-prefix.pch */,
-				0FC42403615E2094E57554C6BE11F55C /* RickyFramework-umbrella.h */,
-				32EC15D1327F2C02F3EECC603DE96733 /* RickyFramework.debug.xcconfig */,
-				E9AF206245051E8E81A44410BA0F3372 /* RickyFramework.release.xcconfig */,
+				ACCB8C372DCFB1E732E4ED624432CA5B /* RickyFramework.modulemap */,
+				29517CE4A88427BE0DE6E087655CC584 /* RickyFramework-dummy.m */,
+				FF205131C767652E8120D20CE25A55BD /* RickyFramework-Info.plist */,
+				757B20BFAAEEA27A677C9745EE260D51 /* RickyFramework-prefix.pch */,
+				EE3B6CC9A6191A9E6B77983E6C5DD114 /* RickyFramework-umbrella.h */,
+				E95C6BB2DBAF7E329B79A7EC7354E52B /* RickyFramework.debug.xcconfig */,
+				E08C903BA7CFB8098551A187C3D6B89C /* RickyFramework.release.xcconfig */,
 			);
 			name = "Support Files";
 			path = "../../../Desktop/Xcode 11/Notification App/Pods/Target Support Files/RickyFramework";
@@ -170,21 +164,53 @@
 		5F2B652FA743FD99C97230BA76197142 /* Development Pods */ = {
 			isa = PBXGroup;
 			children = (
-				EE6AD12D93365CCD2BFE0ACB82A283A4 /* RickyFramework */,
+				6F2FB2AFC3BF6CF4F798A8AEFFDA57A1 /* RickyFramework */,
 			);
 			name = "Development Pods";
 			sourceTree = "<group>";
 		};
-		6187BBF23570393E3DDDA68B69DF9063 /* FinderStyleVC */ = {
+		6F2FB2AFC3BF6CF4F798A8AEFFDA57A1 /* RickyFramework */ = {
 			isa = PBXGroup;
 			children = (
-				85F29FDD3C5F18FB62B62BF448B25DE0 /* FinderStyleContainerView.swift */,
-				7F0B4F88784328FDA4A30FD0791D7BCE /* FinderStyleTableView.swift */,
-				6D2A0AE717A2E1D49BE675E9FEB22E70 /* FinderStyleVC.swift */,
-				A704A075DA0B2151068354FA55A98073 /* FinderStyleVC+KeyboardShortcuts.swift */,
-				6778D48FBF20E1DB0D88D4ED685B7A73 /* FinderStyleVC+Navigation.swift */,
-				D62CB4491AEA712ACC8DD96A135B7B29 /* FinderStyleVC+TableViewDelegateDataSource.swift */,
-				C0FBF4CAAB47284F82290389C627F327 /* FinderStyleVCDelegate.swift */,
+				DBE1E88BC0263E32B006C5679A63772B /* RickyFramework.h */,
+				772C68EFF7063CB140204FDC2469ABFA /* FinderStyleVC */,
+				BA7A218A72D429C82CEEB2D2A0721A13 /* FinderVC */,
+				E1A1F326A80417B80A3B006CBC415ED4 /* Pod */,
+				96AB165757C2098C642D7E63B5E9D197 /* Protocols */,
+				12EF950B73A27C285FC4DDFC58767325 /* Support Files */,
+				AB3230CE0FE7A5DA9E0EEAF4EADD71D1 /* Swift+ */,
+				71EE763A59C911BB075B3BD08008C048 /* UIKit+ */,
+			);
+			name = RickyFramework;
+			path = "/Users/ricky/desktop/Xcode 11/rickyframework";
+			sourceTree = "<absolute>";
+		};
+		71EE763A59C911BB075B3BD08008C048 /* UIKit+ */ = {
+			isa = PBXGroup;
+			children = (
+				8B82769CD34724D0519623592A3E8045 /* IndexPath+.swift */,
+				547D9805CB3F4BF71461E0396F66C605 /* UIButton+.swift */,
+				51967311034B698152B35AA8C81D4C05 /* UIColor+.swift */,
+				555FD0FA535E2D5220299BDBFA0DB086 /* UITableView+.swift */,
+				6A8679E97091C82ADC89FEB5F880A069 /* UITableViewCell+.swift */,
+				0364151E08C9D6B340195717091DA865 /* UITextField+.swift */,
+				32C16EB2154BFAB00C28E63C7F305C7E /* UIVIew+Autolayout.swift */,
+				87BE54103D9990A7257428EF9697E4A9 /* UIView+NSLayoutConstraint.swift */,
+			);
+			name = "UIKit+";
+			path = "RickyFramework/UIKit+";
+			sourceTree = "<group>";
+		};
+		772C68EFF7063CB140204FDC2469ABFA /* FinderStyleVC */ = {
+			isa = PBXGroup;
+			children = (
+				7405994367B828CA1E811F5EDB52599E /* FinderStyleContainerView.swift */,
+				95A73D5587AE6FDA746EBFF495456580 /* FinderStyleTableView.swift */,
+				ABC5F1D6D9335A447E37763716902491 /* FinderStyleVC.swift */,
+				C3B5DC13F3726296A2871360BD487449 /* FinderStyleVC+KeyboardShortcuts.swift */,
+				CE4514606E93430B0B458CE072EDC9E0 /* FinderStyleVC+Navigation.swift */,
+				33A7B7967A47645A747D799174ABF046 /* FinderStyleVC+TableViewDelegateDataSource.swift */,
+				F88AC62304B5AE92D5AF44225395D970 /* FinderStyleVCDelegate.swift */,
 			);
 			name = FinderStyleVC;
 			path = RickyFramework/FinderStyleVC;
@@ -199,33 +225,42 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		A88B9E97348F7FC7CA7DBF1E8D1F3D53 /* FinderVC */ = {
+		96AB165757C2098C642D7E63B5E9D197 /* Protocols */ = {
 			isa = PBXGroup;
 			children = (
-				04D0AB9BED4F9F75A79B66F8B2009741 /* FinderContainerView.swift */,
-				2959D1193C1CD4D85097EF210D6B2995 /* FinderTableView.swift */,
-				2D79AFDD961AB1B6722C9DECBEC87C26 /* FinderVC.swift */,
-				22318465F348A56D393E5244DB3F3575 /* FinderVC+KeyboardShortcuts.swift */,
-				38FE2CCB3DE359DEF6DAE45005BAA08D /* FinderVC+Navigation.swift */,
-				4683B08A0B4621E984A08CF3D5D61CC9 /* FinderVC+Public.swift */,
-				2BE59A2664E27F8DBE61FC76114A125D /* FinderVC+TableViewDelegateDatasource.swift */,
-				452423CAB050A01E916A9A7A5CD29526 /* FinderVC+ViewManagement.swift */,
-				C8B62A7AFCEFCBF2FCE171548337DDE2 /* FinderVCDataSource.swift */,
-				912198707B7C458A57D0429714C049B1 /* FinderVCDelegate.swift */,
+				946DA6A2422AEB9B1F2D4BAD86CE1345 /* KeyboardGuardian.swift */,
 			);
-			name = FinderVC;
-			path = RickyFramework/FinderVC;
+			name = Protocols;
+			path = RickyFramework/Protocols;
 			sourceTree = "<group>";
 		};
-		A91305D4951C3D4D494782A7B2B02608 /* Swift+ */ = {
+		AB3230CE0FE7A5DA9E0EEAF4EADD71D1 /* Swift+ */ = {
 			isa = PBXGroup;
 			children = (
-				97F83E75217E0342493D31A1CC9DBBA3 /* Array+Equatable.swift */,
-				B802C91A0E9C1FA027D5C24ED1A196AB /* String+.swift */,
-				ECDF4B0BAE64D9C040F455944CEF7491 /* ViewSide.swift */,
+				794CE2D1680A7B47BEF4D0F4C182AA75 /* Array+Equatable.swift */,
+				9A5D644AACBE6286CB444888D5BA1DCD /* String+.swift */,
+				8451CBFFF55DBB3EA11F309602AFC08D /* ViewSide.swift */,
 			);
 			name = "Swift+";
 			path = "RickyFramework/Swift+";
+			sourceTree = "<group>";
+		};
+		BA7A218A72D429C82CEEB2D2A0721A13 /* FinderVC */ = {
+			isa = PBXGroup;
+			children = (
+				74EC19DB5CBFC76962E4D0FD4F7E1642 /* FinderContainerView.swift */,
+				268F015D699CA8765E38B74B923038B7 /* FinderTableView.swift */,
+				93DB4ADA92A5FEA8CEC3EF1828D354D3 /* FinderVC.swift */,
+				601326AAC270C4CFA3F177B4800B47E2 /* FinderVC+KeyboardShortcuts.swift */,
+				2C96FD3B987374D76C3BEB3469EECC3A /* FinderVC+Navigation.swift */,
+				C0DDC38C7D63F7C3744889D9FD2C5972 /* FinderVC+Public.swift */,
+				CA49AFB7E73C529E31D922170B167739 /* FinderVC+TableViewDelegateDatasource.swift */,
+				3FFEC6C477E90A3D67F3D790005F8A7A /* FinderVC+ViewManagement.swift */,
+				7C0B656C98ED0AAEB9449CF95B06FC2E /* FinderVCDataSource.swift */,
+				424ECFEB1E020288D5A84CA3346E3C5D /* FinderVCDelegate.swift */,
+			);
+			name = FinderVC;
+			path = RickyFramework/FinderVC;
 			sourceTree = "<group>";
 		};
 		C0834CEBB1379A84116EF29F93051C60 /* iOS */ = {
@@ -234,21 +269,6 @@
 				3212113385A8FBBDB272BD23C409FF61 /* Foundation.framework */,
 			);
 			name = iOS;
-			sourceTree = "<group>";
-		};
-		C94721CB76D45AA445D6AA8DC50D0A1E /* UIKit+ */ = {
-			isa = PBXGroup;
-			children = (
-				03A8C74F4F0F0D7D4158E40E5ABD515D /* IndexPath+.swift */,
-				2F2F543CC95CC84E65CE3AEC1796382A /* UIColor+.swift */,
-				243121497BA8C959778C5A5CE4C2F81D /* UITableView+.swift */,
-				698291D2278C9FC9F161706082D747FD /* UITableViewCell+.swift */,
-				7FC1D3055AC7DA2B32303797C0224836 /* UITextField+.swift */,
-				700D909301845164F48B89CDA976C26C /* UIVIew+Autolayout.swift */,
-				4C30890A564FF10DF66D183B0C82DB3F /* UIView+NSLayoutConstraint.swift */,
-			);
-			name = "UIKit+";
-			path = "RickyFramework/UIKit+";
 			sourceTree = "<group>";
 		};
 		CF1408CF629C7361332E53B88F7BD30C = {
@@ -270,21 +290,13 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		EE6AD12D93365CCD2BFE0ACB82A283A4 /* RickyFramework */ = {
+		E1A1F326A80417B80A3B006CBC415ED4 /* Pod */ = {
 			isa = PBXGroup;
 			children = (
-				F7B37069503CB58470103CBB347C4072 /* RickyFramework.h */,
-				6187BBF23570393E3DDDA68B69DF9063 /* FinderStyleVC */,
-				A88B9E97348F7FC7CA7DBF1E8D1F3D53 /* FinderVC */,
-				07BAB188BCBDD3896DF1A78463D1C84A /* Pod */,
-				FCDBA9D457E4F505B7180D337CBDFF53 /* Protocols */,
-				3359E93FE4A8450728882DE269993E86 /* Support Files */,
-				A91305D4951C3D4D494782A7B2B02608 /* Swift+ */,
-				C94721CB76D45AA445D6AA8DC50D0A1E /* UIKit+ */,
+				A0EFBCD188F7C1914378C0335A96938F /* RickyFramework.podspec */,
 			);
-			name = RickyFramework;
-			path = "/Users/ricky/desktop/Xcode 11/rickyframework";
-			sourceTree = "<absolute>";
+			name = Pod;
+			sourceTree = "<group>";
 		};
 		F1763D3FBFE86974AD07BA80FCD54FED /* Targets Support Files */ = {
 			isa = PBXGroup;
@@ -292,15 +304,6 @@
 				5CB2E146B121E7B5323080EFE42B7407 /* Pods-Notification App */,
 			);
 			name = "Targets Support Files";
-			sourceTree = "<group>";
-		};
-		FCDBA9D457E4F505B7180D337CBDFF53 /* Protocols */ = {
-			isa = PBXGroup;
-			children = (
-				C6B71C580FB57155ED10934A26503055 /* KeyboardGuardian.swift */,
-			);
-			name = Protocols;
-			path = RickyFramework/Protocols;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -314,12 +317,12 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		E689F324961E244BCDDBF975A7D395C9 /* Headers */ = {
+		FA6A8CF56A24F3593F56A13671858E04 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DC8E376ED2785DDC502B8413905E4D8A /* RickyFramework-umbrella.h in Headers */,
-				3A282567E7302965713DA1AC963D5A5B /* RickyFramework.h in Headers */,
+				1306F5481BB6418D202E8E388EC658F1 /* RickyFramework-umbrella.h in Headers */,
+				9C3F189C07361004A66FAC8E139589A8 /* RickyFramework.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -347,12 +350,12 @@
 		};
 		486239929115BEF4FF1D021A21A33225 /* RickyFramework */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = CBE4943BF15DAF5EBE10A4162EA47CFB /* Build configuration list for PBXNativeTarget "RickyFramework" */;
+			buildConfigurationList = CBD64DFCC6B19E674049793941AD7C85 /* Build configuration list for PBXNativeTarget "RickyFramework" */;
 			buildPhases = (
-				E689F324961E244BCDDBF975A7D395C9 /* Headers */,
-				9E244848757B311AE13A021B7931E529 /* Sources */,
-				84B87B73EBE8FA87FA899EFD50A53764 /* Frameworks */,
-				61AA22E70EBBE3A4F14541848ECE4BCF /* Resources */,
+				FA6A8CF56A24F3593F56A13671858E04 /* Headers */,
+				5856E664C7ABB21BA2E67B83A616A23A /* Sources */,
+				A1A3463A9C5A88F1129F394FEBF51A1A /* Frameworks */,
+				110ADDB19E9F7E91B1E9D1011B526D0E /* Resources */,
 			);
 			buildRules = (
 			);
@@ -392,7 +395,7 @@
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		61AA22E70EBBE3A4F14541848ECE4BCF /* Resources */ = {
+		110ADDB19E9F7E91B1E9D1011B526D0E /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -409,39 +412,40 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		9E244848757B311AE13A021B7931E529 /* Sources */ = {
+		5856E664C7ABB21BA2E67B83A616A23A /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				62B313EBB8BAB3E4C81DA08C1349BEBD /* Array+Equatable.swift in Sources */,
-				1B971ACDC9300CA7B9D031DF5AFCC053 /* FinderContainerView.swift in Sources */,
-				54085E8BCA5D55A4AD71074EF484172D /* FinderStyleContainerView.swift in Sources */,
-				F92BA07FAD2C4A363E9AD85E84ADE84D /* FinderStyleTableView.swift in Sources */,
-				A13DD3BCE491A13C9BF1C9652ADCC9F6 /* FinderStyleVC+KeyboardShortcuts.swift in Sources */,
-				F74D36E54031D9D2ADF2EAB491D721EC /* FinderStyleVC+Navigation.swift in Sources */,
-				9EA608A342135424A9BFB7AD6813FFB8 /* FinderStyleVC+TableViewDelegateDataSource.swift in Sources */,
-				DE57A35BE8C78800D474AA35B6C04A03 /* FinderStyleVC.swift in Sources */,
-				34860A9237439C4766A91AF1A51FDE17 /* FinderStyleVCDelegate.swift in Sources */,
-				85B2049D2752A69F472B6408994659F9 /* FinderTableView.swift in Sources */,
-				3452759B238C1F0F678A039F9CB0146F /* FinderVC+KeyboardShortcuts.swift in Sources */,
-				A11256374525E84393E0C32E3E18EBC8 /* FinderVC+Navigation.swift in Sources */,
-				F387EBA8248868A13E0C24F0F4E67DD9 /* FinderVC+Public.swift in Sources */,
-				2001FA50838DCD44498424D6DADEE677 /* FinderVC+TableViewDelegateDatasource.swift in Sources */,
-				031027D685E788CA6213A03FE41A308E /* FinderVC+ViewManagement.swift in Sources */,
-				9424BCD91BA01FFED65BC8DC9C32EB70 /* FinderVC.swift in Sources */,
-				FB924F54CBCD817F7B195B549C289BCC /* FinderVCDataSource.swift in Sources */,
-				427F7033C4F554861F48A7F6161FCFB3 /* FinderVCDelegate.swift in Sources */,
-				4872B76FD70A4A9866FE9A4B2E0363B7 /* IndexPath+.swift in Sources */,
-				1EE0A3B5BB1627F6FF0771F2D5D84700 /* KeyboardGuardian.swift in Sources */,
-				1C044ED4A82B63BA459FA47C17687322 /* RickyFramework-dummy.m in Sources */,
-				85A3434F0C1F9E8DA07916933B1796E6 /* String+.swift in Sources */,
-				A7B7819542A785DDD233294505C96D41 /* UIColor+.swift in Sources */,
-				7DB775022FA41D458F46E78EC154CD15 /* UITableView+.swift in Sources */,
-				D560DCE22A213721CF1456137B254407 /* UITableViewCell+.swift in Sources */,
-				842FB2C777FF8706092060C6FF209121 /* UITextField+.swift in Sources */,
-				D5D332AFF5B1EB8511E4D48394FADA67 /* UIVIew+Autolayout.swift in Sources */,
-				8D3472CF885290796127A2E7737B21DF /* UIView+NSLayoutConstraint.swift in Sources */,
-				B5330D3D96C84D95523E11CEFBD7CFC0 /* ViewSide.swift in Sources */,
+				DFFFEC9776FE952CE3B2961E0532EDA7 /* Array+Equatable.swift in Sources */,
+				3D6D17E0897C47CA555CA1F5A3F1CA7E /* FinderContainerView.swift in Sources */,
+				A608A139E37D6C4C481E7DA3EC36B57B /* FinderStyleContainerView.swift in Sources */,
+				D2641EBD33653FF71CE068C9610A95FD /* FinderStyleTableView.swift in Sources */,
+				1FD99BDCE70308DDA85637B2B8259747 /* FinderStyleVC+KeyboardShortcuts.swift in Sources */,
+				6D7BFBA125BD11F7450FBE8B716A7870 /* FinderStyleVC+Navigation.swift in Sources */,
+				181D9C5A88004DF1C62C6C14EA5BE26C /* FinderStyleVC+TableViewDelegateDataSource.swift in Sources */,
+				0F2E8E605DB8FE3B5273FF096830AE68 /* FinderStyleVC.swift in Sources */,
+				3CC6F548625549DF67B3E38BA5B604AA /* FinderStyleVCDelegate.swift in Sources */,
+				AC0C45B6035AFBDCD42D0CDD160225F9 /* FinderTableView.swift in Sources */,
+				E7A09D486AF72D286EC96BF3A5314EC9 /* FinderVC+KeyboardShortcuts.swift in Sources */,
+				CED7F3741B3FBFB76781C057405EB504 /* FinderVC+Navigation.swift in Sources */,
+				3DFB048B3C0DBF3BBB01C202A1912D19 /* FinderVC+Public.swift in Sources */,
+				4DDF334CC252EC8803ECA1E20D8198B5 /* FinderVC+TableViewDelegateDatasource.swift in Sources */,
+				AB25CEEFA4EA0873439FCC3FF9D7E7AD /* FinderVC+ViewManagement.swift in Sources */,
+				93DC6B17293E29F71A3E150F1896A666 /* FinderVC.swift in Sources */,
+				71AC1DB57CAB095F1F6079630FE3364B /* FinderVCDataSource.swift in Sources */,
+				ABC85BE46D1ED7152523385E70A57C64 /* FinderVCDelegate.swift in Sources */,
+				501E7B7C30623A3B9B2147120C7C79EF /* IndexPath+.swift in Sources */,
+				508749DCFA0E292A5B0C41FD783A6C33 /* KeyboardGuardian.swift in Sources */,
+				910DCF87C6B836DFA739D74D12BECB5B /* RickyFramework-dummy.m in Sources */,
+				6924CE9921FA76FD9661DFB18CC0C101 /* String+.swift in Sources */,
+				22D3165ED0008D392D017BFAFA54AB21 /* UIButton+.swift in Sources */,
+				B6ACDFDAB642E62ACB2538F842C2E1D6 /* UIColor+.swift in Sources */,
+				18923C6C0F30967276278CE643A915D0 /* UITableView+.swift in Sources */,
+				01A8E904304BE74420557B3F0279655A /* UITableViewCell+.swift in Sources */,
+				13644318A2188F8C714410AC5FAE9D54 /* UITextField+.swift in Sources */,
+				48B7D1BC1C63B033DB791A4DC3AFEEB7 /* UIVIew+Autolayout.swift in Sources */,
+				0BEC0A34823E9F8468BF775DC52560D7 /* UIView+NSLayoutConstraint.swift in Sources */,
+				8EDF1272A6940503778E2DFD8285B76E /* ViewSide.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -525,9 +529,46 @@
 			};
 			name = Release;
 		};
-		5666F922624F0366E3E2887A30D821B4 /* Debug */ = {
+		462C92ED1DCCC290FA090715105F8EF8 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 32EC15D1327F2C02F3EECC603DE96733 /* RickyFramework.debug.xcconfig */;
+			baseConfigurationReference = E08C903BA7CFB8098551A187C3D6B89C /* RickyFramework.release.xcconfig */;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/RickyFramework/RickyFramework-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/RickyFramework/RickyFramework-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MODULEMAP_FILE = "Target Support Files/RickyFramework/RickyFramework.modulemap";
+				PRODUCT_MODULE_NAME = RickyFramework;
+				PRODUCT_NAME = RickyFramework;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 5;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		6688731CCB10BC7DAE7AB0E16A868F91 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = E95C6BB2DBAF7E329B79A7EC7354E52B /* RickyFramework.debug.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				CODE_SIGN_IDENTITY = "";
@@ -593,43 +634,6 @@
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
-		7092BA80F09AB0E1D7B8F9E085712F74 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = E9AF206245051E8E81A44410BA0F3372 /* RickyFramework.release.xcconfig */;
-			buildSettings = {
-				CLANG_ENABLE_OBJC_WEAK = NO;
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				GCC_PREFIX_HEADER = "Target Support Files/RickyFramework/RickyFramework-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/RickyFramework/RickyFramework-Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				MODULEMAP_FILE = "Target Support Files/RickyFramework/RickyFramework.modulemap";
-				PRODUCT_MODULE_NAME = RickyFramework;
-				PRODUCT_NAME = RickyFramework;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_VERSION = 5;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -760,11 +764,11 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		CBE4943BF15DAF5EBE10A4162EA47CFB /* Build configuration list for PBXNativeTarget "RickyFramework" */ = {
+		CBD64DFCC6B19E674049793941AD7C85 /* Build configuration list for PBXNativeTarget "RickyFramework" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				5666F922624F0366E3E2887A30D821B4 /* Debug */,
-				7092BA80F09AB0E1D7B8F9E085712F74 /* Release */,
+				6688731CCB10BC7DAE7AB0E16A868F91 /* Debug */,
+				462C92ED1DCCC290FA090715105F8EF8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

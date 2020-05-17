@@ -47,4 +47,15 @@ enum CardSortingSyetem: String, CaseIterable {
             return .dueDate
         }
     }
+    
+    func text() -> String {
+        switch self {
+        case .dueDate:
+            return "Due Date"
+        case .alphabetical:
+            return "Alphabetical"
+        case .creationDate:
+            return "CreationDate"
+        }
+    }
 }
