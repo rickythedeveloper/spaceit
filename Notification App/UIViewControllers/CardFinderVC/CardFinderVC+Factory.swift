@@ -22,12 +22,10 @@ extension CardFinderVC {
         container.navigationBar = navBar
         
         let navItem1 = UINavigationItem()
-        let title = UILabel()
-        title.text = "space it"
-        navItem1.titleView = title
+        navItem1.titleView = UIImageView.logoIV()
         navItem1.searchController = self.searchController
         
-        let sortToggle = UIButton.myButton(text: self.sortSystem.text(), textColor: .myTextColor(), action: #selector(switchSortSystem(button:)), font: nil, backgroundColor: UIColor.systemGray.withAlphaComponent(0.2), borderColor: nil, borderWidth: nil, cornerRadius: 5.0, contentInsets: UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 10))
+        let sortToggle = UIButton.myButton(text: self.sortSystem.text(), textColor: .systemBlue, action: #selector(switchSortSystem(button:)), font: nil, backgroundColor: UIColor.systemGray.withAlphaComponent(0.2), borderColor: nil, borderWidth: nil, cornerRadius: 5.0, contentInsets: UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 10))
         navItem1.leftBarButtonItem = UIBarButtonItem(customView: sortToggle)
         
         let newCardButton = UIBarButtonItem(image: UIImage(systemName: "plus"), style: .plain, target: self, action: #selector(newCardButtonTapped))

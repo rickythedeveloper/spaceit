@@ -66,6 +66,7 @@ extension CardFinderVC {
     @objc func switchSortSystem(button: UIButton) {
         sortSystem = sortSystem.next()
         button.setTitle(self.sortSystem.text(), for: .normal)
+        button.sizeToFit()
     }
     
     @objc func newCardButtonTapped() {

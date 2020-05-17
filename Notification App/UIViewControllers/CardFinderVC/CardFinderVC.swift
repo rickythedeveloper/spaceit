@@ -13,7 +13,7 @@ class CardFinderVC: FinderVC {
     let managedObjectContext = NSManagedObjectContext.defaultContext()
     let searchTFCellID = "searchTFCellID"
     
-    var sortSystem: CardSortingSyetem = .creationDate {
+    var sortSystem: CardSortingSyetem = .dueDate {
         didSet {
             reloadTableView()
         }
