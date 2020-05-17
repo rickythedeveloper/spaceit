@@ -37,8 +37,8 @@ extension CardFinderVC {
     }
     
     @objc func coreDataObjectsDidChange() {
+        // This will prevent the table view from reloading too often, which lowers the performance.
         coreDataTimer?.invalidate()
-        
         coreDataTimer = Timer.scheduledTimer(withTimeInterval: 0.5, repeats: false, block: { (timer) in
             self.reloadTableView()
         })
