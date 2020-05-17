@@ -29,7 +29,7 @@ class WorkspaceFinderVC: FinderVC, KeyboardGuardian {
     var coreDataTimer: Timer?
     
     // Keyboard guardian
-    var finderTableViewForTappedNewPageTextField: FinderTableView?
+    weak var finderTableViewForTappedNewPageTextField: FinderTableView?
     var viewsToGuard = [UIView]()
     var paddingForKeyboardGuardian: CGFloat  = 10.0
     
@@ -46,13 +46,14 @@ class WorkspaceFinderVC: FinderVC, KeyboardGuardian {
     }
     
     override func viewDidLoad() {
+        setBackgroundLogo(maxSizeMultiplier: 0.15)
         self.start()
         self.setContainerWidth(viewWidth: self.view.frame.width)
         self.reloadAllViews(completion: {})
         NotificationCenter.default.addObserver(self, selector: #selector(coreDataObjectsDidChange), name: Notification.Name.NSManagedObjectContextObjectsDidChange, object: nil)
         self.addKeyboardObserver()
         
-        self.view.backgroundColor = .myBackGroundColor()
+        self.view.backgroundColor = .backgroundGray()
         scrollView.isPagingEnabled = (customViewWidthMultiplier == 1 && containerTableWidthMultiplier == 1) // paging should be enabled if the container width multiplier is one
     }
 }

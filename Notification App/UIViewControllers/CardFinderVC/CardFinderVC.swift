@@ -57,7 +57,8 @@ class CardFinderVC: FinderVC {
 
 extension CardFinderVC {
     func setup() {
-        view.backgroundColor = .myBackGroundColor()
+        setBackgroundLogo(maxSizeMultiplier: 0.15)
+        view.backgroundColor = .backgroundGray()
         allTasks = sortSystem.taskArray(managedObjectContext: managedObjectContext)
         shownTasks = allTasks
         updatePagingSetting()

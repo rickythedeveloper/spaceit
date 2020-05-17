@@ -33,6 +33,7 @@ extension CardFinderVC {
         
         navBar.setItems([navItem1], animated: true)
         
+        container.backgroundColor = .systemBackground
         container.layout()
         
         return container

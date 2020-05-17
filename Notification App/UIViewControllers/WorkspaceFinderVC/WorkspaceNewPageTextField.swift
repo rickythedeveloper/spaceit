@@ -12,13 +12,17 @@ import CoreData
 
 class WorkspaceNewPageTextField: UITextField {
     
-    var finderTableView: FinderTableView
+    unowned var finderTableView: FinderTableView
     
     init(finderTableView: FinderTableView) {
         self.finderTableView = finderTableView
         super.init(frame: .zero)
         
         setup()
+    }
+    
+    deinit {
+//        print("new page text field is being destroyed")
     }
     
     required init?(coder: NSCoder) {

@@ -34,6 +34,10 @@ class UpcomingCardListCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
+    deinit {
+//        print("upoming cell is being destroyed")
+    }
+    
     private func viewSetup() {
         guard let task = task, let isFirst = isFirst else {return}
         self.cleanCell()

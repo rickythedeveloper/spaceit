@@ -21,6 +21,10 @@ extension UIColor {
         return (UIColor.systemGray).withAlphaComponent(0.2)
     }
     
+    static func backgroundGray() -> UIColor {
+        return UIColor(named: "backgroundGray") ?? UIColor.red
+    }
+    
     static func pageButtonBackground() -> UIColor {
         return (UIColor.systemGray).withAlphaComponent(0.2)
     }

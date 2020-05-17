@@ -26,6 +26,8 @@
 		9C3B271223CF11C400CC5A13 /* TaskSaved+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C3B270E23CF11C400CC5A13 /* TaskSaved+CoreDataClass.swift */; };
 		9C3E2305246E5D9B00777FFE /* WorkspaceFinderVC+Shortcuts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C3E2304246E5D9B00777FFE /* WorkspaceFinderVC+Shortcuts.swift */; };
 		9C56561C24712AAD00CD8CC2 /* CardFinderVC+SearchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C56561B24712AAD00CD8CC2 /* CardFinderVC+SearchController.swift */; };
+		9C56562024715EAA00CD8CC2 /* CardFinderVC+Shortcuts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C56561F24715EAA00CD8CC2 /* CardFinderVC+Shortcuts.swift */; };
+		9C5656242471660B00CD8CC2 /* UIViewController+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C5656232471660B00CD8CC2 /* UIViewController+.swift */; };
 		9C5AE61524342F6B0044D8B8 /* IntroEachPageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C5AE61424342F6B0044D8B8 /* IntroEachPageVC.swift */; };
 		9C5EF44A2416DD4200FEBE51 /* UIFont+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C5EF4492416DD4200FEBE51 /* UIFont+.swift */; };
 		9C73108124333A66008E9820 /* IntroVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C73108024333A66008E9820 /* IntroVC.swift */; };
@@ -115,6 +117,8 @@
 		9C3B270E23CF11C400CC5A13 /* TaskSaved+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "TaskSaved+CoreDataClass.swift"; sourceTree = "<group>"; };
 		9C3E2304246E5D9B00777FFE /* WorkspaceFinderVC+Shortcuts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WorkspaceFinderVC+Shortcuts.swift"; sourceTree = "<group>"; };
 		9C56561B24712AAD00CD8CC2 /* CardFinderVC+SearchController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CardFinderVC+SearchController.swift"; sourceTree = "<group>"; };
+		9C56561F24715EAA00CD8CC2 /* CardFinderVC+Shortcuts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CardFinderVC+Shortcuts.swift"; sourceTree = "<group>"; };
+		9C5656232471660B00CD8CC2 /* UIViewController+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+.swift"; sourceTree = "<group>"; };
 		9C5AE61424342F6B0044D8B8 /* IntroEachPageVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroEachPageVC.swift; sourceTree = "<group>"; };
 		9C5EF4492416DD4200FEBE51 /* UIFont+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+.swift"; sourceTree = "<group>"; };
 		9C73108024333A66008E9820 /* IntroVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroVC.swift; sourceTree = "<group>"; };
@@ -266,6 +270,7 @@
 				9CD805E5246FDB30006A6718 /* CardFinderVC+Factory.swift */,
 				9CD805E7246FEC60006A6718 /* CardFinderVC+Admin.swift */,
 				9C56561B24712AAD00CD8CC2 /* CardFinderVC+SearchController.swift */,
+				9C56561F24715EAA00CD8CC2 /* CardFinderVC+Shortcuts.swift */,
 			);
 			path = CardFinderVC;
 			sourceTree = "<group>";
@@ -306,6 +311,7 @@
 				9C9168DE24319E3500AD31A9 /* UIImageView+.swift */,
 				9CF8388324399A3400A4CE59 /* UITapGestureRecognizer+.swift */,
 				9CA3BCEC243DD4D70062591D /* UIImage+.swift */,
+				9C5656232471660B00CD8CC2 /* UIViewController+.swift */,
 			);
 			path = "UIKit+";
 			sourceTree = "<group>";
@@ -572,6 +578,7 @@
 				9CF34024242F269C00897B40 /* WorkspaceAccessible.swift in Sources */,
 				9C73108124333A66008E9820 /* IntroVC.swift in Sources */,
 				9C8FEF9C24397E0300283192 /* SubscribeFrame.swift in Sources */,
+				9C5656242471660B00CD8CC2 /* UIViewController+.swift in Sources */,
 				9C9E92DA246C00B200DB018E /* WorkspaceFinderVC+Factory.swift in Sources */,
 				9C3E2305246E5D9B00777FFE /* WorkspaceFinderVC+Shortcuts.swift in Sources */,
 				9C9E92D6246BFE1700DB018E /* WorkspaceFinderVC+Delegate.swift in Sources */,
@@ -598,6 +605,7 @@
 				9CCB588123F2C590002C3B36 /* MainTabBarC.swift in Sources */,
 				9CCA027324603FDE007F6BEC /* FinderWorkspaceVC+Navigation.swift in Sources */,
 				9CCA02752460414B007F6BEC /* FinderWorkspaceVC+FinderStyleVCDelegate.swift in Sources */,
+				9C56562024715EAA00CD8CC2 /* CardFinderVC+Shortcuts.swift in Sources */,
 				9C3164EE23E32F530095DF46 /* NSAttributedString+.swift in Sources */,
 				9C9168E12431A24200AD31A9 /* CardListCellStyle.swift in Sources */,
 				B80FF85123C5913C005F3AA7 /* UILabel+.swift in Sources */,
