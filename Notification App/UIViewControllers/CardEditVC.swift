@@ -182,6 +182,7 @@ extension CardEditVC {
     
     func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
         view.endEditing(true)
+        moveContainerFocusHere()
     }
 }
 
@@ -403,6 +404,17 @@ extension CardEditVC {
 extension CardEditVC: UITextViewDelegate {
     func textViewDidChange(_ textView: UITextView) {
         self.updateCardInfo()
+    }
+    
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        moveContainerFocusHere()
+    }
+    
+    private func moveContainerFocusHere() {
+        guard let container = finderContainerView else {return}
+        let finderVC = container.finderVC
+        let index = container.containerIndex()
+        finderVC.highlightedContainerIndex = index
     }
 }
 
