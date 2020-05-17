@@ -297,6 +297,7 @@ extension NewCardVC {
         let navbar = UINavigationBar()
         let navItem = UINavigationItem(title: "Add Flashcard")
         navbar.setItems([navItem], animated: true)
+        navbar.barTintColor = .myBackGroundColor()
         let container = FinderContainerView(customViewController: self, navigationBar: navbar, finderVC: finderVC)
         container.layout()
         self.finderContainerView = container

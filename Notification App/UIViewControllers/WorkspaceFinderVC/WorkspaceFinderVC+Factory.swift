@@ -18,7 +18,7 @@ extension WorkspaceFinderVC {
         let container = FinderContainerView(finderTableView: tableView, navigationBar: nil, finderVC: self)
         let navigationBar = WorkspaceNavBar(workspaceFinderVC: self, containerView: container, workspaceAccessible: self.workspaceAccessible)
         container.navigationBar = navigationBar
-        container.backgroundColor = .systemBackground
+        container.backgroundColor = .myBackGroundColor()
         container.layout()
         return container
     }
@@ -28,7 +28,7 @@ extension WorkspaceFinderVC {
         let container = FinderContainerView(customViewController: cardEditVC, navigationBar: nil, finderVC: self)
         cardEditVC.finderContainerView = container
         container.navigationBar = WorkspaceNavBar(workspaceFinderVC: self, containerView: container, workspaceAccessible: self.workspaceAccessible)
-        container.backgroundColor = .systemBackground
+        container.backgroundColor = .myBackGroundColor()
         container.layout()
         return container
     }
@@ -41,9 +41,10 @@ extension WorkspaceFinderVC {
         navItem.titleView = title
         let navBar = UINavigationBar()
         navBar.setItems([navItem], animated: true)
+        navBar.barTintColor = .myBackGroundColor()
         let container = FinderContainerView(customViewController: newCardVC, navigationBar: navBar, finderVC: self)
         newCardVC.finderContainerView = container
-        container.backgroundColor = .systemBackground
+        container.backgroundColor = .myBackGroundColor()
         container.layout()
         return container
     }

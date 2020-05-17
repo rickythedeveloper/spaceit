@@ -29,7 +29,7 @@ enum CardSortingSyetem: String, CaseIterable {
         let tasks = Array.tasksFetched(managedObjectContext: managedObjectContext)
         switch self {
         case .dueDate:
-            return tasks.sortedByDueDate()
+            return tasks.sortedByDueDate().activeTasks()
         case .alphabetical:
             return tasks.sortedByName()
         case .creationDate:

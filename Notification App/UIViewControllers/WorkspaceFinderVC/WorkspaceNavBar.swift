@@ -71,6 +71,8 @@ class WorkspaceNavBar: UINavigationBar, WorkspaceAccessible {
             navItem.rightBarButtonItems = [cardEditVC.deleteButtonItem(), cardEditVC.archiveButtonItem()]
             self.setItems([navItem], animated: true)
         }
+        
+        self.barTintColor = .myBackGroundColor()
     }
     
     private func setTitle(_ text: String) {

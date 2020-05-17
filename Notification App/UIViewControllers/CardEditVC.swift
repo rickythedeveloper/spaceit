@@ -436,6 +436,7 @@ extension CardEditVC {
         
         let navBar = UINavigationBar()
         navBar.setItems([navItem], animated: true)
+        navBar.barTintColor = .myBackGroundColor()
         return navBar
     }
 }

@@ -26,6 +26,8 @@ class MainTabBarC: UITabBarController {
         super.viewDidLoad()
         self.delegate = self
         
+        self.tabBar.barTintColor = .myBackGroundColor()
+        
         // Do any additional setup after loading the view.
         let listTabBarItem = UITabBarItem(title: "Cards", image: UIImage(systemName: "square.stack.3d.up"), tag: 0)
 //        let cardListNavC = UINavigationController(rootViewController: CardListVC())

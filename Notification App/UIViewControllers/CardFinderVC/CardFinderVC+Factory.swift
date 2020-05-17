@@ -19,6 +19,7 @@ extension CardFinderVC {
         let container = FinderContainerView(finderTableView: tableView, navigationBar: nil, finderVC: self)
         
         let navBar = UINavigationBar()
+        navBar.barTintColor = .myBackGroundColor()
         container.navigationBar = navBar
         
         let navItem1 = UINavigationItem()
@@ -33,7 +34,7 @@ extension CardFinderVC {
         
         navBar.setItems([navItem1], animated: true)
         
-        container.backgroundColor = .systemBackground
+        container.backgroundColor = .myBackGroundColor()
         container.layout()
         
         return container
