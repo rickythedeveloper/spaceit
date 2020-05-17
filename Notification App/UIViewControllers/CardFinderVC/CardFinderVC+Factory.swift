@@ -21,7 +21,18 @@ extension CardFinderVC {
         let navBar = UINavigationBar()
         navBar.backgroundColor = .red
         container.navigationBar = navBar
+        
+        let navItem1 = UINavigationItem()
+        let title = UILabel()
+        title.text = "space it"
+        navItem1.titleView = title
+        navBar.setItems([navItem1], animated: true)
+        
         container.layout()
+        
+        if let tableView = container.finderTableView {
+            tableView.tableHeaderView = self.searchController.searchBar
+        }
         return container
     }
 }

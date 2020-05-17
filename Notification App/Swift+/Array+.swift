@@ -178,6 +178,17 @@ extension Array where Element: TaskSaved {
         }
     }
     
+    func filterByKeywords(_ keywords: [String]) -> [TaskSaved] {
+        self.filter { (task) -> Bool in
+            for phrase in keywords {
+                if task.question.localizedCaseInsensitiveContains(phrase) {return true}
+                if let answer = task.answer, answer.localizedCaseInsensitiveContains(phrase) {return true}
+                if let page = task.page, page.breadCrumb().localizedCaseInsensitiveContains(phrase) {return true}
+            }
+            return false
+        }
+    }
+    
     func orderAccountingForPutOffs(putOffIDs: [UUID]) -> [TaskSaved] {
         var tasks = self
         for putOffID in putOffIDs {

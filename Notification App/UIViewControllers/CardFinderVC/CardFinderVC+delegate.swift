@@ -10,8 +10,8 @@ import RickyFramework
 
 extension CardFinderVC: FinderVCDelegate {
     func finderTableView(_ tableView: FinderTableView, didSelectRowAt indexPath: IndexPath, isTouchInitiated: Bool) {
-        guard indexPath.row < allTasks.count + 1 else {fatalError()}
-        let task = allTasks[indexPath.row - 1]
+        guard indexPath.row < shownTasks.count else {fatalError()}
+        let task = shownTasks[indexPath.row]
         let cardEditVC = CardEditVC(task: task, managedObjectContext: managedObjectContext, onDismiss: {})
         let container = cardEditVC.newContainerView(finderVC: self)
         removeContainerViews(under: tableView.containerIndex() + 1)

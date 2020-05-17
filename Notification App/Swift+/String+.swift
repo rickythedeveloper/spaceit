@@ -9,17 +9,6 @@
 import Foundation
 
 extension String {
-    func hasContent() -> Bool {
-        var hasContent = false
-        for character in self {
-            if !(character == " " || character == "\n" || character == "\t") {
-                hasContent = true
-                break
-            }
-        }
-        return hasContent
-    }
-    
     static func time(timeInterval: TimeInterval) -> String {
         if timeInterval < 60*60*24 {
             let hours = Int((timeInterval / (60*60) ).rounded())

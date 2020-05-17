@@ -25,6 +25,7 @@
 		9C3B271123CF11C400CC5A13 /* Page+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C3B270D23CF11C400CC5A13 /* Page+CoreDataClass.swift */; };
 		9C3B271223CF11C400CC5A13 /* TaskSaved+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C3B270E23CF11C400CC5A13 /* TaskSaved+CoreDataClass.swift */; };
 		9C3E2305246E5D9B00777FFE /* WorkspaceFinderVC+Shortcuts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C3E2304246E5D9B00777FFE /* WorkspaceFinderVC+Shortcuts.swift */; };
+		9C56561C24712AAD00CD8CC2 /* CardFinderVC+SearchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C56561B24712AAD00CD8CC2 /* CardFinderVC+SearchController.swift */; };
 		9C5AE61524342F6B0044D8B8 /* IntroEachPageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C5AE61424342F6B0044D8B8 /* IntroEachPageVC.swift */; };
 		9C5EF44A2416DD4200FEBE51 /* UIFont+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C5EF4492416DD4200FEBE51 /* UIFont+.swift */; };
 		9C73108124333A66008E9820 /* IntroVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C73108024333A66008E9820 /* IntroVC.swift */; };
@@ -113,6 +114,7 @@
 		9C3B270D23CF11C400CC5A13 /* Page+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Page+CoreDataClass.swift"; sourceTree = "<group>"; };
 		9C3B270E23CF11C400CC5A13 /* TaskSaved+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "TaskSaved+CoreDataClass.swift"; sourceTree = "<group>"; };
 		9C3E2304246E5D9B00777FFE /* WorkspaceFinderVC+Shortcuts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WorkspaceFinderVC+Shortcuts.swift"; sourceTree = "<group>"; };
+		9C56561B24712AAD00CD8CC2 /* CardFinderVC+SearchController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CardFinderVC+SearchController.swift"; sourceTree = "<group>"; };
 		9C5AE61424342F6B0044D8B8 /* IntroEachPageVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroEachPageVC.swift; sourceTree = "<group>"; };
 		9C5EF4492416DD4200FEBE51 /* UIFont+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+.swift"; sourceTree = "<group>"; };
 		9C73108024333A66008E9820 /* IntroVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroVC.swift; sourceTree = "<group>"; };
@@ -263,6 +265,7 @@
 				9CD805E3246FDA4A006A6718 /* CardFinderVC+dataSource.swift */,
 				9CD805E5246FDB30006A6718 /* CardFinderVC+Factory.swift */,
 				9CD805E7246FEC60006A6718 /* CardFinderVC+Admin.swift */,
+				9C56561B24712AAD00CD8CC2 /* CardFinderVC+SearchController.swift */,
 			);
 			path = CardFinderVC;
 			sourceTree = "<group>";
@@ -612,6 +615,7 @@
 				B85C07DC23379E6400200B07 /* FetchedResults+.swift in Sources */,
 				9CF8388624399C3F00A4CE59 /* LabelWithLinks.swift in Sources */,
 				9C7C893423D910DD00930E99 /* UITextView+.swift in Sources */,
+				9C56561C24712AAD00CD8CC2 /* CardFinderVC+SearchController.swift in Sources */,
 				B8D950422326C48F001236AE /* Notification_App.xcdatamodeld in Sources */,
 				9C5EF44A2416DD4200FEBE51 /* UIFont+.swift in Sources */,
 				9C148EB923E4ECC800901930 /* WorkspaceVC.swift in Sources */,

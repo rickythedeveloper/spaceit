@@ -51,4 +51,14 @@ extension CardFinderVC {
             completion()
         }
     }
+    
+    func updateShownTasks(searchText: String, byPhrase: Bool) {
+        guard searchText.hasContent() else {
+            shownTasks = allTasks
+            return
+        }
+        
+        let keywords = searchText.seperatedWords()
+        shownTasks = byPhrase ? allTasks.filterByWord(searchPhrase: searchText) : allTasks.filterByKeywords(keywords)
+    }
 }
