@@ -16,7 +16,6 @@ class CardEditVC: UIViewController, UIScrollViewDelegate, WorkspaceAccessible, K
     var paddingForKeyboardGuardian: CGFloat = 10.0
     var allowsKeyCommands: Bool = false
     
-    var finderStyleContainerView: FinderStyleContainerView?
     unowned var finderContainerView: FinderContainerView?
     
     internal var chosenPage: Page? {
@@ -170,9 +169,7 @@ extension CardEditVC {
     }
     
     @objc private func dismissView() {
-        if let containerView = finderStyleContainerView {
-            containerView.dismiss()
-        } else if let containerView = finderContainerView {
+        if let containerView = finderContainerView {
             containerView.dismiss(completion: {})
         } else {
             self.navigationController?.popViewController(animated: true)

@@ -19,7 +19,7 @@ extension WorkspaceFinderVC: FinderVCDataSource {
         fatalError()
     }
     
-    func numberOfSections(in finderStyleTableView: FinderTableView) -> Int {
+    func numberOfSections(in finderTableView: FinderTableView) -> Int {
         return 2
     }
     
