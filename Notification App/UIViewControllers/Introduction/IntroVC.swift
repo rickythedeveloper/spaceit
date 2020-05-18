@@ -95,9 +95,12 @@ private extension IntroVC {
         self.addChild(pageVC)
         self.view.addSubview(pageVC.view)
         
-        pageVC.view.isBelow(self.logo, padding: 10.0)
-        pageVC.view.constrainToSideSafeAreasOf(self.view)
-        pageVC.view.constrainToBottomSafeAreaOf(self.view)
+        NSLayoutConstraint.activate([
+            pageVC.view.topAnchor.constraint(equalTo: self.logo.bottomAnchor, constant: 10.0),
+            pageVC.view.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
+            pageVC.view.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
+            pageVC.view.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
+        ])
         
         UIView.animate(withDuration: 1.0) {
             pageVC.view.alpha = 1

@@ -64,7 +64,7 @@ class NewCardVC: UIViewController, UITextViewDelegate, WorkspaceAccessible {
 
 extension NewCardVC {
     @objc private func addPagePressed() {
-        self.present(UINavigationController(rootViewController: WorkspaceVC(workspaceAccessible: self)), animated: true, completion: nil)
+//        self.present(UINavigationController(rootViewController: WorkspaceVC(workspaceAccessible: self)), animated: true, completion: nil)
     }
     
     @objc private func goToNextTextView() {
@@ -220,9 +220,7 @@ extension NewCardVC {
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
         
         view.addSubview(scrollView)
-        scrollView.constrainToTopSafeAreaOf(view)
-        scrollView.constrainToSideSafeAreasOf(view)
-        scrollView.constrainToBottomSafeAreaOf(view)
+        NSLayoutConstraint.activate(scrollView.constraintsToFit(within: view.safeAreaLayoutGuide, insets: .zero))
         scrollView.delegate = self
         
         scrollView.addSubview(pageButton)
@@ -237,29 +235,32 @@ extension NewCardVC {
         let maxTVHeight: CGFloat = 1/3
         
         pageButton.layoutPageSelectButton(parentView: scrollView, padding: padding)
-        
-        frontLabel.isBelow(pageButton, padding: padding)
-        frontLabel.alignToCenterXOf(scrollView)
-        
-        frontTV.isBelow(frontLabel, padding: padding)
-        frontTV.constrainToSideSafeAreasOf(scrollView, padding: padding)
-        frontTV.heightAnchor.constraint(greaterThanOrEqualTo: scrollView.safeAreaLayoutGuide.heightAnchor, multiplier: minTVHeight).isActive = true
-        frontTV.heightAnchor.constraint(lessThanOrEqualTo: scrollView.safeAreaLayoutGuide.heightAnchor, multiplier: maxTVHeight).isActive = true
         setupTextView(textView: frontTV)
-        
-        backLabel.isBelow(frontTV, padding: 3*padding)
-        backLabel.alignToCenterXOf(scrollView)
-
-        backTV.isBelow(backLabel, padding: padding)
-        backTV.leadingAnchor.constraint(equalTo: frontTV.leadingAnchor).isActive = true
-        backTV.trailingAnchor.constraint(equalTo: frontTV.trailingAnchor).isActive = true
-        backTV.heightAnchor.constraint(greaterThanOrEqualTo: scrollView.safeAreaLayoutGuide.heightAnchor, multiplier: minTVHeight).isActive = true
-        backTV.heightAnchor.constraint(lessThanOrEqualTo: scrollView.safeAreaLayoutGuide.heightAnchor, multiplier: maxTVHeight).isActive = true
         setupTextView(textView: backTV)
         
-        addButton.isBelow(backTV, padding: padding*2)
-        addButton.alignToCenterXOf(scrollView)
-        addButton.alignBottomAnchorWith(scrollView, offset: -padding)
+        NSLayoutConstraint.activate([
+            frontLabel.topAnchor.constraint(equalTo: pageButton.bottomAnchor, constant: padding),
+            frontLabel.centerXAnchor.constraint(equalTo: scrollView.centerXAnchor),
+
+            frontTV.topAnchor.constraint(equalTo: frontLabel.bottomAnchor, constant: padding),
+            frontTV.leadingAnchor.constraint(equalTo: scrollView.safeAreaLayoutGuide.leadingAnchor, constant: padding),
+            frontTV.trailingAnchor.constraint(equalTo: scrollView.safeAreaLayoutGuide.trailingAnchor, constant: -padding),
+            frontTV.heightAnchor.constraint(greaterThanOrEqualTo: scrollView.safeAreaLayoutGuide.heightAnchor, multiplier: minTVHeight),
+            frontTV.heightAnchor.constraint(lessThanOrEqualTo: scrollView.safeAreaLayoutGuide.heightAnchor, multiplier: maxTVHeight),
+
+            backLabel.topAnchor.constraint(equalTo: frontTV.bottomAnchor, constant: padding*3),
+            backLabel.centerXAnchor.constraint(equalTo: scrollView.centerXAnchor),
+
+            backTV.topAnchor.constraint(equalTo: backLabel.bottomAnchor, constant: padding),
+            backTV.leadingAnchor.constraint(equalTo: frontTV.leadingAnchor),
+            backTV.trailingAnchor.constraint(equalTo: frontTV.trailingAnchor),
+            backTV.heightAnchor.constraint(greaterThanOrEqualTo: scrollView.safeAreaLayoutGuide.heightAnchor, multiplier: minTVHeight),
+            backTV.heightAnchor.constraint(lessThanOrEqualTo: scrollView.safeAreaLayoutGuide.heightAnchor, multiplier: maxTVHeight),
+
+            addButton.topAnchor.constraint(equalTo: backTV.bottomAnchor, constant: padding*2),
+            addButton.centerXAnchor.constraint(equalTo: scrollView.centerXAnchor),
+            addButton.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor, constant: -padding)
+        ])
     }
     
     private func setupTextView(textView: UITextView) {

@@ -77,17 +77,18 @@ private extension NewVersionInfoV {
     func addConstraints() {
         let padding: CGFloat = 10.0
         
-        containerV.widthAnchor.constraint(lessThanOrEqualTo: widthAnchor, multiplier: 0.8).isActive = true
-        containerV.heightAnchor.constraint(lessThanOrEqualTo: heightAnchor, multiplier: 0.8).isActive = true
-        containerV.alignToCenterYOf(self)
-        containerV.alignToCenterXOf(self)
-        
-        titleLabel.topAnchor.constraint(equalTo: containerV.topAnchor, constant: padding).isActive = true
-        titleLabel.constrainToSideSafeAreasOf(containerV, padding: padding)
-        
-        messageLabel.isBelow(titleLabel, padding: padding)
-        messageLabel.constrainToSideSafeAreasOf(containerV, padding: padding)
-        messageLabel.bottomAnchor.constraint(equalTo: containerV.bottomAnchor, constant: -padding).isActive = true
+        NSLayoutConstraint.activate([
+            containerV.widthAnchor.constraint(lessThanOrEqualTo: widthAnchor, multiplier: 0.8),
+            containerV.heightAnchor.constraint(lessThanOrEqualTo: heightAnchor, multiplier: 0.8),
+            
+            titleLabel.topAnchor.constraint(equalTo: containerV.topAnchor, constant: padding),
+            
+            messageLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: padding),
+            messageLabel.bottomAnchor.constraint(equalTo: containerV.bottomAnchor, constant: -padding),
+        ])
+        NSLayoutConstraint.activate(containerV.constraintsToAlignCenter(with: self))
+        NSLayoutConstraint.activate(titleLabel.constraintsToFitSides(within: containerV.safeAreaLayoutGuide, padding: padding))
+        NSLayoutConstraint.activate(messageLabel.constraintsToFitSides(within: containerV, padding: padding))
     }
     
     func setupAction() {

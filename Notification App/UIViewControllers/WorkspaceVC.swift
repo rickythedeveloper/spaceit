@@ -9,6 +9,7 @@
 import UIKit
 import CoreData
 
+/*
 class WorkspaceVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate, WorkspaceAccessible {
     var chosenPage: Page? {
         willSet(newPage) {
@@ -499,3 +500,4 @@ extension WorkspaceVC {
         })
     }
 }
+*/

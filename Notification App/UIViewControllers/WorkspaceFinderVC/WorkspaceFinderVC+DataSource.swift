@@ -60,7 +60,7 @@ extension WorkspaceFinderVC: FinderVCDataSource {
                 let textField = WorkspaceNewPageTextField(finderTableView: tableView)
                 cell.contentView.addSubview(textField)
                 let padding: CGFloat = 5.0
-                NSLayoutConstraint.activate(textField.constraintsToFit(cell.contentView, withInsets: UIEdgeInsets(top: padding, left: padding, bottom: padding, right: padding), topSafe: true, bottomSafe: true, leadingSafe: true, trailingSafe: true))
+                NSLayoutConstraint.activate(textField.constraintsToFit(within: cell.contentView.safeAreaLayoutGuide, insets: UIEdgeInsets(top: padding, left: padding, bottom: padding, right: padding)))
             }
         } else {
             if indexPath.row < page.numberOfCards() { // child card cell
@@ -70,8 +70,8 @@ extension WorkspaceFinderVC: FinderVCDataSource {
                 cell = tableView.dequeueReusableCell(withIdentifier: newCardCellID, for: indexPath)
                 if let imageView = cell.imageView {
                     imageView.image = UIImage(systemName: "plus")
-                    imageView.usesAutolaoyut()
-                    NSLayoutConstraint.activate(imageView.constraintsToFit(cell, withInsets: .zero, topSafe: true, bottomSafe: true, leadingSafe: true, trailingSafe: true))
+                    imageView.translatesAutoresizingMaskIntoConstraints = false
+                    NSLayoutConstraint.activate(imageView.constraintsToFit(within: cell.safeAreaLayoutGuide, insets: .zero))
                     imageView.contentMode = .center
                 }
             }

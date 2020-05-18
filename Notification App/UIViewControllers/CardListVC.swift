@@ -9,6 +9,7 @@
 import UIKit
 import CoreData
 
+/*
 class CardListVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate {
     
     private let segments = ["Due Date", "Alphabetical", "Creation Date"]
@@ -326,3 +327,4 @@ extension CardListVC {
         self.tabBarController?.selectedIndex = 1
     }
 }
+*/

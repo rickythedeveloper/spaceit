@@ -50,24 +50,28 @@ private extension IntroEachPageVC {
         label.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(label)
         
-        
-        pic.constrainToTopSafeAreaOf(view, padding: padding)
-        pic.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.6).isActive = true
-        pic.widthAnchor.constraint(lessThanOrEqualTo: view.widthAnchor, multiplier: 0.9).isActive = true
-        pic.alignToCenterXOf(view)
-        
-        label.isBelow(pic, padding: padding)
-        label.alignToCenterXOf(view)
-        label.widthAnchor.constraint(lessThanOrEqualToConstant: 400.0).isActive = true
-        label.widthAnchor.constraint(lessThanOrEqualTo: view.widthAnchor, constant: -padding*2).isActive = true
-        
+        NSLayoutConstraint.activate([
+            pic.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: padding),
+            pic.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.6),
+            pic.widthAnchor.constraint(lessThanOrEqualTo: view.widthAnchor, multiplier: 0.9),
+            pic.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            
+            label.topAnchor.constraint(equalTo: pic.bottomAnchor, constant: padding),
+            label.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            label.widthAnchor.constraint(lessThanOrEqualToConstant: 400.0),
+            label.widthAnchor.constraint(lessThanOrEqualTo: view.widthAnchor, constant: -padding*2),
+        ])
+
         if let startButton = startButton {
             view.addSubview(startButton)
-            startButton.isBelow(label, padding: padding)
-            startButton.constrainToSideSafeAreasOf(view, padding: padding)
-            startButton.constrainToBottomSafeAreaOf(view, padding: padding)
+            NSLayoutConstraint.activate([
+                startButton.topAnchor.constraint(equalTo: label.bottomAnchor, constant: padding),
+                startButton.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: padding),
+                startButton.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -padding),
+                startButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -padding)
+            ])
         } else {
-            label.constrainToBottomSafeAreaOf(view)
+            NSLayoutConstraint.activate([label.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)])
         }
     }
 }

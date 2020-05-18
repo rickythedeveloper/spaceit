@@ -60,16 +60,18 @@ class CreationDateCardListCell: UITableViewCell {
         self.contentView.addSubview(creationDateLabel)
         
         let labelWidth = creationDateLabel.intrinsicContentSize.width
-        creationDateLabel.constrainToTrailingSafeAreaOf(self.contentView, padding: padding)
-        creationDateLabel.widthAnchor.constraint(equalToConstant: labelWidth).isActive = true
-        creationDateLabel.alignToCenterYOf(self.contentView)
-        
-        vstack.constrainToLeadingSafeAreaOf(self.contentView, padding: padding)
-        vstack.trailingAnchor.constraint(equalTo: creationDateLabel.leadingAnchor, constant: -padding).isActive = true
-        vstack.alignToCenterYOf(self.contentView)
-        
-        self.contentView.heightAnchor.constraint(greaterThanOrEqualTo: vstack.heightAnchor, constant: padding*3.0).isActive = true
-        self.contentView.heightAnchor.constraint(greaterThanOrEqualTo: creationDateLabel.heightAnchor, constant: padding*3.0).isActive = true
-        self.contentView.heightAnchor.constraint(greaterThanOrEqualToConstant: 50.0).isActive = true
+        NSLayoutConstraint.activate([
+            creationDateLabel.trailingAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.trailingAnchor, constant: -padding),
+            creationDateLabel.widthAnchor.constraint(equalToConstant: labelWidth),
+            creationDateLabel.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
+
+            vstack.leadingAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.leadingAnchor, constant: padding),
+            vstack.trailingAnchor.constraint(equalTo: creationDateLabel.leadingAnchor, constant: -padding),
+            vstack.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
+
+            contentView.heightAnchor.constraint(greaterThanOrEqualTo: vstack.heightAnchor, constant: padding*3.0),
+            contentView.heightAnchor.constraint(greaterThanOrEqualTo: creationDateLabel.heightAnchor, constant: padding*3.0),
+            contentView.heightAnchor.constraint(greaterThanOrEqualToConstant: 50.0)
+        ])
     }
 }

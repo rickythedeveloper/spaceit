@@ -14,8 +14,6 @@
 		9C3164EC23E32DF90095DF46 /* CreationDateCardListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C3164EB23E32DF90095DF46 /* CreationDateCardListCell.swift */; };
 		9C3164EE23E32F530095DF46 /* NSAttributedString+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C3164ED23E32F530095DF46 /* NSAttributedString+.swift */; };
 		9C331CB124303B0B003934D6 /* ReviewAlgorithmTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C331CB024303B0B003934D6 /* ReviewAlgorithmTest.swift */; };
-		9C331CB924304550003934D6 /* ReviewButtonContainerV.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C331CB824304550003934D6 /* ReviewButtonContainerV.swift */; };
-		9C331CBB2430470C003934D6 /* ReviewAccessible.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C331CBA2430470C003934D6 /* ReviewAccessible.swift */; };
 		9C35CD5023DF61240099F55D /* UpcomingCardListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C35CD4F23DF61240099F55D /* UpcomingCardListCell.swift */; };
 		9C35CD5323DF725B0099F55D /* Date+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C35CD5223DF725B0099F55D /* Date+.swift */; };
 		9C38E6D3243D87680012FC59 /* NewVersionInfoV.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C38E6D2243D87680012FC59 /* NewVersionInfoV.swift */; };
@@ -34,7 +32,6 @@
 		9C731083243347C3008E9820 /* IntroPageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C731082243347C3008E9820 /* IntroPageVC.swift */; };
 		9C7C893223D9103800930E99 /* NewCardVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C7C893123D9103800930E99 /* NewCardVC.swift */; };
 		9C7C893423D910DD00930E99 /* UITextView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C7C893323D910DD00930E99 /* UITextView+.swift */; };
-		9C8FEF9C24397E0300283192 /* SubscribeFrame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C8FEF9B24397E0300283192 /* SubscribeFrame.swift */; };
 		9C9168DF24319E3500AD31A9 /* UIImageView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C9168DE24319E3500AD31A9 /* UIImageView+.swift */; };
 		9C9168E12431A24200AD31A9 /* CardListCellStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C9168E02431A24200AD31A9 /* CardListCellStyle.swift */; };
 		9C97674B23E24D81004F4E90 /* AlphabeticalCardListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C97674A23E24D81004F4E90 /* AlphabeticalCardListCell.swift */; };
@@ -99,8 +96,6 @@
 		9C331CAE24303B0B003934D6 /* ReviewAlgorithmTest.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ReviewAlgorithmTest.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		9C331CB024303B0B003934D6 /* ReviewAlgorithmTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewAlgorithmTest.swift; sourceTree = "<group>"; };
 		9C331CB224303B0B003934D6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		9C331CB824304550003934D6 /* ReviewButtonContainerV.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewButtonContainerV.swift; sourceTree = "<group>"; };
-		9C331CBA2430470C003934D6 /* ReviewAccessible.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewAccessible.swift; sourceTree = "<group>"; };
 		9C35CD4F23DF61240099F55D /* UpcomingCardListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpcomingCardListCell.swift; sourceTree = "<group>"; };
 		9C35CD5223DF725B0099F55D /* Date+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+.swift"; sourceTree = "<group>"; };
 		9C38E6D2243D87680012FC59 /* NewVersionInfoV.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewVersionInfoV.swift; sourceTree = "<group>"; };
@@ -119,7 +114,6 @@
 		9C731082243347C3008E9820 /* IntroPageVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroPageVC.swift; sourceTree = "<group>"; };
 		9C7C893123D9103800930E99 /* NewCardVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewCardVC.swift; sourceTree = "<group>"; };
 		9C7C893323D910DD00930E99 /* UITextView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextView+.swift"; sourceTree = "<group>"; };
-		9C8FEF9B24397E0300283192 /* SubscribeFrame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscribeFrame.swift; sourceTree = "<group>"; };
 		9C9168DE24319E3500AD31A9 /* UIImageView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+.swift"; sourceTree = "<group>"; };
 		9C9168E02431A24200AD31A9 /* CardListCellStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardListCellStyle.swift; sourceTree = "<group>"; };
 		9C97674A23E24D81004F4E90 /* AlphabeticalCardListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlphabeticalCardListCell.swift; sourceTree = "<group>"; };
@@ -224,9 +218,7 @@
 				9C35CD4F23DF61240099F55D /* UpcomingCardListCell.swift */,
 				9C97674A23E24D81004F4E90 /* AlphabeticalCardListCell.swift */,
 				9C3164EB23E32DF90095DF46 /* CreationDateCardListCell.swift */,
-				9C331CB824304550003934D6 /* ReviewButtonContainerV.swift */,
 				9C9168E02431A24200AD31A9 /* CardListCellStyle.swift */,
-				9C8FEF9B24397E0300283192 /* SubscribeFrame.swift */,
 				9CF8388524399C3F00A4CE59 /* LabelWithLinks.swift */,
 				9C38E6D2243D87680012FC59 /* NewVersionInfoV.swift */,
 			);
@@ -267,7 +259,6 @@
 			isa = PBXGroup;
 			children = (
 				9CF34023242F269C00897B40 /* WorkspaceAccessible.swift */,
-				9C331CBA2430470C003934D6 /* ReviewAccessible.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -539,18 +530,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				9C97674B23E24D81004F4E90 /* AlphabeticalCardListCell.swift in Sources */,
-				9C331CB924304550003934D6 /* ReviewButtonContainerV.swift in Sources */,
 				9CF8388424399A3400A4CE59 /* UITapGestureRecognizer+.swift in Sources */,
 				9C38E6D5243DBC7B0012FC59 /* UITableView+.swift in Sources */,
 				9C3B271023CF11C400CC5A13 /* TaskSaved+CoreDataProperties.swift in Sources */,
 				9C29806D2435FD2100176A7A /* SubscribeVC.swift in Sources */,
 				9CD805E4246FDA4A006A6718 /* CardFinderVC+dataSource.swift in Sources */,
 				9C9E92D8246BFE5D00DB018E /* WorkspaceFinderVC+DataSource.swift in Sources */,
-				9C331CBB2430470C003934D6 /* ReviewAccessible.swift in Sources */,
 				9C38E6D3243D87680012FC59 /* NewVersionInfoV.swift in Sources */,
 				9CF34024242F269C00897B40 /* WorkspaceAccessible.swift in Sources */,
 				9C73108124333A66008E9820 /* IntroVC.swift in Sources */,
-				9C8FEF9C24397E0300283192 /* SubscribeFrame.swift in Sources */,
 				9C5656242471660B00CD8CC2 /* UIViewController+.swift in Sources */,
 				9C9E92DA246C00B200DB018E /* WorkspaceFinderVC+Factory.swift in Sources */,
 				9C3E2305246E5D9B00777FFE /* WorkspaceFinderVC+Shortcuts.swift in Sources */,

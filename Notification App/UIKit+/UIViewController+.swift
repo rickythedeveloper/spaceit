@@ -15,7 +15,7 @@ extension UIViewController {
         imageView.contentMode = .scaleAspectFit
         view.addSubview(imageView)
         view.sendSubviewToBack(imageView)
-        imageView.usesAutolaoyut()
+        imageView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             imageView.widthAnchor.constraint(lessThanOrEqualTo: view.widthAnchor, multiplier: maxSizeMultiplier),
             imageView.heightAnchor.constraint(lessThanOrEqualTo: view.heightAnchor, multiplier: maxSizeMultiplier),

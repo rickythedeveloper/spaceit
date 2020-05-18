@@ -36,8 +36,7 @@ class CardListStyle {
             indicatorContainer.addSubview(answerIndicator)
             indicatorContainer.translatesAutoresizingMaskIntoConstraints = false
             indicatorContainer.widthAnchor.constraint(equalTo: answerIndicator.widthAnchor).isActive = true
-            answerIndicator.alignToCenterXOf(indicatorContainer)
-            answerIndicator.alignToCenterYOf(indicatorContainer)
+            NSLayoutConstraint.activate(answerIndicator.constraintsToAlignCenter(with: indicatorContainer))
             let finalStack = UIStackView(arrangedSubviews: [mainStack, indicatorContainer])
             finalStack.spacing = padding
             finalStack.axis = .horizontal

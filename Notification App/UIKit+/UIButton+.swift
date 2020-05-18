@@ -38,12 +38,15 @@ extension UIButton {
     }
     
     func layoutPageSelectButton(parentView: UIView, padding: CGFloat) {
-        self.isBelow(parentView.topAnchor, padding: padding*3)
-        self.alignToCenterXOf(parentView)
-        self.widthAnchor.constraint(lessThanOrEqualTo: parentView.widthAnchor, constant: -padding*2.0).isActive = true
         if self.titleLabel != nil {
             self.heightAnchor.constraint(equalTo: self.titleLabel!.heightAnchor, constant: padding).isActive = true
         }
+        
+        NSLayoutConstraint.activate([
+            self.topAnchor.constraint(equalTo: parentView.topAnchor, constant: padding*3),
+            self.centerXAnchor.constraint(equalTo: parentView.centerXAnchor),
+            self.widthAnchor.constraint(lessThanOrEqualTo: parentView.widthAnchor, constant: -padding*2.0)
+        ])
     }
     
     static func reviewButton(task: TaskSaved, ease: Int, cardEditVC: CardEditVC, action: Selector, usesAutolayout: Bool) -> UIButton {
@@ -98,10 +101,12 @@ extension UIButton {
         button.addSubview(stack)
         button.addTarget(nil, action: action, for: .touchUpInside)
         
-        stack.alignToCenterXOf(button)
-        stack.alignToCenterYOf(button)
-        stack.heightAnchor.constraint(lessThanOrEqualTo: button.heightAnchor, multiplier: 0.9).isActive = true
-        stack.widthAnchor.constraint(lessThanOrEqualTo: button.widthAnchor, multiplier: 0.9).isActive = true
+        
+        NSLayoutConstraint.activate(stack.constraintsToAlignCenter(with: button))
+        NSLayoutConstraint.activate([
+            stack.heightAnchor.constraint(lessThanOrEqualTo: button.heightAnchor, multiplier: 0.9),
+            stack.widthAnchor.constraint(lessThanOrEqualTo: button.widthAnchor, multiplier: 0.9)
+        ])
         
         return button
     }

@@ -54,13 +54,16 @@ class UpcomingCardListCell: UITableViewCell {
         self.contentView.addSubview(subInfoVStack)
         
         let minSubInfoWidth = max(duelabelWidth, intervalLabelWidth)
-        subInfoVStack.constrainToTrailingSafeAreaOf(self.contentView, padding: padding)
-        subInfoVStack.widthAnchor.constraint(equalToConstant: minSubInfoWidth).isActive = true
-        subInfoVStack.alignToCenterYOf(self.contentView)
         
-        mainInfoVStack.trailingAnchor.constraint(equalTo: subInfoVStack.leadingAnchor, constant: -padding).isActive = true
-        mainInfoVStack.constrainToLeadingSafeAreaOf(self.contentView, padding: padding)
-        mainInfoVStack.alignToCenterYOf(self.contentView)
+        NSLayoutConstraint.activate([
+            subInfoVStack.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -padding),
+            subInfoVStack.widthAnchor.constraint(equalToConstant: minSubInfoWidth),
+            subInfoVStack.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
+            
+            mainInfoVStack.trailingAnchor.constraint(equalTo: subInfoVStack.leadingAnchor, constant: -padding),
+            mainInfoVStack.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: padding),
+            mainInfoVStack.centerYAnchor.constraint(equalTo: contentView.centerYAnchor)
+        ])
         
         self.contentView.heightAnchor.constraint(greaterThanOrEqualTo: mainInfoVStack.heightAnchor, constant: padding*3.0).isActive = true
         self.contentView.heightAnchor.constraint(greaterThanOrEqualTo: subInfoVStack.heightAnchor, constant: padding*3.0).isActive = true

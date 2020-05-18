@@ -30,7 +30,7 @@ class WorkspaceNewPageTextField: UITextField {
     }
     
     func setup() {
-        self.usesAutolaoyut()
+        self.translatesAutoresizingMaskIntoConstraints = false
         let padding: CGFloat = 10.0
         self.backgroundColor = UIColor.tvBackground()
         self.font = UIFont.preferredFont(forTextStyle: .title2)

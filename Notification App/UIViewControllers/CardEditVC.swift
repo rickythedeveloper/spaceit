@@ -51,9 +51,6 @@ class CardEditVC: UIViewController, UIScrollViewDelegate, WorkspaceAccessible, K
     let backTextView = UITextView.cardSIdeTV()
     
     var actionButtonContainer = UIStackView()
-    lazy var reviewView: ReviewButtonContainerV = { [unowned self] in
-        return ReviewButtonContainerV(parentVC: self)
-    }()
     
     let dueDateLabel = UILabel()
     let intervalLabel = UILabel()
@@ -110,7 +107,7 @@ extension CardEditVC {
 extension CardEditVC {
     
     @objc private func selectPage() {
-        self.present(UINavigationController(rootViewController: WorkspaceVC(workspaceAccessible: self)), animated: true, completion: nil)
+//        self.present(UINavigationController(rootViewController: WorkspaceVC(workspaceAccessible: self)), animated: true, completion: nil)
     }
     
     @objc private func deletePressed() {
@@ -224,9 +221,7 @@ extension CardEditVC {
         
         navigationItem.rightBarButtonItems = [discardChangesButtonItem(), archiveButtonItem(), deleteButtonItem()]
         
-        scrollView.constrainToTopSafeAreaOf(view)
-        scrollView.constrainToSideSafeAreasOf(view)
-        scrollView.constrainToBottomSafeAreaOf(view)
+        NSLayoutConstraint.activate(scrollView.constraintsToFit(within: view.safeAreaLayoutGuide, insets: .zero))
         scrollView.translatesAutoresizingMaskIntoConstraints = false
         scrollView.delegate = self
         
@@ -260,34 +255,41 @@ extension CardEditVC {
         
         pageButton.layoutPageSelectButton(parentView: scrollView, padding: padding)
         
-        divider.topAnchor.constraint(lessThanOrEqualTo: pageButton.bottomAnchor, constant: 10).isActive = true
-        divider.constrainToSideSafeAreasOf(scrollView, padding: 2*padding)
-        divider.heightAnchor.constraint(equalToConstant: 1.0).isActive = true
-        
-        frontLabel.topAnchor.constraint(equalTo: divider.bottomAnchor, constant: padding).isActive = true
-        frontLabel.constrainToLeadingSafeAreaOf(scrollView, padding: padding)
-        
-        frontTextView.topAnchor.constraint(lessThanOrEqualTo: frontLabel.bottomAnchor, constant: padding).isActive = true
-        frontTextView.constrainToSideSafeAreasOf(scrollView, padding: padding)
-        frontTextView.heightAnchor.constraint(greaterThanOrEqualTo: scrollView.safeAreaLayoutGuide.heightAnchor, multiplier: minTVHeight).isActive = true
-        frontTextView.heightAnchor.constraint(lessThanOrEqualTo: scrollView.safeAreaLayoutGuide.heightAnchor, multiplier: maxTVHeight).isActive = true
-        
-        backLabel.topAnchor.constraint(equalTo: frontTextView.bottomAnchor, constant: padding).isActive = true
-        backLabel.constrainToLeadingSafeAreaOf(scrollView, padding: padding)
-        
-        backTextView.topAnchor.constraint(lessThanOrEqualTo: backLabel.bottomAnchor, constant: padding).isActive = true
-        backTextView.constrainToSideSafeAreasOf(scrollView, padding: padding)
-        backTextView.heightAnchor.constraint(greaterThanOrEqualTo: scrollView.safeAreaLayoutGuide.heightAnchor, multiplier: minTVHeight).isActive = true
-        backTextView.heightAnchor.constraint(lessThanOrEqualTo: scrollView.safeAreaLayoutGuide.heightAnchor, multiplier: maxTVHeight).isActive = true
-        
-        actionButtonContainer.topAnchor.constraint(equalTo: backTextView.bottomAnchor, constant: padding).isActive = true
-        actionButtonContainer.constrainToSideSafeAreasOf(scrollView, padding: padding)
-        actionButtonContainer.heightAnchor.constraint(greaterThanOrEqualToConstant: minButtonHeight).isActive = true
-        actionButtonContainer.heightAnchor.constraint(lessThanOrEqualToConstant: maxButtonHeight).isActive = true
-        
-        infoStack.isBelow(actionButtonContainer, padding: padding)
-        infoStack.constrainToSideSafeAreasOf(scrollView, padding: padding)
-        infoStack.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor, constant: -padding).isActive = true // this effectively sets the content size of the scrollview
+        NSLayoutConstraint.activate([
+            divider.topAnchor.constraint(lessThanOrEqualTo: pageButton.bottomAnchor, constant: 10),
+            divider.leadingAnchor.constraint(equalTo: scrollView.safeAreaLayoutGuide.leadingAnchor, constant: 2*padding),
+            divider.trailingAnchor.constraint(equalTo: scrollView.safeAreaLayoutGuide.trailingAnchor, constant: -2*padding),
+            divider.heightAnchor.constraint(equalToConstant: 1.0),
+            
+            frontLabel.topAnchor.constraint(equalTo: divider.bottomAnchor, constant: padding),
+            frontLabel.leadingAnchor.constraint(equalTo: scrollView.safeAreaLayoutGuide.leadingAnchor, constant: padding),
+            
+            frontTextView.topAnchor.constraint(lessThanOrEqualTo: frontLabel.bottomAnchor, constant: padding),
+            frontTextView.leadingAnchor.constraint(equalTo: scrollView.safeAreaLayoutGuide.leadingAnchor, constant: padding),
+            frontTextView.trailingAnchor.constraint(equalTo: scrollView.safeAreaLayoutGuide.trailingAnchor, constant: -padding),
+            frontTextView.heightAnchor.constraint(greaterThanOrEqualTo: scrollView.safeAreaLayoutGuide.heightAnchor, multiplier: minTVHeight),
+            frontTextView.heightAnchor.constraint(lessThanOrEqualTo: scrollView.safeAreaLayoutGuide.heightAnchor, multiplier: maxTVHeight),
+            
+            backLabel.topAnchor.constraint(equalTo: frontTextView.bottomAnchor, constant: padding),
+            backLabel.leadingAnchor.constraint(equalTo: scrollView.safeAreaLayoutGuide.leadingAnchor, constant: padding),
+            
+            backTextView.topAnchor.constraint(lessThanOrEqualTo: backLabel.bottomAnchor, constant: padding),
+            backTextView.leadingAnchor.constraint(equalTo: scrollView.safeAreaLayoutGuide.leadingAnchor, constant: padding),
+            backTextView.trailingAnchor.constraint(equalTo: scrollView.safeAreaLayoutGuide.trailingAnchor, constant: -padding),
+            backTextView.heightAnchor.constraint(greaterThanOrEqualTo: scrollView.safeAreaLayoutGuide.heightAnchor, multiplier: minTVHeight),
+            backTextView.heightAnchor.constraint(lessThanOrEqualTo: scrollView.safeAreaLayoutGuide.heightAnchor, multiplier: maxTVHeight),
+            
+            actionButtonContainer.topAnchor.constraint(equalTo: backTextView.bottomAnchor, constant: padding),
+            actionButtonContainer.leadingAnchor.constraint(equalTo: scrollView.safeAreaLayoutGuide.leadingAnchor, constant: padding),
+            actionButtonContainer.trailingAnchor.constraint(equalTo: scrollView.safeAreaLayoutGuide.trailingAnchor, constant: -padding),
+            actionButtonContainer.heightAnchor.constraint(greaterThanOrEqualToConstant: minButtonHeight),
+            actionButtonContainer.heightAnchor.constraint(lessThanOrEqualToConstant: maxButtonHeight),
+            
+            infoStack.topAnchor.constraint(equalTo: actionButtonContainer.bottomAnchor, constant: padding),
+            infoStack.leadingAnchor.constraint(equalTo: scrollView.safeAreaLayoutGuide.leadingAnchor, constant: padding),
+            infoStack.trailingAnchor.constraint(equalTo: scrollView.safeAreaLayoutGuide.trailingAnchor, constant: -padding),
+            infoStack.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor, constant: -padding) // this effectively sets the content size of the scrollview
+        ])
     }
     
     private func putCardInfo() {
@@ -299,7 +301,7 @@ extension CardEditVC {
     }
 }
 
-extension CardEditVC: ReviewAccessible {
+extension CardEditVC {
     
     @objc func happyAction() {
         reviewWithEase(4)
@@ -315,14 +317,6 @@ extension CardEditVC: ReviewAccessible {
     
     @objc func depressedAction() {
         reviewWithEase(1)
-    }
-    
-    func cancelAction() {
-        UIView.animate(withDuration: 0.3, animations: {
-            self.reviewView.alpha = 0.0
-        }) { (_) in
-            self.reviewView.removeFromSuperview()
-        }
     }
     
     private func reviewWithEase(_ ease: Int) {

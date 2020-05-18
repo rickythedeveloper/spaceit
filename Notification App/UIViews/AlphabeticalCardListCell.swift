@@ -50,8 +50,8 @@ class AlphabeticalCardListCell: UITableViewCell {
         let stack = CardListStyle.basicElements(task: task, padding: padding, usesAutolayout: true)
         self.contentView.addSubview(stack)
 
-        stack.alignToCenterYOf(self.contentView)
-        stack.constrainToSideSafeAreasOf(self.contentView, padding: padding)
+        NSLayoutConstraint.activate([stack.centerYAnchor.constraint(equalTo: contentView.centerYAnchor)])
+        NSLayoutConstraint.activate(stack.constraintsToFitSides(within: contentView.safeAreaLayoutGuide, padding: padding))
 
         self.contentView.heightAnchor.constraint(greaterThanOrEqualTo: stack.heightAnchor, constant: padding*3.0).isActive = true
         self.contentView.heightAnchor.constraint(greaterThanOrEqualToConstant: 50.0).isActive = true
