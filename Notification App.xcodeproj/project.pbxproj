@@ -290,10 +290,8 @@
 		9CC2DE482477C6220025C361 /* 3.0_1 */ = {
 			isa = PBXGroup;
 			children = (
+				9CE98B732483BD8E00C854F5 /* CardsTab */,
 				9CA099ED248386EE001BFB69 /* Workspace */,
-				9CC2DE492477C67A0025C361 /* CardsListVC.swift */,
-				9CC2DE4B2477C7510025C361 /* CardsTabVC.swift */,
-				9CC2DE4D2477CFA50025C361 /* CardSearchSystem.swift */,
 			);
 			path = 3.0_1;
 			sourceTree = "<group>";
@@ -311,6 +309,16 @@
 				9C56561F24715EAA00CD8CC2 /* CardFinderVC+Shortcuts.swift */,
 			);
 			path = CardFinderVC;
+			sourceTree = "<group>";
+		};
+		9CE98B732483BD8E00C854F5 /* CardsTab */ = {
+			isa = PBXGroup;
+			children = (
+				9CC2DE4B2477C7510025C361 /* CardsTabVC.swift */,
+				9CC2DE492477C67A0025C361 /* CardsListVC.swift */,
+				9CC2DE4D2477CFA50025C361 /* CardSearchSystem.swift */,
+			);
+			path = CardsTab;
 			sourceTree = "<group>";
 		};
 		9CF34022242F268600897B40 /* Protocols */ = {
