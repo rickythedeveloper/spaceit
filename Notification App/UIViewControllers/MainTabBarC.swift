@@ -38,11 +38,10 @@ class MainTabBarC: UITabBarController {
         let workspaceItem = UITabBarItem(title: "Workspace", image: UIImage(systemName: "folder"), tag: 1)
 //        let workspaceNavC = UINavigationController(rootViewController: WorkspaceVC())
 //        workspaceNavC.tabBarItem = workspaceItem
-        
-        
-        let workspaceFinderVC = WorkspaceFinderVC(workspaceAccessible: nil)
-        workspaceFinderVC.tabBarItem = workspaceItem
-        self.viewControllers = [cardFinderVC, workspaceFinderVC]
+//        let workspaceFinderVC = WorkspaceFinderVC(workspaceAccessible: nil)
+        let workspaceViewController = WorkspaceViewController()
+        workspaceViewController.tabBarItem = workspaceItem
+        self.viewControllers = [cardFinderVC, workspaceViewController]
     }
     
     override func viewDidAppear(_ animated: Bool) {

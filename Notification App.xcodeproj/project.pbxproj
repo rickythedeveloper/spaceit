@@ -41,6 +41,12 @@
 		9C9E92DA246C00B200DB018E /* WorkspaceFinderVC+Factory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C9E92D9246C00B200DB018E /* WorkspaceFinderVC+Factory.swift */; };
 		9C9E92DC246C022300DB018E /* WorkspaceNavBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C9E92DB246C022300DB018E /* WorkspaceNavBar.swift */; };
 		9C9E92DE246C0B4300DB018E /* WorkspaceFinderVC+Admin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C9E92DD246C0B4300DB018E /* WorkspaceFinderVC+Admin.swift */; };
+		9CA099EA24837CA3001BFB69 /* WorkspaceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CA099E924837CA3001BFB69 /* WorkspaceViewController.swift */; };
+		9CA099EC24837EA0001BFB69 /* WorkspaceColumnVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CA099EB24837EA0001BFB69 /* WorkspaceColumnVC.swift */; };
+		9CA099F124838726001BFB69 /* WorkspaceColumnVC+TableViewDelegateDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CA099F024838726001BFB69 /* WorkspaceColumnVC+TableViewDelegateDataSource.swift */; };
+		9CA099F324838811001BFB69 /* WorkspaceViewController+ColumnManagement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CA099F224838811001BFB69 /* WorkspaceViewController+ColumnManagement.swift */; };
+		9CA099F524838F30001BFB69 /* WorkspaceViewController+Factory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CA099F424838F30001BFB69 /* WorkspaceViewController+Factory.swift */; };
+		9CA099F724839206001BFB69 /* WorkspaceNewPageTF.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CA099F624839206001BFB69 /* WorkspaceNewPageTF.swift */; };
 		9CA3BCED243DD4D70062591D /* UIImage+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CA3BCEC243DD4D70062591D /* UIImage+.swift */; };
 		9CC2DE4A2477C67A0025C361 /* CardsListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CC2DE492477C67A0025C361 /* CardsListVC.swift */; };
 		9CC2DE4C2477C7510025C361 /* CardsTabVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CC2DE4B2477C7510025C361 /* CardsTabVC.swift */; };
@@ -126,6 +132,12 @@
 		9C9E92D9246C00B200DB018E /* WorkspaceFinderVC+Factory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WorkspaceFinderVC+Factory.swift"; sourceTree = "<group>"; };
 		9C9E92DB246C022300DB018E /* WorkspaceNavBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkspaceNavBar.swift; sourceTree = "<group>"; };
 		9C9E92DD246C0B4300DB018E /* WorkspaceFinderVC+Admin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WorkspaceFinderVC+Admin.swift"; sourceTree = "<group>"; };
+		9CA099E924837CA3001BFB69 /* WorkspaceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkspaceViewController.swift; sourceTree = "<group>"; };
+		9CA099EB24837EA0001BFB69 /* WorkspaceColumnVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkspaceColumnVC.swift; sourceTree = "<group>"; };
+		9CA099F024838726001BFB69 /* WorkspaceColumnVC+TableViewDelegateDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WorkspaceColumnVC+TableViewDelegateDataSource.swift"; sourceTree = "<group>"; };
+		9CA099F224838811001BFB69 /* WorkspaceViewController+ColumnManagement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WorkspaceViewController+ColumnManagement.swift"; sourceTree = "<group>"; };
+		9CA099F424838F30001BFB69 /* WorkspaceViewController+Factory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WorkspaceViewController+Factory.swift"; sourceTree = "<group>"; };
+		9CA099F624839206001BFB69 /* WorkspaceNewPageTF.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkspaceNewPageTF.swift; sourceTree = "<group>"; };
 		9CA3BCEC243DD4D70062591D /* UIImage+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+.swift"; sourceTree = "<group>"; };
 		9CC2DE492477C67A0025C361 /* CardsListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardsListVC.swift; sourceTree = "<group>"; };
 		9CC2DE4B2477C7510025C361 /* CardsTabVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardsTabVC.swift; sourceTree = "<group>"; };
@@ -246,9 +258,39 @@
 			path = WorkspaceFinderVC;
 			sourceTree = "<group>";
 		};
+		9CA099ED248386EE001BFB69 /* Workspace */ = {
+			isa = PBXGroup;
+			children = (
+				9CA099EF2483870D001BFB69 /* WorkspaceViewController */,
+				9CA099EE248386FC001BFB69 /* WorkspaceColumnVC */,
+			);
+			path = Workspace;
+			sourceTree = "<group>";
+		};
+		9CA099EE248386FC001BFB69 /* WorkspaceColumnVC */ = {
+			isa = PBXGroup;
+			children = (
+				9CA099EB24837EA0001BFB69 /* WorkspaceColumnVC.swift */,
+				9CA099F024838726001BFB69 /* WorkspaceColumnVC+TableViewDelegateDataSource.swift */,
+				9CA099F624839206001BFB69 /* WorkspaceNewPageTF.swift */,
+			);
+			path = WorkspaceColumnVC;
+			sourceTree = "<group>";
+		};
+		9CA099EF2483870D001BFB69 /* WorkspaceViewController */ = {
+			isa = PBXGroup;
+			children = (
+				9CA099E924837CA3001BFB69 /* WorkspaceViewController.swift */,
+				9CA099F224838811001BFB69 /* WorkspaceViewController+ColumnManagement.swift */,
+				9CA099F424838F30001BFB69 /* WorkspaceViewController+Factory.swift */,
+			);
+			path = WorkspaceViewController;
+			sourceTree = "<group>";
+		};
 		9CC2DE482477C6220025C361 /* 3.0_1 */ = {
 			isa = PBXGroup;
 			children = (
+				9CA099ED248386EE001BFB69 /* Workspace */,
 				9CC2DE492477C67A0025C361 /* CardsListVC.swift */,
 				9CC2DE4B2477C7510025C361 /* CardsTabVC.swift */,
 				9CC2DE4D2477CFA50025C361 /* CardSearchSystem.swift */,
@@ -554,13 +596,16 @@
 				9CD805E4246FDA4A006A6718 /* CardFinderVC+dataSource.swift in Sources */,
 				9C9E92D8246BFE5D00DB018E /* WorkspaceFinderVC+DataSource.swift in Sources */,
 				9C38E6D3243D87680012FC59 /* NewVersionInfoV.swift in Sources */,
+				9CA099EC24837EA0001BFB69 /* WorkspaceColumnVC.swift in Sources */,
 				9CF34024242F269C00897B40 /* WorkspaceAccessible.swift in Sources */,
 				9C73108124333A66008E9820 /* IntroVC.swift in Sources */,
+				9CA099F724839206001BFB69 /* WorkspaceNewPageTF.swift in Sources */,
 				9C5656242471660B00CD8CC2 /* UIViewController+.swift in Sources */,
 				9C9E92DA246C00B200DB018E /* WorkspaceFinderVC+Factory.swift in Sources */,
 				9C3E2305246E5D9B00777FFE /* WorkspaceFinderVC+Shortcuts.swift in Sources */,
 				9C9E92D6246BFE1700DB018E /* WorkspaceFinderVC+Delegate.swift in Sources */,
 				9C29806F243613F200176A7A /* SwiftyStoreKitWrapper.swift in Sources */,
+				9CA099F324838811001BFB69 /* WorkspaceViewController+ColumnManagement.swift in Sources */,
 				9C3B271223CF11C400CC5A13 /* TaskSaved+CoreDataClass.swift in Sources */,
 				9C9E92D3246BFC5700DB018E /* WorkspaceFinderVC.swift in Sources */,
 				9C35CD5023DF61240099F55D /* UpcomingCardListCell.swift in Sources */,
@@ -575,6 +620,7 @@
 				9CC2DE4A2477C67A0025C361 /* CardsListVC.swift in Sources */,
 				9C9E92DE246C0B4300DB018E /* WorkspaceFinderVC+Admin.swift in Sources */,
 				9CD805E2246FDA36006A6718 /* CardFinderVC+delegate.swift in Sources */,
+				9CA099F124838726001BFB69 /* WorkspaceColumnVC+TableViewDelegateDataSource.swift in Sources */,
 				9CC2DE4E2477CFA50025C361 /* CardSearchSystem.swift in Sources */,
 				9CA3BCED243DD4D70062591D /* UIImage+.swift in Sources */,
 				9C7C893223D9103800930E99 /* NewCardVC.swift in Sources */,
@@ -584,6 +630,7 @@
 				9C56562024715EAA00CD8CC2 /* CardFinderVC+Shortcuts.swift in Sources */,
 				9C3164EE23E32F530095DF46 /* NSAttributedString+.swift in Sources */,
 				9C9168E12431A24200AD31A9 /* CardListCellStyle.swift in Sources */,
+				9CA099EA24837CA3001BFB69 /* WorkspaceViewController.swift in Sources */,
 				B80FF85123C5913C005F3AA7 /* UILabel+.swift in Sources */,
 				B8D9503F2326C48F001236AE /* SceneDelegate.swift in Sources */,
 				B8D9505E2326C85C001236AE /* UNUserNotificationCenter+.swift in Sources */,
@@ -591,6 +638,7 @@
 				9C35CD5323DF725B0099F55D /* Date+.swift in Sources */,
 				9CC2DE4C2477C7510025C361 /* CardsTabVC.swift in Sources */,
 				9C3B271123CF11C400CC5A13 /* Page+CoreDataClass.swift in Sources */,
+				9CA099F524838F30001BFB69 /* WorkspaceViewController+Factory.swift in Sources */,
 				B844EDB023C3471C0033D657 /* UIButton+.swift in Sources */,
 				9CC51AF223EB8C8800636842 /* NSManagedObjectContext+.swift in Sources */,
 				B8845807232BCEDE00B5CC3C /* Array+.swift in Sources */,

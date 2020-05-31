@@ -107,6 +107,6 @@ extension CardsTabVC: FinderViewDelegate, FinderViewDataSource {
         } else {
             multiplier = detailWidth
         }
-        return finderColumn.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: multiplier)
+        return finderColumn.widthAnchor.constraint(equalTo: view.safeAreaLayoutGuide.widthAnchor, multiplier: multiplier)
     }
 }

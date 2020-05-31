@@ -11,15 +11,16 @@ import FinderViewController
 import CoreData
 
 class CardsListVC: UIViewController {
-    let cellID = "cardListCellID"
-    
     let managedObjectContext = NSManagedObjectContext.defaultContext()
     
     var cardsTabVC: CardsTabVC?
     var tableView: ColumnTableView!
     var sortSystem: CardSortingSyetem = .dueDate {
         didSet {
-            print("oiii")
+            DispatchQueue.main.async {
+                self.updateShownCards(searchText: self.searchController.searchBar.text ?? "", scopeIndex: self.searchController.searchBar.selectedScopeButtonIndex)
+                self.tableView.reloadData()
+            }
         }
     }
     var shownCards = [TaskSaved]()
@@ -47,7 +48,6 @@ extension CardsListVC {
         
         tableView = ColumnTableView()
         tableView.translatesAutoresizingMaskIntoConstraints = false
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: cellID)
         tableView.dataSource = self
         tableView.delegate = self
         for cardSort in CardSortingSyetem.allCases {
