@@ -1,16 +1,22 @@
 PODS:
+  - FinderViewController (1.0.0):
+    - RickyFramework (~> 1.0)
   - RickyFramework (1.0.0)
 
 DEPENDENCIES:
+  - FinderViewController (from `../FinderViewController`)
   - RickyFramework (from `~/desktop/Xcode 11/rickyframework`)
 
 EXTERNAL SOURCES:
+  FinderViewController:
+    :path: "../FinderViewController"
   RickyFramework:
     :path: "~/desktop/Xcode 11/rickyframework"
 
 SPEC CHECKSUMS:
+  FinderViewController: bdb41b4c9aa86432656b8487e7f440026d2ca33c
   RickyFramework: 0826a8c11d0157f64f3c15100de13577852ddafa
 
-PODFILE CHECKSUM: 3a1776d58c82a037798393868ddef0fe7301600c
+PODFILE CHECKSUM: 021e62791247ae05b9ceda37f85c8f7fdaba7401
 
 COCOAPODS: 1.9.1

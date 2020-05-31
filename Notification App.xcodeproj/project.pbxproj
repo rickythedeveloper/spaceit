@@ -42,6 +42,9 @@
 		9C9E92DC246C022300DB018E /* WorkspaceNavBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C9E92DB246C022300DB018E /* WorkspaceNavBar.swift */; };
 		9C9E92DE246C0B4300DB018E /* WorkspaceFinderVC+Admin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C9E92DD246C0B4300DB018E /* WorkspaceFinderVC+Admin.swift */; };
 		9CA3BCED243DD4D70062591D /* UIImage+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CA3BCEC243DD4D70062591D /* UIImage+.swift */; };
+		9CC2DE4A2477C67A0025C361 /* CardsListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CC2DE492477C67A0025C361 /* CardsListVC.swift */; };
+		9CC2DE4C2477C7510025C361 /* CardsTabVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CC2DE4B2477C7510025C361 /* CardsTabVC.swift */; };
+		9CC2DE4E2477CFA50025C361 /* CardSearchSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CC2DE4D2477CFA50025C361 /* CardSearchSystem.swift */; };
 		9CC51AF223EB8C8800636842 /* NSManagedObjectContext+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CC51AF123EB8C8800636842 /* NSManagedObjectContext+.swift */; };
 		9CCB588123F2C590002C3B36 /* MainTabBarC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CCB588023F2C590002C3B36 /* MainTabBarC.swift */; };
 		9CD805E0246FD7FA006A6718 /* CardFinderVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CD805DF246FD7FA006A6718 /* CardFinderVC.swift */; };
@@ -124,6 +127,9 @@
 		9C9E92DB246C022300DB018E /* WorkspaceNavBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkspaceNavBar.swift; sourceTree = "<group>"; };
 		9C9E92DD246C0B4300DB018E /* WorkspaceFinderVC+Admin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WorkspaceFinderVC+Admin.swift"; sourceTree = "<group>"; };
 		9CA3BCEC243DD4D70062591D /* UIImage+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+.swift"; sourceTree = "<group>"; };
+		9CC2DE492477C67A0025C361 /* CardsListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardsListVC.swift; sourceTree = "<group>"; };
+		9CC2DE4B2477C7510025C361 /* CardsTabVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardsTabVC.swift; sourceTree = "<group>"; };
+		9CC2DE4D2477CFA50025C361 /* CardSearchSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardSearchSystem.swift; sourceTree = "<group>"; };
 		9CC51AF123EB8C8800636842 /* NSManagedObjectContext+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSManagedObjectContext+.swift"; sourceTree = "<group>"; };
 		9CCB588023F2C590002C3B36 /* MainTabBarC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarC.swift; sourceTree = "<group>"; };
 		9CD805DF246FD7FA006A6718 /* CardFinderVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardFinderVC.swift; sourceTree = "<group>"; };
@@ -240,6 +246,16 @@
 			path = WorkspaceFinderVC;
 			sourceTree = "<group>";
 		};
+		9CC2DE482477C6220025C361 /* 3.0_1 */ = {
+			isa = PBXGroup;
+			children = (
+				9CC2DE492477C67A0025C361 /* CardsListVC.swift */,
+				9CC2DE4B2477C7510025C361 /* CardsTabVC.swift */,
+				9CC2DE4D2477CFA50025C361 /* CardSearchSystem.swift */,
+			);
+			path = 3.0_1;
+			sourceTree = "<group>";
+		};
 		9CD805DC246FD7BA006A6718 /* CardFinderVC */ = {
 			isa = PBXGroup;
 			children = (
@@ -311,6 +327,7 @@
 				B8419631233AA00800E6558C /* Notification App.entitlements */,
 				9C7C893023D9100100930E99 /* UIViews */,
 				B8D9B2D22329A94B00348987 /* UIViewControllers */,
+				9CC2DE482477C6220025C361 /* 3.0_1 */,
 				B8D950532326C4A4001236AE /* Model */,
 				B8D9503C2326C48F001236AE /* AppDelegate.swift */,
 				B8D9503E2326C48F001236AE /* SceneDelegate.swift */,
@@ -555,8 +572,10 @@
 				B8099DEC23C0C59700A56471 /* UIVIew+.swift in Sources */,
 				B87BF76123C59358006D372F /* CardListVC.swift in Sources */,
 				9C9E92DC246C022300DB018E /* WorkspaceNavBar.swift in Sources */,
+				9CC2DE4A2477C67A0025C361 /* CardsListVC.swift in Sources */,
 				9C9E92DE246C0B4300DB018E /* WorkspaceFinderVC+Admin.swift in Sources */,
 				9CD805E2246FDA36006A6718 /* CardFinderVC+delegate.swift in Sources */,
+				9CC2DE4E2477CFA50025C361 /* CardSearchSystem.swift in Sources */,
 				9CA3BCED243DD4D70062591D /* UIImage+.swift in Sources */,
 				9C7C893223D9103800930E99 /* NewCardVC.swift in Sources */,
 				B8099DE923C0BE4300A56471 /* CardEditVC.swift in Sources */,
@@ -570,6 +589,7 @@
 				B8D9505E2326C85C001236AE /* UNUserNotificationCenter+.swift in Sources */,
 				9C212B05246D2AB4008E56DF /* WorkspaceNewPageTextField.swift in Sources */,
 				9C35CD5323DF725B0099F55D /* Date+.swift in Sources */,
+				9CC2DE4C2477C7510025C361 /* CardsTabVC.swift in Sources */,
 				9C3B271123CF11C400CC5A13 /* Page+CoreDataClass.swift in Sources */,
 				B844EDB023C3471C0033D657 /* UIButton+.swift in Sources */,
 				9CC51AF223EB8C8800636842 /* NSManagedObjectContext+.swift in Sources */,

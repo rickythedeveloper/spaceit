@@ -10,6 +10,7 @@ import UIKit
 import SwiftUI
 import CoreData
 import RickyFramework
+import FinderViewController
 
 class CardEditVC: UIViewController, UIScrollViewDelegate, WorkspaceAccessible, KeyboardGuardian {
     var viewsToGuard = [UIView]()
@@ -17,6 +18,7 @@ class CardEditVC: UIViewController, UIScrollViewDelegate, WorkspaceAccessible, K
     var allowsKeyCommands: Bool = false
     
     unowned var finderContainerView: FinderContainerView?
+    unowned var finderColumn: FinderColumn?
     
     internal var chosenPage: Page? {
         willSet(newPage) {
@@ -166,10 +168,13 @@ extension CardEditVC {
     }
     
     @objc private func dismissView() {
-        if let containerView = finderContainerView {
-            containerView.dismiss(completion: {})
-        } else {
-            self.navigationController?.popViewController(animated: true)
+//        if let containerView = finderContainerView {
+//            containerView.dismiss(completion: {})
+//        } else {
+//            self.navigationController?.popViewController(animated: true)
+//        }
+        if let column = finderColumn {
+            column.dismiss(animationDuration: 0, completion: {})
         }
         self.onDismiss()
     }

@@ -9,9 +9,11 @@
 import UIKit
 import CoreData
 import RickyFramework
+import FinderViewController
 
 class NewCardVC: UIViewController, UITextViewDelegate, WorkspaceAccessible {
     unowned var finderContainerView: FinderContainerView?
+    unowned var finderColumn: FinderColumn?
     private var managedObjectContext: NSManagedObjectContext?
     var allowsKeyCommands: Bool = false {
         willSet {
@@ -119,10 +121,13 @@ extension NewCardVC {
     }
     
     @objc private func dismissView() {
-        if let containerView = finderContainerView {
-            containerView.dismiss(completion: {})
-        } else {
-            self.navigationController?.popViewController(animated: true)
+//        if let containerView = finderContainerView {
+//            containerView.dismiss(completion: {})
+//        } else {
+//            self.navigationController?.popViewController(animated: true)
+//        }
+        if let column = finderColumn {
+            column.dismiss(animationDuration: 0, completion: {})
         }
     }
     

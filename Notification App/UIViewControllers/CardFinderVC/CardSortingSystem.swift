@@ -58,4 +58,15 @@ enum CardSortingSyetem: String, CaseIterable {
             return "CreationDate"
         }
     }
+    
+    static func system(for index: Int) -> CardSortingSyetem {
+        switch index {
+        case 0:
+            return .dueDate
+        case 1:
+            return .alphabetical
+        default:
+            return .creationDate
+        }
+    }
 }

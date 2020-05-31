@@ -7,5 +7,6 @@ target 'Notification App' do
 
   # Pods for Notification App
   pod 'RickyFramework', :path => '~/desktop/Xcode 11/rickyframework'
+  pod 'FinderViewController', :path => '../FinderViewController'
 
 end

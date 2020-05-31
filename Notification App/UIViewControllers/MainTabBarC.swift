@@ -32,7 +32,8 @@ class MainTabBarC: UITabBarController {
         let listTabBarItem = UITabBarItem(title: "Cards", image: UIImage(systemName: "square.stack.3d.up"), tag: 0)
 //        let cardListNavC = UINavigationController(rootViewController: CardListVC())
 //        cardListNavC.tabBarItem = listTabBarItem
-        let cardFinderVC = CardFinderVC()
+//        let cardFinderVC = CardFinderVC()
+        let cardFinderVC = CardsTabVC()
         cardFinderVC.tabBarItem = listTabBarItem
         let workspaceItem = UITabBarItem(title: "Workspace", image: UIImage(systemName: "folder"), tag: 1)
 //        let workspaceNavC = UINavigationController(rootViewController: WorkspaceVC())
