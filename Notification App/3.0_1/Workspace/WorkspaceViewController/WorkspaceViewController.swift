@@ -23,10 +23,18 @@ class WorkspaceViewController: FinderViewController, KeyboardGuardian {
     var viewsToGuard = [UIView]()
     var paddingForKeyboardGuardian: CGFloat  = 10.0
     
+    // Workspace Accessible
+    var workspaceAccessible: WorkspaceAccessible? // when accessed by another view controller
+    
     override init() {
         super.init()
         self.delegate = self
         self.dataSource = self
+    }
+    
+    convenience init(workspaceAccessible: WorkspaceAccessible? = nil) {
+        self.init()
+        self.workspaceAccessible = workspaceAccessible
     }
     
     required init?(coder: NSCoder) {

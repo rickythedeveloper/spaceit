@@ -10,13 +10,12 @@ import FinderViewController
 
 extension WorkspaceViewController {
     func columnFor(page: Page) -> FinderColumn {
-        let vc = WorkspaceColumnVC()
+        let vc = WorkspaceColumnVC(workspaceAccessible: self.workspaceAccessible)
         vc.tableView.information = page
         let navC = UINavigationController(rootViewController: vc)
         let column = FinderColumn(finderViewController: self, viewController: navC, finderTableView: vc.tableView)
         vc.workspaceViewController = self
         vc.workspaceColumn = column
-        vc.title = page.name
         return column
     }
     

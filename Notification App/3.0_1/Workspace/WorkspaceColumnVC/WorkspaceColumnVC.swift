@@ -9,7 +9,7 @@
 import FinderViewController
 import CoreData
 
-class WorkspaceColumnVC: UIViewController {
+class WorkspaceColumnVC: UIViewController, WorkspaceAccessible {
     let managedObjectContext = NSManagedObjectContext.defaultContext()
     let childPageCellID = "childPageCellID"
     let addPageCellID = "addPageCellID"
@@ -21,17 +21,35 @@ class WorkspaceColumnVC: UIViewController {
     var tableView = ColumnTableView()
     
     var columnIndex: Int {get {self.workspaceViewController.finderColumns.firstIndex(of: self.workspaceColumn)!}}
+    var manageObjectContext: NSManagedObjectContext {get {self.workspaceViewController.managedObjectContext}}
     
-    init() {
+    // Workspace Accessible
+    var workspaceAccessible: WorkspaceAccessible? // this will be non-nil when this vc is used as a page selector
+    var chosenPage: Page? { // this will be used by the original workspace column vc
+        willSet {
+            if let page = newValue {
+                moveThisPageUnder(page)
+            }
+        }
+    }
+    
+    init(workspaceAccessible: WorkspaceAccessible? = nil) {
         super.init(nibName: nil, bundle: nil)
         initialSetup()
+        self.workspaceAccessible = workspaceAccessible
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        setNavigationBar()
+    }
+    
     override func viewDidLoad() {
+        super.viewDidLoad()
     }
 }
 
@@ -47,6 +65,10 @@ extension WorkspaceColumnVC {
             tableView.register(cardSort.cellClass(), forCellReuseIdentifier: cardSort.rawValue)
         }
         view = tableView
+    }
+    
+    func setTitle(_ name: String?) {
+        navigationItem.title = name
     }
 }
 
