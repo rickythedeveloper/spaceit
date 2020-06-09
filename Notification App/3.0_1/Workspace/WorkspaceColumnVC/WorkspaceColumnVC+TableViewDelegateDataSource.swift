@@ -56,8 +56,9 @@ extension WorkspaceColumnVC: UITableViewDelegate, UITableViewDataSource {
             cell.textLabel?.text = page.cardsArray().sortedByCreationDate(oldFirst: true)[indexPath.row].question
             break
         case .addCard:
-            cell.textLabel?.text = "add card"
-            cell.textLabel?.textColor = .red
+            cell.textLabel?.text = "New Card"
+            cell.textLabel?.textColor = .systemGray
+            cell.textLabel?.textAlignment = .center
             break
         }
         

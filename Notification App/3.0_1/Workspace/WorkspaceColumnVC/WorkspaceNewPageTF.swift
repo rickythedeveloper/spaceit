@@ -76,10 +76,9 @@ extension WorkspaceNewPageTF: UITextFieldDelegate {
         page.addToChildren(newPage)
         managedObjectContext.saveContext(completion: {
             if let workspaceFinderVC = self.columnTableView.finderColumn?.finderViewController as? WorkspaceViewController {
-                DispatchQueue.main.async {
-                    workspaceFinderVC.reloadAllColumnTables()
-                }
-                self.text = ""
+                workspaceFinderVC.reloadAllColumnTables(completion: {
+                    self.text = ""
+                })
             }
         })
     }

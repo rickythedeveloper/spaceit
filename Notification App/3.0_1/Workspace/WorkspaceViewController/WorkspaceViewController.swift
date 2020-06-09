@@ -16,6 +16,7 @@ class WorkspaceViewController: FinderViewController, KeyboardGuardian {
     var tableWidth: CGFloat = 1.0
     var detailWidth: CGFloat = 1.0
     var horizontalKeyCommandsEnabled: Bool = true
+    var viewRefreshTimer: Timer?
     
     // Keyboard guardian
     weak var columnTableViewForTappedNewPageTextField: ColumnTableView?
@@ -53,6 +54,8 @@ extension WorkspaceViewController {
         self.appendColumn(finderColumn: column, animationInterval: 0, completion: {})
         
         self.addKeyboardObserver()
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(coreDataObjectsDidChange), name: Notification.Name.NSManagedObjectContextObjectsDidChange, object: nil)
     }
     
     func keyboardWillChangeFrame(notification: NSNotification) {
@@ -66,5 +69,12 @@ extension WorkspaceViewController {
     func updateKeyboardGuardianInformation(_ textField: WorkspaceNewPageTF, inside columnTableView: ColumnTableView) {
         viewsToGuard = [textField]
         columnTableViewForTappedNewPageTextField = columnTableView
+    }
+    
+    @objc func coreDataObjectsDidChange() {
+        viewRefreshTimer?.invalidate()
+        viewRefreshTimer = Timer.scheduledTimer(withTimeInterval: 0.3, repeats: false, block: { (timer) in
+            self.reloadAllColumnTables(completion: {})
+        })
     }
 }
