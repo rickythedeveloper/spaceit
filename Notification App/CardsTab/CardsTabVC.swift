@@ -32,9 +32,11 @@ class CardsTabVC: FinderViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        setContainerWidth(viewWidth: self.view.frame.width)
-        updateColumnWidthConstraints()
-        setPaging()
+        viewWidthUpdated(width: self.view.frame.width)
+    }
+    
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        viewWidthUpdated(width: size.width)
     }
 }
 
@@ -45,6 +47,12 @@ extension CardsTabVC {
         let cardsNavC = UINavigationController(rootViewController: cardsListVC)
         let column = FinderColumn(finderViewController: self, viewController: cardsNavC, finderTableView: cardsListVC.tableView)
         self.appendColumn(finderColumn: column, animationInterval: 0.0, completion: {})
+    }
+    
+    private func viewWidthUpdated(width: CGFloat) {
+        setContainerWidth(viewWidth: width)
+        updateColumnWidthConstraints()
+        setPaging()
     }
     
     func newCardButtonPressed() {
@@ -75,11 +83,8 @@ extension CardsTabVC {
         self.scrollView.isPagingEnabled = listWidth == 1.0 && detailWidth == 1.0
     }
     
-    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
-        setContainerWidth(viewWidth: size.width)
-        updateColumnWidthConstraints()
-        setPaging()
-        print("view will transision")
+    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+        view.endEditing(true)
     }
     
     func setContainerWidth(viewWidth: CGFloat) {

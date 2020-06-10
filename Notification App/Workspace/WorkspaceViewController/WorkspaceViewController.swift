@@ -96,4 +96,8 @@ extension WorkspaceViewController {
         updateColumnWidthConstraints()
         setPaging()
     }
+    
+    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+        view.endEditing(true)
+    }
 }
