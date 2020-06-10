@@ -78,34 +78,30 @@ extension WorkspaceColumnVC: UITableViewDelegate, UITableViewDataSource {
         
         switch cellTypeFor(indexPath: indexPath) {
         case .childPage:
-            self.workspaceViewController.removeColumn(under: self.columnIndex + 1, animationDuration: 0, completion: {
-                let childPage = self.shownChildPages(of: page)[indexPath.row]
-                let childColumn = self.workspaceViewController.columnFor(page: childPage)
-                self.workspaceViewController.appendColumn(finderColumn: childColumn, animationInterval: 0, completion: {
-                    self.workspaceViewController.showColumn(childColumn, on: .trailingSide, completion: {})
-                })
-            })
+            let childPage = self.shownChildPages(of: page)[indexPath.row]
+            let childColumn = self.workspaceViewController.columnFor(page: childPage)
+            self.showNewColumnReplacing(under: self.columnIndex + 1, with: childColumn, completion: {})
             break
         case .addPage:
             break
         case .childCard:
-            self.workspaceViewController.removeColumn(under: self.columnIndex + 1, animationDuration: 0, completion: {
-                let childCard = self.shownChildCards(of: page)[indexPath.row]
-                let cardColumn = self.workspaceViewController.column(for: childCard)
-                self.workspaceViewController.appendColumn(finderColumn: cardColumn, animationInterval: 0, completion: {
-                    self.workspaceViewController.showColumn(cardColumn, on: .trailingSide, completion: {})
-                })
-            })
+            let childCard = self.shownChildCards(of: page)[indexPath.row]
+            let cardColumn = self.workspaceViewController.column(for: childCard)
+            self.showNewColumnReplacing(under: self.columnIndex + 1, with: cardColumn, completion: {})
             break
         case .addCard:
-            self.workspaceViewController.removeColumn(under: self.columnIndex + 1, animationDuration: 0, completion: {
-                let column = self.workspaceViewController.columnForNewCardVC(under: page)
-                self.workspaceViewController.appendColumn(finderColumn: column, animationInterval: 0, completion: {
-                    self.workspaceViewController.showColumn(column, on: .trailingSide, completion: {})
-                })
-            })
+            let column = self.workspaceViewController.columnForNewCardVC(under: page)
+            self.showNewColumnReplacing(under: self.columnIndex + 1, with: column, completion: {})
             break
         }
+    }
+    
+    private func showNewColumnReplacing(under index: Int, with column: FinderColumn, completion: @escaping () -> Void) {
+        self.workspaceViewController.hideColumn(at: index + 1, on: .trailingSide, completion: {
+            self.workspaceViewController.replaceColumns(under: index, with: column, completion: {
+                self.workspaceViewController.showColumn(column, on: .trailingSide, completion: {})
+            })
+        })
     }
     
     private enum CellType {

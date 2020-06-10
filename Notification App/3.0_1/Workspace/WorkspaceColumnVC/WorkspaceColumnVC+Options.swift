@@ -100,7 +100,7 @@ extension WorkspaceColumnVC {
     private func deleteThisPage() {
         guard let page = tableView.information as? Page, !page.isTopPage() else {fatalError()}
         
-        self.workspaceColumn.dismiss(animationDuration: 0, completion: {
+        self.workspaceColumn.dismiss(hidesFirst: true, removalDuration: 0, completion: {
             self.workspaceViewController.managedObjectContext.delete(page)
             self.workspaceViewController.managedObjectContext.saveContext()
         })

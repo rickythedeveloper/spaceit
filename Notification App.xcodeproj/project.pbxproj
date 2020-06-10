@@ -274,8 +274,8 @@
 			children = (
 				9CA099EB24837EA0001BFB69 /* WorkspaceColumnVC.swift */,
 				9CA099F024838726001BFB69 /* WorkspaceColumnVC+TableViewDelegateDataSource.swift */,
-				9CA099F624839206001BFB69 /* WorkspaceNewPageTF.swift */,
 				9C79C1F7248FCE440057CEA7 /* WorkspaceColumnVC+Options.swift */,
+				9CA099F624839206001BFB69 /* WorkspaceNewPageTF.swift */,
 			);
 			path = WorkspaceColumnVC;
 			sourceTree = "<group>";

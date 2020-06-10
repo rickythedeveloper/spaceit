@@ -62,6 +62,10 @@ class NewCardVC: UIViewController, UITextViewDelegate, WorkspaceAccessible {
         super.viewDidLoad()
         setup()
     }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        frontTV.becomeFirstResponder()
+    }
 }
 
 extension NewCardVC {
@@ -117,17 +121,17 @@ extension NewCardVC {
         self.registerNotification(id: task.id, question: task.question, waitTime: task.waitTime)
         
         self.clearTextsForTVs()
-        dismissView()
+        dismissView(hidesFirst: true)
     }
     
-    @objc private func dismissView() {
+    @objc private func dismissView(hidesFirst: Bool) {
 //        if let containerView = finderContainerView {
 //            containerView.dismiss(completion: {})
 //        } else {
 //            self.navigationController?.popViewController(animated: true)
 //        }
         if let column = finderColumn {
-            column.dismiss(animationDuration: 0, completion: {})
+            column.dismiss(hidesFirst: hidesFirst, removalDuration: 0, completion: {})
         }
     }
     

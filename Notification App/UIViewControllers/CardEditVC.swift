@@ -115,7 +115,7 @@ extension CardEditVC {
     @objc private func deletePressed() {
         let deleteAlert = UIAlertController.deleteAlert {
             self.managedObjectContext.delete(self.task)
-            self.dismissView()
+            self.dismissView(hidesFirst: true)
         }
         
         self.present(deleteAlert, animated: true, completion: nil)
@@ -124,7 +124,7 @@ extension CardEditVC {
     @objc private func archivePressed() {
         let action = {
             self.task.isActive.toggle()
-            self.dismissView()
+            self.dismissView(hidesFirst: true)
         }
         let alert = self.task.isActive ? UIAlertController.archiveAlert(action: action) : UIAlertController.recoverAlert(action: action)
         self.present(alert, animated: true, completion: nil)
@@ -136,7 +136,7 @@ extension CardEditVC {
                 self.frontTextView.becomeFirstResponder()
             }
         } else {
-            self.dismissView()
+            self.dismissView(hidesFirst: true)
         }
     }
     
@@ -167,14 +167,14 @@ extension CardEditVC {
         }
     }
     
-    @objc private func dismissView() {
+    @objc private func dismissView(hidesFirst: Bool) {
 //        if let containerView = finderContainerView {
 //            containerView.dismiss(completion: {})
 //        } else {
 //            self.navigationController?.popViewController(animated: true)
 //        }
         if let column = finderColumn {
-            column.dismiss(animationDuration: 0, completion: {})
+            column.dismiss(hidesFirst: hidesFirst, removalDuration: 0, completion: {})
         }
         self.onDismiss()
     }
@@ -327,7 +327,7 @@ extension CardEditVC {
     private func reviewWithEase(_ ease: Int) {
         self.task.reviewed(ease: ease)
         self.registerNotification(task: self.task)
-        self.dismissView()
+        self.dismissView(hidesFirst: true)
     }
     
     private func registerNotification(task: TaskSaved) {
