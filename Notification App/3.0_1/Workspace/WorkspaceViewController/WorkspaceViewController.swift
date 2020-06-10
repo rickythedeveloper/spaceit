@@ -47,9 +47,11 @@ class WorkspaceViewController: FinderViewController, KeyboardGuardian {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        setContainerWidth(viewWidth: self.view.frame.width)
-        updateColumnWidthConstraints()
-        setPaging()
+        viewWidthUpdated(width: self.view.frame.width)
+    }
+    
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        viewWidthUpdated(width: size.width)
     }
 }
 
@@ -84,5 +86,11 @@ extension WorkspaceViewController {
         viewRefreshTimer = Timer.scheduledTimer(withTimeInterval: 0.3, repeats: false, block: { (timer) in
             self.reloadAllColumnTables(completion: {})
         })
+    }
+    
+    private func viewWidthUpdated(width: CGFloat) {
+        setContainerWidth(viewWidth: width)
+        updateColumnWidthConstraints()
+        setPaging()
     }
 }
