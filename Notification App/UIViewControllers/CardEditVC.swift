@@ -17,7 +17,6 @@ class CardEditVC: UIViewController, UIScrollViewDelegate, WorkspaceAccessible, K
     var paddingForKeyboardGuardian: CGFloat = 10.0
     var allowsKeyCommands: Bool = false
     
-    unowned var finderContainerView: FinderContainerView?
     unowned var finderColumn: FinderColumn?
     
     internal var chosenPage: Page? {
@@ -109,7 +108,7 @@ extension CardEditVC {
 extension CardEditVC {
     
     @objc private func selectPage() {
-//        self.present(UINavigationController(rootViewController: WorkspaceVC(workspaceAccessible: self)), animated: true, completion: nil)
+        
     }
     
     @objc private func deletePressed() {
@@ -161,11 +160,6 @@ extension CardEditVC {
     }
     
     @objc private func dismissView(hidesFirst: Bool) {
-//        if let containerView = finderContainerView {
-//            containerView.dismiss(completion: {})
-//        } else {
-//            self.navigationController?.popViewController(animated: true)
-//        }
         if let column = finderColumn {
             column.dismiss(hidesFirst: hidesFirst, removalDuration: 0, completion: {})
         }
@@ -174,34 +168,33 @@ extension CardEditVC {
     
     func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
         view.endEditing(true)
-        moveContainerFocusHere()
     }
 }
 
 // MARK: Keyboard Shortcuts
-extension CardEditVC {
-    override var keyCommands: [UIKeyCommand]? {
-        if allowsKeyCommands {
-            return [
-                UIKeyCommand(title: "Go back", action: #selector(dismissView), input: "b", modifierFlags: [.command, .alternate], discoverabilityTitle: "Go back"),
-                UIKeyCommand(title: "Select page", action: #selector(selectPage), input: "p", modifierFlags: [.command, .alternate], discoverabilityTitle: "Select page"),
-                
-                UIKeyCommand(title: "Next Field / Save", action: #selector(goToNextTextView), input: "\r", modifierFlags: [.command], discoverabilityTitle: "Next Field / Save"),
-                UIKeyCommand(title: "Previous Field", action: #selector(backToPreviousTextView), input: "\r", modifierFlags: [.command, .shift], discoverabilityTitle: "Previous Field"),
-                
-                UIKeyCommand(title: "Archive/Recover", action: #selector(archivePressed), input: "a", modifierFlags: [.command, .shift], discoverabilityTitle: "Archive/Recover"),
-                UIKeyCommand(title: "Save", action: #selector(okPressed), input: "s", modifierFlags: [.command, .shift], discoverabilityTitle: "Save"),
-                UIKeyCommand(title: "Delete", action: #selector(deletePressed), input: "d", modifierFlags: [.command, .shift], discoverabilityTitle: "Delete"),
-                
-                UIKeyCommand(title: "Review: Very Hard", action: #selector(depressedAction), input: "1", modifierFlags: [.command], discoverabilityTitle: "Review: Very Hard"),
-                UIKeyCommand(title: "Review: Hard", action: #selector(sadAction), input: "2", modifierFlags: [.command], discoverabilityTitle: "Review: Hard"),
-                UIKeyCommand(title: "Review: Easy", action: #selector(okayAction), input: "3", modifierFlags: [.command], discoverabilityTitle: "Review: Easy"),
-                UIKeyCommand(title: "Review: Very Easy", action: #selector(happyAction), input: "4", modifierFlags: [.command], discoverabilityTitle: "Review: Very Easy"),
-            ]
-        }
-        return nil
-    }
-}
+//extension CardEditVC {
+//    override var keyCommands: [UIKeyCommand]? {
+//        if allowsKeyCommands {
+//            return [
+//                UIKeyCommand(title: "Go back", action: #selector(dismissView), input: "b", modifierFlags: [.command, .alternate], discoverabilityTitle: "Go back"),
+//                UIKeyCommand(title: "Select page", action: #selector(selectPage), input: "p", modifierFlags: [.command, .alternate], discoverabilityTitle: "Select page"),
+//
+//                UIKeyCommand(title: "Next Field / Save", action: #selector(goToNextTextView), input: "\r", modifierFlags: [.command], discoverabilityTitle: "Next Field / Save"),
+//                UIKeyCommand(title: "Previous Field", action: #selector(backToPreviousTextView), input: "\r", modifierFlags: [.command, .shift], discoverabilityTitle: "Previous Field"),
+//
+//                UIKeyCommand(title: "Archive/Recover", action: #selector(archivePressed), input: "a", modifierFlags: [.command, .shift], discoverabilityTitle: "Archive/Recover"),
+//                UIKeyCommand(title: "Save", action: #selector(okPressed), input: "s", modifierFlags: [.command, .shift], discoverabilityTitle: "Save"),
+//                UIKeyCommand(title: "Delete", action: #selector(deletePressed), input: "d", modifierFlags: [.command, .shift], discoverabilityTitle: "Delete"),
+//
+//                UIKeyCommand(title: "Review: Very Hard", action: #selector(depressedAction), input: "1", modifierFlags: [.command], discoverabilityTitle: "Review: Very Hard"),
+//                UIKeyCommand(title: "Review: Hard", action: #selector(sadAction), input: "2", modifierFlags: [.command], discoverabilityTitle: "Review: Hard"),
+//                UIKeyCommand(title: "Review: Easy", action: #selector(okayAction), input: "3", modifierFlags: [.command], discoverabilityTitle: "Review: Easy"),
+//                UIKeyCommand(title: "Review: Very Easy", action: #selector(happyAction), input: "4", modifierFlags: [.command], discoverabilityTitle: "Review: Very Easy"),
+//            ]
+//        }
+//        return nil
+//    }
+//}
 
 // MARK: Set Up Views
 extension CardEditVC {
@@ -389,39 +382,5 @@ extension CardEditVC {
 extension CardEditVC: UITextViewDelegate {
     func textViewDidChange(_ textView: UITextView) {
         self.updateCardInfo()
-    }
-    
-    func textViewDidBeginEditing(_ textView: UITextView) {
-        moveContainerFocusHere()
-    }
-    
-    private func moveContainerFocusHere() {
-        guard let container = finderContainerView else {return}
-        let finderVC = container.finderVC
-        let index = container.containerIndex()
-        finderVC.highlightedContainerIndex = index
-    }
-}
-
-extension CardEditVC {
-    func newContainerView(finderVC: FinderVC) -> FinderContainerView {
-        let container = FinderContainerView(customViewController: self, navigationBar: nil, finderVC: finderVC)
-        self.finderContainerView = container
-        container.navigationBar = navigationBar()
-        container.layout()
-        return container
-    }
-    
-    func navigationBar() -> UINavigationBar {
-        let navItem = UINavigationItem()
-        let title = UILabel()
-        title.text = "Edit Card"
-        navItem.titleView = title
-        navItem.rightBarButtonItems = [self.deleteButtonItem(), self.archiveButtonItem()]
-        
-        let navBar = UINavigationBar()
-        navBar.setItems([navItem], animated: true)
-        navBar.barTintColor = .myBackGroundColor()
-        return navBar
     }
 }

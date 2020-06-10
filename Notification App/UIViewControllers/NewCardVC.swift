@@ -12,7 +12,6 @@ import RickyFramework
 import FinderViewController
 
 class NewCardVC: UIViewController, UITextViewDelegate, WorkspaceAccessible {
-    unowned var finderContainerView: FinderContainerView?
     unowned var finderColumn: FinderColumn?
     private var managedObjectContext: NSManagedObjectContext?
     var allowsKeyCommands: Bool = false {
@@ -52,10 +51,9 @@ class NewCardVC: UIViewController, UITextViewDelegate, WorkspaceAccessible {
     
     private let addButton = UIButton.actionButton(text: "Add Card", action: #selector(addButtonPressed), backgroundColor: UIColor.pageButtonBackground(), usesAutoLayout: true)
     
-    convenience init(prechosenPage: Page? = nil, finderContainerView: FinderContainerView? = nil) {
+    convenience init(prechosenPage: Page? = nil) {
         self.init()
         self.chosenPage = prechosenPage
-        self.finderContainerView = finderContainerView
     }
 
     override func viewDidLoad() {
@@ -70,7 +68,7 @@ class NewCardVC: UIViewController, UITextViewDelegate, WorkspaceAccessible {
 
 extension NewCardVC {
     @objc private func addPagePressed() {
-//        self.present(UINavigationController(rootViewController: WorkspaceVC(workspaceAccessible: self)), animated: true, completion: nil)
+        
     }
     
     @objc private func goToNextTextView() {
@@ -125,11 +123,6 @@ extension NewCardVC {
     }
     
     @objc private func dismissView(hidesFirst: Bool) {
-//        if let containerView = finderContainerView {
-//            containerView.dismiss(completion: {})
-//        } else {
-//            self.navigationController?.popViewController(animated: true)
-//        }
         if let column = finderColumn {
             column.dismiss(hidesFirst: hidesFirst, removalDuration: 0, completion: {})
         }
@@ -287,30 +280,17 @@ extension NewCardVC: UIScrollViewDelegate {
 }
 
 // MARK: Keyboard Shortcuts
-extension NewCardVC {
-    override var keyCommands: [UIKeyCommand]? {
-        if allowsKeyCommands {
-            return [
-                UIKeyCommand(title: "Cancel", action: #selector(dismissView), input: "b", modifierFlags: [.command, .alternate], discoverabilityTitle: "Cancel"),
-                UIKeyCommand(title: "Select Page For New Card", action: #selector(addPagePressed), input: "p", modifierFlags: [.command, .alternate], discoverabilityTitle: "Select Page For New Card"),
-                
-                UIKeyCommand(title: "Next Field / Save", action: #selector(goToNextTextView), input: "\r", modifierFlags: [.command], discoverabilityTitle: "Next Field / Save"),
-                UIKeyCommand(title: "Previous Field", action: #selector(previousTF), input: "\r", modifierFlags: [.command, .shift], discoverabilityTitle: "Previous Field"),
-            ]
-        }
-        return nil
-    }
-}
-
-extension NewCardVC {
-    func newContainerView(finderVC: FinderVC) -> FinderContainerView {
-        let navbar = UINavigationBar()
-        let navItem = UINavigationItem(title: "Add Flashcard")
-        navbar.setItems([navItem], animated: true)
-        navbar.barTintColor = .myBackGroundColor()
-        let container = FinderContainerView(customViewController: self, navigationBar: navbar, finderVC: finderVC)
-        container.layout()
-        self.finderContainerView = container
-        return container
-    }
-}
+//extension NewCardVC {
+//    override var keyCommands: [UIKeyCommand]? {
+//        if allowsKeyCommands {
+//            return [
+//                UIKeyCommand(title: "Cancel", action: #selector(dismissView), input: "b", modifierFlags: [.command, .alternate], discoverabilityTitle: "Cancel"),
+//                UIKeyCommand(title: "Select Page For New Card", action: #selector(addPagePressed), input: "p", modifierFlags: [.command, .alternate], discoverabilityTitle: "Select Page For New Card"),
+//
+//                UIKeyCommand(title: "Next Field / Save", action: #selector(goToNextTextView), input: "\r", modifierFlags: [.command], discoverabilityTitle: "Next Field / Save"),
+//                UIKeyCommand(title: "Previous Field", action: #selector(previousTF), input: "\r", modifierFlags: [.command, .shift], discoverabilityTitle: "Previous Field"),
+//            ]
+//        }
+//        return nil
+//    }
+//}
