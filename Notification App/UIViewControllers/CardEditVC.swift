@@ -140,13 +140,6 @@ extension CardEditVC {
         }
     }
     
-    @objc  private func discardChangesPressed() {
-        let discardAlert = UIAlertController.discardChangesAlert {
-            self.putCardInfo()
-        }
-        self.present(discardAlert, animated: true, completion:  nil)
-    }
-    
     @objc private func goToNextTextView() {
         if frontTextView.isFirstResponder {
             backTextView.becomeFirstResponder()
@@ -224,7 +217,7 @@ extension CardEditVC {
         view.backgroundColor = UIColor.myBackGroundColor()
         view.addSubview(scrollView)
         
-        navigationItem.rightBarButtonItems = [discardChangesButtonItem(), archiveButtonItem(), deleteButtonItem()]
+        navigationItem.rightBarButtonItems = [archiveButtonItem(), deleteButtonItem()]
         
         NSLayoutConstraint.activate(scrollView.constraintsToFit(within: view.safeAreaLayoutGuide, insets: .zero))
         scrollView.translatesAutoresizingMaskIntoConstraints = false
@@ -372,10 +365,6 @@ extension CardEditVC {
     }
     func archiveButtonItem() -> UIBarButtonItem {
         return UIBarButtonItem(image: UIImage(systemName: "archivebox"), style: .plain, target: self, action: #selector(archivePressed))
-    }
-    
-    func discardChangesButtonItem() -> UIBarButtonItem {
-        return UIBarButtonItem(image: UIImage(systemName: "rectangle.fill.badge.xmark"), style: .plain, target: self, action: #selector(discardChangesPressed))
     }
 }
 
