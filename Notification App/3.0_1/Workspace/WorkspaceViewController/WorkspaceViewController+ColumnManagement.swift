@@ -35,6 +35,10 @@ extension WorkspaceViewController: FinderViewDelegate, FinderViewDataSource {
         }
     }
     
+    func finderViewController(_ finderViewController: FinderViewController, didMoveSelectionHorizontallyTo highlightedColumnIndex: Int) {
+        self.reloadSelectionColors()
+    }
+    
     func setPaging() {
         self.scrollView.isPagingEnabled = tableWidth == 1.0 && detailWidth == 1.0
     }

@@ -65,6 +65,9 @@ extension WorkspaceViewController {
         
         self.addKeyboardObserver()
         
+        self.selectionColor = UIColor.systemRed.withAlphaComponent(0.3)
+        self.semiSelectionColor = UIColor.systemRed.withAlphaComponent(0.15)
+        
         NotificationCenter.default.addObserver(self, selector: #selector(coreDataObjectsDidChange), name: Notification.Name.NSManagedObjectContextObjectsDidChange, object: nil)
     }
     

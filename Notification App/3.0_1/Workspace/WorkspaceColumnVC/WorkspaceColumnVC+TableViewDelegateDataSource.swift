@@ -75,6 +75,7 @@ extension WorkspaceColumnVC: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard let tableView = tableView as? ColumnTableView else {fatalError()}
         guard let page = tableView.information as? Page else {fatalError()}
+        self.workspaceViewController.highlightedColumnIndex = tableView.columnIndex // this will trigger finderViewController(_ finderViewController: FinderViewController, didMoveSelectionHorizontallyTo highlightedColumnIndex: Int)
         
         switch cellTypeFor(indexPath: indexPath) {
         case .childPage:
