@@ -241,15 +241,6 @@
 			path = WorkspaceViewController;
 			sourceTree = "<group>";
 		};
-		9CC2DE482477C6220025C361 /* 3.0_1 */ = {
-			isa = PBXGroup;
-			children = (
-				9CE98B732483BD8E00C854F5 /* CardsTab */,
-				9CA099ED248386EE001BFB69 /* Workspace */,
-			);
-			path = 3.0_1;
-			sourceTree = "<group>";
-		};
 		9CE98B732483BD8E00C854F5 /* CardsTab */ = {
 			isa = PBXGroup;
 			children = (
@@ -317,7 +308,8 @@
 				B8419631233AA00800E6558C /* Notification App.entitlements */,
 				9C7C893023D9100100930E99 /* UIViews */,
 				B8D9B2D22329A94B00348987 /* UIViewControllers */,
-				9CC2DE482477C6220025C361 /* 3.0_1 */,
+				9CA099ED248386EE001BFB69 /* Workspace */,
+				9CE98B732483BD8E00C854F5 /* CardsTab */,
 				B8D950532326C4A4001236AE /* Model */,
 				B8D9503C2326C48F001236AE /* AppDelegate.swift */,
 				B8D9503E2326C48F001236AE /* SceneDelegate.swift */,
