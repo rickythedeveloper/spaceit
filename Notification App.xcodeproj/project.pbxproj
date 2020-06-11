@@ -762,10 +762,10 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 400F8CFFE2A8363BF8311EBC /* Pods-Notification App.debug.xcconfig */;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon_2.2;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "Notification App/Notification App.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 67;
+				CURRENT_PROJECT_VERSION = 70;
 				DERIVE_MACCATALYST_PRODUCT_BUNDLE_IDENTIFIER = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"Notification App/Preview Content\"";
 				DEVELOPMENT_TEAM = G763XN7D9Q;
@@ -788,10 +788,10 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 888FEDAF84C7F11728D04CC7 /* Pods-Notification App.release.xcconfig */;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon_2.2;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "Notification App/Notification App.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 67;
+				CURRENT_PROJECT_VERSION = 70;
 				DERIVE_MACCATALYST_PRODUCT_BUNDLE_IDENTIFIER = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"Notification App/Preview Content\"";
 				DEVELOPMENT_TEAM = G763XN7D9Q;

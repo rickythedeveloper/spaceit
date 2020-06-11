@@ -38,6 +38,6 @@ extension UIColor {
     }
     
     static func tableViewSelectionColors() -> (full: UIColor, semi: UIColor) {
-        return (UIColor.systemRed.withAlphaComponent(0.2), UIColor.systemRed.withAlphaComponent(0.1))
+        return (UIColor.systemRed.withAlphaComponent(0.23), UIColor.systemRed.withAlphaComponent(0.15))
     }
 }

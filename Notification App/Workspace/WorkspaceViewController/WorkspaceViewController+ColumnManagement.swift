@@ -30,7 +30,7 @@ extension WorkspaceViewController: FinderViewDelegate, FinderViewDataSource {
             tableWidth = 1/3
             detailWidth = 2/3
         } else {
-            tableWidth = 2/4
+            tableWidth = 1/4
             detailWidth = 2/4
         }
     }
