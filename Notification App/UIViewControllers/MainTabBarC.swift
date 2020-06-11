@@ -41,15 +41,22 @@ class MainTabBarC: UITabBarController {
     override func viewDidAppear(_ animated: Bool) {
         let defaults = UserDefaults.standard
         let isFirstTime = "isFirstTime"
-        let hasSeenNewVersionInfo = "hasSeenNewVersionInfo_2.0" // Don't forget to change this.
+        let hasSeenNewVersionInfo = "hasSeenNewVersionInfo_3.0.0" // Don't forget to change this.
         
-        if defaults.value(forKey: isFirstTime) == nil {
-            self.presentIntro(startActionForButton: #selector(dismissIntro))
-            defaults.set(true, forKey: isFirstTime)
-            defaults.set(true, forKey: hasSeenNewVersionInfo)
-        } else if defaults.value(forKey: hasSeenNewVersionInfo) == nil {
+        let PRODUCTION = true
+        let NOTICE_TEST = false
+        
+        if PRODUCTION && !NOTICE_TEST {
+            if defaults.value(forKey: isFirstTime) == nil {
+                self.presentIntro(startActionForButton: #selector(dismissIntro))
+                defaults.set(true, forKey: isFirstTime)
+                defaults.set(true, forKey: hasSeenNewVersionInfo)
+            } else if defaults.value(forKey: hasSeenNewVersionInfo) == nil {
+                _ = NewVersionInfoV(superview: self.view)
+                defaults.set(true, forKey: hasSeenNewVersionInfo)
+            }
+        } else if NOTICE_TEST && !PRODUCTION {
             _ = NewVersionInfoV(superview: self.view)
-            defaults.set(true, forKey: hasSeenNewVersionInfo)
         }
     }
 }

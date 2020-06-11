@@ -8,13 +8,11 @@
 
 import UIKit
 
-
-
 class NewVersionInfoV: UIView {
     let containerV = UIView()
     let titleLabel = UILabel()
     let messageLabel = UILabel()
-    
+    let animationDuration = 0.5
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -38,18 +36,18 @@ private extension NewVersionInfoV {
     func setupVersionSpecificInfo() {
         titleLabel.text =
         """
-        New in Version 2.1
+        space it 3.0
         """
         
         messageLabel.text =
         """
-        - We now support auto-save when editing a card. Whenever leaving the editing page, the card information will automatically be saved.
+        - There have been major UI changes in the app. Workspace now adapts a Finder style experience that lets you get to a particular page more quickly, especially on iPads.
         
-        - We have replaced the "Save" button with a "Discard Changes" button in the editing page.
+        - Cards will now be saved as you edit in real time.
         
-        - Keyboard shortcuts for selecting a card as well as other shortcuts that were introduced in version 2.0! Long-press command to check the shortcuts you can use in that view.
+        - We have disabled keyboard shortcuts for now. It will be coming back in future updates!
         
-        - Minor bug fixes on UI
+        Let us know what you think. Your feedback is vital! Happy Spacing!
         """
     }
 }
@@ -64,18 +62,18 @@ private extension NewVersionInfoV {
         containerV.addSubview(titleLabel)
         containerV.addSubview(messageLabel)
         
-        containerV.backgroundColor = (UIColor.systemGray3).withAlphaComponent(0.95)
+        containerV.backgroundColor = (UIColor.systemGray3).withAlphaComponent(0.9)
         containerV.layer.cornerRadius = 20.0
         
         titleLabel.numberOfLines = 0
         titleLabel.textAlignment = .center
-        titleLabel.font = .preferredFont(forTextStyle: .title2)
+        titleLabel.font = .preferredFont(forTextStyle: .title1)
         
         messageLabel.numberOfLines = 0
     }
     
     func addConstraints() {
-        let padding: CGFloat = 10.0
+        let padding: CGFloat = 20.0
         
         NSLayoutConstraint.activate([
             containerV.widthAnchor.constraint(lessThanOrEqualTo: widthAnchor, multiplier: 0.8),
@@ -97,11 +95,13 @@ private extension NewVersionInfoV {
     }
     
     @objc func dismiss() {
-        UIView.animate(withDuration: 0.3, animations: {
-            self.alpha = 0.0
-        }, completion: { (completed) in
-            self.removeFromSuperview()
+        UIView.animate(withDuration: animationDuration, animations: {
+            self.alpha = 0
         })
+        
+        Timer.scheduledTimer(withTimeInterval: animationDuration, repeats: false) { (timer) in
+            self.removeFromSuperview()
+        }
     }
 }
 
@@ -118,8 +118,8 @@ extension NewVersionInfoV {
         topAnchor.constraint(equalTo: superview.topAnchor).isActive = true
         bottomAnchor.constraint(equalTo: superview.bottomAnchor).isActive = true
         
-        UIView.animate(withDuration: 0.3, animations: {
-            self.alpha = 1.0
+        UIView.animate(withDuration: animationDuration, animations: {
+            self.alpha = 1
         })
     }
 }
