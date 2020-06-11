@@ -20,12 +20,13 @@ class CardEditVC: UIViewController, UIScrollViewDelegate, WorkspaceAccessible, K
     unowned var finderColumn: FinderColumn?
     
     internal var chosenPage: Page? {
-        willSet(newPage) {
-            if newPage == nil {
-                pageButton.setTitle("Select page for this button", for: .normal)
+        didSet {
+            if chosenPage == nil {
+                pageButton.setTitle("Select page for this card", for: .normal)
             } else {
-                pageButton.setTitle(newPage!.breadCrumb(), for: .normal)
+                pageButton.setTitle(chosenPage!.breadCrumb(), for: .normal)
             }
+            self.updateCardInfo()
         }
     }
     
@@ -63,6 +64,7 @@ class CardEditVC: UIViewController, UIScrollViewDelegate, WorkspaceAccessible, K
     
     var task: TaskSaved
     var managedObjectContext: NSManagedObjectContext
+    var readyToUpdate: Bool = false
     
     var onDismiss: () -> Void
 
@@ -85,6 +87,7 @@ class CardEditVC: UIViewController, UIScrollViewDelegate, WorkspaceAccessible, K
         super.viewDidLoad()
         setupViews()
         putCardInfo()
+        readyToUpdate = true
     }
     
     override func viewDidDisappear(_ animated: Bool) {
@@ -95,11 +98,10 @@ class CardEditVC: UIViewController, UIScrollViewDelegate, WorkspaceAccessible, K
 // MARK: Core Data
 extension CardEditVC {
     private func updateCardInfo() {
+        guard readyToUpdate else {return}
         self.task.question = self.frontTextView.text
         self.task.answer = self.backTextView.text
-        if chosenPage != nil {
-            self.task.page = chosenPage!
-        }
+        self.task.page = chosenPage
         self.managedObjectContext.saveContext()
     }
 }
@@ -108,7 +110,7 @@ extension CardEditVC {
 extension CardEditVC {
     
     @objc private func selectPage() {
-        
+        self.present(WorkspaceViewController(workspaceAccessible: self), animated: true, completion: nil)
     }
     
     @objc private func deletePressed() {
