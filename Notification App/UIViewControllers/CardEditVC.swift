@@ -47,9 +47,9 @@ class CardEditVC: UIViewController, UIScrollViewDelegate, WorkspaceAccessible, K
     
     let frontLabel = UILabel.front()
     let frontTextView = UITextView.cardSIdeTV()
-    
     let backLabel = UILabel.back()
     let backTextView = UITextView.cardSIdeTV()
+    var infoUpdateTimer: Timer?
     
     var actionButtonContainer = UIStackView()
     
@@ -381,6 +381,9 @@ extension CardEditVC {
 
 extension CardEditVC: UITextViewDelegate {
     func textViewDidChange(_ textView: UITextView) {
-        self.updateCardInfo()
+        infoUpdateTimer?.invalidate()
+        infoUpdateTimer = Timer.scheduledTimer(withTimeInterval: 0.5, repeats: false, block: { (timer) in
+            self.updateCardInfo()
+        })
     }
 }

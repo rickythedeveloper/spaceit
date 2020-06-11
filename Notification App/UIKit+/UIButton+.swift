@@ -51,25 +51,25 @@ extension UIButton {
     
     static func reviewButton(task: TaskSaved, ease: Int, cardEditVC: CardEditVC, action: Selector, usesAutolayout: Bool) -> UIButton {
         let nextWaitTime = String.time(timeInterval: task.nextWaitTime(ease: ease))
-        var bgColor: UIColor
+        var buttonColor: UIColor
         var description: String
         switch ease {
         case 1:
-            bgColor = UIColor(red: 1.0, green: 0, blue: 0, alpha: 1)
+            buttonColor = UIColor(red: 1.0, green: 0, blue: 0, alpha: 1)
             description = "Very hard"
             break
         case 2:
-            bgColor = UIColor(red: 1, green: 102/255, blue: 0, alpha: 1)
+            buttonColor = UIColor(red: 1, green: 102/255, blue: 0, alpha: 1)
             description = "Hard"
             break
         case 3:
             let brightness: CGFloat = 0.9
-            bgColor = UIColor(red: 1*brightness, green: 208/255*brightness, blue: 0, alpha: 1)
+            buttonColor = UIColor(red: 1*brightness, green: 208/255*brightness, blue: 0, alpha: 1)
             description = "Okay"
             break
         case 4:
             let brightness: CGFloat = 0.9
-            bgColor = UIColor(red: 34/255*brightness, green: 1*brightness, blue: 0, alpha: 1)
+            buttonColor = UIColor(red: 34/255*brightness, green: 1*brightness, blue: 0, alpha: 1)
             description = "Easy"
             break
         default:
@@ -81,12 +81,14 @@ extension UIButton {
         descLabel.font = UIFont.preferredFont(forTextStyle: .body)
         descLabel.textAlignment = .center
         descLabel.adjustsFontSizeToFitWidth = true
+        descLabel.textColor = buttonColor
         
         let waitLabel = UILabel()
         waitLabel.text = nextWaitTime
         waitLabel.font = UIFont.preferredFont(forTextStyle: .caption1)
         waitLabel.textAlignment = .center
         waitLabel.adjustsFontSizeToFitWidth = true
+        waitLabel.textColor = buttonColor
         
         let stack = UIStackView(arrangedSubviews: [descLabel, waitLabel])
         stack.translatesAutoresizingMaskIntoConstraints = false
@@ -96,8 +98,10 @@ extension UIButton {
         
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = !usesAutolayout
-        button.backgroundColor = bgColor
+        button.backgroundColor = .clear
         button.layer.cornerRadius = 10.0
+        button.layer.borderColor = buttonColor.cgColor
+        button.layer.borderWidth = 1.0
         button.addSubview(stack)
         button.addTarget(nil, action: action, for: .touchUpInside)
         

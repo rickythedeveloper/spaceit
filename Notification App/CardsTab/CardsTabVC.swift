@@ -114,4 +114,8 @@ extension CardsTabVC: FinderViewDelegate, FinderViewDataSource {
         }
         return finderColumn.widthAnchor.constraint(equalTo: view.safeAreaLayoutGuide.widthAnchor, multiplier: multiplier)
     }
+    
+    func finderViewController(_ finderViewController: FinderViewController, didMoveSelectionHorizontallyTo highlightedColumnIndex: Int) {
+        self.reloadSelectionColors()
+    }
 }

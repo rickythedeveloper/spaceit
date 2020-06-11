@@ -16,6 +16,8 @@ extension UITextView {
         tv.font = UIFont.preferredFont(forTextStyle: .title3)
         tv.layer.cornerRadius = 10
         tv.layer.masksToBounds = true
+        tv.layer.borderColor = UIColor.myTextColor().withAlphaComponent(0.2).cgColor
+        tv.layer.borderWidth = 1
         return tv
     }
 }

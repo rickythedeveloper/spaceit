@@ -36,6 +36,15 @@ class CardsListVC: UIViewController {
         return sc
     }()
     
+    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
+        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
+        tableView = ColumnTableView()
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override func viewDidLoad() {
         initialSetup()
         setupNavigationBar()
@@ -46,7 +55,6 @@ extension CardsListVC {
     private func initialSetup() {
         updateShownCards(searchText: "", scopeIndex: 0)
         
-        tableView = ColumnTableView()
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.dataSource = self
         tableView.delegate = self
@@ -90,7 +98,7 @@ extension CardsListVC {
     @objc private func coreDataObjectsDidChange() {
         DispatchQueue.main.async {
             self.updateShownCards(searchText: self.searchController.searchBar.text ?? "", scopeIndex: self.searchController.searchBar.selectedScopeButtonIndex)
-            self.tableView.reloadData()
+            self.tableView.reloadDataSavingSelections()
         }
     }
 }
@@ -131,6 +139,8 @@ extension CardsListVC: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard let tableView = tableView as? ColumnTableView else {fatalError()}
+        self.cardsTabVC?.highlightedColumnIndex = tableView.columnIndex
         self.cardsTabVC?.showCardDetail(card: shownCards[indexPath.row])
     }
 }
