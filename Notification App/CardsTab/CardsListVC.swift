@@ -122,8 +122,8 @@ extension CardsListVC: UITableViewDelegate, UITableViewDataSource {
         switch sortSystem {
         case .dueDate:
             if let dueDateCell = tableView.dequeueReusableCell(withIdentifier: sortSystem.rawValue, for: indexPath) as? UpcomingCardListCell {
-                dueDateCell.isFirst = indexPath.row == 0
                 dueDateCell.task = shownCards[cardIndex]
+                dueDateCell.isFirst = indexPath.row == 0
                 return dueDateCell
             }
             break
@@ -135,8 +135,8 @@ extension CardsListVC: UITableViewDelegate, UITableViewDataSource {
             break
         case .creationDate:
             if let creationCell = tableView.dequeueReusableCell(withIdentifier: sortSystem.rawValue, for: indexPath) as? CreationDateCardListCell {
-                creationCell.isFirst = indexPath.row == 0
                 creationCell.task = shownCards[cardIndex]
+                creationCell.isFirst = indexPath.row == 0
                 return creationCell
             }
             break

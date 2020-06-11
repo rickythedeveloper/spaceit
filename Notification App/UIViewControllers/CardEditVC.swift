@@ -80,7 +80,7 @@ class CardEditVC: UIViewController, UIScrollViewDelegate, WorkspaceAccessible, K
     }
     
     deinit {
-        print("Card Edit VC is being destroyed")
+        print("deinit: CardEditVC")
     }
     
     override func viewDidLoad() {
@@ -88,10 +88,6 @@ class CardEditVC: UIViewController, UIScrollViewDelegate, WorkspaceAccessible, K
         setupViews()
         putCardInfo()
         readyToUpdate = true
-    }
-    
-    override func viewDidDisappear(_ animated: Bool) {
-        updateCardInfo()
     }
 }
 
@@ -116,6 +112,7 @@ extension CardEditVC {
     @objc private func deletePressed() {
         let deleteAlert = UIAlertController.deleteAlert {
             self.managedObjectContext.delete(self.task)
+            self.managedObjectContext.saveContext()
             self.dismissView(hidesFirst: true)
         }
         
@@ -125,6 +122,7 @@ extension CardEditVC {
     @objc private func archivePressed() {
         let action = {
             self.task.isActive.toggle()
+            self.managedObjectContext.saveContext()
             self.dismissView(hidesFirst: true)
         }
         let alert = self.task.isActive ? UIAlertController.archiveAlert(action: action) : UIAlertController.recoverAlert(action: action)
@@ -314,6 +312,7 @@ extension CardEditVC {
     
     private func reviewWithEase(_ ease: Int) {
         self.task.reviewed(ease: ease)
+        self.managedObjectContext.saveContext()
         self.registerNotification(task: self.task)
         self.dismissView(hidesFirst: true)
     }

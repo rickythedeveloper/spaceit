@@ -74,10 +74,8 @@ extension CardsTabVC {
     }
     
     func removeSecondColumnAndAdd(column: FinderColumn) {
-        self.removeColumn(under: 1, animationDuration: 0, completion: {
-            self.appendColumn(finderColumn: column, animationInterval: 0, completion: {
-                self.showColumn(column, on: .trailingSide, completion: {})
-            })
+        self.replaceColumns(under: 1, with: column, completion: {
+            self.showColumn(at: 1, on: .trailingSide, completion: {})
         })
     }
     
