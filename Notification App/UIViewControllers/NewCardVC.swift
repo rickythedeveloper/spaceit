@@ -64,6 +64,10 @@ class NewCardVC: UIViewController, UITextViewDelegate, WorkspaceAccessible {
     override func viewDidAppear(_ animated: Bool) {
         frontTV.becomeFirstResponder()
     }
+    
+    deinit {
+        print("deinit: NewCardVC")
+    }
 }
 
 extension NewCardVC {
