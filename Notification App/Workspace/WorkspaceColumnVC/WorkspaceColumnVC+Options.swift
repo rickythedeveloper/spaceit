@@ -10,7 +10,7 @@ import UIKit
 
 // MARK: Options pressed
 extension WorkspaceColumnVC {
-    func setNavigationBar() {
+    func setupNavigationBar() {
         if columnIndex > 0 {
             navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "chevron.left"), style: .plain, target: self, action: #selector(backButtonPressed))
         }
@@ -21,6 +21,12 @@ extension WorkspaceColumnVC {
         }
         self.setTitle((tableView.information as? Page)?.name)
         navigationController?.navigationBar.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(navTitlePressed)))
+        
+        navigationController?.navigationBar.barTintColor = .myBackGroundColor()
+    }
+    
+    func setupTabBar() {
+        tabBarController?.tabBar.barTintColor = .myBackGroundColor()
     }
     
     @objc private func backButtonPressed() {

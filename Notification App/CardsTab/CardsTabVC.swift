@@ -47,6 +47,8 @@ extension CardsTabVC {
         let cardsNavC = UINavigationController(rootViewController: cardsListVC)
         let column = FinderColumn(finderViewController: self, viewController: cardsNavC, finderTableView: cardsListVC.tableView)
         self.appendColumn(finderColumn: column, animationInterval: 0.0, completion: {})
+        
+        (self.selectionColor, self.semiSelectionColor) = UIColor.tableViewSelectionColors()
     }
     
     private func viewWidthUpdated(width: CGFloat) {

@@ -25,6 +25,7 @@ class MainTabBarC: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.delegate = self
+        self.setupBackground()
         
         let listTabBarItem = UITabBarItem(title: "Cards", image: UIImage(systemName: "square.stack.3d.up"), tag: 0)
         let cardFinderVC = CardsTabVC()
@@ -50,6 +51,13 @@ class MainTabBarC: UITabBarController {
             _ = NewVersionInfoV(superview: self.view)
             defaults.set(true, forKey: hasSeenNewVersionInfo)
         }
+    }
+}
+
+private extension MainTabBarC {
+    func setupBackground() {
+        self.view.backgroundColor = .backgroundGray()
+        self.setBackgroundLogo(maxSizeMultiplier: 0.3)
     }
 }
 

@@ -36,4 +36,8 @@ extension UIColor {
     static func archivedGray() -> (body: UIColor, desc: UIColor) {
         return ((UIColor.systemGray).withAlphaComponent(0.5), (UIColor.systemGray).withAlphaComponent(0.4))
     }
+    
+    static func tableViewSelectionColors() -> (full: UIColor, semi: UIColor) {
+        return (UIColor.systemRed.withAlphaComponent(0.2), UIColor.systemRed.withAlphaComponent(0.1))
+    }
 }

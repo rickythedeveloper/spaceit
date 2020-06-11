@@ -48,6 +48,7 @@ class CardsListVC: UIViewController {
     override func viewDidLoad() {
         initialSetup()
         setupNavigationBar()
+        setupTabBar()
     }
 }
 
@@ -74,6 +75,12 @@ extension CardsListVC {
         
         let newCardButton = UIBarButtonItem(image: UIImage(systemName: "plus"), style: .plain, target: self, action: #selector(newCardButtonTapped))
         navigationItem.rightBarButtonItem = newCardButton
+        
+        navigationController?.navigationBar.barTintColor = .myBackGroundColor()
+    }
+    
+    private func setupTabBar() {
+        tabBarController?.tabBar.barTintColor = .myBackGroundColor()
     }
     
     func updateShownCards(searchText: String, scopeIndex: Int) {

@@ -45,7 +45,8 @@ class WorkspaceColumnVC: UIViewController, WorkspaceAccessible {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        setNavigationBar()
+        setupNavigationBar()
+        setupTabBar()
     }
     
     override func viewDidLoad() {
