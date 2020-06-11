@@ -30,7 +30,11 @@ extension WorkspaceColumnVC: UITableViewDelegate, UITableViewDataSource {
         case 0:
             return page.numberOfChildren() + 1
         default:
-            return page.numberOfCards() + 1
+            if self.workspaceAccessible == nil {
+                return page.numberOfCards() + 1
+            } else {
+                return page.numberOfCards() // if accessed by WorkspaceAccessible, don't show new card cell
+            }
         }
     }
     
@@ -66,9 +70,8 @@ extension WorkspaceColumnVC: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
-        if cellTypeFor(indexPath: indexPath) == .addPage {
-            return nil
-        }
+        if cellTypeFor(indexPath: indexPath) == .addPage {return nil} // cannot select add card cell
+        if workspaceAccessible != nil && cellTypeFor(indexPath: indexPath) == .childCard {return nil} // if accessed by WorkspaceAccessible, don't let them select child card
         return indexPath
     }
     
@@ -113,17 +116,18 @@ extension WorkspaceColumnVC: UITableViewDelegate, UITableViewDataSource {
     }
     
     private func cellTypeFor(indexPath: IndexPath) -> CellType {
+        guard let page = tableView.information as? Page else {return .childPage}
         if indexPath.section == 0 { // child page section
-            if indexPath.row == tableView.numberOfRows(inSection: indexPath.section) - 1 { // last row
-                return .addPage
-            } else { // rest
+            if indexPath.row < page.numberOfChildren() {
                 return .childPage
+            } else {
+                return .addPage
             }
         } else { // card section
-            if indexPath.row == tableView.numberOfRows(inSection: indexPath.section) - 1 { // last row
-                return .addCard
-            } else { // rest
+            if indexPath.row < page.numberOfCards() {
                 return .childCard
+            } else {
+                return .addCard
             }
         }
     }
