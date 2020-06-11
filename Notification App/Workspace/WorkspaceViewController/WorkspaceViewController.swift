@@ -58,7 +58,7 @@ class WorkspaceViewController: FinderViewController, KeyboardGuardian {
 extension WorkspaceViewController {
     private func initialSetup() {
         let pages = Array.pagesFetched(managedObjectContext: managedObjectContext)
-        guard pages.count > 0 else {return}
+        guard pages.count > 0 else {noPageDetected(); return}
         guard let topPage = pages.topPageHandlingClashes() else {return}
         let column = columnFor(page: topPage)
         self.appendColumn(finderColumn: column, animationInterval: 0, completion: {})
@@ -68,6 +68,17 @@ extension WorkspaceViewController {
         (self.selectionColor, self.semiSelectionColor) = UIColor.tableViewSelectionColors()
         
         NotificationCenter.default.addObserver(self, selector: #selector(coreDataObjectsDidChange), name: Notification.Name.NSManagedObjectContextObjectsDidChange, object: nil)
+    }
+    
+    private func noPageDetected() {
+        let ac = UIAlertController.noWorkspaceAlert(createPage: {
+            let _ = Page.createPageInContext(name: "My workspace", context: self.managedObjectContext)
+            self.managedObjectContext.saveContext(completion: {
+                self.initialSetup()
+            })
+        })
+        
+        self.present(ac, animated: true, completion: nil)
     }
     
     func keyboardWillChangeFrame(notification: NSNotification) {
