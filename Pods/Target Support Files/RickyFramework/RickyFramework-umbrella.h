@@ -10,7 +10,8 @@
 #endif
 #endif
 
+#import "RickyFramework.h"
 
-FOUNDATION_EXPORT double SwiftyStoreKitVersionNumber;
-FOUNDATION_EXPORT const unsigned char SwiftyStoreKitVersionString[];
+FOUNDATION_EXPORT double RickyFrameworkVersionNumber;
+FOUNDATION_EXPORT const unsigned char RickyFrameworkVersionString[];
 

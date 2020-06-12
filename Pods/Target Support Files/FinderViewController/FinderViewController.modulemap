@@ -1,0 +1,6 @@
+framework module FinderViewController {
+  umbrella header "FinderViewController-umbrella.h"
+
+  export *
+  module * { export * }
+}

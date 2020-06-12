@@ -1,0 +1,21 @@
+{
+  "name": "RickyFramework",
+  "version": "1.0.0",
+  "summary": "A short description",
+  "description": "Description of the framework",
+  "homepage": "http://EXAMPLE/RickyFramework",
+  "license": "MIT",
+  "authors": {
+    "Rintaro Kawagishi": "rintaro.kawagishi.developer@gmail.com"
+  },
+  "platforms": {
+    "ios": "13.0"
+  },
+  "swift_versions": "5",
+  "source": {
+    "path": "."
+  },
+  "source_files": "RickyFramework/**/*.{h,m,swift}",
+  "exclude_files": "Classes/Exclude",
+  "swift_version": "5"
+}

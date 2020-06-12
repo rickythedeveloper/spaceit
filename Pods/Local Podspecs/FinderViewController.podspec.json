@@ -1,0 +1,26 @@
+{
+  "name": "FinderViewController",
+  "version": "1.0.0",
+  "summary": "FinderViewController provides a very easy way of creating a view like a Finder window on a Mac.",
+  "description": "This will help you develop faster",
+  "homepage": "https://github.com/rickythedeveloper/FinderViewController",
+  "license": "MIT",
+  "authors": {
+    "Rintaro Kawagishi": "rintaro.kawagishi.developer@gmail.com"
+  },
+  "platforms": {
+    "ios": "13.0"
+  },
+  "swift_versions": "5.0",
+  "source": {
+    "path": "."
+  },
+  "source_files": "FinderViewController/**/*.{h,m,swift}",
+  "exclude_files": "Classes/Exclude",
+  "dependencies": {
+    "RickyFramework": [
+      "~> 1.0"
+    ]
+  },
+  "swift_version": "5.0"
+}
