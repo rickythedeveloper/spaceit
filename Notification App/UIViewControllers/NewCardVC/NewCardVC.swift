@@ -42,7 +42,7 @@ class NewCardVC: UIViewController, UITextViewDelegate, WorkspaceAccessible {
     let frontTV = UITextView.cardSIdeTV()
     private let frontPlaceholder = "Front text"
     private let backLabel = UILabel.back()
-    private let backTV = UITextView.cardSIdeTV()
+    let backTV = UITextView.cardSIdeTV()
     private let backPlaceholder = "Back text"
     
     private var tvMaxY: CGFloat = 0.0
@@ -71,7 +71,7 @@ class NewCardVC: UIViewController, UITextViewDelegate, WorkspaceAccessible {
 }
 
 extension NewCardVC {
-    @objc private func addPagePressed() {
+    @objc func addPagePressed() {
         self.present(WorkspaceViewController(workspaceAccessible: self), animated: true, completion: nil)
     }
     
@@ -95,7 +95,7 @@ extension NewCardVC {
         }
     }
     
-    @objc private func addButtonPressed() {
+    @objc func addButtonPressed() {
         guard frontTV.text.hasContent() && !showingPlaceholder(textView: frontTV) else {
             self.present(UIAlertController.noContentAlert(), animated: true, completion: nil)
             return

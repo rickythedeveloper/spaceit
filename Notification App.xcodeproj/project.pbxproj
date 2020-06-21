@@ -28,6 +28,8 @@
 		9C79C1F8248FCE440057CEA7 /* WorkspaceColumnVC+Options.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C79C1F7248FCE440057CEA7 /* WorkspaceColumnVC+Options.swift */; };
 		9C7C893223D9103800930E99 /* NewCardVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C7C893123D9103800930E99 /* NewCardVC.swift */; };
 		9C7C893423D910DD00930E99 /* UITextView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C7C893323D910DD00930E99 /* UITextView+.swift */; };
+		9C80E8ED249F1C5E003A275F /* NewCardVC+Keyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C80E8EC249F1C5E003A275F /* NewCardVC+Keyboard.swift */; };
+		9C80E8F0249F217F003A275F /* CardEditVC+Keyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C80E8EF249F217F003A275F /* CardEditVC+Keyboard.swift */; };
 		9C9168DF24319E3500AD31A9 /* UIImageView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C9168DE24319E3500AD31A9 /* UIImageView+.swift */; };
 		9C9168E12431A24200AD31A9 /* CardListCellStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C9168E02431A24200AD31A9 /* CardListCellStyle.swift */; };
 		9C97674B23E24D81004F4E90 /* AlphabeticalCardListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C97674A23E24D81004F4E90 /* AlphabeticalCardListCell.swift */; };
@@ -105,6 +107,8 @@
 		9C79C1F7248FCE440057CEA7 /* WorkspaceColumnVC+Options.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WorkspaceColumnVC+Options.swift"; sourceTree = "<group>"; };
 		9C7C893123D9103800930E99 /* NewCardVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewCardVC.swift; sourceTree = "<group>"; };
 		9C7C893323D910DD00930E99 /* UITextView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextView+.swift"; sourceTree = "<group>"; };
+		9C80E8EC249F1C5E003A275F /* NewCardVC+Keyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NewCardVC+Keyboard.swift"; sourceTree = "<group>"; };
+		9C80E8EF249F217F003A275F /* CardEditVC+Keyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CardEditVC+Keyboard.swift"; sourceTree = "<group>"; };
 		9C9168DE24319E3500AD31A9 /* UIImageView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+.swift"; sourceTree = "<group>"; };
 		9C9168E02431A24200AD31A9 /* CardListCellStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardListCellStyle.swift; sourceTree = "<group>"; };
 		9C97674A23E24D81004F4E90 /* AlphabeticalCardListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlphabeticalCardListCell.swift; sourceTree = "<group>"; };
@@ -213,6 +217,24 @@
 				9C38E6D2243D87680012FC59 /* NewVersionInfoV.swift */,
 			);
 			path = UIViews;
+			sourceTree = "<group>";
+		};
+		9C80E8EE249F1C67003A275F /* NewCardVC */ = {
+			isa = PBXGroup;
+			children = (
+				9C7C893123D9103800930E99 /* NewCardVC.swift */,
+				9C80E8EC249F1C5E003A275F /* NewCardVC+Keyboard.swift */,
+			);
+			path = NewCardVC;
+			sourceTree = "<group>";
+		};
+		9C80E8F1249F2184003A275F /* CardEditVC */ = {
+			isa = PBXGroup;
+			children = (
+				B8099DE823C0BE4300A56471 /* CardEditVC.swift */,
+				9C80E8EF249F217F003A275F /* CardEditVC+Keyboard.swift */,
+			);
+			path = CardEditVC;
 			sourceTree = "<group>";
 		};
 		9C9D3B80249DB2FA000ED111 /* Service */ = {
@@ -359,9 +381,9 @@
 		B8D9B2D22329A94B00348987 /* UIViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				B8099DE823C0BE4300A56471 /* CardEditVC.swift */,
+				9C80E8F1249F2184003A275F /* CardEditVC */,
 				B8D9B2D32329A97100348987 /* GADBannerViewController.swift */,
-				9C7C893123D9103800930E99 /* NewCardVC.swift */,
+				9C80E8EE249F1C67003A275F /* NewCardVC */,
 				9CCB588023F2C590002C3B36 /* MainTabBarC.swift */,
 				9C7310842433503C008E9820 /* Introduction */,
 			);
@@ -577,11 +599,13 @@
 				9C3B271123CF11C400CC5A13 /* Page+CoreDataClass.swift in Sources */,
 				9CA099F524838F30001BFB69 /* WorkspaceViewController+Factory.swift in Sources */,
 				B844EDB023C3471C0033D657 /* UIButton+.swift in Sources */,
+				9C80E8F0249F217F003A275F /* CardEditVC+Keyboard.swift in Sources */,
 				9CC51AF223EB8C8800636842 /* NSManagedObjectContext+.swift in Sources */,
 				B8845807232BCEDE00B5CC3C /* Array+.swift in Sources */,
 				9C9D3B84249DB50E000ED111 /* WorkspaceViewController+Keyboard.swift in Sources */,
 				9C731083243347C3008E9820 /* IntroPageVC.swift in Sources */,
 				9C9168DF24319E3500AD31A9 /* UIImageView+.swift in Sources */,
+				9C80E8ED249F1C5E003A275F /* NewCardVC+Keyboard.swift in Sources */,
 				B85C07DC23379E6400200B07 /* FetchedResults+.swift in Sources */,
 				9CF8388624399C3F00A4CE59 /* LabelWithLinks.swift in Sources */,
 				9C79C1F8248FCE440057CEA7 /* WorkspaceColumnVC+Options.swift in Sources */,
