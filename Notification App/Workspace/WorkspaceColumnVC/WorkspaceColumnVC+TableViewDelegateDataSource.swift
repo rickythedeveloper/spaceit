@@ -69,6 +69,12 @@ extension WorkspaceColumnVC: UITableViewDelegate, UITableViewDataSource {
         return cell
     }
     
+    func tableView(_ tableView: UITableView, shouldHighlightRowAt indexPath: IndexPath) -> Bool {
+        if cellTypeFor(indexPath: indexPath) == .addPage {return false} // cannot select add card cell
+        if workspaceAccessible != nil && cellTypeFor(indexPath: indexPath) == .childCard {return false} // if accessed by WorkspaceAccessible, don't let them select child card
+        return true
+    }
+    
     func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
         if cellTypeFor(indexPath: indexPath) == .addPage {return nil} // cannot select add card cell
         if workspaceAccessible != nil && cellTypeFor(indexPath: indexPath) == .childCard {return nil} // if accessed by WorkspaceAccessible, don't let them select child card
@@ -80,32 +86,32 @@ extension WorkspaceColumnVC: UITableViewDelegate, UITableViewDataSource {
         guard let page = tableView.information as? Page else {fatalError()}
         self.workspaceViewController.highlightedColumnIndex = tableView.columnIndex // this will trigger finderViewController(_ finderViewController: FinderViewController, didMoveSelectionHorizontallyTo highlightedColumnIndex: Int)
         
+        // Generate the next column. Hide excess columns. Replace unnecessary columns with the new column. Show the new column.
+        if let nextColumn = nextColumnOnDidSelectRow(at: indexPath, inside: page) {
+            self.workspaceViewController.hideColumn(at: self.columnIndex + 2, on: .trailingSide, completion: {
+                self.workspaceViewController.replaceColumns(under: self.columnIndex + 1, with: nextColumn, completion: {
+                    self.workspaceViewController.showColumn(nextColumn, on: .trailingSide, completion: {})
+                })
+            })
+        }
+    }
+    
+    func nextColumnOnDidSelectRow(at indexPath: IndexPath, inside page: Page) -> FinderColumn? {
         switch cellTypeFor(indexPath: indexPath) {
         case .childPage:
             let childPage = self.shownChildPages(of: page)[indexPath.row]
             let childColumn = self.workspaceViewController.columnFor(page: childPage)
-            self.showNewColumnReplacing(under: self.columnIndex + 1, with: childColumn, completion: {})
-            break
+            return childColumn
         case .addPage:
-            break
+            return nil
         case .childCard:
             let childCard = self.shownChildCards(of: page)[indexPath.row]
             let cardColumn = self.workspaceViewController.column(for: childCard)
-            self.showNewColumnReplacing(under: self.columnIndex + 1, with: cardColumn, completion: {})
-            break
+            return cardColumn
         case .addCard:
             let column = self.workspaceViewController.columnForNewCardVC(under: page)
-            self.showNewColumnReplacing(under: self.columnIndex + 1, with: column, completion: {})
-            break
+            return column
         }
-    }
-    
-    private func showNewColumnReplacing(under index: Int, with column: FinderColumn, completion: @escaping () -> Void) {
-        self.workspaceViewController.hideColumn(at: index + 1, on: .trailingSide, completion: {
-            self.workspaceViewController.replaceColumns(under: index, with: column, completion: {
-                self.workspaceViewController.showColumn(column, on: .trailingSide, completion: {})
-            })
-        })
     }
     
     private enum CellType {

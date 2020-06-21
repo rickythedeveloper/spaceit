@@ -31,6 +31,8 @@
 		9C9168DF24319E3500AD31A9 /* UIImageView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C9168DE24319E3500AD31A9 /* UIImageView+.swift */; };
 		9C9168E12431A24200AD31A9 /* CardListCellStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C9168E02431A24200AD31A9 /* CardListCellStyle.swift */; };
 		9C97674B23E24D81004F4E90 /* AlphabeticalCardListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C97674A23E24D81004F4E90 /* AlphabeticalCardListCell.swift */; };
+		9C9D3B82249DB325000ED111 /* UserSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C9D3B81249DB325000ED111 /* UserSettings.swift */; };
+		9C9D3B84249DB50E000ED111 /* WorkspaceViewController+Keyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C9D3B83249DB50E000ED111 /* WorkspaceViewController+Keyboard.swift */; };
 		9CA099EA24837CA3001BFB69 /* WorkspaceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CA099E924837CA3001BFB69 /* WorkspaceViewController.swift */; };
 		9CA099EC24837EA0001BFB69 /* WorkspaceColumnVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CA099EB24837EA0001BFB69 /* WorkspaceColumnVC.swift */; };
 		9CA099F124838726001BFB69 /* WorkspaceColumnVC+TableViewDelegateDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CA099F024838726001BFB69 /* WorkspaceColumnVC+TableViewDelegateDataSource.swift */; };
@@ -106,6 +108,8 @@
 		9C9168DE24319E3500AD31A9 /* UIImageView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+.swift"; sourceTree = "<group>"; };
 		9C9168E02431A24200AD31A9 /* CardListCellStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardListCellStyle.swift; sourceTree = "<group>"; };
 		9C97674A23E24D81004F4E90 /* AlphabeticalCardListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlphabeticalCardListCell.swift; sourceTree = "<group>"; };
+		9C9D3B81249DB325000ED111 /* UserSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSettings.swift; sourceTree = "<group>"; };
+		9C9D3B83249DB50E000ED111 /* WorkspaceViewController+Keyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WorkspaceViewController+Keyboard.swift"; sourceTree = "<group>"; };
 		9CA099E924837CA3001BFB69 /* WorkspaceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkspaceViewController.swift; sourceTree = "<group>"; };
 		9CA099EB24837EA0001BFB69 /* WorkspaceColumnVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkspaceColumnVC.swift; sourceTree = "<group>"; };
 		9CA099F024838726001BFB69 /* WorkspaceColumnVC+TableViewDelegateDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WorkspaceColumnVC+TableViewDelegateDataSource.swift"; sourceTree = "<group>"; };
@@ -211,6 +215,14 @@
 			path = UIViews;
 			sourceTree = "<group>";
 		};
+		9C9D3B80249DB2FA000ED111 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				9C9D3B81249DB325000ED111 /* UserSettings.swift */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
 		9CA099ED248386EE001BFB69 /* Workspace */ = {
 			isa = PBXGroup;
 			children = (
@@ -237,6 +249,7 @@
 				9CA099E924837CA3001BFB69 /* WorkspaceViewController.swift */,
 				9CA099F224838811001BFB69 /* WorkspaceViewController+ColumnManagement.swift */,
 				9CA099F424838F30001BFB69 /* WorkspaceViewController+Factory.swift */,
+				9C9D3B83249DB50E000ED111 /* WorkspaceViewController+Keyboard.swift */,
 			);
 			path = WorkspaceViewController;
 			sourceTree = "<group>";
@@ -310,6 +323,7 @@
 				B8D9B2D22329A94B00348987 /* UIViewControllers */,
 				9CA099ED248386EE001BFB69 /* Workspace */,
 				9CE98B732483BD8E00C854F5 /* CardsTab */,
+				9C9D3B80249DB2FA000ED111 /* Service */,
 				B8D950532326C4A4001236AE /* Model */,
 				B8D9503C2326C48F001236AE /* AppDelegate.swift */,
 				B8D9503E2326C48F001236AE /* SceneDelegate.swift */,
@@ -537,6 +551,7 @@
 				9C5656242471660B00CD8CC2 /* UIViewController+.swift in Sources */,
 				9C29806F243613F200176A7A /* SwiftyStoreKitWrapper.swift in Sources */,
 				9CA099F324838811001BFB69 /* WorkspaceViewController+ColumnManagement.swift in Sources */,
+				9C9D3B82249DB325000ED111 /* UserSettings.swift in Sources */,
 				9C3B271223CF11C400CC5A13 /* TaskSaved+CoreDataClass.swift in Sources */,
 				9C35CD5023DF61240099F55D /* UpcomingCardListCell.swift in Sources */,
 				9CD805EA246FEF44006A6718 /* CardSortingSystem.swift in Sources */,
@@ -564,6 +579,7 @@
 				B844EDB023C3471C0033D657 /* UIButton+.swift in Sources */,
 				9CC51AF223EB8C8800636842 /* NSManagedObjectContext+.swift in Sources */,
 				B8845807232BCEDE00B5CC3C /* Array+.swift in Sources */,
+				9C9D3B84249DB50E000ED111 /* WorkspaceViewController+Keyboard.swift in Sources */,
 				9C731083243347C3008E9820 /* IntroPageVC.swift in Sources */,
 				9C9168DF24319E3500AD31A9 /* UIImageView+.swift in Sources */,
 				B85C07DC23379E6400200B07 /* FetchedResults+.swift in Sources */,
@@ -765,7 +781,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "Notification App/Notification App.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 73;
+				CURRENT_PROJECT_VERSION = 74;
 				DERIVE_MACCATALYST_PRODUCT_BUNDLE_IDENTIFIER = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"Notification App/Preview Content\"";
 				DEVELOPMENT_TEAM = G763XN7D9Q;
@@ -775,7 +791,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 3.0.1;
+				MARKETING_VERSION = 3.1;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.rickythedeveloper.Notification-App";
 				PRODUCT_NAME = "space it";
 				SUPPORTS_MACCATALYST = YES;
@@ -791,7 +807,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "Notification App/Notification App.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 73;
+				CURRENT_PROJECT_VERSION = 74;
 				DERIVE_MACCATALYST_PRODUCT_BUNDLE_IDENTIFIER = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"Notification App/Preview Content\"";
 				DEVELOPMENT_TEAM = G763XN7D9Q;
@@ -801,7 +817,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 3.0.1;
+				MARKETING_VERSION = 3.1;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.rickythedeveloper.Notification-App";
 				PRODUCT_NAME = "space it";
 				SUPPORTS_MACCATALYST = YES;

@@ -68,6 +68,8 @@ extension WorkspaceViewController {
         (self.selectionColor, self.semiSelectionColor) = UIColor.tableViewSelectionColors()
         
         NotificationCenter.default.addObserver(self, selector: #selector(coreDataObjectsDidChange), name: Notification.Name.NSManagedObjectContextObjectsDidChange, object: nil)
+        
+        self.highlightedColumnIndex = 0
     }
     
     private func noPageDetected() {
